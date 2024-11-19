@@ -1,0 +1,7 @@
+{  
+  "operations": [  
+    {"operation":"place","place":{"placements":[{"id":"5nadN1wzFdpRYsbdg29tDH","pose":{"center":{"x":32.7400002193451,"y":-18.45},"angle":0},"side":"top"},{"id":"ARVbasPYM2ZAuNBxEftWG1","pose":{"center":{"x":31.47,"y":1.2032001495361335},"angle":0},"side":"top"}]}},
+    {"operation":"place","place":{"placements":[{"id":"5nadN1wzFdpRYsbdg29tDH","pose":{"center":{"x":4.1493961924994665,"y":-13.61778523489933},"angle":0},"side":"top"}]}},
+    {"operation":"place","place":{"placements":[{"id":"ARVbasPYM2ZAuNBxEftWG1","pose":{"center":{"x":10.327981810831751,"y":3.1963870495250593},"angle":0},"side":"top"}]}}
+  ]
+}

@@ -169,7 +169,7 @@ public defn ASM2464PDX_lp () -> ASM2464PDX_lp :
 
 public pcb-component component :
   reference-prefix = "U"
-  mpn = "ASM2464PD"
+  mpn = "ASM2464PDX"
   description = "USB4/Thunderbolt to PCIe Gen4 x4 Controller for Multi-PCIe Devices"
 
   pin-properties :
@@ -457,16 +457,12 @@ public pcb-component component :
 
   assign-landpattern(lp)
 
-  property(self.\|Design Item ID|) = "ASM2464PD"
-  property(self.Reference) = "U"
-  property(self.Value) = "ASM2464PD"
-
   for i in 0 to 4 do :
-    diff-pin-model(self.PRXP[i], self.PRXN[i],       delay = typ(10.0e-15) loss = typ(0.1))
-    diff-pin-model(self.PTXP[i], self.PTXN[i],       delay = typ(10.0e-15) loss = typ(0.1))
-    diff-pin-model(self.REFCLKP[i], self.REFCLKN[i], delay = typ(10.0e-15) loss = typ(0.1))
+    diff-pin-model(component.PRXP[i], component.PRXN[i],       delay = typ(10.0e-15) loss = typ(0.1))
+    diff-pin-model(component.PTXP[i], component.PTXN[i],       delay = typ(10.0e-15) loss = typ(0.1))
+    diff-pin-model(component.REFCLKP[i], component.REFCLKN[i], delay = typ(10.0e-15) loss = typ(0.1))
 
-  diff-pin-model(self.UDP self.UDM delay = typ(10.0e-15) loss = typ(0.1))
+  diff-pin-model(component.UDP component.UDM delay = typ(10.0e-15) loss = typ(0.1))
 
 
 ; TODO: update to latest JSL/PCIe convention
@@ -506,10 +502,10 @@ public pcb-module module :
   for n in pins(component.NC) do :
     no-connect(n)
 
-  ; for i in indices(component.GPIO) do :
-  ;   supports gpio :
-  ;     gpio[i] => component.GPIO[i]
-  ;     ;gpio.p => component.GPIO[i]
+  for i in indices(component.GPIO) do :
+    supports gpio :
+      ; gpio[i] => component.GPIO[i]
+      gpio.p => component.GPIO[i]
 
   net (i2c_data.sda, component.I2C_DATA_P)
   net (i2c_data.scl, component.I2C_CLK_P)
@@ -525,53 +521,33 @@ public pcb-module module :
   val bus-r = Ref("bus")
   val ctl-r = Ref("ctl")
   
-  val b = usb-superspeed()
-  supports b:
-    b.data.P => self.UDP
-    b.data.N => self.UDM
-    b.lane[0].TX.P => self.SSTX.P
-    b.lane[0].TX.N => self.SSTX.N
-    b.lane[0].RX.P => self.SSRX.P
-    b.lane[0].RX.N => self.SSRX.N
-
-  supports b:
-    b.data.P => self.UDP
-    b.data.N => self.UDM
-    b.lane[1].TX.P => self.SSTX.P
-    b.lane[1].TX.N => self.SSTX.N
-    b.lane[1].RX.P => self.SSRX.P
-    b.lane[1].RX.N => self.SSRX.N
-
-
-
-  val usb-c = usb-superspeed()
-  supports usb-c:
-  ; supports usb-superspeed() :
-    usb-c.cc[0]   => component.CC1
-    usb-c.cc[1]   => component.CC2
-    usb-c.sbu[0]   => component.SBU[1]
-    usb-c.sbu[1]   => component.SBU[2]
-    usb-c.vbus.V+ => component.VBUS
-    usb-c.vbus.V- => component.GND
-    usb-c.data.P  => component.UDP
-    usb-c.data.N  => component.UDM
+  val usb = usb-superspeed()
+  supports usb:
+    usb.cc[0]   => component.CC1
+    usb.cc[1]   => component.CC2
+    usb.sbu[0]   => component.SBU[1]
+    usb.sbu[1]   => component.SBU[2]
+    usb.vbus.V+ => component.VBUS
+    usb.vbus.V- => component.GND
+    usb.data.P  => component.UDP
+    usb.data.N  => component.UDM
     for i in 0 to 2 do :
-      usb-c.lane[i].RX.P => component.URXP[i]
-      usb-c.lane[i].RX.N => component.URXN[i]
-      usb-c.lane[i].TX.P => component.UTXP[i]
-      usb-c.lane[i].TX.N => component.UTXN[i]
+      usb.lane[i].RX.P => component.URXP[i]
+      usb.lane[i].RX.N => component.URXN[i]
+      usb.lane[i].TX.P => component.UTXP[i]
+      usb.lane[i].TX.N => component.UTXN[i]
 
-  val bd-4x = pcie(4)
-  supports bd-4x :
-    for i in 0 to 4 do :
-      bd-4x.data.rx[i].P => component.PRXP[i]
-      bd-4x.data.rx[i].N => component.PRXN[i]
-      bd-4x.data.tx[i].P => component.PTXP[i]
-      bd-4x.data.tx[i].N => component.PTXN[i]
-    bd-4x.data.refclk.P => component.REFCLKP[0]
-    bd-4x.data.refclk.N => component.REFCLKN[0]
+  ; val bd-4x = pcie(4)
+  ; supports bd-4x :
+  ;   for i in 0 to 4 do :
+  ;     bd-4x.data.rx[i].P => component.PRXP[i]
+  ;     bd-4x.data.rx[i].N => component.PRXN[i]
+  ;     bd-4x.data.tx[i].P => component.PTXP[i]
+  ;     bd-4x.data.tx[i].N => component.PTXN[i]
+  ;   bd-4x.data.refclk.P => component.REFCLKP[0]
+  ;   bd-4x.data.refclk.N => component.REFCLKN[0]
 
-    bd-4x.control.PEWAKE# => component.GPIO[22]
-    bd-4x.control.PERST#  => component.PERST0#
-    bd-4x.control.CLKREQ# => component.GPIO[8]
+  ;   bd-4x.control.PEWAKE# => component.GPIO[22]
+  ;   bd-4x.control.PERST#  => component.PERST0#
+  ;   bd-4x.control.CLKREQ# => component.GPIO[8]
 
