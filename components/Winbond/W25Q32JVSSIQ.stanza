@@ -1,0 +1,133 @@
+; This file is generated based on the parts database query below:")
+;   database-part(["manufacturer" => "Winbond", "mpn" => "W25Q32JVSSIQ"])
+#use-added-syntax(jitx)
+defpackage components/Winbond/W25Q32JVSSIQ :
+  import core
+  import jitx
+  import jitx/commands
+  import ocdb/utils/box-symbol
+
+
+pcb-pad capsule-smd-pad :
+  name = "capsule-smd-pad"
+  type = SMD
+  shape = Capsule(0.63, 2.25, loc(0.0, 0.0))
+  layer(SolderMask(Top)) = Capsule(0.732, 2.352, loc(0.0, 0.0))
+  layer(Paste(Top)) = Capsule(0.732, 2.352, loc(0.0, 0.0))
+
+pcb-landpattern lp :
+  pad p[1] : capsule-smd-pad at loc(-1.905, -3.530) on Top
+  pad p[2] : capsule-smd-pad at loc(-0.635, -3.530) on Top
+  pad p[3] : capsule-smd-pad at loc(0.635, -3.530) on Top
+  pad p[4] : capsule-smd-pad at loc(1.905, -3.530) on Top
+  pad p[5] : capsule-smd-pad at loc(1.905, 3.531) on Top
+  pad p[6] : capsule-smd-pad at loc(0.635, 3.531) on Top
+  pad p[7] : capsule-smd-pad at loc(-0.635, 3.531) on Top
+  pad p[8] : capsule-smd-pad at loc(-1.905, 3.531) on Top
+
+  layer(Silkscreen("F-SilkS", Top)) = Text(">REF", 0.5, W, loc(-0.750, 6.412))
+  layer(CustomLayer("Fab", Top)) = Text(">VALUE", 0.5, W, loc(-0.750, 5.412))
+  layer(Silkscreen("F-SilkS", Top)) = Polyline(0.152, [
+    Point(-2.639, -2.176)
+    Point(-2.639, 2.177)
+    Point(2.639, 2.177)
+    Point(2.639, -2.176)
+    Point(-2.639, -2.176)])
+  layer(Silkscreen("F-SilkS", Top)) = Polyline(0.300, [
+    Arc(-1.905, -1.423, 0.150, 0.0, -360.000)])
+  layer(Silkscreen("F-SilkS", Top)) = Polyline(0.300, [
+    Arc(-2.672, -3.530, 0.150, 0.0, -360.000)])
+  layer(CustomLayer("Fab", Top)) = Polyline(0.300, [
+    Arc(-1.905, -4.350, 0.150, 0.0, -360.000)])
+  layer(CustomLayer("Fab", Top)) = Polyline(0.060, [
+    Arc(-2.585, -3.920, 0.030, 0.0, -360.000)])
+  layer(Courtyard(Top)) = Rectangle(5.430, 9.413)
+
+  model3d = Model3D("{USER_PROJECT_ROOT}/3d-models/jitx-64d18a78b789d8dc4b82e2c6.stp",
+    Vec3D(0.0, 0.0, 0.0),
+    Vec3D(1.000, 1.000, 1.000),
+    Vec3D(0.0, 0.0, 0.0),
+    [],
+    )
+
+pcb-symbol sym-W25Q32JVSSIQ :
+  pin CS_NOT at Point(-12.700, 3.810) with :
+    direction = Left
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin \|DO（IO1）| at Point(-12.700, 1.270) with :
+    direction = Left
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin IO2 at Point(-12.700, -1.270) with :
+    direction = Left
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin GND at Point(-12.700, -3.810) with :
+    direction = Left
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin \|DI（IO0）| at Point(12.700, -3.810) with :
+    direction = Right
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin CLK at Point(12.700, -1.270) with :
+    direction = Right
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin IO3 at Point(12.700, 1.270) with :
+    direction = Right
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin VCC at Point(12.700, 3.810) with :
+    direction = Right
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+
+  draw("value") = Text(">VALUE", 0.7056, C, loc(0.0, 6.969))
+  draw("reference") = Text(">REF", 0.7056, C, loc(0.0, 7.969))
+  draw("foreground") = Rectangle(25.400, 13.716)
+  draw("foreground") = Circle(-11.430, 5.588, 0.381)
+  draw("foreground") = Circle(-11.430, 5.588, 0.381)
+
+public pcb-component component :
+  name = "C82344"
+  description = "32Mbit SPI SOIC-8-208mil NOR FLASH ROHS"
+  manufacturer = "Winbond"
+  mpn = "W25Q32JVSSIQ"
+  datasheet = "https://www.lcsc.com/datasheet/lcsc_datasheet_1811101814_Winbond-Elec-W25Q32JVSSIQ_C82344.pdf"
+  reference-prefix = "U"
+  pin-properties :
+    [pin:Ref | pads:Ref ... | side:Dir | electrical-type:String | bank:Int]
+    [CS_NOT | p[1] | Left | "unspecified" | 0]
+    [\|DO（IO1）| | p[2] | Left | "unspecified" | 0]
+    [IO2 | p[3] | Left | "unspecified" | 0]
+    [GND | p[4] | Left | "unspecified" | 0]
+    [\|DI（IO0）| | p[5] | Right | "unspecified" | 0]
+    [CLK | p[6] | Right | "unspecified" | 0]
+    [IO3 | p[7] | Right | "unspecified" | 0]
+    [VCC | p[8] | Right | "unspecified" | 0]
+
+  assign-landpattern(lp)
+  assign-symbol(sym-W25Q32JVSSIQ)
+
+  property(self.category) = "ic"
+  property(self.manufacturer_aliases) = ["Winbond Elec"]
+  property(self.mpn_aliases) = ["W25Q32JVSSIQ"]
+  property(self.cofactr_id) = "XX0QC6Y2U3XH"
+  property(self.reference_prefix) = "U"
+  property(self.trust) = "low"
+  property(self.x) = 5.430
+  property(self.y) = 9.413
+  property(self.area) = 51.113
+  property(self.case) = "SOIC-8-208mil"
+  property(self.mounting) = "through-hole"
+

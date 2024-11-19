@@ -1,0 +1,565 @@
+#use-added-syntax(jitx)
+defpackage components/TE-1-2199230-6 :
+  import core
+  import collections
+  import jitx
+  import jitx/commands
+  import ocdb/utils/box-symbol
+  import jsl/protocols/pcie
+
+
+
+pcb-pad oval-th-pad-1 :
+  type = TH
+  shape = Capsule(1.75, 1.75, loc(0.0, 0.0))
+  ocdb/utils/landpatterns/apply-soldermask(0.0)
+  layer(Cutout()) = Circle(0.575)
+
+pcb-pad oval-th-pad-2 :
+  type = TH
+  shape = Capsule(2.45, 2.45, loc(0.0, 0.0))
+  ocdb/utils/landpatterns/apply-soldermask(0.0)
+  layer(Cutout()) = Circle(0.825)
+
+pcb-pad rect-smd-pad-1 :
+  type = SMD
+  shape = Rectangle(1.550, 0.300)
+  ocdb/utils/landpatterns/apply-soldermask(0.075)
+  layer(Paste(Top)) = Rectangle(1.550, 0.300)
+
+pcb-pad rect-smd-pad-2 :
+  type = SMD
+  shape = Rectangle(2.750, 1.200)
+  ocdb/utils/landpatterns/apply-soldermask(0.075)
+  layer(Paste(Top)) = Rectangle(2.750, 1.200)
+
+public pcb-landpattern _121992306 :
+  pad MH1 : oval-th-pad-1 at loc(-10.000, -1.500) on Top
+  pad MH2 : oval-th-pad-2 at loc(10.000, -1.500) on Top
+  pad MP1 : rect-smd-pad-2 at loc(-10.350, 3.000, 90.000) on Top
+  pad MP2 : rect-smd-pad-2 at loc(10.350, 3.000, 90.000) on Top
+  pad p[1] : rect-smd-pad-1 at loc(-9.250, 3.775, 90.000) on Top
+  pad p[2] : rect-smd-pad-1 at loc(-9.000, -3.775, 90.000) on Top
+  pad p[3] : rect-smd-pad-1 at loc(-8.750, 3.775, 90.000) on Top
+  pad p[4] : rect-smd-pad-1 at loc(-8.500, -3.775, 90.000) on Top
+  pad p[5] : rect-smd-pad-1 at loc(-8.250, 3.775, 90.000) on Top
+  pad p[6] : rect-smd-pad-1 at loc(-8.000, -3.775, 90.000) on Top
+  pad p[7] : rect-smd-pad-1 at loc(-7.750, 3.775, 90.000) on Top
+  pad p[8] : rect-smd-pad-1 at loc(-7.500, -3.775, 90.000) on Top
+  pad p[9] : rect-smd-pad-1 at loc(-7.250, 3.775, 90.000) on Top
+  pad p[10] : rect-smd-pad-1 at loc(-7.000, -3.775, 90.000) on Top
+  pad p[11] : rect-smd-pad-1 at loc(-6.750, 3.775, 90.000) on Top
+  pad p[12] : rect-smd-pad-1 at loc(-6.500, -3.775, 90.000) on Top
+  pad p[13] : rect-smd-pad-1 at loc(-6.250, 3.775, 90.000) on Top
+  pad p[14] : rect-smd-pad-1 at loc(-6.000, -3.775, 90.000) on Top
+  pad p[15] : rect-smd-pad-1 at loc(-5.750, 3.775, 90.000) on Top
+  pad p[16] : rect-smd-pad-1 at loc(-5.500, -3.775, 90.000) on Top
+  pad p[17] : rect-smd-pad-1 at loc(-5.250, 3.775, 90.000) on Top
+  pad p[18] : rect-smd-pad-1 at loc(-5.000, -3.775, 90.000) on Top
+  pad p[19] : rect-smd-pad-1 at loc(-4.750, 3.775, 90.000) on Top
+  pad p[20] : rect-smd-pad-1 at loc(-4.500, -3.775, 90.000) on Top
+  pad p[21] : rect-smd-pad-1 at loc(-4.250, 3.775, 90.000) on Top
+  pad p[22] : rect-smd-pad-1 at loc(-4.000, -3.775, 90.000) on Top
+  pad p[23] : rect-smd-pad-1 at loc(-3.750, 3.775, 90.000) on Top
+  pad p[24] : rect-smd-pad-1 at loc(-3.500, -3.775, 90.000) on Top
+  pad p[25] : rect-smd-pad-1 at loc(-3.250, 3.775, 90.000) on Top
+  pad p[26] : rect-smd-pad-1 at loc(-3.000, -3.775, 90.000) on Top
+  pad p[27] : rect-smd-pad-1 at loc(-2.750, 3.775, 90.000) on Top
+  pad p[28] : rect-smd-pad-1 at loc(-2.500, -3.775, 90.000) on Top
+  pad p[29] : rect-smd-pad-1 at loc(-2.250, 3.775, 90.000) on Top
+  pad p[30] : rect-smd-pad-1 at loc(-2.000, -3.775, 90.000) on Top
+  pad p[31] : rect-smd-pad-1 at loc(-1.750, 3.775, 90.000) on Top
+  pad p[32] : rect-smd-pad-1 at loc(-1.500, -3.775, 90.000) on Top
+  pad p[33] : rect-smd-pad-1 at loc(-1.250, 3.775, 90.000) on Top
+  pad p[34] : rect-smd-pad-1 at loc(-1.000, -3.775, 90.000) on Top
+  pad p[35] : rect-smd-pad-1 at loc(-0.750, 3.775, 90.000) on Top
+  pad p[36] : rect-smd-pad-1 at loc(-0.500, -3.775, 90.000) on Top
+  pad p[37] : rect-smd-pad-1 at loc(-0.250, 3.775, 90.000) on Top
+  pad p[38] : rect-smd-pad-1 at loc(0.0, -3.775, 90.000) on Top
+  pad p[39] : rect-smd-pad-1 at loc(0.250, 3.775, 90.000) on Top
+  pad p[40] : rect-smd-pad-1 at loc(0.500, -3.775, 90.000) on Top
+  pad p[41] : rect-smd-pad-1 at loc(0.750, 3.775, 90.000) on Top
+  pad p[42] : rect-smd-pad-1 at loc(1.000, -3.775, 90.000) on Top
+  pad p[43] : rect-smd-pad-1 at loc(1.270, 3.556, 90.000) on Top
+  pad p[44] : rect-smd-pad-1 at loc(1.500, -3.775, 90.000) on Top
+  pad p[45] : rect-smd-pad-1 at loc(1.750, 3.775, 90.000) on Top
+  pad p[46] : rect-smd-pad-1 at loc(2.000, -3.775, 90.000) on Top
+  pad p[47] : rect-smd-pad-1 at loc(2.250, 3.775, 90.000) on Top
+  pad p[48] : rect-smd-pad-1 at loc(2.500, -3.775, 90.000) on Top
+  pad p[49] : rect-smd-pad-1 at loc(2.750, 3.775, 90.000) on Top
+  pad p[50] : rect-smd-pad-1 at loc(3.000, -3.775, 90.000) on Top
+  pad p[51] : rect-smd-pad-1 at loc(3.250, 3.775, 90.000) on Top
+  pad p[52] : rect-smd-pad-1 at loc(3.500, -3.775, 90.000) on Top
+  pad p[53] : rect-smd-pad-1 at loc(3.750, 3.775, 90.000) on Top
+  pad p[54] : rect-smd-pad-1 at loc(4.000, -3.775, 90.000) on Top
+  pad p[55] : rect-smd-pad-1 at loc(4.250, 3.775, 90.000) on Top
+  pad p[56] : rect-smd-pad-1 at loc(4.500, -3.775, 90.000) on Top
+  pad p[57] : rect-smd-pad-1 at loc(4.750, 3.775, 90.000) on Top
+  pad p[58] : rect-smd-pad-1 at loc(5.000, -3.775, 90.000) on Top
+  pad p[67] : rect-smd-pad-1 at loc(7.250, 3.775, 90.000) on Top
+  pad p[68] : rect-smd-pad-1 at loc(7.500, -3.775, 90.000) on Top
+  pad p[69] : rect-smd-pad-1 at loc(7.750, 3.775, 90.000) on Top
+  pad p[70] : rect-smd-pad-1 at loc(8.000, -3.775, 90.000) on Top
+  pad p[71] : rect-smd-pad-1 at loc(8.250, 3.775, 90.000) on Top
+  pad p[72] : rect-smd-pad-1 at loc(8.500, -3.775, 90.000) on Top
+  pad p[73] : rect-smd-pad-1 at loc(8.750, 3.775, 90.000) on Top
+  pad p[74] : rect-smd-pad-1 at loc(9.000, -3.775, 90.000) on Top
+  pad p[75] : rect-smd-pad-1 at loc(9.250, 3.775, 90.000) on Top
+
+  layer(CustomLayer("Mechanical 15", Top)) = Line(0.254, [Point(-10.950, -3.875), Point(-10.950, 3.875)])
+  layer(CustomLayer("Mechanical 15", Top)) = Line(0.254, [Point(-10.950, -3.875), Point(10.950, -3.875)])
+  layer(CustomLayer("Mechanical 15", Top)) = Line(0.254, [Point(-10.950, 3.875), Point(10.950, 3.875)])
+  layer(CustomLayer("Mechanical 15", Top)) = Line(0.254, [Point(10.950, -3.875), Point(10.950, 3.875)])
+  layer(CustomLayer("Mechanical 20", Top)) = Line(0.100, [Point(-11.950, -5.550), Point(-11.950, 6.104)])
+  layer(CustomLayer("Mechanical 20", Top)) = Line(0.100, [Point(-11.950, -5.550), Point(12.225, -5.550)])
+  layer(CustomLayer("Mechanical 20", Top)) = Line(0.100, [Point(-11.950, 6.104), Point(12.225, 6.104)])
+  layer(CustomLayer("Mechanical 20", Top)) = Line(0.100, [Point(12.225, -5.550), Point(12.225, 6.104)])
+  layer(Silkscreen("F-SilkS", Top)) = Polyline(0.072, [
+    Arc(-9.234, 5.068, 0.036, 0.0, 180.000)])
+  layer(Silkscreen("F-SilkS", Top)) = Polyline(0.072, [
+    Arc(-9.234, 5.068, 0.036, 180.000, 180.000)])
+  layer(Silkscreen("F-SilkS", Top)) = Text(">REF", 0.8, SW, loc(-12.503, 0.521, 180.000), "Arial", TrueTypeFont, false, false)
+
+  model3d = Model3D("../3d-models/c-TE-1-2199230-6-b3-3d_g9E220D11.STEP",
+    Vec3D(-0.028, -4.159, 2.540),
+    Vec3D(1.000, 1.000, 1.000),
+    Vec3D(270.000, 0.0, 0.0),
+    ["ModelSource" => "0" "ModelType" => "1" "BodyLayerId" => "58" "BodyColor3D" => "8421504" "BodyProjection" => "0" "BodyOverallHeight" => "4.425" "BodyStandoffHeight" => "-0.275" "BodyOpacity3D" => "1.0" "IsEmbed" => "true" "OverrideColor" => "false" "BodyIdentifier" => "c-TE-1-2199230-6-b3-3d"],
+    )
+
+public pcb-symbol TE-1-2199230-6 :
+  pin p[1] at Point(119.380, 143.510) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[3] at Point(119.380, 140.970) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[5] at Point(119.380, 138.430) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[7] at Point(119.380, 135.890) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[9] at Point(119.380, 133.350) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[11] at Point(119.380, 130.810) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[13] at Point(119.380, 128.270) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[15] at Point(119.380, 125.730) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[17] at Point(119.380, 123.190) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[19] at Point(119.380, 120.650) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[21] at Point(119.380, 118.110) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[23] at Point(119.380, 115.570) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[25] at Point(119.380, 113.030) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[27] at Point(119.380, 110.490) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[29] at Point(119.380, 107.950) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[31] at Point(119.380, 105.410) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[33] at Point(119.380, 102.870) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[35] at Point(119.380, 100.330) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[37] at Point(119.380, 97.790) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[39] at Point(119.380, 95.250) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[41] at Point(119.380, 92.710) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[43] at Point(119.380, 90.170) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[45] at Point(119.380, 87.630) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[47] at Point(119.380, 85.090) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[49] at Point(119.380, 82.550) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[51] at Point(119.380, 80.010) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[53] at Point(119.380, 77.470) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[55] at Point(119.380, 74.930) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[57] at Point(119.380, 72.390) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[67] at Point(119.380, 59.690) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[69] at Point(119.380, 57.150) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[71] at Point(119.380, 54.610) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[73] at Point(119.380, 52.070) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[75] at Point(119.380, 49.530) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[2] at Point(134.620, 143.510) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[4] at Point(134.620, 140.970) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[6] at Point(134.620, 138.430) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[8] at Point(134.620, 135.890) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[10] at Point(134.620, 133.350) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[12] at Point(134.620, 130.810) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[14] at Point(134.620, 128.270) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[16] at Point(134.620, 125.730) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[18] at Point(134.620, 123.190) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[20] at Point(134.620, 120.650) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[22] at Point(134.620, 118.110) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[24] at Point(134.620, 115.570) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[26] at Point(134.620, 113.030) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[28] at Point(134.620, 110.490) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[30] at Point(134.620, 107.950) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[32] at Point(134.620, 105.410) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[34] at Point(134.620, 102.870) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[36] at Point(134.620, 100.330) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[38] at Point(134.620, 97.790) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[40] at Point(134.620, 95.250) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[42] at Point(134.620, 92.710) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[44] at Point(134.620, 90.170) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[46] at Point(134.620, 87.630) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[48] at Point(134.620, 85.090) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[50] at Point(134.620, 82.550) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[52] at Point(134.620, 80.010) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[54] at Point(134.620, 77.470) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[56] at Point(134.620, 74.930) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[58] at Point(134.620, 72.390) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[68] at Point(134.620, 59.690) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[70] at Point(134.620, 57.150) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[72] at Point(134.620, 54.610) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin p[74] at Point(134.620, 52.070) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin SHIELD[0] at Point(134.620, 46.990) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+  pin SHIELD[1] at Point(134.620, 44.450) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.523
+    name-size = 1.523
+
+  draw("foreground") = Text(">REF", 0.762, C, loc(114.250, 146.350), "", TrueTypeFont, false, false)
+  draw("foreground") = Rectangle(15.240, 104.140, loc(127.000, 93.980))
+
+public pcb-component component :
+  reference-prefix = "J2"
+  pin-properties :
+    [pin:Ref | pads:Ref ... | side:Dir]
+    [p[1] | p[1] | Left]
+    [p[3] | p[3] | Left]
+    [p[5] | p[5] | Left]
+    [p[7] | p[7] | Left]
+    [p[9] | p[9] | Left]
+    [p[11] | p[11] | Left]
+    [p[13] | p[13] | Left]
+    [p[15] | p[15] | Left]
+    [p[17] | p[17] | Left]
+    [p[19] | p[19] | Left]
+    [p[21] | p[21] | Left]
+    [p[23] | p[23] | Left]
+    [p[25] | p[25] | Left]
+    [p[27] | p[27] | Left]
+    [p[29] | p[29] | Left]
+    [p[31] | p[31] | Left]
+    [p[33] | p[33] | Left]
+    [p[35] | p[35] | Left]
+    [p[37] | p[37] | Left]
+    [p[39] | p[39] | Left]
+    [p[41] | p[41] | Left]
+    [p[43] | p[43] | Left]
+    [p[45] | p[45] | Left]
+    [p[47] | p[47] | Left]
+    [p[49] | p[49] | Left]
+    [p[51] | p[51] | Left]
+    [p[53] | p[53] | Left]
+    [p[55] | p[55] | Left]
+    [p[57] | p[57] | Left]
+    [p[67] | p[67] | Left]
+    [p[69] | p[69] | Left]
+    [p[71] | p[71] | Left]
+    [p[73] | p[73] | Left]
+    [p[75] | p[75] | Left]
+    [p[2] | p[2] | Right]
+    [p[4] | p[4] | Right]
+    [p[6] | p[6] | Right]
+    [p[8] | p[8] | Right]
+    [p[10] | p[10] | Right]
+    [p[12] | p[12] | Right]
+    [p[14] | p[14] | Right]
+    [p[16] | p[16] | Right]
+    [p[18] | p[18] | Right]
+    [p[20] | p[20] | Right]
+    [p[22] | p[22] | Right]
+    [p[24] | p[24] | Right]
+    [p[26] | p[26] | Right]
+    [p[28] | p[28] | Right]
+    [p[30] | p[30] | Right]
+    [p[32] | p[32] | Right]
+    [p[34] | p[34] | Right]
+    [p[36] | p[36] | Right]
+    [p[38] | p[38] | Right]
+    [p[40] | p[40] | Right]
+    [p[42] | p[42] | Right]
+    [p[44] | p[44] | Right]
+    [p[46] | p[46] | Right]
+    [p[48] | p[48] | Right]
+    [p[50] | p[50] | Right]
+    [p[52] | p[52] | Right]
+    [p[54] | p[54] | Right]
+    [p[56] | p[56] | Right]
+    [p[58] | p[58] | Right]
+    [p[68] | p[68] | Right]
+    [p[70] | p[70] | Right]
+    [p[72] | p[72] | Right]
+    [p[74] | p[74] | Right]
+    [SHIELD[0] | MP1 | Right]
+    [SHIELD[1] | MP2 | Right]
+
+  assign-landpattern(_121992306)
+  assign-symbol(TE-1-2199230-6)
+
+  property(self.Check_prices) = "https://www.snapeda.com/parts/TE-1-2199230-6/TE+Connectivity+AMP+Connectors/view-part/?ref=eda"
+  property(self.Digi-Key_Part_Number) = "A118046TR-ND"
+  property(self.MF) = "TE Connectivity"
+  property(self.MP) = "TE-1-2199230-6"
+  property(self.Package) = "None"
+  property(self.Purchase-URL) = "https://pricing.snapeda.com/search/part/TE-1-2199230-6/?ref=eda"
+  property(self.SnapEDA_Link) = "https://www.snapeda.com/parts/TE-1-2199230-6/TE+Connectivity+AMP+Connectors/view-part/?ref=snap"
+  property(self.Value) = "*"
+

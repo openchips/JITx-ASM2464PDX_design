@@ -1,0 +1,202 @@
+#use-added-syntax(jitx)
+defpackage components/Texas-Instruments/TPS564201DDCR :
+  import core
+  import jitx
+  import jitx/commands
+  import ocdb/utils/generic-components
+  import ocdb/utils/box-symbol
+  import math
+  import ocdb/designs/voltage-divider
+
+
+pcb-pad rectangle-smd-pad :
+  name = "rectangle-smd-pad"
+  type = SMD
+  shape = Rectangle(0.532, 1.072)
+  layer(SolderMask(Top)) = Rectangle(0.634, 1.174)
+  layer(Paste(Top)) = Rectangle(0.634, 1.174)
+
+pcb-landpattern lp :
+  pad p[1] : rectangle-smd-pad at loc(-0.950, -1.149) on Top
+  pad p[2] : rectangle-smd-pad at loc(0.0, -1.149) on Top
+  pad p[3] : rectangle-smd-pad at loc(0.950, -1.149) on Top
+  pad p[4] : rectangle-smd-pad at loc(0.950, 1.149) on Top
+  pad p[5] : rectangle-smd-pad at loc(0.0, 1.149) on Top
+  pad p[6] : rectangle-smd-pad at loc(-0.950, 1.149) on Top
+
+  layer(Silkscreen("F-SilkS", Top)) = Text(">REF", 0.5, W, loc(-0.750, 3.442))
+  layer(CustomLayer("Fab", Top)) = Text(">VALUE", 0.5, W, loc(-0.750, 2.442))
+  layer(Silkscreen("F-SilkS", Top)) = Line(0.152, [Point(1.539, -0.889), Point(1.539, 0.889)])
+  layer(Silkscreen("F-SilkS", Top)) = Line(0.152, [Point(-1.539, -0.889), Point(-1.539, 0.889)])
+  layer(CustomLayer("Fab", Top)) = Polyline(0.060, [
+    Arc(-1.463, -1.401, 0.030, 0.0, -360.000)])
+  layer(CustomLayer("Fab", Top)) = Polyline(0.200, [
+    Arc(-0.920, -1.680, 0.100, 0.0, -360.000)])
+  layer(Silkscreen("F-SilkS", Top)) = Polyline(0.300, [
+    Arc(-1.668, -1.302, 0.150, 0.0, -360.000)])
+  layer(Courtyard(Top)) = Rectangle(3.230, 3.473)
+
+  model3d = Model3D("{USER_PROJECT_ROOT}/3d-models/jitx-64d1415db789d8dc4b7a40f3.stp",
+    Vec3D(0.0, 0.0, 0.0),
+    Vec3D(1.000, 1.000, 1.000),
+    Vec3D(0.0, 0.0, 0.0),
+    [],
+    )
+
+pcb-symbol sym-TPS564201DDCR :
+  pin GND at Point(-7.620, 2.540) with :
+    direction = Left
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin SW at Point(-7.620, 0.0) with :
+    direction = Left
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin VIN at Point(-7.620, -2.540) with :
+    direction = Left
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin VFB at Point(7.620, -2.540) with :
+    direction = Right
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin EN at Point(7.620, 0.0) with :
+    direction = Right
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin VBST at Point(7.620, 2.540) with :
+    direction = Right
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+
+  draw("value") = Text(">VALUE", 0.7056, C, loc(0.0, 5.191))
+  draw("reference") = Text(">REF", 0.7056, C, loc(0.0, 6.191))
+  draw("foreground") = Rectangle(15.240, 10.160)
+  draw("foreground") = Circle(-6.350, 3.810, 0.381)
+
+public pcb-component component :
+  name = "C464812"
+  description = "Step-down type Adjustable 4A 4.5V~17V 0.76V~7V TSOT-23-6  DC-DC Converters ROHS"
+  manufacturer = "Texas Instruments"
+  mpn = "TPS564201DDCR"
+  datasheet = "https://datasheet.lcsc.com/lcsc/2010141804_Texas-Instruments-TPS564201DDCR_C464812.pdf"
+  reference-prefix = "U"
+  pin-properties :
+    [pin:Ref | pads:Ref ... | side:Dir | electrical-type:String | bank:Int]
+    [GND | p[1] | Left | "unspecified" | 0]
+    [SW | p[2] | Left | "unspecified" | 0]
+    [VIN | p[3] | Left | "unspecified" | 0]
+    [VFB | p[4] | Right | "unspecified" | 0]
+    [EN | p[5] | Right | "unspecified" | 0]
+    [VBST | p[6] | Right | "unspecified" | 0]
+
+  assign-landpattern(lp)
+  assign-symbol(sym-TPS564201DDCR)
+
+  property(self.category) = "ic"
+  property(self.manufacturer_aliases) = ["Texas Instruments"]
+  property(self.mpn_aliases) = ["TPS564201DDCR"]
+  property(self.cofactr_id) = "ICHM2J95BIZT"
+  property(self.reference_prefix) = "U"
+  property(self.trust) = "low"
+  property(self.x) = 3.230
+  property(self.y) = 3.473
+  property(self.area) = 11.218
+  property(self.case) = "SOT-23-6"
+  property(self.mounting) = "smd"
+  property(self.fb.vref) = 0.760
+
+
+public pcb-module module (-- output-voltage:Double = 1.05 input-voltage:Double = 5.0, soft-start:Double = 2.0e-3, output-current:Double = 3.0, ripple:Double = 30.0e-3, placed?:True|False = true):
+  port vin
+  port vout
+  port gnd
+  
+  inst component : component
+  net (VIN, component.VIN)
+  net (VIN, component.EN) ; always wenabled (by design won't go >19v which is max for EN pin)
+  net GND (component.GND GND)
+
+    ; [SW | p[2] | Left | "unspecified" | 0]
+    ; [VFB | p[4] | Right | "unspecified" | 0]
+    ; [EN | p[5] | Right | "unspecified" | 0]
+    ; [VBST | p[6] | Right | "unspecified" | 0]
+
+  cap-strap(component.VIN,  component.GND, 1.0e-7)
+  
+  
+  inst output-voltage-divider : ocdb/modules/passive-circuits/voltage-divider(
+    source-voltage = typ(output-voltage), 
+    divider-output = 0.78 +/- (3 %), 
+    current = 0.800 / 10.0e3)
+
+  net (output-voltage-divider.in, component.SW) 
+  net (output-voltage-divider.SW, component.VFB) 
+  net (output-voltage-divider.lo, component.gnd)
+
+  net (component.VFB feedback.p[1])
+  net (feedback.p[2] gnd)
+
+
+  inst inductor : create-part(mpn = "DFE201612E-2R2M=P2", manufacturer = "MURATA")
+  ; inst inductor : database-part(["mpn" => "WPN4020H6R8MT", "manufacturer" => "Sunlord"])
+  net (inductor.p[1] component.SW)
+  net (inductor.p[2] vout)
+
+
+  ; net (component.VFB vFB_R1)
+  ; net (feedback.out component.VFB)
+  ; net (feedback.lo gnd)
+
+  
+  ; println("Inductor: L: %_H, Ripple: %_A, Peak : %_A" % [L, ripple-current, peak-current]) ; Would love to send these to a parametric inductor.
+
+
+  ; ; Output capacitance
+  ; val D = output-voltage / input-voltage
+  ; val cout-min = ripple-current / (fsw * ripple * K) * ((1. - D) * (1. + 1.0 * K) + pow(1.0 * K, 2.) / 12.0 * (2. - D))
+  ; val derated-capacitance = cout-min * 3.0
+
+  ; val cap = 22.0e-6  
+  ; val output-cap-params = ["capacitance" => cap, "case" => "0805" "temperature-coefficient.code" => "X7R", "min-rated-voltage" => output-voltage * 2.]
+  ; val min-output-caps:Int = to-int(derated-capacitance / cap) + 1
+  ; val output-caps = to-tuple $
+  ;   for i in 0 to min-output-caps seq :
+  ;     val bc = bypass-cap-strap(inductor.p[2], gnd, output-cap-params)
+  ;     bc
+  
+  ; ; Input capacitance - 10uF derated.
+  ; val input-cap-params = ["capacitance" => 10.0e-6, "temperature-coefficient.code" => "X7R", "min-rated-voltage" => input-voltage * 2.]
+  ; val c-inp-reg-1 = bypass-cap-strap(component.VIN, gnd, input-cap-params)
+  ; val c-inp-reg-2 = bypass-cap-strap(component.VIN, gnd, input-cap-params)
+  ; val c-inp-sm  = bypass-cap-strap(component.VIN, gnd, ["capacitance" => 0.1e-6, "temperature-coefficient.code" => "X7R", "min-rated-voltage" => input-voltage * 2.])
+
+  ; ; Feedforward cap
+  ; val c-ff = cap-strap(feedback.in, feedback.out, 100.0e-12) ; 100pf because I wish I had a working simulation.
+
+  property(vout.voltage) = typ(output-voltage)
+
+  ; ; placement 
+  ; if placed? :
+  ;   place(component) at loc(0.0, 0.0, 180.0) on Top
+  ;   place(feedback.r-lo) at loc(1.475, 1.920) on Top
+  ;   place(feedback.r-hi) at loc(2.452, 1.920) on Top
+  ;   place(c-ss) at loc(1.860218 0.395469 90.0) on Top
+  ;   place(cbst) at loc(3.497936 -0.597491 180.0) on Top
+  ;   place(r-bst) at loc(2.249856 -0.555152, 270.0) on Top
+  ;   place(inductor) at loc(2.592758, -3.859867, 270.0) on Top
+  ;   for (c in output-caps, i in 0 to false) do :
+  ;     place(output-caps[i]) at loc(3.786237 + to-double(i) * -1.79, -8.080, 180.0) on Top
+  ;     geom(GND) :
+  ;       via(ocdb/utils/defaults/default-via) at Point(3.786237 + to-double(i) * -1.79, -10.0)
+
+  ;   place(c-inp-reg-1) at loc(-3.565656 -2.036099 180.0) on Top
+  ;   place(c-inp-reg-2) at loc(-5.599985 -2.036099 180.0) on Top
+  ;   place(c-inp-sm) at loc(-1.770369 -0.807124 180.0) on Top
+  ;   place(c-ff) at loc(3.411575 1.927403 0.0) on Top

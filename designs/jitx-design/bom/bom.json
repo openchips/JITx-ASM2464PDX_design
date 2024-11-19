@@ -1,0 +1,190 @@
+{
+	"proj-name":	"jitx-design",
+	"headers":	[{
+			"field":	"status",
+			"name":	"Status",
+			"width":	10
+		}, {
+			"field":	"description",
+			"name":	"Description",
+			"width":	10
+		}, {
+			"field":	"insts",
+			"name":	"References",
+			"width":	10
+		}, {
+			"field":	"datasheet",
+			"name":	"Datasheet",
+			"width":	10
+		}, {
+			"field":	"manufacturer",
+			"name":	"Manufacturer",
+			"width":	10
+		}, {
+			"field":	"mpn",
+			"name":	"Part Number",
+			"width":	10
+		}, {
+			"field":	"_quantity",
+			"name":	"Quantity",
+			"width":	8
+		}, {
+			"field":	"price",
+			"name":	"Price",
+			"width":	8
+		}, {
+			"field":	"_preferred",
+			"name":	"Preferred",
+			"width":	8
+		}],
+	"new_bom":	{
+		"rows":	[{
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"RES SMD 10K OHM 5% 1/16W 0402",
+				"insts":	[{
+						"inst":	{
+							"name":	"rid"
+						},
+						"ref":	"R1",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\jamms\\.jitx\\3.9.0\\slm\\ocdb\\utils\\generic-components.stanza",
+							"line":	727,
+							"column":	4
+						}
+					}],
+				"datasheet":	"https://www.bourns.com/docs/product-datasheets/CRxxxxx.pdf",
+				"manufacturer":	"BOURNS",
+				"mpn":	"CR0402-JW-103GLF",
+				"vendor":	"DigiKey",
+				"sku":	"CR0402-JW-103GLF",
+				"price":	0.00163,
+				"preferred":	false,
+				"query_properties":	{
+					"case":	["0402", "1005m", "0505", "1414m", "0508", "1220m", "Wide 0805", "0603", "1608m", "0612", "1632m", "Wide 1206", "0805", "2012m", "1111", "2828m", "1206", "3216m", "1210", "3225m", "1218", "3246m", "Wide 1812", "1225", "3263m", "Wide 2512", "1530", "3876m", "Wide 3015", "1808", "4520m", "1812", "4532m", "1825", "4564m", "1835", "4589", "Wide 3518", "5020m", "2010", "5025m", "2043", "Wide 4320", "2220", "5750m", "2225", "5763m", "2312", "6032m", "2512", "6331m", "2725", "7142m", "2728", "7142m", "Wide 2827", "2816", "2817", "7142m", "2953", "Wide 5929", "3920", "1052m"],
+					"_sellers":	["DigiKey", "Mouser"],
+					"min-rated-temperature.max":	25,
+					"max-rated-temperature.min":	0,
+					"_stock":	100,
+					"mounting":	"smd",
+					"resistance":	10000,
+					"min-stock":	500,
+					"_sort":	["area"],
+					"category":	"resistor"
+				}
+			}, {
+				"status":	{
+					"code":	5,
+					"name":	"Potential Alternate Vendors"
+				},
+				"description":	"USB4/Thunderbolt to PCIe Gen4 x4 Controller for Multi-PCIe Devices",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"name":	"asm2464pd"
+							},
+							"field":	{
+								"name":	"sw"
+							}
+						},
+						"ref":	"U1",
+						"fileinfo":	{
+							"filename":	"components\\ASM2464PD.stanza",
+							"line":	1195,
+							"column":	2
+						}
+					}],
+				"datasheet":	null,
+				"manufacturer":	null,
+				"mpn":	"ASM2464PD",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	3,
+					"name":	"No Information"
+				},
+				"description":	null,
+				"insts":	[{
+						"inst":	{
+							"name":	"m2_connector"
+						},
+						"ref":	"J21",
+						"fileinfo":	{
+							"filename":	"c:\\\\\\\\Users\\\\\\\\jamms\\\\\\\\OneDrive\\\\\\\\Documenten\\\\\\\\- JITX\\\\\\\\ASM2464PD_Demo_2\\\\\\\\main.stanza",
+							"line":	25,
+							"column":	2
+						}
+					}],
+				"datasheet":	null,
+				"manufacturer":	null,
+				"mpn":	null,
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	null
+			}],
+		"entries":	[{
+			}, {
+			}, {
+			}]
+	},
+	"metrics":	[{
+			"name":	"Line Items",
+			"value":	3
+		}, {
+			"name":	"Components",
+			"value":	3
+		}, {
+			"name":	"Cost",
+			"value":	"$0.00"
+		}],
+	"is_update":	false,
+	"old_bom":	{
+		"rows":	[{
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"RES SMD 10K OHM 5% 1/16W 0402",
+				"insts":	[{
+						"inst":	{
+							"name":	"rid"
+						},
+						"ref":	"R1",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\jamms\\.jitx\\3.9.0\\slm\\ocdb\\utils\\generic-components.stanza",
+							"line":	727,
+							"column":	4
+						}
+					}],
+				"datasheet":	"https://www.bourns.com/docs/product-datasheets/CRxxxxx.pdf",
+				"manufacturer":	"BOURNS",
+				"mpn":	"CR0402-JW-103GLF",
+				"vendor":	"DigiKey",
+				"sku":	"CR0402-JW-103GLF",
+				"price":	0.00163,
+				"preferred":	false,
+				"query_properties":	{
+					"case":	["0402", "1005m", "0505", "1414m", "0508", "1220m", "Wide 0805", "0603", "1608m", "0612", "1632m", "Wide 1206", "0805", "2012m", "1111", "2828m", "1206", "3216m", "1210", "3225m", "1218", "3246m", "Wide 1812", "1225", "3263m", "Wide 2512", "1530", "3876m", "Wide 3015", "1808", "4520m", "1812", "4532m", "1825", "4564m", "1835", "4589", "Wide 3518", "5020m", "2010", "5025m", "2043", "Wide 4320", "2220", "5750m", "2225", "5763m", "2312", "6032m", "2512", "6331m", "2725", "7142m", "2728", "7142m", "Wide 2827", "2816", "2817", "7142m", "2953", "Wide 5929", "3920", "1052m"],
+					"_sellers":	["DigiKey", "Mouser"],
+					"min-rated-temperature.max":	25,
+					"max-rated-temperature.min":	0,
+					"_stock":	100,
+					"mounting":	"smd",
+					"resistance":	10000,
+					"min-stock":	500,
+					"_sort":	["area"],
+					"category":	"resistor"
+				}
+			}],
+		"entries":	[{
+			}]
+	}
+}

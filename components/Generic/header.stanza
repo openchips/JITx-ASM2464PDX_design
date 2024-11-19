@@ -1,0 +1,59 @@
+#use-added-syntax(jitx)
+defpackage jsl/examples/landpatterns/headers:
+  import core
+  import jitx
+  import jitx/commands
+
+  import jsl/landpatterns
+  import jsl/symbols
+
+  import jsl/examples/landpatterns/board
+
+pcb-bundle header (w:Int):
+  port D : pin[1 through w]
+
+pcb-symbol header-sym (num-leads:Int, num-rows:Int, p:port):
+  name = "Crappy Header Symbol"
+ 
+;   for i in 1 through num-leads do:
+;     pin p.D[i] at Point(0.0, scale * to-double(i))
+
+
+pcb-component header-test (num-leads:Int, num-rows:Int) :
+  port p : header(num-leads)
+
+  pin-properties:
+    [pin:Ref| pads:Ref ...]
+    for i in 1 through num-leads do:
+      [p.D[i] | p[i] ]
+
+    val scale = 2.54
+    for i in 0 to num-leads do :
+    pin (Ref(p.D[i])) at Point(-2.54, (2.54 - (to-double(i) * 2.54))) with :
+    direction = Left
+    length = 2.54
+    number-size = 0.762
+    name-size = 0.762
+    create-symbol(symb)
+
+
+;   assign-symbol(header-sym(num-leads, num-rows, p))
+
+  val pitch = 2.54
+  val num-cols = num-leads / num-rows
+  val body-len = to-double(num-cols) * pitch
+  val body-width = to-double(num-rows) * pitch
+
+  val pkg = Header(
+    num-leads = num-leads,
+    lead-type = TH-Lead(length = typ(2.0), width = typ(0.9)),
+    pad-diam = 1.5,
+    rows = num-rows,
+    pitch = pitch
+    package-body = PackageBody(
+      width = typ(body-width),
+      length = typ(body-len),
+      height = typ(5.0) )
+    )
+  val lp = create-landpattern(pkg)
+  assign-landpattern(lp)

@@ -1,0 +1,6 @@
+name = "c:\\Users\\jamms\\OneDrive\\Documenten\\- JITX\\ASM2464PD_Demo_2"
+version = "0.1.0"
+[dependencies]
+ocdb = { path = "{SLM_ROOT}/ocdb" }
+jsl = { git = "JITx-Inc/jsl", version = "0.6.0" }
+JITX = { path = "{SLM_ROOT}/JITX" }

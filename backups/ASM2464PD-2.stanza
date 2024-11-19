@@ -1,0 +1,425 @@
+#use-added-syntax(jitx)
+defpackage components/ASM2464PD :
+  import core
+  import collections
+  import jitx
+  import jitx/commands
+
+  import jsl/design/settings
+  import jsl/ensure
+  import jsl/geometry/basics
+  import jsl/landpatterns
+
+  import jsl/symbols
+  import ocdb/utils/box-symbol
+  import jsl/bundles
+  import jsl/protocols
+  import jsl/si/helpers
+
+  import jsl/pin-assignment
+  import jsl/protocols/pcie
+
+
+doc: \<DOC>
+Construct a Customized Perimeter Planner
+
+This is a one-off perimeter planner to support the ASM2464.
+According to the manufacturer's instructions - they suggest
+using a capsule shaped pad for the exterior pads in a particular
+pattern.
+
+This planner modifies the `shape-generator` to construct this
+capsule shape only on the required pads.
+<DOC>
+defstruct CapsulePerimeterPlanner <: Perimeter-Matrix-Planner : 
+  inactive:PadIsland|Tuple<PadIsland> with: (
+    as-method => true
+  )
+  pad-config:PadConfig with: (
+    as-method => true
+    default => PadConfig-R()
+    )
+with:
+  constructor => #CapsulePerimeterPlanner
+
+val CAPS_LEN = 0.33 ; 13mil per Datasheet
+
+defn CapsulePerimeterPlanner (
+  --
+  inactive:PadIsland|Tuple<PadIsland>,
+  pad-config:PadConfig = PadConfig-R()
+  ):
+  #CapsulePerimeterPlanner(inactive, pad-config)
+
+defn CapsuleShaper (s:Dims, rot:Double) -> Shape : 
+  loc(0.0, 0.0, rot) * Capsule(CAPS_LEN, y(s))
+
+public defmethod shape-generator (bga:CapsulePerimeterPlanner, row:Int, column:Int) -> (Dims -> Shape)|False :
+  if not active?(bga, row, column): false
+  else: 
+    val east-edge = (column == 0 and row != 0)
+    val west-edge = (column == 20 and (row != 0 and row != 20))
+    val north-edge = (row == 0 and (column != 0 and column != 20))
+    val south-edge = (row == 20 and column != 20)
+    if (east-edge or west-edge):
+      CapsuleShaper{_0, 0.0}
+    else if (north-edge or south-edge):
+      CapsuleShaper{_0, 90.0}
+    else:
+      BGA-Pad-Shaper
+
+
+doc: \<DOC>
+ASM2464PD BGA LandPattern Generator 
+
+This is a customization of the standard BGA landpattern generator
+to support the ASM2464PD. Notice that this landpattern is a 
+composition of two land patterns: 
+
+1.  A mixed-shape perimeter pattern with a small pitch.
+2.  A standard Full Matrix pattern with a larger pitch.
+
+
+<DOC>
+public deftype ASM2464PD_lp <: BGA
+
+val dl = DensityLevelB
+public defn ASM2464PD_lp () -> ASM2464PD_lp :
+  val pad-conf = PadConfig-D(
+    copper-D-adj = -0.04,
+    mask-D-adj = 0.0,
+  )
+
+  val rows = 21
+  val cols = 21
+  val pitch = 0.46
+
+  new ASM2464PD_lp:
+    defmethod num-leads (this) : 273
+    defmethod lead-diam (this) : 0.22
+    defmethod density-level (this) : dl
+    defmethod pad-planner (this) :
+      ; Create a carve out in the top-right corner
+      val grid = lead-numbering(this) as Grid-Numbering
+      Perimeter-Matrix-Planner(
+        inactive = [
+          PadIsland(
+            to-row-range(grid, "C", "W")
+            3 through 19
+          )
+        ],
+        pad-config = pad-conf
+        rows = rows,
+        columns = cols,
+        pitch = pitch
+      )
+    defmethod lead-numbering (this) :
+      Grid-Numbering(rows, cols)
+    defmethod package-body (this) :
+      PackageBody(
+        width = typ(10.0)
+        length = typ(10.0),
+        height = typ(0.982)
+      )
+
+    defmethod build-pads (this, root:VirtualLP):
+      ; This BGA is constructed via composition 
+      ;  We first build the primary as a perimeter matrix with
+      ;  fine pitch 
+      ;  We then build the inner full matrix as a child node.
+
+      ; Perimeter
+      val prim = create-child(root)
+      build-vpads(this, prim)
+
+      ; Internal Full Matrix 
+      ;  This grid of pads is different in a couple of ways: 
+      ;   1. The pitch is larger than the perimeter
+      ;   2. The rows and columns have holes because of the larger pitch
+      val sec = create-child(root)
+      val sec-rows = 11
+      val sec-cols = 11
+      val omit-rows = string-join $ [
+        "A", "B", "C", "G", "I", "K", "M", "O", "Q", "R", "S"
+      ]
+      val omit-cols = [
+        1, 2, 3, 7, 10, 12, 15
+      ]
+      val num-scheme = Grid-Numbering(
+        sec-rows, sec-cols, 0, 0,
+        omit-rows, omit-cols
+      )
+
+      val sec-pkg = BGA(
+        num-leads = 121,
+        lead-diam = lead-diam(this),
+        package-body = package-body(this),
+        pad-planner = Full-Matrix-Planner(
+          pad-config = pad-conf
+          rows = sec-rows,
+          columns = sec-cols,
+          pitch = 0.65,
+          )
+        lead-numbering = num-scheme,
+        density-level = dl
+      )
+
+      build-pads(sec-pkg, sec)
+
+
+public pcb-component component :
+  reference-prefix = "U"
+  mpn = "ASM2464PD"
+  description = "USB4/Thunderbolt to PCIe Gen4 x4 Controller for Multi-PCIe Devices"
+
+  pin-properties :
+    ; [pin:Ref    | pads:Ref ... | side:Dir | bank:Ref]
+    [ pin:Ref | pads:Ref ... | side:Dir ]
+    [ GPIO3       | A[1]           | Left ]
+    [ GPIO2       | B[1]           | Left ]
+    [ GPIO1       | C[1]           | Left ]
+    [ GPIO0       | D[1]           | Left ]
+    [ I2C_CLK     | E[1]           | Left ]
+    [ I2C_DAT     | F[1]           | Left ]
+    [ VBUS       | G[1]           | Left ]
+    [ RST#       | H[1]           | Left ]
+    [ SBU2       | J[1]           | Left ]
+    [ SBU1       | K[1]           | Left ]
+
+    [ SPI_CS      | A[2]   | Left]
+    [ SPI_DO      | A[3]   | Left]
+    [ SPI_DI      | A[4]   | Left]
+    [ SPI_CLK     | A[5]   | Left]
+    [ GPIO15      | A[6]   | Left]
+    [ GPIO16      | A[7]   | Left]
+    [ GPIO17      | A[8]   | Left]
+    [ GPIO18      | A[9]   | Left]
+    [ GPIO19      | A[10]   | Left]
+    [ GPIO20      | A[11]   | Left]
+    [ GPIO21      | A[12]   | Left]
+    [ GPIO22      | A[13]   | Left]
+    [ GPIO23      | A[14]   | Left]
+    [ GPIO24      | A[15]   | Left]
+    [ GPIO25      | A[16]   | Left]
+    [ GPIO26      | A[17]   | Left]
+    [ GPIO27      | A[18]   | Left]
+    [ GPIO8       | A[19]   | Left]
+    [ GPIO14      | A[20]   | Left]
+
+    [ UART_RX      | A[21]   | Left]
+    [ UART_TX      | B[21]   | Left]
+
+    [ HDDPC      | C[21]   | Left]
+    [ PERST3#      | D[21]   | Left]
+    [ PERST2#      | E[21]   | Left]
+    [ PERST1#      | F[21]   | Left]
+    [ PERST0#      | G[21]   | Left]
+    [ TEST_EN      | H[21]   | Left]
+
+    [ PRXP[0]         | N[21]           | Left ]
+    [ PRXN[0]        | N[20]           | Left ]
+
+    [ PTXP[0]         | R[21]           | Left ]
+    [ PTXN[0]        | R[20]           | Left ]
+
+    [ PTXP[1]         | U[21]           | Left ]
+    [ PTXN[1]        | U[20]           | Left ]
+
+    [ PRXP[1]         | W[21]           | Left ]
+    [ PRXN[1]        | W[20]           | Left ]
+
+    [ PTXP[2]         | Y[17]           | Left ]
+    [ PTXN[2]        | AA[17]           | Left ]
+
+    [ PRXP[2]         | Y[19]           | Left ]
+    [ PRXN[2]        | AA[19]           | Left ]
+
+    [ PTXP[3]         | Y[15]           | Left ]
+    [ PTXN[3]        | AA[15]           | Left ]
+
+    [ PRXP[3]         | Y[13]           | Left ]
+    [ PRXN[3]        | AA[13]           | Left ]
+
+    [ REXT | AA[3] | Left]
+    [ XO  | Y[4] | Left ]
+    [ XI  | AA[4] | Left ]
+    [ CC1  | AA[6] | Left ]
+    [ CC2  | Y[6] | Left ]
+
+    [ REFCLK_P[3]         | AA[7]           | Left ]
+    [ REFCLK_N[3]        | Y[7]           | Left ]
+    [ REFCLK_P[0]         | AA[8]           | Left ]
+    [ REFCLK_N[0]        | Y[8]           | Left ]
+    [ REFCLK_P[1]         | AA[10]           | Left ]
+    [ REFCLK_N[1]        | Y[10]           | Left ]
+    [ REFCLK_P[2]         | AA[11]           | Left ]
+    [ REFCLK_N[2]        | Y[11]           | Left ]
+
+    [ UDP         | M[1]           | Left ]
+    [ UDM        | M[2]           | Left ]
+
+    [ URXP[0]         | P[1]           | Left ]
+    [ URXN[0]        | P[2]           | Left ]
+    [ UTXP[0]         | T[1]           | Left ]
+    [ UTXN[0]        | T[2]           | Left ]
+    [ UTXP[1]         | V[1]           | Left ]
+    [ UTXN[1]        | V[2]           | Left ]
+    [ URXP[1]         | Y[1]           | Left ]
+    [ URXN[1]        | Y[2]           | Left ]
+
+    [ NC          | B[2] C[2] D[2] E[2] F[2] G[2] H[2] J[2]
+                    B[3] B[4] B[5] B[6] B[7] B[8] B[9] B[10] B[11] B[12] B[13] B[14] B[15] B[16] B[17] B[18] B[19] B[20]
+                    C[20] D[20] E[20] F[20] G[20] H[20]
+                 | Left]
+
+    [VDD | D[14] D[16] E[11] E[14] E[16] 
+           F[9] F[11] F[14] F[16]
+           H[9] H[11] H[13] H[14] H[16]
+           J[8] J[9] J[13] J[14] J[16] J[17] J[18] J[20] J[21]
+           K[20] K[21]
+           L[8] L[11] L[14] N[8] N[14]
+           P[8] P[13] P[14]
+           T[8] T[9] T[11] T[13] T[14]
+           U[8] U[9]  
+
+    | Right]
+
+    [VCCH | D[6] D[8] D[9] D[13]
+            E[6] E[8] E[9] E[13] 
+            F[6] F[13] H[6] 
+          | Right]
+    [VCCL | L[6] N[6] P[6] T[6] U[6] U[11] U[13] U[14]
+            L[16] L[17] L[18] L[20] L[21]
+            N[16] P[16] T[16] U[16]
+     | Right]
+    [VCCA33 | H[5]  | Right]
+
+    [ GNDA       | L[1] L[2] N[1] N[2] R[1] R[2] U[1], U[2], 
+                    W[1], W[2] AA[1], AA[2] Y[3], Y[5] AA[5], 
+                    Y[9] AA[9], Y[12] AA[12], Y[14] AA[14], 
+                    Y[16] AA[16], Y[18] AA[18], Y[20] AA[20], 
+                    Y[21] AA[21], L[4] L[5], N[4], N[5], P[4] P[5], 
+                    T[4], T[5] U[4] U[5], V[4] V[5] V[6] V[8] V[9] V[11] V[13] V[14] V[16] V[17] V[18]
+                    N[17] N[18] P[17] P[18] T[17] T[18] U[17] U[18]
+                    | Left ]
+    [GND | D[4] D[5] D[11] D[17] D[18] 
+           E[4] E[5] E[17] E[18] 
+           F[4] F[5] F[8] F[17] F[18]
+           H[4] H[8] H[17] H[18]
+           J[4] J[5] J[6] J[11] K[2]
+           L[9] L[13] N[9] N[11] N[13]
+           P[9] P[11]
+          | Left]
+
+
+  val b = BoxSymbol(self)
+  val symb = create-symbol(b)
+  assign-symbol(symb)
+  
+  ;val symb = assign-symbols(b => A) 
+;  assign-symbols(b => A, b => B, b => C, b => D)
+  ; val b = BoxSymbol(self)
+
+
+  ; assign-symbols(b => `A);, `B => b, `C => b, `D => b)
+  ; assign-symbols(Ref(A) => b, Ref(B) => b, Ref(C) => b, Ref(D) => b)
+  ; assign-symbols(Ref(`A) => b, Ref(`B) => b, Ref(`C) => b, Ref(`D) => b)
+
+
+
+  val pkg = ASM2464PD_lp()
+  val lp = create-landpattern(pkg)
+
+  assign-landpattern(lp)
+
+  ; property(self.\|Design Item ID|) = "ASM2464PD"
+  ; property(self.Reference) = "U"
+  ; property(self.Value) = "ASM2464PD"
+
+  for i in 0 to 4 do :
+    diff-pin-model(self.PRXP[i], self.PRXN[i],       delay = typ(10.0e-15) loss = typ(0.1))
+    diff-pin-model(self.PTXP[i], self.PTXN[i],       delay = typ(10.0e-15) loss = typ(0.1))
+    diff-pin-model(self.REFCLKP[i], self.REFCLKN[i], delay = typ(10.0e-15) loss = typ(0.1))
+
+  diff-pin-model(self.UDP self.UDM delay = typ(10.0e-15) loss = typ(0.1))
+
+
+; TODO: update to latest JSL/PCIe convention
+
+; public pcb-module module :
+;   pin GND
+;   pin GNDA
+;   pin VDD
+;   pin VCCL
+;   pin VCCH
+;   pin VCCA33
+
+;   port i2c : i2c
+;   port spi : spi-with-cs()
+;   port uart : minimal-uart()
+
+;   public inst sw : components/ASM2464PD/component
+
+;   for g in pins(sw.GND) do :
+;     net (GND g)
+
+;   for g in pins(sw.GNDA) do :
+;     net (GNDA g)
+  
+;   for v in pins(sw.VDD) do :
+;     net (VDD v)
+
+;   for v in pins(sw.VCCL) do :
+;     net (VCCL v)
+
+;   for v in pins(sw.VCCH) do :
+;     net (VCCH v)
+
+;   net (VCCA33 sw.VCCA33)
+
+;   for n in pins(sw.NC) do :
+;     no-connect(n)
+
+;   for i in indices(sw.GPIO) do :
+;     supports gpio :
+;       gpio.p => sw.GPIO[i]
+
+;   ; net (i2c.sda sw.I2C_DATA_P)
+;   ; net (i2c.clk sw.I2C_CLK_P)
+
+;   net (spi.cs   sw.SPI_CS#)
+;   net (spi.mosi sw.SPI_DI)
+;   net (spi.sck  sw.SPI_CLK)
+;   net (spi.miso sw.SPI_DO)
+
+;   net (uart.tx sw.UART_TX)
+;   net (uart.rx sw.UART_RX)
+
+;   supports usb-c() :
+;     usb-c().cc[0]   => sw.CC1
+;     usb-c().cc[1]   => sw.CC2
+;     usb-c().sbu[0]   => sw.SBU[1]
+;     usb-c().sbu[1]   => sw.SBU[2]
+;     ; usb-c().vbus.V+ => sw.VBUS
+;     ; usb-c().vbus.V- => sw.GND
+;     usb-c().data.P  => sw.UDP
+;     usb-c().data.N  => sw.UDM
+;     for i in 0 to 2 do :
+;       usb-c().lane[i].RX.P => sw.URXP[i]
+;       usb-c().lane[i].RX.N => sw.URXN[i]
+;       usb-c().lane[i].TX.P => sw.UTXP[i]
+;       usb-c().lane[i].TX.N => sw.UTXN[i]
+
+;   val bd-4x = pcie(4)
+;   supports bd-4x :
+;     for i in 0 to 4 do :
+;       bd-4x.data.rx[i].P => sw.PRXP[i]
+;       bd-4x.data.rx[i].N => sw.PRXN[i]
+;       bd-4x.data.tx[i].P => sw.PTXP[i]
+;       bd-4x.data.tx[i].N => sw.PTXN[i]
+;     bd-4x.data.refclk.P => sw.REFCLKP[0]
+;     bd-4x.data.refclk.N => sw.REFCLKN[0]
+
+;     bd-4x.control.PEWAKE# => sw.GPIO[22]
+;     bd-4x.control.PERST#  => sw.PERST0#
+;     bd-4x.control.CLKREQ# => sw.GPIO[8]

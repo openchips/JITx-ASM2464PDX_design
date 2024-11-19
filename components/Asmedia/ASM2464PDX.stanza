@@ -1,0 +1,577 @@
+#use-added-syntax(jitx)
+defpackage components/Asmedia/ASM2464PDX:
+  import core
+  import collections
+  import jitx
+  import jitx/commands
+
+  import jsl/design/settings
+  import jsl/ensure
+  import jsl/geometry/basics
+  import jsl/landpatterns
+
+  import jsl/symbols
+  import ocdb/utils/box-symbol
+  import jsl/bundles
+  import jsl/protocols
+  import jsl/si/helpers
+
+  import jsl/pin-assignment
+  import jsl/protocols/pcie
+
+
+doc: \<DOC>
+Construct a Customized Perimeter Planner
+
+This is a one-off perimeter planner to support the ASM2464.
+According to the manufacturer's instructions - they suggest
+using a capsule shaped pad for the exterior pads in a particular
+pattern.
+
+This planner modifies the `shape-generator` to construct this
+capsule shape only on the required pads.
+<DOC>
+defstruct CapsulePerimeterPlanner <: Perimeter-Matrix-Planner : 
+  inactive:PadIsland|Tuple<PadIsland> with: (
+    as-method => true
+  )
+  pad-config:PadConfig with: (
+    as-method => true
+    default => PadConfig-R()
+    )
+with:
+  constructor => #CapsulePerimeterPlanner
+
+val CAPS_LEN = 0.33 ; 13mil per Datasheet
+
+defn CapsulePerimeterPlanner (
+  --
+  inactive:PadIsland|Tuple<PadIsland>,
+  pad-config:PadConfig = PadConfig-R()
+  ):
+  #CapsulePerimeterPlanner(inactive, pad-config)
+
+defn CapsuleShaper (s:Dims, rot:Double) -> Shape : 
+  loc(0.0, 0.0, rot) * Capsule(CAPS_LEN, y(s))
+
+public defmethod shape-generator (bga:CapsulePerimeterPlanner, row:Int, column:Int) -> (Dims -> Shape)|False :
+  if not active?(bga, row, column): false
+  else: 
+    val east-edge = (column == 0 and row != 0)
+    val west-edge = (column == 20 and (row != 0 and row != 20))
+    val north-edge = (row == 0 and (column != 0 and column != 20))
+    val south-edge = (row == 20 and column != 20)
+    if (east-edge or west-edge):
+      CapsuleShaper{_0, 0.0}
+    else if (north-edge or south-edge):
+      CapsuleShaper{_0, 90.0}
+    else:
+      BGA-Pad-Shaper
+
+
+doc: \<DOC>
+ASM2464PD BGA LandPattern Generator 
+
+This is a customization of the standard BGA landpattern generator
+to support the ASM2464PD. Notice that this landpattern is a 
+composition of two land patterns: 
+
+1.  A mixed-shape perimeter pattern with a small pitch.
+2.  A standard Full Matrix pattern with a larger pitch.
+
+
+<DOC>
+public deftype ASM2464PDX_lp <: BGA
+
+val dl = DensityLevelB
+public defn ASM2464PDX_lp () -> ASM2464PDX_lp :
+  val pad-conf = PadConfig-D(
+    copper-D-adj = -0.04,
+    mask-D-adj = 0.0,
+  )
+
+  val rows = 21
+  val cols = 21
+  val pitch = 0.46
+
+  new ASM2464PDX_lp:
+    defmethod num-leads (this) : 273
+    defmethod lead-diam (this) : 0.22
+    defmethod density-level (this) : dl
+    defmethod pad-planner (this) :
+      ; Create a carve out in the top-right corner
+      val grid = lead-numbering(this) as Grid-Numbering
+      Perimeter-Matrix-Planner(
+        inactive = [
+          PadIsland(
+            to-row-range(grid, "C", "W")
+            3 through 19
+          )
+        ],
+        pad-config = pad-conf
+        rows = rows,
+        columns = cols,
+        pitch = pitch
+      )
+    defmethod lead-numbering (this) :
+      Grid-Numbering(rows, cols)
+    defmethod package-body (this) :
+      PackageBody(
+        width = typ(10.0)
+        length = typ(10.0),
+        height = typ(0.982)
+      )
+
+    defmethod build-pads (this, root:VirtualLP):
+      ; This BGA is constructed via composition 
+      ;  We first build the primary as a perimeter matrix with
+      ;  fine pitch 
+      ;  We then build the inner full matrix as a child node.
+
+      ; Perimeter
+      val prim = create-child(root)
+      build-vpads(this, prim)
+
+      ; Internal Full Matrix 
+      ;  This grid of pads is different in a couple of ways: 
+      ;   1. The pitch is larger than the perimeter
+      ;   2. The rows and columns have holes because of the larger pitch
+      val sec = create-child(root)
+      val sec-rows = 11
+      val sec-cols = 11
+      val omit-rows = string-join $ [
+        "A", "B", "C", "G", "I", "K", "M", "O", "Q", "R", "S"
+      ]
+      val omit-cols = [
+        1, 2, 3, 7, 10, 12, 15
+      ]
+      val num-scheme = Grid-Numbering(
+        sec-rows, sec-cols, 0, 0,
+        omit-rows, omit-cols
+      )
+
+      val sec-pkg = BGA(
+        num-leads = 121,
+        lead-diam = lead-diam(this),
+        package-body = package-body(this),
+        pad-planner = Full-Matrix-Planner(
+          pad-config = pad-conf
+          rows = sec-rows,
+          columns = sec-cols,
+          pitch = 0.65,
+          )
+        lead-numbering = num-scheme,
+        density-level = dl
+      )
+
+      build-pads(sec-pkg, sec)
+
+
+public pcb-component component :
+  reference-prefix = "U"
+  mpn = "ASM2464PD"
+  description = "USB4/Thunderbolt to PCIe Gen4 x4 Controller for Multi-PCIe Devices"
+
+  pin-properties :
+    [pin:Ref    | pads:Ref ... | side:Dir | bank:Ref]
+    [UDP        | M[1]   | Left  | A]
+    [UDM        | M[2]   | Left  | A]
+    [UTXP[0]    | T[1]   | Left  | A]
+    [UTXN[0]    | T[2]   | Left  | A]
+    [UTXP[1]    | V[2]   | Left  | A]
+    [UTXN[1]    | V[1]   | Left  | A]
+    [URXP[0]    | P[1]   | Left  | A]
+    [URXN[0]    | P[2]   | Left  | A]
+    [URXP[1]    | Y[2]   | Left  | A]
+    [URXN[1]    | Y[1]   | Left  | A]
+    [VBUS       | G[1]   | Left  | A]
+    [CC1        | AA[6]  | Left  | A]
+    [CC2        | Y[6]   | Left  | A]
+    [SBU[1]     | K[1]   | Left  | A]
+    [SBU[2]     | J[1]   | Left  | A]
+    [REFCLKN[0] | Y[8]   | Left  | A]
+    [REFCLKP[0] | AA[8]  | Left  | A]
+    [PRXN[1]    | W[20]  | Left  | A]
+    [PRXP[1]    | W[21]  | Left  | A]
+    [PRXN[0]    | N[20]  | Left  | A]
+    [PRXP[0]    | N[21]  | Left  | A]
+    [PTXN[1]    | U[21]  | Left  | A]
+    [PTXP[1]    | U[20]  | Left  | A]
+    [PTXN[0]    | R[21]  | Left  | A]
+    [PTXP[0]    | R[20]  | Left  | A]
+    [PRXN[3]    | Y[13]  | Left  | A]
+    [PRXP[3]    | AA[13] | Left  | A]
+    [PRXN[2]    | AA[19] | Left  | A]
+    [PRXP[2]    | Y[19]  | Left  | A]
+    [UART_TX    | B[21]  | Right | A]
+    [UART_RX    | A[21]  | Right | A]
+    [HDDPC      | C[21]  | Right | A]
+    [PTXN[3]    | AA[15] | Left  | A]
+    [PTXP[3]    | Y[15]  | Left  | A]
+    [PTXN[2]    | AA[17] | Left  | A]
+    [PTXP[2]    | Y[17]  | Left  | A]
+    [PERST0#    | G[21]  | Right | A]
+    [RST#       | H[1]   | Right | A]
+    [TEST_EN    | H[21]  | Left | A]
+    [I2C_DATA_P | F[1]   | Right | A]
+    [I2C_CLK_P  | E[1]   | Right | A]
+    [GPIO[0]    | D[1]   | Right | A]
+    [GPIO[1]    | C[1]   | Right | A]
+    [GPIO[2]    | B[1]   | Right | A]
+    [GPIO[3]    | A[1]   | Right | A]
+    [SPI_CS#    | A[2]   | Right | A]
+    [SPI_DO     | A[3]   | Right | A]
+    [SPI_CLK    | A[5]   | Right | A]
+    [SPI_DI     | A[4]   | Right | A]
+    [GPIO[8]    | A[19]  | Right | A]
+    [GPIO[14]   | A[20]  | Right | A]
+    [GPIO[15]   | A[6]   | Right | A]
+    [GPIO[16]   | A[7]   | Right | A]
+    [GPIO[17]   | A[8]   | Right | A]
+    [GPIO[18]   | A[9]   | Right | A]
+    [GPIO[19]   | A[10]  | Right | A]
+    [GPIO[20]   | A[11]  | Right | A]
+    [GPIO[21]   | A[12]  | Right | A]
+    [GPIO[22]   | A[13]  | Right | A]
+    [GPIO[23]   | A[14]  | Right | A]
+    [GPIO[24]   | A[15]  | Right | A]
+    [GPIO[25]   | A[16]  | Right | A]
+    [GPIO[26]   | A[17]  | Right | A]
+    [GPIO[27]   | A[18]  | Right | A]
+    [REXT       | AA[3]  | Right | A]
+    [XI         | AA[4]  | Right | A]
+    [XO         | Y[4]   | Right | A]
+    [NC[0]      | J[2]   | Left  | B]
+    [NC[1]      | H[2]   | Left  | B]
+    [NC[2]      | G[2]   | Left  | B]
+    [NC[3]      | F[2]   | Left  | B]
+    [NC[4]      | E[2]   | Left  | B]
+    [NC[5]      | D[2]   | Left  | B]
+    [NC[6]      | C[2]   | Left  | B]
+    [NC[7]      | B[2]   | Left  | B]
+    [NC[8]      | B[3]   | Left  | B]
+    [NC[9]      | B[4]   | Left  | B]
+    [NC[10]     | B[5]   | Left  | B]
+    [NC[11]     | B[6]   | Left  | B]
+    [NC[12]     | B[7]   | Left  | B]
+    [NC[13]     | B[8]   | Left  | B]
+    [NC[14]     | B[9]   | Left  | B]
+    [NC[15]     | B[10]  | Left  | B]
+    [NC[16]     | B[11]  | Left  | B]
+    [NC[17]     | B[12]  | Left  | B]
+    [NC[18]     | B[13]  | Left  | B]
+    [NC[19]     | B[14]  | Left  | B]
+    [NC[20]     | B[15]  | Left  | B]
+    [NC[21]     | B[16]  | Left  | B]
+    [NC[22]     | B[17]  | Left  | B]
+    [NC[23]     | B[18]  | Left  | B]
+    [NC[24]     | B[19]  | Left  | B]
+    [NC[25]     | B[20]  | Left  | B]
+    [NC[26]     | C[20]  | Left  | B]
+    [NC[27]     | D[20]  | Left  | B]
+    [NC[28]     | E[20]  | Left  | B]
+    [NC[29]     | F[20]  | Left  | B]
+    [NC[30]     | G[20]  | Left  | B]
+    [NC[31]     | H[20]  | Left  | B]
+    [REFCLKN[3] | Y[7]   | Left  | B]  ; ASM2464PDX
+    [REFCLKP[3] | AA[7]  | Left  | B]  ; ASM2464PDX
+    [REFCLKN[2] | Y[10]  | Left  | B]  ; ASM2464PDX
+    [REFCLKP[2] | AA[10] | Left  | B]  ; ASM2464PDX
+    [REFCLKN[1] | Y[11]  | Left  | B]  ; ASM2464PDX
+    [REFCLKP[1] | AA[11] | Left  | B]  ; ASM2464PDX
+    [PERST3#    | D[21]  | Left  | B]  ; ASM2464PDX
+    [PERST2#    | E[21]  | Left  | B]  ; ASM2464PDX
+    [PERST1#    | F[21]  | Left  | B]  ; ASM2464PDX
+    [GND[0]     | K[2]   | Right | C]
+    [GND[1]     | D[4]   | Right | C]
+    [GND[2]     | E[4]   | Right | C]
+    [GND[3]     | F[4]   | Right | C]
+    [GND[4]     | H[4]   | Right | C]
+    [GND[5]     | J[4]   | Right | C]
+    [GND[6]     | D[5]   | Right | C]
+    [GND[7]     | E[5]   | Right | C]
+    [GND[8]     | F[5]   | Right | C]
+    [GND[9]     | J[5]   | Right | C]
+    [GND[10]    | J[6]   | Right | C]
+    [GND[11]    | F[8]   | Right | C]
+    [GND[12]    | H[8]   | Right | C]
+    [GND[13]    | L[9]   | Right | C]
+    [GND[14]    | N[9]   | Right | C]
+    [GND[15]    | P[9]   | Right | C]
+    [GND[16]    | D[11]  | Right | C]
+    [GND[17]    | J[11]  | Right | C]
+    [GND[18]    | N[11]  | Right | C]
+    [GND[19]    | P[11]  | Right | C]
+    [GND[20]    | L[13]  | Right | C]
+    [GND[21]    | N[13]  | Right | C]
+    [GND[22]    | D[17]  | Right | C]
+    [GND[23]    | E[17]  | Right | C]
+    [GND[24]    | F[17]  | Right | C]
+    [GND[25]    | H[17]  | Right | C]
+    [GND[26]    | D[18]  | Right | C]
+    [GND[27]    | E[18]  | Right | C]
+    [GND[28]    | F[18]  | Right | C]
+    [GND[29]    | H[18]  | Right | C]
+    [VDD[0]     | J[21]  | Left  | C]
+    [VDD[1]     | J[20]  | Left  | C]
+    [VDD[2]     | K[21]  | Left  | C]
+    [VDD[3]     | K[20]  | Left  | C]
+    [VDD[4]     | J[18]  | Left  | C]
+    [VDD[5]     | J[17]  | Left  | C]
+    [VDD[6]     | J[16]  | Left  | C]
+    [VDD[7]     | H[16]  | Left  | C]
+    [VDD[8]     | F[16]  | Left  | C]
+    [VDD[9]     | E[16]  | Left  | C]
+    [VDD[10]    | D[16]  | Left  | C]
+    [VDD[11]    | J[14]  | Left  | C]
+    [VDD[12]    | J[13]  | Left  | C]
+    [VDD[13]    | H[14]  | Left  | C]
+    [VDD[14]    | H[13]  | Left  | C]
+    [VDD[15]    | F[14]  | Left  | C]
+    [VDD[16]    | E[14]  | Left  | C]
+    [VDD[17]    | D[14]  | Left  | C]
+    [VDD[18]    | L[11]  | Left  | C]
+    [VDD[19]    | L[14]  | Left  | C]
+    [VDD[20]    | N[14]  | Left  | C]
+    [VDD[21]    | P[14]  | Left  | C]
+    [VDD[22]    | T[14]  | Left  | C]
+    [VDD[23]    | P[13]  | Left  | C]
+    [VDD[24]    | T[13]  | Left  | C]
+    [VDD[25]    | E[11]  | Left  | C]
+    [VDD[26]    | F[11]  | Left  | C]
+    [VDD[39]    | H[11]  | Left  | C]
+    [VDD[38]    | T[11]  | Left  | C]
+    [VDD[37]    | F[9]   | Left  | C]
+    [VDD[36]    | H[9]   | Left  | C]
+    [VDD[35]    | J[9]   | Left  | C]
+    [VDD[34]    | J[8]   | Left  | C]
+    [VDD[33]    | L[8]   | Left  | C]
+    [VDD[32]    | N[8]   | Left  | C]
+    [VDD[31]    | P[8]   | Left  | C]
+    [VDD[30]    | T[9]   | Left  | C]
+    [VDD[29]    | T[8]   | Left  | C]
+    [VDD[28]    | U[9]   | Left  | C]
+    [VDD[27]    | U[8]   | Left  | C]
+    [GNDA[0]    | M[21]  | Right | D]
+    [GNDA[1]    | M[20]  | Right | D]
+    [GNDA[2]    | P[21]  | Right | D]
+    [GNDA[3]    | P[20]  | Right | D]
+    [GNDA[4]    | T[21]  | Right | D]
+    [GNDA[5]    | T[20]  | Right | D]
+    [GNDA[6]    | V[21]  | Right | D]
+    [GNDA[7]    | V[20]  | Right | D]
+    [GNDA[8]    | Y[21]  | Right | D]
+    [GNDA[9]    | Y[20]  | Right | D]
+    [GNDA[10]   | AA[21] | Right | D]
+    [GNDA[11]   | AA[20] | Right | D]
+    [GNDA[12]   | Y[18]  | Right | D]
+    [GNDA[13]   | Y[16]  | Right | D]
+    [GNDA[14]   | Y[14]  | Right | D]
+    [GNDA[15]   | Y[12]  | Right | D]
+    [GNDA[16]   | Y[9]   | Right | D]
+    [GNDA[17]   | Y[5]   | Right | D]
+    [GNDA[18]   | Y[3]   | Right | D]
+    [GNDA[19]   | AA[18] | Right | D]
+    [GNDA[20]   | AA[16] | Right | D]
+    [GNDA[21]   | AA[14] | Right | D]
+    [GNDA[22]   | AA[12] | Right | D]
+    [GNDA[23]   | AA[9]  | Right | D]
+    [GNDA[24]   | AA[5]  | Right | D]
+    [GNDA[25]   | N[18]  | Right | D]
+    [GNDA[26]   | N[17]  | Right | D]
+    [GNDA[27]   | P[18]  | Right | D]
+    [GNDA[28]   | P[17]  | Right | D]
+    [GNDA[29]   | T[18]  | Right | D]
+    [GNDA[30]   | T[17]  | Right | D]
+    [GNDA[31]   | U[18]  | Right | D]
+    [GNDA[32]   | U[17]  | Right | D]
+    [GNDA[33]   | V[18]  | Right | D]
+    [GNDA[34]   | V[17]  | Right | D]
+    [GNDA[35]   | V[16]  | Right | D]
+    [GNDA[36]   | V[14]  | Right | D]
+    [GNDA[37]   | V[13]  | Right | D]
+    [GNDA[38]   | V[11]  | Right | D]
+    [GNDA[39]   | V[9]   | Right | D]
+    [GNDA[40]   | V[8]   | Right | D]
+    [GNDA[41]   | V[6]   | Right | D]
+    [GNDA[42]   | L[5]   | Right | D]
+    [GNDA[43]   | L[4]   | Right | D]
+    [GNDA[44]   | N[5]   | Right | D]
+    [GNDA[45]   | N[4]   | Right | D]
+    [GNDA[46]   | P[5]   | Right | D]
+    [GNDA[47]   | P[4]   | Right | D]
+    [GNDA[48]   | T[5]   | Right | D]
+    [GNDA[49]   | T[4]   | Right | D]
+    [GNDA[50]   | U[5]   | Right | D]
+    [GNDA[51]   | U[4]   | Right | D]
+    [GNDA[52]   | V[5]   | Right | D]
+    [GNDA[53]   | V[4]   | Right | D]
+    [GNDA[54]   | AA[1]  | Right | D]
+    [GNDA[55]   | AA[2]  | Right | D]
+    [GNDA[56]   | W[1]   | Right | D]
+    [GNDA[57]   | W[2]   | Right | D]
+    [GNDA[58]   | U[1]   | Right | D]
+    [GNDA[59]   | U[2]   | Right | D]
+    [GNDA[60]   | R[1]   | Right | D]
+    [GNDA[61]   | R[2]   | Right | D]
+    [GNDA[62]   | N[1]   | Right | D]
+    [GNDA[63]   | N[2]   | Right | D]
+    [GNDA[64]   | L[1]   | Right | D]
+    [GNDA[65]   | L[2]   | Right | D]
+    [VCCL[16]   | L[21]  | Left  | D]
+    [VCCL[15]   | L[20]  | Left  | D]
+    [VCCL[14]   | L[18]  | Left  | D]
+    [VCCL[13]   | L[17]  | Left  | D]
+    [VCCL[12]   | L[16]  | Left  | D]
+    [VCCL[11]   | N[16]  | Left  | D]
+    [VCCL[10]   | P[16]  | Left  | D]
+    [VCCL[9]    | T[16]  | Left  | D]
+    [VCCL[8]    | U[16]  | Left  | D]
+    [VCCL[7]    | U[14]  | Left  | D]
+    [VCCL[6]    | U[13]  | Left  | D]
+    [VCCL[5]    | U[11]  | Left  | D]
+    [VCCL[4]    | U[6]   | Left  | D]
+    [VCCL[3]    | T[6]   | Left  | D]
+    [VCCL[2]    | P[6]   | Left  | D]
+    [VCCL[1]    | N[6]   | Left  | D]
+    [VCCL[0]    | L[6]   | Left  | D]
+    [VCCH[10]   | D[13]  | Left  | D]
+    [VCCH[9]    | E[13]  | Left  | D]
+    [VCCH[8]    | F[13]  | Left  | D]
+    [VCCH[7]    | D[9]   | Left  | D]
+    [VCCH[6]    | E[9]   | Left  | D]
+    [VCCH[5]    | D[8]   | Left  | D]
+    [VCCH[4]    | E[8]   | Left  | D]
+    [VCCH[3]    | D[6]   | Left  | D]
+    [VCCH[2]    | E[6]   | Left  | D]
+    [VCCH[1]    | F[6]   | Left  | D]
+    [VCCH[0]    | H[6]   | Left  | D]
+    [VCCA33     | H[5]   | Left  | D]
+
+
+  val b = BoxSymbol(self)
+  assign-symbols(Ref(`A) => b, Ref(`B) => b, Ref(`C) => b, Ref(`D) => b)
+
+  val pkg = ASM2464PDX_lp()
+  val lp = create-landpattern(pkg)
+
+  assign-landpattern(lp)
+
+  property(self.\|Design Item ID|) = "ASM2464PD"
+  property(self.Reference) = "U"
+  property(self.Value) = "ASM2464PD"
+
+  for i in 0 to 4 do :
+    diff-pin-model(self.PRXP[i], self.PRXN[i],       delay = typ(10.0e-15) loss = typ(0.1))
+    diff-pin-model(self.PTXP[i], self.PTXN[i],       delay = typ(10.0e-15) loss = typ(0.1))
+    diff-pin-model(self.REFCLKP[i], self.REFCLKN[i], delay = typ(10.0e-15) loss = typ(0.1))
+
+  diff-pin-model(self.UDP self.UDM delay = typ(10.0e-15) loss = typ(0.1))
+
+
+; TODO: update to latest JSL/PCIe convention
+
+public pcb-module module :
+  port GND
+  port GNDA
+  port VDD
+  port VCCL
+  port VCCH
+  port VCCA33
+
+  port i2c_data : i2c
+
+  port spi : spi-with-cs()
+  port uart : minimal-uart()
+
+  inst component : component
+
+  for g in pins(component.GND) do :
+    net (GND g)
+
+  for g in pins(component.GNDA) do :
+    net (GNDA g)
+  
+  for v in pins(component.VDD) do :
+    net (VDD v)
+
+  for v in pins(component.VCCL) do :
+    net (VCCL v)
+
+  for v in pins(component.VCCH) do :
+    net (VCCH v)
+
+  net (VCCA33 component.VCCA33)
+
+  for n in pins(component.NC) do :
+    no-connect(n)
+
+  ; for i in indices(component.GPIO) do :
+  ;   supports gpio :
+  ;     gpio[i] => component.GPIO[i]
+  ;     ;gpio.p => component.GPIO[i]
+
+  net (i2c_data.sda, component.I2C_DATA_P)
+  net (i2c_data.scl, component.I2C_CLK_P)
+
+  net (spi.cs   component.SPI_CS#)
+  net (spi.copi component.SPI_DI)
+  net (spi.sck  component.SPI_CLK)
+  net (spi.cipo component.SPI_DO)
+
+  net (uart.tx component.UART_TX)
+  net (uart.rx component.UART_RX)
+
+  val bus-r = Ref("bus")
+  val ctl-r = Ref("ctl")
+  
+  val b = usb-superspeed()
+  supports b:
+    b.data.P => self.UDP
+    b.data.N => self.UDM
+    b.lane[0].TX.P => self.SSTX.P
+    b.lane[0].TX.N => self.SSTX.N
+    b.lane[0].RX.P => self.SSRX.P
+    b.lane[0].RX.N => self.SSRX.N
+
+  supports b:
+    b.data.P => self.UDP
+    b.data.N => self.UDM
+    b.lane[1].TX.P => self.SSTX.P
+    b.lane[1].TX.N => self.SSTX.N
+    b.lane[1].RX.P => self.SSRX.P
+    b.lane[1].RX.N => self.SSRX.N
+
+
+
+  val usb-c = usb-superspeed()
+  supports usb-c:
+  ; supports usb-superspeed() :
+    usb-c.cc[0]   => component.CC1
+    usb-c.cc[1]   => component.CC2
+    usb-c.sbu[0]   => component.SBU[1]
+    usb-c.sbu[1]   => component.SBU[2]
+    usb-c.vbus.V+ => component.VBUS
+    usb-c.vbus.V- => component.GND
+    usb-c.data.P  => component.UDP
+    usb-c.data.N  => component.UDM
+    for i in 0 to 2 do :
+      usb-c.lane[i].RX.P => component.URXP[i]
+      usb-c.lane[i].RX.N => component.URXN[i]
+      usb-c.lane[i].TX.P => component.UTXP[i]
+      usb-c.lane[i].TX.N => component.UTXN[i]
+
+  val bd-4x = pcie(4)
+  supports bd-4x :
+    for i in 0 to 4 do :
+      bd-4x.data.rx[i].P => component.PRXP[i]
+      bd-4x.data.rx[i].N => component.PRXN[i]
+      bd-4x.data.tx[i].P => component.PTXP[i]
+      bd-4x.data.tx[i].N => component.PTXN[i]
+    bd-4x.data.refclk.P => component.REFCLKP[0]
+    bd-4x.data.refclk.N => component.REFCLKN[0]
+
+    bd-4x.control.PEWAKE# => component.GPIO[22]
+    bd-4x.control.PERST#  => component.PERST0#
+    bd-4x.control.CLKREQ# => component.GPIO[8]
+

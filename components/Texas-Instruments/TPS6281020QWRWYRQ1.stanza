@@ -1,0 +1,332 @@
+; This file is generated based on the parts database query below:")
+;   database-part(["manufacturer" => "Texas Instruments", "mpn" => "TPS6281020QWRWYRQ1"])
+#use-added-syntax(jitx)
+defpackage components/Texas-Instruments/TPS6281020QWRWYRQ1 :
+  import core
+  import jitx
+  import jitx/commands
+  import ocdb/utils/box-symbol
+
+
+pcb-pad polygon-smd-pad :
+  name = "polygon-smd-pad"
+  type = SMD
+  shape = Polygon([
+    Point(-0.388, -0.388)
+    Point(0.137, -0.388)
+    Point(0.137, -0.388)
+    Point(0.387, -0.388)
+    Point(0.387, -0.388)
+    Point(0.387, -0.388)
+    Point(0.387, -0.388)
+    Point(0.387, -0.038)
+    Point(0.387, -0.038)
+    Point(0.387, -0.038)
+    Point(0.387, -0.038)
+    Point(0.387, 0.387)
+    Point(0.387, 0.387)
+    Point(0.137, 0.387)
+    Point(0.137, 0.387)
+    Point(0.137, -0.038)
+    Point(0.137, -0.038)
+    Point(-0.388, -0.038)
+    Point(-0.388, -0.038)
+    Point(-0.388, -0.388)])
+  layer(SolderMask(Top)) = Polygon([
+    Point(-0.438, -0.438)
+    Point(0.437, -0.438)
+    Point(0.437, 0.437)
+    Point(0.087, 0.437)
+    Point(0.087, 0.012)
+    Point(-0.438, 0.012)])
+  layer(Paste(Top)) = Polygon([
+    Point(-0.438, -0.438)
+    Point(0.437, -0.438)
+    Point(0.437, 0.437)
+    Point(0.087, 0.437)
+    Point(0.087, 0.012)
+    Point(-0.438, 0.012)])
+
+pcb-pad polygon-smd-pad-1 :
+  name = "polygon-smd-pad-1"
+  type = SMD
+  shape = Polygon([
+    Point(-0.137, 0.388)
+    Point(-0.387, 0.388)
+    Point(-0.387, 0.388)
+    Point(-0.387, -0.037)
+    Point(-0.387, -0.037)
+    Point(-0.387, -0.037)
+    Point(-0.387, -0.037)
+    Point(-0.387, -0.387)
+    Point(-0.387, -0.387)
+    Point(-0.387, -0.387)
+    Point(-0.387, -0.387)
+    Point(-0.387, -0.387)
+    Point(-0.387, -0.387)
+    Point(-0.137, -0.387)
+    Point(-0.137, -0.387)
+    Point(-0.137, -0.387)
+    Point(-0.137, -0.387)
+    Point(0.388, -0.387)
+    Point(0.388, -0.387)
+    Point(0.388, -0.037)
+    Point(0.388, -0.037)
+    Point(-0.137, -0.037)
+    Point(-0.137, -0.037)
+    Point(-0.137, 0.388)])
+  layer(SolderMask(Top)) = Polygon([
+    Point(-0.087, 0.438)
+    Point(-0.437, 0.438)
+    Point(-0.437, -0.437)
+    Point(0.438, -0.437)
+    Point(0.438, 0.013)
+    Point(-0.087, 0.013)])
+  layer(Paste(Top)) = Polygon([
+    Point(-0.087, 0.438)
+    Point(-0.437, 0.438)
+    Point(-0.437, -0.437)
+    Point(0.438, -0.437)
+    Point(0.438, 0.013)
+    Point(-0.087, 0.013)])
+
+pcb-pad polygon-smd-pad-2 :
+  name = "polygon-smd-pad-2"
+  type = SMD
+  shape = Polygon([
+    Point(-0.137, 0.388)
+    Point(-0.387, 0.388)
+    Point(-0.387, 0.388)
+    Point(-0.387, 0.387)
+    Point(-0.387, 0.387)
+    Point(-0.387, 0.387)
+    Point(-0.387, 0.387)
+    Point(-0.387, 0.037)
+    Point(-0.387, 0.037)
+    Point(-0.387, 0.037)
+    Point(-0.387, 0.037)
+    Point(-0.387, -0.387)
+    Point(-0.387, -0.387)
+    Point(-0.137, -0.387)
+    Point(-0.137, -0.387)
+    Point(-0.137, 0.037)
+    Point(-0.137, 0.037)
+    Point(0.388, 0.037)
+    Point(0.388, 0.037)
+    Point(0.388, 0.387)
+    Point(0.388, 0.387)
+    Point(-0.137, 0.387)
+    Point(-0.137, 0.387)
+    Point(-0.137, 0.388)])
+  layer(SolderMask(Top)) = Polygon([
+    Point(-0.087, 0.438)
+    Point(-0.437, 0.438)
+    Point(-0.437, -0.437)
+    Point(-0.087, -0.437)
+    Point(-0.087, -0.013)
+    Point(0.438, -0.013)
+    Point(0.438, 0.437)
+    Point(-0.087, 0.437)])
+  layer(Paste(Top)) = Polygon([
+    Point(-0.087, 0.438)
+    Point(-0.437, 0.438)
+    Point(-0.437, -0.437)
+    Point(-0.087, -0.437)
+    Point(-0.087, -0.013)
+    Point(0.438, -0.013)
+    Point(0.438, 0.437)
+    Point(-0.087, 0.437)])
+
+pcb-pad polygon-smd-pad-3 :
+  name = "polygon-smd-pad-3"
+  type = SMD
+  shape = Polygon([
+    Point(-0.387, 0.037)
+    Point(0.137, 0.037)
+    Point(0.137, 0.037)
+    Point(0.137, -0.387)
+    Point(0.137, -0.387)
+    Point(0.387, -0.387)
+    Point(0.387, -0.387)
+    Point(0.387, 0.037)
+    Point(0.387, 0.037)
+    Point(0.388, 0.037)
+    Point(0.388, 0.037)
+    Point(0.388, 0.387)
+    Point(0.388, 0.387)
+    Point(0.387, 0.387)
+    Point(0.387, 0.387)
+    Point(0.387, 0.388)
+    Point(0.387, 0.388)
+    Point(0.137, 0.388)
+    Point(0.137, 0.388)
+    Point(0.137, 0.387)
+    Point(0.137, 0.387)
+    Point(-0.387, 0.387)
+    Point(-0.387, 0.387)
+    Point(-0.387, 0.037)])
+  layer(SolderMask(Top)) = Polygon([
+    Point(-0.437, -0.013)
+    Point(0.087, -0.013)
+    Point(0.087, -0.437)
+    Point(0.437, -0.437)
+    Point(0.437, -0.013)
+    Point(0.438, -0.013)
+    Point(0.438, 0.437)
+    Point(0.437, 0.437)
+    Point(0.437, 0.438)
+    Point(0.087, 0.438)
+    Point(0.087, 0.437)
+    Point(-0.437, 0.437)])
+  layer(Paste(Top)) = Polygon([
+    Point(-0.437, -0.013)
+    Point(0.087, -0.013)
+    Point(0.087, -0.437)
+    Point(0.437, -0.437)
+    Point(0.437, -0.013)
+    Point(0.438, -0.013)
+    Point(0.438, 0.437)
+    Point(0.437, 0.437)
+    Point(0.437, 0.438)
+    Point(0.087, 0.438)
+    Point(0.087, 0.437)
+    Point(-0.437, 0.437)])
+
+pcb-pad rectangle-smd-pad :
+  name = "rectangle-smd-pad"
+  type = SMD
+  shape = Rectangle(0.650, 0.250)
+  layer(SolderMask(Top)) = Rectangle(0.750, 0.350)
+  layer(Paste(Top)) = Rectangle(0.750, 0.350)
+
+pcb-pad rectangle-smd-pad-1 :
+  name = "rectangle-smd-pad-1"
+  type = SMD
+  shape = Rectangle(2.300, 0.250)
+  layer(SolderMask(Top)) = Rectangle(2.400, 0.350)
+  layer(Paste(Top)) = Rectangle(2.400, 0.350)
+
+pcb-landpattern lp :
+  pad p[1] : polygon-smd-pad-3 at loc(-1.262, -0.762) on Top
+  pad p[2] : rectangle-smd-pad-1 at loc(-0.500, -0.00049999999987449, 90.000) on Top
+  pad p[3] : rectangle-smd-pad-1 at loc(-1.13686837721616e-013, -0.00049999999987449, 90.000) on Top
+  pad p[4] : rectangle-smd-pad-1 at loc(0.500, -0.00049999999987449, 90.000) on Top
+  pad p[5] : polygon-smd-pad-2 at loc(1.262, -0.762) on Top
+  pad p[6] : rectangle-smd-pad at loc(1.325, -0.00049999999987449, 180.000) on Top
+  pad p[7] : polygon-smd-pad-1 at loc(1.262, 0.762) on Top
+  pad p[8] : polygon-smd-pad at loc(-1.262, 0.763) on Top
+  pad p[9] : rectangle-smd-pad at loc(-1.325, -0.00049999999987449) on Top
+
+  layer(Silkscreen("F-SilkS", Top)) = Text(">REF", 0.5, W, loc(-0.750, 2.906))
+  layer(CustomLayer("Fab", Top)) = Text(">VALUE", 0.5, W, loc(-0.750, 1.906))
+  layer(Silkscreen("F-SilkS", Top)) = Line(0.254, [Point(-1.356, 1.001), Point(-1.500, 1.001)])
+  layer(Silkscreen("F-SilkS", Top)) = Polyline(0.254, [
+    Point(1.500, 0.957)
+    Point(1.500, 1.001)
+    Point(1.356, 1.001)])
+  layer(Silkscreen("F-SilkS", Top)) = Polyline(0.254, [
+    Point(1.356, -0.999)
+    Point(1.500, -0.999)
+    Point(1.500, -0.956)])
+  layer(Silkscreen("F-SilkS", Top)) = Polyline(0.254, [
+    Point(-1.500, -0.956)
+    Point(-1.500, -0.999)
+    Point(-1.356, -0.999)])
+  layer(Silkscreen("F-SilkS", Top)) = Line(0.254, [Point(-1.500, 1.001), Point(-1.500, 0.957)])
+  layer(Silkscreen("F-SilkS", Top)) = Polyline(0.200, [
+    Arc(-1.730, -1.329, 0.100, 0.0, -360.000)])
+  layer(Courtyard(Top)) = Rectangle(3.400, 2.400)
+
+  model3d = Model3D("{USER_PROJECT_ROOT}/3d-models/jitx-64d1b99cb789d8dc4b88312a.stp",
+    Vec3D(0.0, 0.0, 0.0),
+    Vec3D(1.000, 1.000, 1.000),
+    Vec3D(0.0, 0.0, 0.0),
+    [],
+    )
+
+pcb-symbol sym-TPS6281020QWRWYRQ1 :
+  pin MODE_SYNC at Point(-17.780, 5.080) with :
+    direction = Left
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin VIN at Point(-17.780, 2.540) with :
+    direction = Left
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin SW at Point(-17.780, 0.0) with :
+    direction = Left
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin GND at Point(-17.780, -2.540) with :
+    direction = Left
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin FB at Point(-17.780, -5.080) with :
+    direction = Left
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin SS_TR at Point(17.780, -3.810) with :
+    direction = Right
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin COMP_FSET at Point(17.780, -1.270) with :
+    direction = Right
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin EN at Point(17.780, 1.270) with :
+    direction = Right
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin PG at Point(17.780, 3.810) with :
+    direction = Right
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+
+  draw("value") = Text(">VALUE", 0.7056, C, loc(0.0, 7.731))
+  draw("reference") = Text(">REF", 0.7056, C, loc(0.0, 8.731))
+  draw("foreground") = Rectangle(35.560, 15.240)
+  draw("foreground") = Circle(-16.510, 6.350, 0.381)
+
+public pcb-component component :
+  name = "C2071251"
+  description = "Step-down type Adjustable 4A 0.6V~5.5V 2.75V~6V VQFN-9-HR(2x3)  DC-DC Converters ROHS"
+  manufacturer = "Texas Instruments"
+  mpn = "TPS6281020QWRWYRQ1"
+  datasheet = "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2303011930_Texas-Instruments-TPS6281020QWRWYRQ1_C2071251.pdf"
+  reference-prefix = "U"
+  pin-properties :
+    [pin:Ref | pads:Ref ... | side:Dir | electrical-type:String | bank:Int]
+    [MODE_SYNC | p[1] | Left | "unspecified" | 0]
+    [VIN | p[2] | Left | "unspecified" | 0]
+    [SW | p[3] | Left | "unspecified" | 0]
+    [GND | p[4] | Left | "unspecified" | 0]
+    [FB | p[5] | Left | "unspecified" | 0]
+    [SS_TR | p[6] | Right | "unspecified" | 0]
+    [COMP_FSET | p[7] | Right | "unspecified" | 0]
+    [EN | p[8] | Right | "unspecified" | 0]
+    [PG | p[9] | Right | "unspecified" | 0]
+
+  assign-landpattern(lp)
+  assign-symbol(sym-TPS6281020QWRWYRQ1)
+
+  property(self.category) = "ic"
+  property(self.manufacturer_aliases) = ["Texas Instruments"]
+  property(self.mpn_aliases) = ["TPS6281020QWRWYRQ1"]
+  property(self.cofactr_id) = "IC5PRCXU90J3"
+  property(self.reference_prefix) = "U"
+  property(self.trust) = "low"
+  property(self.x) = 3.400
+  property(self.y) = 2.400
+  property(self.area) = 8.160
+  property(self.case) = "VQFN-9-HR(2x3)"
+  property(self.mounting) = "smd"
+
