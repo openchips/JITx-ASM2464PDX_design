@@ -6,7 +6,5 @@ designs/**/cache/
 designs/**/design-info/stable.design.backup*
 designs/**/design-info/physical-layout.design~
 
-documentation/**/*
-
 #
 .slm
