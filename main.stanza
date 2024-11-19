@@ -46,8 +46,7 @@ pcb-module my-design :
   ; inst U1 : usb-src
   inst asm2464pdx : components/Asmedia/ASM2464PDX/module
 
-  ;create-part(mpn = "W25Q32JVSSIQ", manufacturer = "Winbond")
-  ;inst W25Q32JVSSIQ : components/WinbondW25Q32JVSSIQ/
+  
   inst W25Q32JVSSIQ : database-part(["manufacturer" => "Winbond", "mpn" => "W25Q32JVSSIQ"])
 
   ; inst U2 : usb-src
@@ -67,11 +66,7 @@ pcb-module my-design :
   val ti-3 = usb-get-trace-impedance(USB4)
   val usb3-constraints = USB-Constraint(proto = USB4, route-struct = diff(ti-3))
   val lane-constraint = LaneConstraint(usb4-constraints)
-  ; Notice the `reverse-lane` usage here. I'm assuming that these are two
-  ;   active components and hence we need to make `TX => RX` and `RX => TX`
-  ;   The `reverse-lane` makes this flip happen.
-  ; If we were connecting an active component (MCU) to a passive component (connector)
-  ;   then we would not use the `reverse-lane`
+
   within [src, dst] = constrain-topology(ep1.lane[0] => ep2.lane[0], lane-constraint):
     ; Here we construct the differential pair topology for the lane.
     ; The Lane consists of two diff-pairs - TX and RX
