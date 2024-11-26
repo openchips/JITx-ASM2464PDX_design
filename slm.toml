@@ -1,6 +1,6 @@
-name = "c:\\Users\\jamms\\OneDrive\\Documenten\\- JITX\\ASM2464PD_Demo_2"
+name = "C://Users//jamms//OneDrive//JITx//Projects//ASM2464PD_Demo_2"
 version = "0.1.0"
 [dependencies]
+jsl = { git = "JITx-Inc/jsl", version = "0.9.3" }
+JITX3 = { path = "{SLM_ROOT}/JITX3" }
 ocdb = { path = "{SLM_ROOT}/ocdb" }
-jsl = { git = "JITx-Inc/jsl", version = "0.6.0" }
-JITX = { path = "{SLM_ROOT}/JITX" }

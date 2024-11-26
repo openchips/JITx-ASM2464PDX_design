@@ -15,7 +15,7 @@ defpackage main :
   import jsl/si/couplers
 
   ; import jsl/examples/protocols/common/example-board
-  ; import jsl/examples/protocols/common/example-components 
+  import jsl/examples/protocols/common/example-components 
   
 ; Define the shape/size of the board
 val board_shape = RoundedRectangle(50.0, 50.0, 0.25)
@@ -44,44 +44,46 @@ pcb-module my-design :
 
   ; USB-C
   ; inst U1 : usb-src
-  ; inst asm2464pdx : components/Asmedia/ASM2464PDX/module
+  inst asm2464pdx : components/Asmedia/ASM2464PDX/module
 
   
-  ; inst W25Q32JVSSIQ : database-part(["manufacturer" => "Winbond", "mpn" => "W25Q32JVSSIQ"])
+  inst W25Q32JVSSIQ : database-part(["manufacturer" => "Winbond", "mpn" => "W25Q32JVSSIQ"])
 
   ; inst U2 : usb-src
 
-  ; require ep1 : usb-superspeed() from asm2464pdx
+  require ep1 : usb-superspeed() from asm2464pdx
 
-  ; inst usb4_type_c : components/TE_2388749-1/component
+  inst usb4_type_c : components/TE_2388749-1/component
   
-  ; require ep2 : usb-superspeed() from usb4_type_c
+  require ep2 : usb-superspeed() from usb4_type_c
 
-  ; val ti-2 = usb-get-trace-impedance(USB4)
-  ; val usb4-constraints = USB-Constraint(proto = USB4, route-struct = diff(ti-2))
-  ; constrain-topology(ep1.data => ep2.data, usb4-constraints)
+  val ti-2 = usb-get-trace-impedance(USB4)
+  val usb4-constraints = USB-Constraint(proto = USB4, route-struct = diff(ti-2))
+  constrain-topology(ep1.data => ep2.data, usb4-constraints)
 
-  ; val b-cap = block-cap(100.0e-9)
+  val b-cap = ceramic-cap(100.0e-9)
+  ;CapacitorQuery(rated-voltage = AtLeast(50.0)
+  ;get-default-capacitor-query()
 
-  ; val ti-3 = usb-get-trace-impedance(USB4)
-  ; val usb3-constraints = USB-Constraint(proto = USB4, route-struct = diff(ti-3))
-  ; val lane-constraint = LaneConstraint(usb4-constraints)
+  val ti-3 = usb-get-trace-impedance(USB4)
+  val usb3-constraints = USB-Constraint(proto = USB4, route-struct = diff(ti-3))
+  val lane-constraint = LaneConstraint(usb4-constraints)
   ; ; Notice the `reverse-lane` usage here. I'm assuming that these are two
   ; ;   active components and hence we need to make `TX => RX` and `RX => TX`
   ; ;   The `reverse-lane` makes this flip happen.
   ; ; If we were connecting an active component (MCU) to a passive component (connector)
   ; ;   then we would not use the `reverse-lane`
-  ; within [src, dst] = constrain-topology(ep1.lane[0] => ep2.lane[0], lane-constraint):
+  within [src, dst] = constrain-topology(ep1.lane[0] => ep2.lane[0], lane-constraint):
   ;   ; Here we construct the differential pair topology for the lane.
   ;   ; The Lane consists of two diff-pairs - TX and RX
-  ;   topo-net(src.RX => dst.RX)
+    topo-net(src.RX => dst.RX)
 
   ;   ; The TX channel needs a blocking capacitor which we add with
   ;   ;  the help of the `topo-pair` utility. This is like `topo-net`
   ;   ;  but handles extracting the `dual-pair` require from the
   ;   ;  `tx-bcap` for us.
-  ;   inst tx-bcap : dp-coupler(b-cap)
-  ;   topo-pair(src.TX => tx-bcap => dst.TX)
+    inst tx-bcap : dp-coupler(b-cap)
+    topo-pair(src.TX => tx-bcap => dst.TX)
   
   
 
