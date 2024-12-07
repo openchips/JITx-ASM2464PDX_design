@@ -1,5 +1,5 @@
 #use-added-syntax(jitx)
-defpackage components/Asmedia/ASM2464PDX:
+defpackage ASM001/components/Asmedia/ASM2464PDX:
   import core
   import collections
   import jitx
@@ -185,8 +185,8 @@ public pcb-component component :
     [URXP[1]    | Y[2]   | Left  | A]
     [URXN[1]    | Y[1]   | Left  | A]
     [VBUS       | G[1]   | Left  | A]
-    [CC1        | AA[6]  | Left  | A]
-    [CC2        | Y[6]   | Left  | A]
+    [CC[1]        | AA[6]  | Left  | A]
+    [CC[2]        | Y[6]   | Left  | A]
     [SBU[1]     | K[1]   | Left  | A]
     [SBU[2]     | J[1]   | Left  | A]
     [REFCLKN[0] | Y[8]   | Left  | A]
@@ -210,7 +210,7 @@ public pcb-component component :
     [PTXP[3]    | Y[15]  | Left  | A]
     [PTXN[2]    | AA[17] | Left  | A]
     [PTXP[2]    | Y[17]  | Left  | A]
-    [PERST0#    | G[21]  | Right | A]
+    [PERST#[0]    | G[21]  | Right | A]
     [RST#       | H[1]   | Right | A]
     [TEST_EN    | H[21]  | Left | A]
     [I2C_DATA_P | F[1]   | Right | A]
@@ -279,9 +279,9 @@ public pcb-component component :
     [REFCLKP[2] | AA[10] | Left  | B]  ; ASM2464PDX
     [REFCLKN[1] | Y[11]  | Left  | B]  ; ASM2464PDX
     [REFCLKP[1] | AA[11] | Left  | B]  ; ASM2464PDX
-    [PERST3#    | D[21]  | Left  | B]  ; ASM2464PDX
-    [PERST2#    | E[21]  | Left  | B]  ; ASM2464PDX
-    [PERST1#    | F[21]  | Left  | B]  ; ASM2464PDX
+    [PERST#[3]    | D[21]  | Left  | B]  ; ASM2464PDX
+    [PERST#[2]    | E[21]  | Left  | B]  ; ASM2464PDX
+    [PERST#[1]    | F[21]  | Left  | B]  ; ASM2464PDX
     [GND[0]     | K[2]   | Right | C]
     [GND[1]     | D[4]   | Right | C]
     [GND[2]     | E[4]   | Right | C]
@@ -458,11 +458,11 @@ public pcb-component component :
   assign-landpattern(lp)
 
   for i in 0 to 4 do :
-    diff-pin-model(component.PRXP[i], component.PRXN[i],       delay = typ(10.0e-15) loss = typ(0.1))
-    diff-pin-model(component.PTXP[i], component.PTXN[i],       delay = typ(10.0e-15) loss = typ(0.1))
-    diff-pin-model(component.REFCLKP[i], component.REFCLKN[i], delay = typ(10.0e-15) loss = typ(0.1))
+    diff-pin-model(self.PRXP[i], self.PRXN[i],       delay = typ(10.0e-15) loss = typ(0.1))
+    diff-pin-model(self.PTXP[i], self.PTXN[i],       delay = typ(10.0e-15) loss = typ(0.1))
+    diff-pin-model(self.REFCLKP[i], self.REFCLKN[i], delay = typ(10.0e-15) loss = typ(0.1))
 
-  diff-pin-model(component.UDP component.UDM delay = typ(10.0e-15) loss = typ(0.1))
+  diff-pin-model(self.UDP self.UDM delay = typ(10.0e-15) loss = typ(0.1))
 
 
 ; TODO: update to latest JSL/PCIe convention
@@ -480,74 +480,71 @@ public pcb-module module :
   port spi : spi-with-cs()
   port uart : minimal-uart()
 
-  inst component : component
+  public inst sw : component
 
-  for g in pins(component.GND) do :
+
+  for g in pins(sw.GND) do :
     net (GND g)
 
-  for g in pins(component.GNDA) do :
+  for g in pins(sw.GNDA) do :
     net (GNDA g)
   
-  for v in pins(component.VDD) do :
+  for v in pins(sw.VDD) do :
     net (VDD v)
 
-  for v in pins(component.VCCL) do :
+  for v in pins(sw.VCCL) do :
     net (VCCL v)
 
-  for v in pins(component.VCCH) do :
+  for v in pins(sw.VCCH) do :
     net (VCCH v)
 
-  net (VCCA33 component.VCCA33)
+  net (VCCA33 sw.VCCA33)
 
-  for n in pins(component.NC) do :
+  for n in pins(sw.NC) do :
     no-connect(n)
 
-  for i in indices(component.GPIO) do :
-    supports gpio :
-      ; gpio[i] => component.GPIO[i]
-      gpio.p => component.GPIO[i]
+  ; for i in indices(sw.GPIO) do :
+  ;   supports gpio :
+  ;     ; gpio[i] => sw.GPIO[i]
+  ;     gpio.p => sw.GPIO[i]
 
-  net (i2c_data.sda, component.I2C_DATA_P)
-  net (i2c_data.scl, component.I2C_CLK_P)
+  net (i2c_data.sda, sw.I2C_DATA_P)
+  net (i2c_data.scl, sw.I2C_CLK_P)
 
-  net (spi.cs   component.SPI_CS#)
-  net (spi.copi component.SPI_DI)
-  net (spi.sck  component.SPI_CLK)
-  net (spi.cipo component.SPI_DO)
+  net (spi.cs   sw.SPI_CS#)
+  net (spi.copi sw.SPI_DI)
+  net (spi.sck  sw.SPI_CLK)
+  net (spi.cipo sw.SPI_DO)
 
-  net (uart.tx component.UART_TX)
-  net (uart.rx component.UART_RX)
+  net (uart.tx sw.UART_TX)
+  net (uart.rx sw.UART_RX)
 
-  val bus-r = Ref("bus")
-  val ctl-r = Ref("ctl")
-  
-  val usb = usb-superspeed()
-  supports usb:
-    usb.cc[0]   => component.CC1
-    usb.cc[1]   => component.CC2
-    usb.sbu[0]   => component.SBU[1]
-    usb.sbu[1]   => component.SBU[2]
-    usb.vbus.V+ => component.VBUS
-    usb.vbus.V- => component.GND
-    usb.data.P  => component.UDP
-    usb.data.N  => component.UDM
+  val usb_c = usb-c(2)
+  supports usb_c :
+    usb_c.data.P => sw.UDP
+    usb_c.data.N => sw.UDM
     for i in 0 to 2 do :
-      usb.lane[i].RX.P => component.URXP[i]
-      usb.lane[i].RX.N => component.URXN[i]
-      usb.lane[i].TX.P => component.UTXP[i]
-      usb.lane[i].TX.N => component.UTXN[i]
+      usb_c.cc[i] => sw.CC[i + 1]
+      usb_c.sbu[i] => sw.SBU[i + 1]
 
-  ; val bd-4x = pcie(4)
-  ; supports bd-4x :
-  ;   for i in 0 to 4 do :
-  ;     bd-4x.data.rx[i].P => component.PRXP[i]
-  ;     bd-4x.data.rx[i].N => component.PRXN[i]
-  ;     bd-4x.data.tx[i].P => component.PTXP[i]
-  ;     bd-4x.data.tx[i].N => component.PTXN[i]
-  ;   bd-4x.data.refclk.P => component.REFCLKP[0]
-  ;   bd-4x.data.refclk.N => component.REFCLKN[0]
+      usb_c.lane[i].RX.P => sw.URXP[i]
+      usb_c.lane[i].RX.N => sw.URXN[i]
+      usb_c.lane[i].TX.P => sw.UTXP[i]
+      usb_c.lane[i].TX.N => sw.UTXN[i]
 
-  ;   bd-4x.control.PEWAKE# => component.GPIO[22]
-  ;   bd-4x.control.PERST#  => component.PERST0#
-  ;   bd-4x.control.CLKREQ# => component.GPIO[8]
+
+
+  val bd-4x = pcie(4)
+  supports bd-4x :
+    for i in 0 to 4 do :
+      bd-4x.data.lane[i].RX.P => sw.PRXP[i]
+      bd-4x.data.lane[i].RX.N => sw.PRXN[i]
+      bd-4x.data.lane[i].TX.P => sw.PTXP[i]
+      bd-4x.data.lane[i].TX.N => sw.PTXN[i]
+    bd-4x.data.refclk.P => sw.REFCLKP[0]
+    bd-4x.data.refclk.N => sw.REFCLKN[0]
+
+    bd-4x.control.PEWAKE# => sw.GPIO[22]
+    bd-4x.control.PERST#  => sw.PERST#[0]
+    bd-4x.control.CLKREQ# => sw.GPIO[8]
 

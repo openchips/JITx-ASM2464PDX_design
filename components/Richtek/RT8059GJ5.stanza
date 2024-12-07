@@ -1,0 +1,105 @@
+; This file is generated based on the parts database query below:")
+;   database-part(["manufacturer" => "Richtek", "mpn" => "RT8059GJ5"])
+#use-added-syntax(jitx)
+defpackage ASM001/components/Richtek/RT8059GJ5 :
+  import core
+  import jitx
+  import jitx/commands
+  import ocdb/utils/box-symbol
+
+
+pcb-pad rectangle-smd-pad :
+  name = "rectangle-smd-pad"
+  type = SMD
+  shape = Rectangle(1.000, 0.600)
+  layer(SolderMask(Top)) = Rectangle(1.102, 0.702)
+  layer(Paste(Top)) = Rectangle(1.102, 0.702)
+
+pcb-landpattern lp :
+  pad p[1] : rectangle-smd-pad at loc(1.300, -0.950) on Top
+  pad p[2] : rectangle-smd-pad at loc(1.300, 0.0) on Top
+  pad p[3] : rectangle-smd-pad at loc(1.300, 0.950) on Top
+  pad p[4] : rectangle-smd-pad at loc(-1.300, 0.950) on Top
+  pad p[5] : rectangle-smd-pad at loc(-1.300, -0.950) on Top
+
+  layer(Silkscreen("F-SilkS", Top)) = Text(">REF", 0.5, W, loc(-0.750, 3.383))
+  layer(CustomLayer("Fab", Top)) = Text(">VALUE", 0.5, W, loc(-0.750, 2.383))
+  layer(Silkscreen("F-SilkS", Top)) = Line(0.254, [Point(-0.900, -1.550), Point(0.900, -1.550)])
+  layer(Silkscreen("F-SilkS", Top)) = Line(0.254, [Point(-0.900, -0.400), Point(-0.900, 0.400)])
+  layer(Silkscreen("F-SilkS", Top)) = Line(0.254, [Point(-0.900, 1.550), Point(0.900, 1.550)])
+  layer(CustomLayer("Fab", Top)) = Polyline(0.060, [
+    Arc(1.400, -1.450, 0.030, 0.0, -360.000)])
+  layer(CustomLayer("Fab", Top)) = Polyline(0.400, [
+    Arc(1.397, -1.016, 0.200, 0.0, -360.000)])
+  layer(Silkscreen("F-SilkS", Top)) = Polyline(0.254, [
+    Arc(1.524, -1.651, 0.127, 0.0, -360.000)])
+  layer(Courtyard(Top)) = Rectangle(3.702, 3.354)
+
+  model3d = Model3D("{USER_PROJECT_ROOT}/3d-models/jitx-64d18bebb789d8dc4b8318fc.stp",
+    Vec3D(0.0, 0.0, 0.0),
+    Vec3D(1.000, 1.000, 1.000),
+    Vec3D(0.0, 0.0, 0.0),
+    [],
+    )
+
+pcb-symbol sym-RT8059GJ5 :
+  pin EN at Point(-5.080, 2.540) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.000
+    name-size = 1.000
+  pin GND at Point(-5.080, 0.0) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.000
+    name-size = 1.000
+  pin LX at Point(-5.080, -2.540) with :
+    direction = Left
+    length = 5.080
+    number-size = 1.000
+    name-size = 1.000
+  pin VIN at Point(5.080, -2.540) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.000
+    name-size = 1.000
+  pin FB at Point(5.080, 2.540) with :
+    direction = Right
+    length = 5.080
+    number-size = 1.000
+    name-size = 1.000
+
+  draw("value") = Text(">VALUE", 0.7056, C, loc(0.0, 3.540))
+  draw("reference") = Text(">REF", 0.7056, C, loc(0.0, 4.540))
+  draw("foreground") = Rectangle(10.160, 10.160)
+
+public pcb-component component :
+  name = "C20542"
+  description = "Step-down type Adjustable 0.6V~5.5V 1A 2.8V~5.5V SOT-23-5  DC-DC Converters ROHS"
+  manufacturer = "Richtek"
+  mpn = "RT8059GJ5"
+  datasheet = "https://www.lcsc.com/datasheet/lcsc_datasheet_1811100910_Richtek-Tech-RT8059GJ5_C20542.pdf"
+  reference-prefix = "U"
+  pin-properties :
+    [pin:Ref | pads:Ref ... | side:Dir | electrical-type:String | bank:Int]
+    [EN | p[1] | Left | "unspecified" | 0]
+    [GND | p[2] | Left | "unspecified" | 0]
+    [LX | p[3] | Left | "unspecified" | 0]
+    [VIN | p[4] | Right | "unspecified" | 0]
+    [FB | p[5] | Right | "unspecified" | 0]
+
+  assign-landpattern(lp)
+  assign-symbol(sym-RT8059GJ5)
+
+  property(self.category) = "ic"
+  property(self.manufacturer_aliases) = ["Richtek Tech"]
+  property(self.mpn_aliases) = ["RT8059GJ5"]
+  property(self.cofactr_id) = "ICRHPNHY4H07"
+  property(self.reference_prefix) = "U"
+  property(self.trust) = "low"
+  property(self.x) = 3.702
+  property(self.y) = 3.354
+  property(self.area) = 12.417
+  property(self.case) = "TSOT-23-5"
+  property(self.mounting) = "smd"
+

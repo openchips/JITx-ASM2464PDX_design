@@ -1,0 +1,80 @@
+#use-added-syntax(jitx)
+defpackage ASM001/components/UNKNOWN/XPS628303ARZER :
+  import core
+  import collections
+  import jitx
+  import jitx/commands
+  import ocdb/utils/box-symbol
+
+
+public pcb-symbol XPS628303ARZER :
+  pin VIN at Point(7.620, 2.540) with :
+    direction = Left
+    length = 7.620
+    number-size = 1.270
+    name-size = 1.270
+  pin GND at Point(7.620, -20.320) with :
+    direction = Left
+    length = 7.620
+    number-size = 1.270
+    name-size = 1.270
+  pin MODE at Point(7.620, -7.620) with :
+    direction = Left
+    length = 7.620
+    number-size = 1.270
+    name-size = 1.270
+  pin FB at Point(33.020, -17.780) with :
+    direction = Right
+    length = 7.620
+    number-size = 1.270
+    name-size = 1.270
+  pin VOS at Point(33.020, -5.080) with :
+    direction = Right
+    length = 7.620
+    number-size = 1.270
+    name-size = 1.270
+  pin PG at Point(7.620, -15.240) with :
+    direction = Left
+    length = 7.620
+    number-size = 1.270
+    name-size = 1.270
+  pin SW at Point(33.020, 2.540) with :
+    direction = Right
+    length = 7.620
+    number-size = 1.270
+    name-size = 1.270
+  pin EN at Point(7.620, -2.540) with :
+    direction = Left
+    length = 7.620
+    number-size = 1.270
+    name-size = 1.270
+
+  draw("foreground") = Text(">REF", 1.27, C, loc(20.320, 6.165))
+  draw("foreground") = Text(">VALUE", 1.27, C, loc(20.320, 7.735))
+  draw("foreground") = Text("Type: Power Management", 1.27, SW, loc(20.320, 7.620), "", TrueTypeFont, true, false)
+  draw("foreground") = Text("Mfr_Name: Texas Instruments", 1.27, SW, loc(0.0, 0.0), "", TrueTypeFont, true, false)
+  draw("foreground") = Text("RefDes: RefDes", 1.27, SW, loc(20.320, 10.160), "", TrueTypeFont, true, false)
+  draw("foreground") = Rectangle(25.400, 27.940, loc(20.320, -8.890))
+
+public pcb-component component :
+  mpn = "XPS628303ARZER"
+  reference-prefix = "U3"
+  pin-properties :
+    [pin:Ref | pads:Ref ... | side:Dir]
+    [VIN | p[1] | Left]
+    [GND | p[2] | Left]
+    [MODE | p[3] | Left]
+    [FB | p[4] | Right]
+    [VOS | p[5] | Right]
+    [PG | p[6] | Left]
+    [SW | p[7] | Right]
+    [EN | p[8] | Left]
+
+  assign-landpattern(ASM2464PDX-50x50/landpatterns/WQFN-HR8_RZE_TEX/WQFN-HR8_RZE_TEX)
+  assign-symbol(XPS628303ARZER)
+
+  property(self.Mfr_Name) = "Texas Instruments"
+  property(self.RefDes) = "RefDes"
+  property(self.Type) = "Power Management"
+  property(self.Value) = "XPS628303ARZER"
+

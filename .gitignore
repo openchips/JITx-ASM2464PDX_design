@@ -1,10 +1,13 @@
 /jitx-design
 /pending.*dat
+.DS_Store
 
 # Data Cache - Files that don't need to be version controlled.
 designs/**/cache/
 designs/**/design-info/stable.design.backup*
 designs/**/design-info/physical-layout.design~
 
+# part cache does not need to be stored in Git
+parts-db
 #
 .slm

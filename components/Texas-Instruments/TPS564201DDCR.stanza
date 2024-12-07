@@ -1,5 +1,5 @@
 #use-added-syntax(jitx)
-defpackage components/Texas-Instruments/TPS564201DDCR :
+defpackage ASM001/components/Texas-Instruments/TPS564201DDCR :
   import core
   import jitx
   import jitx/commands

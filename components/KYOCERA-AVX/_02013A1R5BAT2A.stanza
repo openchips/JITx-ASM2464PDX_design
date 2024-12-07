@@ -1,0 +1,97 @@
+; This file is generated based on the parts database query below:")
+;   database-part(["manufacturer" => "KYOCERA AVX", "mpn" => "02013A1R5BAT2A"])
+#use-added-syntax(jitx)
+defpackage components/KYOCERA-AVX/_02013A1R5BAT2A :
+  import core
+  import jitx
+  import jitx/commands
+  import ocdb/utils/box-symbol
+  import jitx/emodels
+
+
+pcb-pad rect-smd-pad :
+  name = "rect-smd-pad"
+  type = SMD
+  shape = Rectangle(0.330, 0.158)
+  layer(Paste(Top)) = Rectangle(0.330, 0.158)
+  layer(SolderMask(Top)) = Rectangle(0.430, 0.258)
+
+pcb-landpattern lp :
+  pad p[1] : rect-smd-pad at loc(0.0, 0.236) on Top
+  pad p[2] : rect-smd-pad at loc(0.0, -0.236) on Top
+
+  layer(Silkscreen("F-SilkS", Top)) = Text(">REF", 0.6, C, loc(0.615, 0.0, 270.000))
+  layer(CustomLayer("Fab", Top)) = Text(">VALUE", 0.3, C, loc(0.465, 0.0, 270.000))
+  layer(Courtyard(Top)) = Rectangle(0.630, 0.930)
+
+  model3d = Model3D("{USER_PROJECT_ROOT}/3d-models/jitx-64d243b0b789d8dc4b978a0b.stp",
+    Vec3D(0.0, 0.0, 0.0),
+    Vec3D(1.000, 1.000, 1.000),
+    Vec3D(0.0, 0.0, 90.000),
+    [],
+    )
+
+pcb-symbol sym-capacitor-sym :
+  pin p[1] at Point(0.0, 2.540) with :
+    direction = Up
+    length = 0.0
+    number-size = 0.0
+    name-size = 0.0
+  pin p[2] at Point(0.0, -2.540) with :
+    direction = Down
+    length = 0.0
+    number-size = 0.0
+    name-size = 0.0
+
+  draw("value") = Text(">VALUE", 1.27, W, loc(1.270, -1.270))
+  draw("reference") = Text(">REF", 1.27, W, loc(1.270, 1.270))
+  draw("foreground") = Line(0.254, [Point(0.0, 2.540), Point(0.0, 0.508)])
+  draw("foreground") = Line(0.254, [Point(-1.270, 0.508), Point(1.270, 0.508)])
+  draw("foreground") = Line(0.254, [Point(0.0, -0.508), Point(0.0, -2.540)])
+  draw("foreground") = Line(0.254, [Point(-1.270, -0.508), Point(1.270, -0.508)])
+
+public pcb-component component :
+  name = "my-capacitor"
+  description = "CAP CER 1.5PF 25V NP0 0201"
+  manufacturer = "KYOCERA AVX"
+  mpn = "02013A1R5BAT2A"
+  emodel = Capacitor(1.5e-012, 0.0666666666666667, 25.0, false, UNKNOWN, "C0G")
+  datasheet = "https://datasheets.avx.com/C0GNP0-Dielectric.pdf"
+  reference-prefix = "C"
+  pin-properties :
+    [pin:Ref | pads:Ref ... | side:Dir | electrical-type:String | bank:Int]
+    [p[1] | p[1] | Up | "passive" | 0]
+    [p[2] | p[2] | Down | "passive" | 0]
+
+  assign-landpattern(lp)
+  assign-symbol(sym-capacitor-sym)
+
+  property(self.category) = "capacitor"
+  property(self.manufacturer) = "AVX Corporation"
+  property(self.manufacturer_aliases) = ["AVX Corporation"]
+  property(self.mpn) = "02013A1R5BAT2A"
+  property(self.mpn_aliases) = ["02013A1R5BAT2A"]
+  property(self.cofactr_id) = "CC3TBW80I9U1"
+  property(self.reference_prefix) = "C"
+  property(self.trust) = "low"
+  property(self.x) = 0.300
+  property(self.y) = 0.600
+  property(self.area) = 0.180
+  property(self.z) = 0.330
+  property(self.case) = "0201"
+  property(self.mounting) = "smd"
+  property(self.\|vendor_part_numbers.digi-key|) = "478-02013A1R5BAT2ATR-ND"
+  property(self.minimum_quantity) = 15000
+  property(self.price) = 0.005
+  property(self.stock) = 90000
+  property(self.rated-temperature) = Toleranced(35.0, 90.0, 90.0)
+  property(self.capacitor) = true
+  property(self.capacitance) = 1.5e-012
+  property(self.type) = "ceramic"
+  property(self.rated-voltage) = 25.000
+  property(self.temperature-coefficent) = "C0G"
+  property(self.tolerance) = Toleranced(1.5e-012, 1.0e-013, 1.0e-013)
+  property(self.\|metadata.description|) = "CAP CER 1.5PF 25V NP0 0201"
+  property(self.\|metadata.packaging|) = "Tape & Reel (TR)"
+  property(self.\|metadata.applications|) = "General Purpose"
+

@@ -5,37 +5,41 @@
 			"name":	"Status",
 			"width":	10
 		}, {
-			"field":	"description",
-			"name":	"Description",
-			"width":	10
+			"field":	"_quantity",
+			"name":	"Qty",
+			"width":	5
 		}, {
 			"field":	"insts",
 			"name":	"References",
 			"width":	10
 		}, {
-			"field":	"datasheet",
-			"name":	"Datasheet",
+			"field":	"mpn",
+			"name":	"MPN",
 			"width":	10
 		}, {
 			"field":	"manufacturer",
 			"name":	"Manufacturer",
 			"width":	10
 		}, {
-			"field":	"mpn",
-			"name":	"Part Number",
+			"field":	"description",
+			"name":	"Description",
+			"width":	20
+		}, {
+			"field":	"vendor",
+			"name":	"Supplier",
 			"width":	10
 		}, {
-			"field":	"_quantity",
-			"name":	"Quantity",
-			"width":	8
+			"field":	"sku",
+			"name":	"SKU",
+			"width":	10
 		}, {
-			"field":	"price",
-			"name":	"Price",
-			"width":	8
+			"field":	"datasheet",
+			"name":	"Datasheet",
+			"width":	10
 		}, {
 			"field":	"_preferred",
 			"name":	"Preferred",
-			"width":	8
+			"width":	5
 		}],
 	"new_bom":	{
 		"rows":	[{
@@ -43,37 +47,168 @@
 					"code":	1,
 					"name":	"Auto Selected"
 				},
+				"description":	"CAP CER 0.1UF 10V X5R 0402",
+				"insts":	[{
+						"inst":	{
+							"name":	"element"
+						},
+						"ref":	"C1",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://datasheets.avx.com/cx5r.pdf",
+				"manufacturer":	"KYOCERA AVX",
+				"mpn":	"0402ZD104KAT4A",
+				"vendor":	"Arrow",
+				"sku":	"0402ZD104KAT4A",
+				"price":	0.0014,
+				"preferred":	false,
+				"query_properties":	{
+					"capacitance":	1e-07,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"rated-voltage":	6,
+					"category":	"capacitor",
+					"min-rated-temperature.max":	50,
+					"max-rated-temperature.min":	0,
+					"case":	["0402", "1005m", "0505", "1414m", "0508", "1220m", "Wide 0805", "0603", "1608m", "0612", "1632m", "Wide 1206", "0805", "2012m", "1111", "2828m", "1206", "3216m", "1210", "3225m", "1218", "3246m", "Wide 1812", "1225", "3263m", "Wide 2512", "1530", "3876m", "Wide 3015", "1808", "4520m", "1812", "4532m", "1825", "4564m", "1835", "4589", "Wide 3518", "5020m", "2010", "5025m", "2043", "Wide 4320", "2220", "5750m", "2225", "5763m", "2312", "6032m", "2512", "6331m", "2725", "7142m", "2728", "7142m", "Wide 2827", "2816", "2817", "7142m", "2953", "Wide 5929", "3920", "1052m"],
+					"mounting":	"smd",
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"CAP CER 1.5PF 25V NP0 0201",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C3",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C2",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}],
+				"datasheet":	"https://datasheets.avx.com/C0GNP0-Dielectric.pdf",
+				"manufacturer":	"KYOCERA AVX",
+				"mpn":	"02013A1R5BAT2A",
+				"vendor":	"Mouser",
+				"sku":	"02013A1R5BAT2A",
+				"price":	0.1,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
 				"description":	"RES SMD 10K OHM 5% 1/16W 0402",
 				"insts":	[{
 						"inst":	{
-							"name":	"rid"
+							"name":	"element"
 						},
 						"ref":	"R1",
-						"fileinfo":	{
-							"filename":	"C:\\Users\\jamms\\.jitx\\3.9.0\\slm\\ocdb\\utils\\generic-components.stanza",
-							"line":	727,
-							"column":	4
-						}
+						"fileinfo":	null
 					}],
 				"datasheet":	"https://www.bourns.com/docs/product-datasheets/CRxxxxx.pdf",
 				"manufacturer":	"BOURNS",
 				"mpn":	"CR0402-JW-103GLF",
-				"vendor":	"DigiKey",
+				"vendor":	"Arrow",
 				"sku":	"CR0402-JW-103GLF",
-				"price":	0.00163,
+				"price":	0.0012,
 				"preferred":	false,
 				"query_properties":	{
-					"case":	["0402", "1005m", "0505", "1414m", "0508", "1220m", "Wide 0805", "0603", "1608m", "0612", "1632m", "Wide 1206", "0805", "2012m", "1111", "2828m", "1206", "3216m", "1210", "3225m", "1218", "3246m", "Wide 1812", "1225", "3263m", "Wide 2512", "1530", "3876m", "Wide 3015", "1808", "4520m", "1812", "4532m", "1825", "4564m", "1835", "4589", "Wide 3518", "5020m", "2010", "5025m", "2043", "Wide 4320", "2220", "5750m", "2225", "5763m", "2312", "6032m", "2512", "6331m", "2725", "7142m", "2728", "7142m", "Wide 2827", "2816", "2817", "7142m", "2953", "Wide 5929", "3920", "1052m"],
-					"_sellers":	["DigiKey", "Mouser"],
-					"min-rated-temperature.max":	25,
-					"max-rated-temperature.min":	0,
-					"_stock":	100,
-					"mounting":	"smd",
 					"resistance":	10000,
-					"min-stock":	500,
-					"_sort":	["area"],
-					"category":	"resistor"
+					"category":	"resistor",
+					"min-rated-temperature.max":	50,
+					"max-rated-temperature.min":	0,
+					"case":	["0402", "1005m", "0505", "1414m", "0508", "1220m", "Wide 0805", "0603", "1608m", "0612", "1632m", "Wide 1206", "0805", "2012m", "1111", "2828m", "1206", "3216m", "1210", "3225m", "1218", "3246m", "Wide 1812", "1225", "3263m", "Wide 2512", "1530", "3876m", "Wide 3015", "1808", "4520m", "1812", "4532m", "1825", "4564m", "1835", "4589", "Wide 3518", "5020m", "2010", "5025m", "2043", "Wide 4320", "2220", "5750m", "2225", "5763m", "2312", "6032m", "2512", "6331m", "2725", "7142m", "2728", "7142m", "Wide 2827", "2816", "2817", "7142m", "2953", "Wide 5929", "3920", "1052m"],
+					"mounting":	"smd",
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
 				}
+			}, {
+				"status":	{
+					"code":	5,
+					"name":	"Potential Alternate Vendors"
+				},
+				"description":	"USB4 Type-C SMD Connectors ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"name":	"usb4_type_c"
+							},
+							"field":	{
+								"name":	"J"
+							}
+						},
+						"ref":	"J1",
+						"fileinfo":	{
+							"filename":	"components\\TE\\USB4\\2388749-1.stanza",
+							"line":	1382,
+							"column":	2
+						}
+					}],
+				"datasheet":	null,
+				"manufacturer":	"TE",
+				"mpn":	"2388749-1",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	5,
+					"name":	"Potential Alternate Vendors"
+				},
+				"description":	"Generic pin-header",
+				"insts":	[{
+						"inst":	{
+							"name":	"header"
+						},
+						"ref":	"J2",
+						"fileinfo":	{
+							"filename":	"c:\\\\\\\\Users\\\\\\\\jamms\\\\\\\\OneDrive\\\\\\\\JITx\\\\\\\\Projects\\\\\\\\JITx-ASM2464PDX_design2\\\\\\\\main.stanza",
+							"line":	74,
+							"column":	2
+						}
+					}],
+				"datasheet":	null,
+				"manufacturer":	null,
+				"mpn":	"2X1-pin-header",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	null
 			}, {
 				"status":	{
 					"code":	5,
@@ -83,7 +218,7 @@
 				"insts":	[{
 						"inst":	{
 							"ref":	{
-								"name":	"asm2464pd"
+								"name":	"asm2464pdx"
 							},
 							"field":	{
 								"name":	"sw"
@@ -91,39 +226,14 @@
 						},
 						"ref":	"U1",
 						"fileinfo":	{
-							"filename":	"components\\ASM2464PD.stanza",
-							"line":	1195,
+							"filename":	"components\\Asmedia\\ASM2464PDX.stanza",
+							"line":	483,
 							"column":	2
 						}
 					}],
 				"datasheet":	null,
 				"manufacturer":	null,
-				"mpn":	"ASM2464PD",
-				"vendor":	null,
-				"sku":	null,
-				"price":	null,
-				"preferred":	false,
-				"query_properties":	null
-			}, {
-				"status":	{
-					"code":	3,
-					"name":	"No Information"
-				},
-				"description":	null,
-				"insts":	[{
-						"inst":	{
-							"name":	"m2_connector"
-						},
-						"ref":	"J21",
-						"fileinfo":	{
-							"filename":	"c:\\\\\\\\Users\\\\\\\\jamms\\\\\\\\OneDrive\\\\\\\\Documenten\\\\\\\\- JITX\\\\\\\\ASM2464PD_Demo_2\\\\\\\\main.stanza",
-							"line":	25,
-							"column":	2
-						}
-					}],
-				"datasheet":	null,
-				"manufacturer":	null,
-				"mpn":	null,
+				"mpn":	"ASM2464PDX",
 				"vendor":	null,
 				"sku":	null,
 				"price":	null,
@@ -133,17 +243,20 @@
 		"entries":	[{
 			}, {
 			}, {
+			}, {
+			}, {
+			}, {
 			}]
 	},
 	"metrics":	[{
 			"name":	"Line Items",
-			"value":	3
+			"value":	6
 		}, {
 			"name":	"Components",
-			"value":	3
+			"value":	7
 		}, {
 			"name":	"Cost",
-			"value":	"$0.00"
+			"value":	"$0.20"
 		}],
 	"is_update":	false,
 	"old_bom":	{
@@ -152,39 +265,205 @@
 					"code":	1,
 					"name":	"Auto Selected"
 				},
+				"description":	"CAP CER 0.1UF 10V X5R 0402",
+				"insts":	[{
+						"inst":	{
+							"name":	"element"
+						},
+						"ref":	"C1",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://datasheets.avx.com/cx5r.pdf",
+				"manufacturer":	"KYOCERA AVX",
+				"mpn":	"0402ZD104KAT4A",
+				"vendor":	"Arrow",
+				"sku":	"0402ZD104KAT4A",
+				"price":	0.0014,
+				"preferred":	false,
+				"query_properties":	{
+					"capacitance":	1e-07,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"rated-voltage":	6,
+					"category":	"capacitor",
+					"min-rated-temperature.max":	50,
+					"max-rated-temperature.min":	0,
+					"case":	["0402", "1005m", "0505", "1414m", "0508", "1220m", "Wide 0805", "0603", "1608m", "0612", "1632m", "Wide 1206", "0805", "2012m", "1111", "2828m", "1206", "3216m", "1210", "3225m", "1218", "3246m", "Wide 1812", "1225", "3263m", "Wide 2512", "1530", "3876m", "Wide 3015", "1808", "4520m", "1812", "4532m", "1825", "4564m", "1835", "4589", "Wide 3518", "5020m", "2010", "5025m", "2043", "Wide 4320", "2220", "5750m", "2225", "5763m", "2312", "6032m", "2512", "6331m", "2725", "7142m", "2728", "7142m", "Wide 2827", "2816", "2817", "7142m", "2953", "Wide 5929", "3920", "1052m"],
+					"mounting":	"smd",
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"CAP CER 1.5PF 25V NP0 0201",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C3",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C2",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}],
+				"datasheet":	"https://datasheets.avx.com/C0GNP0-Dielectric.pdf",
+				"manufacturer":	"KYOCERA AVX",
+				"mpn":	"02013A1R5BAT2A",
+				"vendor":	"Mouser",
+				"sku":	"02013A1R5BAT2A",
+				"price":	0.1,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
 				"description":	"RES SMD 10K OHM 5% 1/16W 0402",
 				"insts":	[{
 						"inst":	{
-							"name":	"rid"
+							"name":	"element"
 						},
 						"ref":	"R1",
-						"fileinfo":	{
-							"filename":	"C:\\Users\\jamms\\.jitx\\3.9.0\\slm\\ocdb\\utils\\generic-components.stanza",
-							"line":	727,
-							"column":	4
-						}
+						"fileinfo":	null
 					}],
 				"datasheet":	"https://www.bourns.com/docs/product-datasheets/CRxxxxx.pdf",
 				"manufacturer":	"BOURNS",
 				"mpn":	"CR0402-JW-103GLF",
-				"vendor":	"DigiKey",
+				"vendor":	"Arrow",
 				"sku":	"CR0402-JW-103GLF",
-				"price":	0.00163,
+				"price":	0.0012,
 				"preferred":	false,
 				"query_properties":	{
-					"case":	["0402", "1005m", "0505", "1414m", "0508", "1220m", "Wide 0805", "0603", "1608m", "0612", "1632m", "Wide 1206", "0805", "2012m", "1111", "2828m", "1206", "3216m", "1210", "3225m", "1218", "3246m", "Wide 1812", "1225", "3263m", "Wide 2512", "1530", "3876m", "Wide 3015", "1808", "4520m", "1812", "4532m", "1825", "4564m", "1835", "4589", "Wide 3518", "5020m", "2010", "5025m", "2043", "Wide 4320", "2220", "5750m", "2225", "5763m", "2312", "6032m", "2512", "6331m", "2725", "7142m", "2728", "7142m", "Wide 2827", "2816", "2817", "7142m", "2953", "Wide 5929", "3920", "1052m"],
-					"_sellers":	["DigiKey", "Mouser"],
-					"min-rated-temperature.max":	25,
-					"max-rated-temperature.min":	0,
-					"_stock":	100,
-					"mounting":	"smd",
 					"resistance":	10000,
-					"min-stock":	500,
-					"_sort":	["area"],
-					"category":	"resistor"
+					"category":	"resistor",
+					"min-rated-temperature.max":	50,
+					"max-rated-temperature.min":	0,
+					"case":	["0402", "1005m", "0505", "1414m", "0508", "1220m", "Wide 0805", "0603", "1608m", "0612", "1632m", "Wide 1206", "0805", "2012m", "1111", "2828m", "1206", "3216m", "1210", "3225m", "1218", "3246m", "Wide 1812", "1225", "3263m", "Wide 2512", "1530", "3876m", "Wide 3015", "1808", "4520m", "1812", "4532m", "1825", "4564m", "1835", "4589", "Wide 3518", "5020m", "2010", "5025m", "2043", "Wide 4320", "2220", "5750m", "2225", "5763m", "2312", "6032m", "2512", "6331m", "2725", "7142m", "2728", "7142m", "Wide 2827", "2816", "2817", "7142m", "2953", "Wide 5929", "3920", "1052m"],
+					"mounting":	"smd",
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
 				}
+			}, {
+				"status":	{
+					"code":	5,
+					"name":	"Potential Alternate Vendors"
+				},
+				"description":	"USB4 Type-C SMD Connectors ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"name":	"usb4_type_c"
+							},
+							"field":	{
+								"name":	"J"
+							}
+						},
+						"ref":	"J1",
+						"fileinfo":	{
+							"filename":	"components\\TE\\USB4\\2388749-1.stanza",
+							"line":	1382,
+							"column":	2
+						}
+					}],
+				"datasheet":	null,
+				"manufacturer":	"TE",
+				"mpn":	"2388749-1",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	5,
+					"name":	"Potential Alternate Vendors"
+				},
+				"description":	"Generic pin-header",
+				"insts":	[{
+						"inst":	{
+							"name":	"header"
+						},
+						"ref":	"J2",
+						"fileinfo":	{
+							"filename":	"c:\\\\\\\\Users\\\\\\\\jamms\\\\\\\\OneDrive\\\\\\\\JITx\\\\\\\\Projects\\\\\\\\JITx-ASM2464PDX_design2\\\\\\\\main.stanza",
+							"line":	74,
+							"column":	2
+						}
+					}],
+				"datasheet":	null,
+				"manufacturer":	null,
+				"mpn":	"2X1-pin-header",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	5,
+					"name":	"Potential Alternate Vendors"
+				},
+				"description":	"USB4/Thunderbolt to PCIe Gen4 x4 Controller for Multi-PCIe Devices",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"name":	"asm2464pdx"
+							},
+							"field":	{
+								"name":	"sw"
+							}
+						},
+						"ref":	"U1",
+						"fileinfo":	{
+							"filename":	"components\\Asmedia\\ASM2464PDX.stanza",
+							"line":	483,
+							"column":	2
+						}
+					}],
+				"datasheet":	null,
+				"manufacturer":	null,
+				"mpn":	"ASM2464PDX",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	null
 			}],
 		"entries":	[{
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
 			}]
 	}
 }

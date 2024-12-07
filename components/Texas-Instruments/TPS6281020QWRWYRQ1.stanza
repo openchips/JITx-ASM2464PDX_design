@@ -1,7 +1,7 @@
 ; This file is generated based on the parts database query below:")
 ;   database-part(["manufacturer" => "Texas Instruments", "mpn" => "TPS6281020QWRWYRQ1"])
 #use-added-syntax(jitx)
-defpackage components/Texas-Instruments/TPS6281020QWRWYRQ1 :
+defpackage ASM001/components/Texas-Instruments/TPS6281020QWRWYRQ1 :
   import core
   import jitx
   import jitx/commands

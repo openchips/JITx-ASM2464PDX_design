@@ -1,6 +1,7 @@
-name = "c:\\Users\\jamms\\OneDrive\\Documenten\\- JITX\\ASM2464PD_Demo_2"
+name = "design-template"
 version = "0.1.0"
 [dependencies]
-ocdb = { path = "{SLM_ROOT}/ocdb" }
-jsl = { git = "JITx-Inc/jsl", version = "0.6.0" }
-JITX = { path = "{SLM_ROOT}/JITX" }
+JITX3 = { path = "{SLM_ROOT}/JITX3" }
+jlc-pcb = { git = "JITx-Inc/jlc-pcb", version = "0.3.2" }
+jsl = { git = "JITx-Inc/jsl", version = "0.9.0" }
+diodes = { git = "JITx-Inc/diodes", version = "0.2.0" }
