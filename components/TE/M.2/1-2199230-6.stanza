@@ -127,344 +127,342 @@ public pcb-landpattern _121992306 :
     )
 
 public pcb-symbol _1-2199230-6 :
-  pin p[1] at Point(-7.620, 48.260) with :
+  ; Left side pins
+  pin CONFIG_3 at Point(-7.620, 48.260) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[3] at Point(-7.620, 45.720) with :
+  pin GND[0] at Point(-7.620, 45.720) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[5] at Point(-7.620, 43.180) with :
+  pin PE[3].RX.N at Point(-7.620, 43.180) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[7] at Point(-7.620, 40.640) with :
+  pin PE[3].RX.P at Point(-7.620, 40.640) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[9] at Point(-7.620, 38.100) with :
+  pin GND[1] at Point(-7.620, 38.100) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[11] at Point(-7.620, 35.560) with :
+  pin PE[3].TX.N at Point(-7.620, 35.560) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[13] at Point(-7.620, 33.020) with :
+  pin PE[3].TX.P at Point(-7.620, 33.020) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[15] at Point(-7.620, 30.480) with :
+  pin GND[2] at Point(-7.620, 30.480) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[17] at Point(-7.620, 27.940) with :
+  pin PE[2].RX.N at Point(-7.620, 27.940) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[19] at Point(-7.620, 25.400) with :
+  pin PE[2].RX.P at Point(-7.620, 25.400) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[21] at Point(-7.620, 22.860) with :
+  pin CONFIG_0 at Point(-7.620, 22.860) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[23] at Point(-7.620, 20.320) with :
+  pin PE[2].TX.N at Point(-7.620, 20.320) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[25] at Point(-7.620, 17.780) with :
+  pin PE[2].TX.P at Point(-7.620, 17.780) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[27] at Point(-7.620, 15.240) with :
+  pin PE[1].RX.N at Point(-7.620, 15.240) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[29] at Point(-7.620, 12.700) with :
+  pin PE[1].RX.P at Point(-7.620, 12.700) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[31] at Point(-7.620, 10.160) with :
+  pin GND[3] at Point(-7.620, 10.160) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[33] at Point(-7.620, 7.620) with :
+  pin PE[1].TX.N at Point(-7.620, 7.620) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[35] at Point(-7.620, 5.080) with :
+  pin PE[1].TX.P at Point(-7.620, 5.080) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[37] at Point(-7.620, 2.540) with :
+  pin GND[4] at Point(-7.620, 2.540) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[39] at Point(-7.620, 0.0) with :
+  pin PE[0].RX.N at Point(-7.620, 0.0) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[41] at Point(-7.620, -2.540) with :
+  pin PE[0].RX.P at Point(-7.620, -2.540) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[43] at Point(-7.620, -5.080) with :
+  pin GND[5] at Point(-7.620, -5.080) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[45] at Point(-7.620, -7.620) with :
+  pin PE[0].TX.N at Point(-7.620, -7.620) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[47] at Point(-7.620, -10.160) with :
+  pin PE[0].TX.P at Point(-7.620, -10.160) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[49] at Point(-7.620, -12.700) with :
+  pin GND[6] at Point(-7.620, -12.700) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[51] at Point(-7.620, -15.240) with :
+  pin REFCLKN at Point(-7.620, -15.240) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[53] at Point(-7.620, -17.780) with :
+  pin REFCLKP at Point(-7.620, -17.780) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[55] at Point(-7.620, -20.320) with :
+  pin GND[7] at Point(-7.620, -20.320) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[57] at Point(-7.620, -22.860) with :
+  pin NC[0] at Point(-7.620, -22.860) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[67] at Point(-7.620, -35.560) with :
+  pin CONFIG_1 at Point(-7.620, -35.560) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[69] at Point(-7.620, -38.100) with :
+  pin GND[8] at Point(-7.620, -38.100) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[71] at Point(-7.620, -40.640) with :
+  pin GND[9] at Point(-7.620, -40.640) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[73] at Point(-7.620, -43.180) with :
+  pin CONFIG_2 at Point(-7.620, -43.180) with :
     direction = Left
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[75] at Point(-7.620, -45.720) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin p[2] at Point(7.620, 48.260) with :
+
+  ; Right side pins
+  pin V_3V3[0] at Point(7.620, 48.260) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[4] at Point(7.620, 45.720) with :
+  pin V_3V3[1] at Point(7.620, 45.720) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[6] at Point(7.620, 43.180) with :
+  pin NC[1] at Point(7.620, 43.180) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[8] at Point(7.620, 40.640) with :
+  pin NC[2] at Point(7.620, 40.640) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[10] at Point(7.620, 38.100) with :
+  pin DAS_DSS at Point(7.620, 38.100) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[12] at Point(7.620, 35.560) with :
+  pin V_3V3[2] at Point(7.620, 35.560) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[14] at Point(7.620, 33.020) with :
+  pin V_3V3[3] at Point(7.620, 33.020) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[16] at Point(7.620, 30.480) with :
+  pin V_3V3[4] at Point(7.620, 30.480) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[18] at Point(7.620, 27.940) with :
+  pin V_3V3[5] at Point(7.620, 27.940) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[20] at Point(7.620, 25.400) with :
+  pin NC[3] at Point(7.620, 25.400) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[22] at Point(7.620, 22.860) with :
+  pin NC[4] at Point(7.620, 22.860) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[24] at Point(7.620, 20.320) with :
+  pin NC[5] at Point(7.620, 20.320) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[26] at Point(7.620, 17.780) with :
+  pin NC[6] at Point(7.620, 17.780) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[28] at Point(7.620, 15.240) with :
+  pin NC[7] at Point(7.620, 15.240) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[30] at Point(7.620, 12.700) with :
+  pin NC[8] at Point(7.620, 12.700) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[32] at Point(7.620, 10.160) with :
+  pin NC[9] at Point(7.620, 10.160) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[34] at Point(7.620, 7.620) with :
+  pin NC[10] at Point(7.620, 7.620) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[36] at Point(7.620, 5.080) with :
+  pin NC[11] at Point(7.620, 5.080) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[38] at Point(7.620, 2.540) with :
+  pin DEVSLP at Point(7.620, 2.540) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[40] at Point(7.620, 0.0) with :
+  pin NC[12] at Point(7.620, 0.0) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[42] at Point(7.620, -2.540) with :
+  pin NC[13] at Point(7.620, -2.540) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[44] at Point(7.620, -5.080) with :
+  pin NC[14] at Point(7.620, -5.080) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[46] at Point(7.620, -7.620) with :
+  pin NC[15] at Point(7.620, -7.620) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[48] at Point(7.620, -10.160) with :
+  pin NC[16] at Point(7.620, -10.160) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[50] at Point(7.620, -12.700) with :
+  pin PERST# at Point(7.620, -12.700) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[52] at Point(7.620, -15.240) with :
+  pin CLKREQ# at Point(7.620, -15.240) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[54] at Point(7.620, -17.780) with :
+  pin PEWAKE# at Point(7.620, -17.780) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[56] at Point(7.620, -20.320) with :
+  pin MFG1 at Point(7.620, -20.320) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[58] at Point(7.620, -22.860) with :
+  pin MFG2 at Point(7.620, -22.860) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[68] at Point(7.620, -35.560) with :
+  pin SUSCLK at Point(7.620, -35.560) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[70] at Point(7.620, -38.100) with :
+  pin V_3V3[6] at Point(7.620, -38.100) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[72] at Point(7.620, -40.640) with :
+  pin V_3V3[7] at Point(7.620, -40.640) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
-  pin p[74] at Point(7.620, -43.180) with :
+  pin V_3V3[8] at Point(7.620, -43.180) with :
     direction = Right
     length = 5.080
     number-size = 1.270
     name-size = 1.270
   pin SHIELD[0] at Point(7.620, -48.260) with :
     direction = Right
-    length = 5.080 
+    length = 5.080
     number-size = 1.270
     name-size = 1.270
   pin SHIELD[1] at Point(7.620, -50.800) with :
@@ -472,6 +470,7 @@ public pcb-symbol _1-2199230-6 :
     length = 5.080
     number-size = 1.270
     name-size = 1.270
+
 
 public pcb-component component :
   port PE : lane-pair[4]

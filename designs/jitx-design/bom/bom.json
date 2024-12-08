@@ -172,7 +172,7 @@
 						"ref":	"J1",
 						"fileinfo":	{
 							"filename":	"components\\TE\\USB4\\2388749-1.stanza",
-							"line":	1382,
+							"line":	1377,
 							"column":	2
 						}
 					}],
@@ -196,7 +196,7 @@
 						},
 						"ref":	"J2",
 						"fileinfo":	{
-							"filename":	"c:\\\\\\\\Users\\\\\\\\jamms\\\\\\\\OneDrive\\\\\\\\JITx\\\\\\\\Projects\\\\\\\\JITx-ASM2464PDX_design2\\\\\\\\main.stanza",
+							"filename":	"c:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\main.stanza",
 							"line":	74,
 							"column":	2
 						}
@@ -390,7 +390,7 @@
 						"ref":	"J1",
 						"fileinfo":	{
 							"filename":	"components\\TE\\USB4\\2388749-1.stanza",
-							"line":	1382,
+							"line":	1377,
 							"column":	2
 						}
 					}],
@@ -414,7 +414,7 @@
 						},
 						"ref":	"J2",
 						"fileinfo":	{
-							"filename":	"c:\\\\\\\\Users\\\\\\\\jamms\\\\\\\\OneDrive\\\\\\\\JITx\\\\\\\\Projects\\\\\\\\JITx-ASM2464PDX_design2\\\\\\\\main.stanza",
+							"filename":	"c:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\main.stanza",
 							"line":	74,
 							"column":	2
 						}

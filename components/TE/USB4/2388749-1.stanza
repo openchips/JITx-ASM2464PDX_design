@@ -1350,12 +1350,12 @@ public pcb-component conn-component :
   assign-landpattern(TE_2388749-1)
   ; assign-symbol(_2388749-1)
 
+    
+
   property(self.manufacturer) = "TE Connectivity"
 
 
-
 public pcb-module device :
-
   port conn : usb-c-connector
 
   public inst J : conn-component
@@ -1371,27 +1371,29 @@ public pcb-module device :
   topo-net(conn.bus.data, usb-data.A)
   topo-net(usb-data.A, usb-data.B)
 
-  topo-net(J.TX1, conn.bus.lane[0].TX)
-  topo-net(J.RX1, conn.bus.lane[0].RX)
-  topo-net(J.TX2, conn.bus.lane[1].TX)
-  topo-net(J.RX2, conn.bus.lane[1].RX)
-
-  val b = usb-superspeed()
+  ; topo-net(J.TX1, conn.bus.lane[0].TX)
+  ; topo-net(J.RX1, conn.bus.lane[0].RX)
+  ; topo-net(J.TX2, conn.bus.lane[1].TX)
+  ; topo-net(J.RX2, conn.bus.lane[1].RX)
+  val b = usb-c()
   supports b:
-    b.data.P => self.D0.P
-    b.data.N => self.D0.N
-    b.lane[0].TX.P => self.TX1.P
-    b.lane[0].TX.N => self.TX1.N
-    b.lane[0].RX.P => self.RX1.P
-    b.lane[0].RX.N => self.RX1.N
-
+    b.data.P => usb-data.A.P
+    b.data.N => usb-data.A.N
+    b.lane[0].TX => J.TX1
+    ; b.lane[0].TX.N => self.TX1.N
+    b.lane[0].RX => J.RX1
+    ; b.lane[0].RX.N => self.RX1.N
+    b.cc[0] => J.CC1
+    b.sbu[0] => J.SBU1
+    
   supports b:
-    b.data.P => self.D2.P
-    b.data.N => self.D2.N
-    b.lane[0].TX.P => self.SSTX.P
-    b.lane[0].TX.N => self.SSTX.N
-    b.lane[0].RX.P => self.SSRX.P
-    b.lane[0].RX.N => self.SSRX.N
+    b.data.P => usb-data.A.P
+    b.data.N => usb-data.A.N
+    b.lane[1].TX => J.TX2
+    ; b.lane[0].TX.N => self.TX1.N
+    b.lane[1].RX => J.RX2
+    b.cc[1] => J.CC2
+    b.sbu[1] => J.SBU2
 
   net (J.GND[0] J.GND[1] J.GND[2] J.GND[3] conn.vbus.V-)
   net (conn.shield J.SHIELD)

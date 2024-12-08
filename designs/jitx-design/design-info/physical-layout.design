@@ -1,5 +1,4 @@
 {  
-  "operations": [  
-    {"operation":"place","place":{"placements":[{"id":"FGGGdn9Pc9pM2R5j9kQF9j","pose":{"center":{"x":36,"y":-6.5159998416900624},"angle":0},"side":"top"},{"id":"53gZgENRPRhRdYnsLXGZJB","pose":{"center":{"x":58.35675048828125,"y":-6.675},"angle":0},"side":"top"},{"id":"8FEm1YN9uPuZ2V79GyV2JE","pose":{"center":{"x":82.526375770568848,"y":-11.736024367809295},"angle":180},"side":"top"},{"id":"Ch4KSrjsPwWSJbgYgDQyYk","pose":{"center":{"x":82.526375770568848,"y":-13.3392245054245},"angle":0},"side":"top"}]}}
+  "operations": [
   ]
 }
