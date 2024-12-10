@@ -1379,19 +1379,20 @@ public pcb-module device :
   supports b:
     b.data.P => usb-data.A.P
     b.data.N => usb-data.A.N
-    b.lane[0].TX => J.TX1
-    ; b.lane[0].TX.N => self.TX1.N
-    b.lane[0].RX => J.RX1
-    ; b.lane[0].RX.N => self.RX1.N
+    b.lane[0].TX.P => J.TX1.P
+    b.lane[0].TX.N => J.TX1.N
+    b.lane[0].RX.P => J.RX1.P
+    b.lane[0].RX.N => J.RX1.N
     b.cc[0] => J.CC1
     b.sbu[0] => J.SBU1
     
   supports b:
-    b.data.P => usb-data.A.P
-    b.data.N => usb-data.A.N
-    b.lane[1].TX => J.TX2
-    ; b.lane[0].TX.N => self.TX1.N
-    b.lane[1].RX => J.RX2
+    b.data.P => usb-data.B.P
+    b.data.N => usb-data.B.N
+    b.lane[1].TX.P => J.TX2.P
+    b.lane[1].TX.N => J.TX1.N
+    b.lane[1].RX.P => J.RX2.P
+    b.lane[1].RX.N => J.RX2.N
     b.cc[1] => J.CC2
     b.sbu[1] => J.SBU2
 
