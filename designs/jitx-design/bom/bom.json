@@ -84,6 +84,186 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
+									"name":	"tx-coupler"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C11",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-coupler"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C10",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-coupler"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C9",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-coupler"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C8",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-coupler"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C7",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-coupler"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C6",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-coupler"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C5",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-coupler"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C4",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C13",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C12",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
 									"name":	"tx-bcap"
 								},
 								"field":	{
@@ -162,12 +342,17 @@
 				"description":	"",
 				"insts":	[{
 						"inst":	{
-							"name":	"m2_connector"
+							"ref":	{
+								"name":	"m2_connector"
+							},
+							"field":	{
+								"name":	"sw"
+							}
 						},
 						"ref":	"J3",
 						"fileinfo":	{
-							"filename":	"c:\\\\\\\\Users\\\\\\\\jamms\\\\\\\\OneDrive\\\\\\\\JITx\\\\\\\\Projects\\\\\\\\JITx-ASM2464PDX_design2\\\\\\\\main.stanza",
-							"line":	77,
+							"filename":	"components\\TE\\M.2\\1-2199230-6.stanza",
+							"line":	571,
 							"column":	2
 						}
 					}],
@@ -222,7 +407,7 @@
 						"ref":	"J2",
 						"fileinfo":	{
 							"filename":	"c:\\\\\\\\Users\\\\\\\\jamms\\\\\\\\OneDrive\\\\\\\\JITx\\\\\\\\Projects\\\\\\\\JITx-ASM2464PDX_design2\\\\\\\\main.stanza",
-							"line":	74,
+							"line":	77,
 							"column":	2
 						}
 					}],
@@ -279,10 +464,10 @@
 			"value":	7
 		}, {
 			"name":	"Components",
-			"value":	8
+			"value":	18
 		}, {
 			"name":	"Cost",
-			"value":	"$1.89"
+			"value":	"$2.89"
 		}],
 	"is_update":	false,
 	"old_bom":	{
@@ -325,6 +510,150 @@
 				},
 				"description":	"CAP CER 1.5PF 25V NP0 0201",
 				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-coupler"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C11",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-coupler"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C10",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-coupler"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C9",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-coupler"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C8",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-coupler"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C7",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-coupler"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C6",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-coupler"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C5",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-coupler"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C4",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
 						"inst":	{
 							"ref":	{
 								"ref":	{
@@ -406,12 +735,17 @@
 				"description":	"",
 				"insts":	[{
 						"inst":	{
-							"name":	"m2_connector"
+							"ref":	{
+								"name":	"m2_connector"
+							},
+							"field":	{
+								"name":	"sw"
+							}
 						},
 						"ref":	"J3",
 						"fileinfo":	{
-							"filename":	"c:\\\\\\\\Users\\\\\\\\jamms\\\\\\\\OneDrive\\\\\\\\JITx\\\\\\\\Projects\\\\\\\\JITx-ASM2464PDX_design2\\\\\\\\main.stanza",
-							"line":	77,
+							"filename":	"components\\TE\\M.2\\1-2199230-6.stanza",
+							"line":	571,
 							"column":	2
 						}
 					}],
@@ -466,7 +800,7 @@
 						"ref":	"J2",
 						"fileinfo":	{
 							"filename":	"c:\\\\\\\\Users\\\\\\\\jamms\\\\\\\\OneDrive\\\\\\\\JITx\\\\\\\\Projects\\\\\\\\JITx-ASM2464PDX_design2\\\\\\\\main.stanza",
-							"line":	74,
+							"line":	76,
 							"column":	2
 						}
 					}],

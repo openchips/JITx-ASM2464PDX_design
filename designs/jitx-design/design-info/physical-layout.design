@@ -28,6 +28,8 @@
     {"operation":"route","request":{"layer":0,"pads":["FGGGdn9Pc9pM2R5j9kQF9j/3croXfncguMYSRzaLMtPYt","63WZPVENA8RMPw6mXMPdk2/ATgrFkEJPW4gGYo2PRAhWr"]},"routes":[]},
     {"operation":"route-modify","modify":[{"id":"vvefpLFv1Hj6fcctaPrno","configure":{"origin-target":"fit","destination-target":"fit"}}]},
     {"operation":"unroute","delete":{"layer":0,"routes":["vvefpLFv1Hj6fcctaPrno"]}},
-    {"operation":"area-region","regions":{}}
+    {"operation":"area-region","regions":{}},
+    {"operation":"place","place":{"placements":[{"id":"9NubFG7z4NM9oc9w3ukZ8s","pose":{"center":{"x":55.715,"y":-22.6},"angle":270},"side":"top"},{"id":"9wrJSBvLYDeaFh7jvAkUQA","pose":{"center":{"x":65.765002157688144,"y":-24.060000059567393},"angle":0},"side":"top"},{"id":"A87RqDGkdfcTmZbNgXbJEK","pose":{"center":{"x":60.6350010895729,"y":-18.929998991452159},"angle":0},"side":"top"},{"id":"Fe8xqoDFXDViSLugy2egHb","pose":{"center":{"x":60.6350010895729,"y":-24.060000059567393},"angle":0},"side":"top"}]}},
+    {"operation":"place","place":{"placements":[{"id":"65pLCqDxi1Q1oQfdqmXcD6","pose":{"center":{"x":57.4,"y":-23.035},"angle":180},"side":"top"}]}}
   ]
 }
