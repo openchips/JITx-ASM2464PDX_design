@@ -532,8 +532,6 @@ public pcb-module module :
       usb_c.lane[i].TX.P => sw.UTXP[i]
       usb_c.lane[i].TX.N => sw.UTXN[i]
 
-
-
   val bd-4x = pcie(4)
   supports bd-4x :
     for i in 0 to 4 do :

@@ -1,6 +1,7 @@
 /jitx-design
 /pending.*dat
 .DS_Store
+.view
 
 # Data Cache - Files that don't need to be version controlled.
 designs/**/cache/
