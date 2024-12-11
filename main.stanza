@@ -61,7 +61,7 @@ pcb-module my-design :
   val ti-3 = usb-get-trace-impedance(USB3)
   val usb3-constraints = USB-Constraint(proto = USB3, route-struct = diff(ti-3))
   val lane-constraint = LaneConstraint(usb3-constraints)
-  for i in 0 to 2 do :
+  for i in indices(ep1.lane) do :
     within [src, dst] = constrain-topology(ep1.lane[i] => ep2.lane[i], lane-constraint):
       ; Here we construct the differential pair topology for the lane.
       ; The Lane consists of two diff-pairs - TX and RX
