@@ -72,9 +72,9 @@ pcb-module my-design :
     topo-pair(src.TX => tx-bcap => dst.TX)
 
   inst header : pin-header(2, 1)
-  place(header) at loc(0.0, 0.0) on Top
+  place(header) at loc(-20.0, 15.0) on Top
 
-  ; inst m2_connector : ASM001/components/TE_1-2199230-6/component
+  inst m2_connector : ASM001/components/TE_1-2199230-6/component
 
   ; Instantiate and connect a 10k resistor component between vdd and signal
   insert-resistor(VDD, SIGNAL, res-query, resistance = 10.0e3)

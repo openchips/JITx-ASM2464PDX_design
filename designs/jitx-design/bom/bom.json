@@ -156,6 +156,31 @@
 				}
 			}, {
 				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"",
+				"insts":	[{
+						"inst":	{
+							"name":	"m2_connector"
+						},
+						"ref":	"J3",
+						"fileinfo":	{
+							"filename":	"c:\\\\\\\\Users\\\\\\\\jamms\\\\\\\\OneDrive\\\\\\\\JITx\\\\\\\\Projects\\\\\\\\JITx-ASM2464PDX_design2\\\\\\\\main.stanza",
+							"line":	77,
+							"column":	2
+						}
+					}],
+				"datasheet":	"",
+				"manufacturer":	"",
+				"mpn":	"1-2199230-6",
+				"vendor":	"Arrow",
+				"sku":	"1-2199230-6",
+				"price":	1.6885,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
 					"code":	5,
 					"name":	"Potential Alternate Vendors"
 				},
@@ -172,7 +197,7 @@
 						"ref":	"J1",
 						"fileinfo":	{
 							"filename":	"components\\TE\\USB4\\2388749-1.stanza",
-							"line":	1377,
+							"line":	1361,
 							"column":	2
 						}
 					}],
@@ -196,7 +221,7 @@
 						},
 						"ref":	"J2",
 						"fileinfo":	{
-							"filename":	"c:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\main.stanza",
+							"filename":	"c:\\\\\\\\Users\\\\\\\\jamms\\\\\\\\OneDrive\\\\\\\\JITx\\\\\\\\Projects\\\\\\\\JITx-ASM2464PDX_design2\\\\\\\\main.stanza",
 							"line":	74,
 							"column":	2
 						}
@@ -246,17 +271,18 @@
 			}, {
 			}, {
 			}, {
+			}, {
 			}]
 	},
 	"metrics":	[{
 			"name":	"Line Items",
-			"value":	6
-		}, {
-			"name":	"Components",
 			"value":	7
 		}, {
+			"name":	"Components",
+			"value":	8
+		}, {
 			"name":	"Cost",
-			"value":	"$0.20"
+			"value":	"$1.89"
 		}],
 	"is_update":	false,
 	"old_bom":	{
@@ -374,6 +400,31 @@
 				}
 			}, {
 				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"",
+				"insts":	[{
+						"inst":	{
+							"name":	"m2_connector"
+						},
+						"ref":	"J3",
+						"fileinfo":	{
+							"filename":	"c:\\\\\\\\Users\\\\\\\\jamms\\\\\\\\OneDrive\\\\\\\\JITx\\\\\\\\Projects\\\\\\\\JITx-ASM2464PDX_design2\\\\\\\\main.stanza",
+							"line":	77,
+							"column":	2
+						}
+					}],
+				"datasheet":	"",
+				"manufacturer":	"",
+				"mpn":	"1-2199230-6",
+				"vendor":	"Arrow",
+				"sku":	"1-2199230-6",
+				"price":	1.6885,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
 					"code":	5,
 					"name":	"Potential Alternate Vendors"
 				},
@@ -390,7 +441,7 @@
 						"ref":	"J1",
 						"fileinfo":	{
 							"filename":	"components\\TE\\USB4\\2388749-1.stanza",
-							"line":	1377,
+							"line":	1361,
 							"column":	2
 						}
 					}],
@@ -414,7 +465,7 @@
 						},
 						"ref":	"J2",
 						"fileinfo":	{
-							"filename":	"c:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\main.stanza",
+							"filename":	"c:\\\\\\\\Users\\\\\\\\jamms\\\\\\\\OneDrive\\\\\\\\JITx\\\\\\\\Projects\\\\\\\\JITx-ASM2464PDX_design2\\\\\\\\main.stanza",
 							"line":	74,
 							"column":	2
 						}
@@ -459,6 +510,7 @@
 				"query_properties":	null
 			}],
 		"entries":	[{
+			}, {
 			}, {
 			}, {
 			}, {

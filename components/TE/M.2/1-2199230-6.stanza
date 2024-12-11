@@ -7,6 +7,18 @@ defpackage ASM001/components/TE_1-2199230-6 :
   import ocdb/utils/box-symbol
   import jsl/bundles/general
 
+  import jsl/design/settings
+  import jsl/ensure
+  import jsl/geometry/basics
+  import jsl/landpatterns
+
+  import jsl/symbols
+  import jsl/bundles
+  import jsl/protocols
+  import jsl/si/helpers
+
+  import jsl/pin-assignment
+  import jsl/protocols/pcie
 
 pcb-pad oval-th-pad-1 :
   type = TH
@@ -552,4 +564,24 @@ public pcb-component component :
 
   ;property(self.Digi-Key_Part_Number) = "A118046TR-ND"
   property(self.manufacturer) = "TE Connectivity"
+
+
+public pcb-module module :
+
+  public inst sw : component
+  
+  val bd-4x = pcie(4)
+  supports bd-4x :
+    for i in 0 to 4 do :
+    ;PE[0].RX.N
+      bd-4x.data.lane[i].RX.P => sw.PE[i].RX.P
+      bd-4x.data.lane[i].RX.N => sw.PE[i].RX.N
+      bd-4x.data.lane[i].TX.P => sw.PE[i].TX.P
+      bd-4x.data.lane[i].TX.N => sw.PE[i].TX.N
+    bd-4x.data.refclk.P => sw.REFCLKP
+    bd-4x.data.refclk.N => sw.REFCLKN
+
+    bd-4x.control.PEWAKE# => sw.PEWAKE#
+    bd-4x.control.PERST#  => sw.PERST#
+    bd-4x.control.CLKREQ# => sw.CLKREQ#
 
