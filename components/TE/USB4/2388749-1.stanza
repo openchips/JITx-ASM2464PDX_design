@@ -800,7 +800,6 @@ public pcb-component conn-component :
   diff-pin-model(self.RX1, delay = typ(0.0))
   diff-pin-model(self.RX2, delay = typ(0.0))
 
-  reversible-dual-pair(self.D0, self.D1)
 
   assign-landpattern(TE_2388749-1)
   ; assign-symbol(_2388749-1)
@@ -822,16 +821,36 @@ public pcb-module module :
   net (J.SBU1 conn.bus.sbu[0])
   net (J.SBU2 conn.bus.sbu[1])
 
+  reversible-dual-pair(J.D0, J.D1)
+
   require usb-data : dual-pair from J
   topo-net(conn.bus.data, usb-data.A)
   topo-net(usb-data.A, usb-data.B)
 
-  topo-net(J.TX1, conn.bus.lane[0].TX)
-  topo-net(J.RX1, conn.bus.lane[0].RX)
-  topo-net(J.TX2, conn.bus.lane[1].TX)
-  topo-net(J.RX2, conn.bus.lane[1].RX)
+  supports lane-pair:
+    lane-pair.TX.P => J.TX1.P
+    lane-pair.TX.N => J.TX1.N
+    lane-pair.RX.P => J.RX1.P
+    lane-pair.RX.N => J.RX1.N
 
-  
+  supports lane-pair:
+    lane-pair.TX.P => J.TX2.P
+    lane-pair.TX.N => J.TX2.N
+    lane-pair.RX.P => J.RX2.P
+    lane-pair.RX.N => J.RX2.N
+
+  require lp:lane-pair[2] from self
+
+  for i in 0 to length(lp) do:
+    topo-net(conn.bus.lane[i].TX => lp[i].TX)
+    topo-net(conn.bus.lane[i].RX => lp[i].RX)
+
+
+  ; topo-net(J.TX1, conn.bus.lane[0].TX)
+  ; topo-net(J.RX1, conn.bus.lane[0].RX)
+  ; topo-net(J.TX2, conn.bus.lane[1].TX)
+  ; topo-net(J.RX2, conn.bus.lane[1].RX)
+
   val usb_c = usb-c(2)
   supports usb_c :
     usb_c.data.P => conn.bus.data.P
@@ -871,7 +890,8 @@ Circuit Includes:
 
 <DOC>
 public defn USBC-HighSpeed-Iface (
-  R-query:ResistorQuery = ResistorQuery(),
+  R-query:ResistorQuery = get-default-resistor-query()
+  ; R-query:ResistorQuery = ResistorQuery(),
   C-query:CapacitorQuery = CapacitorQuery(),
   ):
   pcb-module USBC-HighSpeed-Iface:
@@ -930,11 +950,12 @@ Circuit Includes:
 
 <DOC>
 public defn USBC-USB4-Iface (
-  R-query:ResistorQuery = ResistorQuery(),
-  C-query:CapacitorQuery = CapacitorQuery()
+  R-query:ResistorQuery = get-default-resistor-query(),
+  C-query:CapacitorQuery = get-default-capacitor-query()
 ):
   pcb-module USBC-USB4-Iface:
-    port USB : usb-data
+    ; port USB : usb-data
+    port USB : usb-c
     port VDD-USB : power
 
     public inst USBC : module
@@ -945,7 +966,9 @@ public defn USBC-USB4-Iface (
     ; According to USB4 System Design Guidelines
     val bleed-R = create-resistor(R-query, 
                                 case = valid-smd-pkgs("0201"), 
-                                resistance = 200.0e3)
+                                resistance = Interval(150.0e3, 250.0e3)
+                                )
+                                ; resistance = 200.0e3)
     
     val rx-ac-C = create-capacitor(C-query, 
                                  case = valid-smd-pkgs("0201"), 
@@ -996,14 +1019,32 @@ public defn USBC-USB4-Iface (
                      inst-name? = n,
                      make-public = true)
 
+    ; CC/SBU connections to external
+    net (USB.cc, USBC.conn.bus.cc)
+    net (USB.sbu, USBC.conn.bus.sbu)
+
+
     ; ESD Protection
-    public inst esd-prot : diodes/ESD224DQAR/device
-    net (esd-prot.GND[1], esd-prot.GND[2], GND)
+
+    val esd = diodes/ESD224DQAR/create-esd-pool(3, GND)
 
     ; USB Data Path
-    require esd-pair:dual-pair from esd-prot
+    require esd-pair:dual-pair from esd
     topo-pair(USB.data => esd-pair.A => esd-pair.B => USBC.conn.bus.data)
+    ;          A       =>       B                  => C
     set-signal-end(USB.data, USBC.conn.bus.data)
+
+    for i in 0 to length(USBC.conn.bus.lanes) do:
+      inst tx-bcap : dp-coupler(tx-ac-C)
+
+      require tx-esd:dual-pair from esd
+      topo-pair(USB.bus.lane[i].TX => tx-bcap => tx-esd => USBC.conn.bus.lane[i].TX)
+      set-signal-end(USB.bus.lane[i].TX, USBC.conn.bus.lane[i].TX)
+
+      require rx-esd:dual-pair from esd
+      topo-pair(USB.bus.lane[i].RX => rx-esd => USBC.conn.bus.lane[i].RX)
+      set-signal-end(USB.bus.lane[i].RX, USBC.conn.bus.lane[i].RX)
+
 
     ; Shield Termination
     inst shield-term : shield-termination(R-query, C-query)
