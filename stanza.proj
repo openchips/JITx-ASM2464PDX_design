@@ -5,6 +5,7 @@ package main defined-in "main.stanza"
 package board defined-in "board.stanza"
 package helpers defined-in "helpers.stanza"
 
+package ASM001/common/board defined-in "common/board.stanza"
 package ASM001/common/components defined-in "common/common-components.stanza"
 
 package ASM001/components/Asmedia/ASM2464PDX defined-in "components/Asmedia/ASM2464PDX.stanza"

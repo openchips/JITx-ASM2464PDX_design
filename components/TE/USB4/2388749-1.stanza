@@ -577,551 +577,6 @@ public pcb-landpattern TE_2388749-1 :
     Point(5.644, -3.791)
     Point(5.722, -3.779)
     Point(5.800, -3.775)])
-  layer(Silkscreen("F-SilkS", Top)) = Line(0.127, [Point(-4.700, -6.800), Point(-4.700, -3.000)])
-  layer(Silkscreen("F-SilkS", Top)) = Line(0.127, [Point(-4.700, -6.800), Point(4.700, -6.800)])
-  layer(Silkscreen("F-SilkS", Top)) = Line(0.127, [Point(-4.700, 1.145), Point(-4.700, 2.000)])
-  layer(Silkscreen("F-SilkS", Top)) = Line(0.127, [Point(-4.700, 2.000), Point(-3.072, 2.000)])
-  layer(Silkscreen("F-SilkS", Top)) = Line(0.127, [Point(3.322, 2.000), Point(4.700, 2.000)])
-  layer(Silkscreen("F-SilkS", Top)) = Line(0.127, [Point(4.700, -6.800), Point(4.700, -3.000)])
-  layer(Silkscreen("F-SilkS", Top)) = Line(0.127, [Point(4.700, 1.145), Point(4.700, 2.000)])
-  layer(CustomLayer("Mechanical 1", Top)) = Line(0.0, [Point(-4.625, -6.800), Point(-4.625, -3.075)])
-  layer(CustomLayer("Mechanical 1", Top)) = Line(0.0, [Point(-4.625, -6.800), Point(4.625, -6.800)])
-  layer(CustomLayer("Mechanical 1", Top)) = Line(0.0, [Point(-4.625, -2.050), Point(4.625, -2.050)])
-  layer(CustomLayer("Mechanical 1", Top)) = Line(0.0, [Point(3.570, -0.390), Point(3.630, -0.390)])
-  layer(CustomLayer("Mechanical 1", Top)) = Line(0.0, [Point(3.570, 0.390), Point(3.630, 0.390)])
-  layer(CustomLayer("Mechanical 1", Top)) = Line(0.0, [Point(4.625, -6.800), Point(4.625, -3.075)])
-  layer(CustomLayer("Mechanical 13", Top)) = Line(0.127, [Point(-8.000, -6.800), Point(8.000, -6.800)])
-  layer(CustomLayer("Mechanical 13", Top)) = Line(0.127, [Point(-4.700, -8.050), Point(-4.700, 2.000)])
-  layer(CustomLayer("Mechanical 13", Top)) = Line(0.127, [Point(-4.700, -8.050), Point(4.700, -8.050)])
-  layer(CustomLayer("Mechanical 13", Top)) = Line(0.127, [Point(-4.700, 2.000), Point(4.700, 2.000)])
-  layer(CustomLayer("Mechanical 13", Top)) = Line(0.127, [Point(4.700, -8.050), Point(4.700, 2.000)])
-  layer(CustomLayer("Mechanical 15", Top)) = Line(0.050, [Point(-6.700, -8.300), Point(-6.700, 2.500)])
-  layer(CustomLayer("Mechanical 15", Top)) = Line(0.050, [Point(-6.700, -8.300), Point(6.700, -8.300)])
-  layer(CustomLayer("Mechanical 15", Top)) = Line(0.050, [Point(-6.700, 2.500), Point(6.700, 2.500)])
-  layer(CustomLayer("Mechanical 15", Top)) = Line(0.050, [Point(6.700, -8.300), Point(6.700, 2.500)])
-  layer(Silkscreen("F-SilkS", Top)) = Polyline(0.200, [
-    Arc(-2.700, 3.000, 0.100, 0.0, 360.000)])
-  layer(CustomLayer("Mechanical 1", Top)) = Polyline(0.0, [
-    Arc(-5.000, -3.075, 0.375, 0.0, 60.000)])
-  layer(CustomLayer("Mechanical 1", Top)) = Polyline(0.0, [
-    Arc(-4.625, -2.425, 0.375, 90.000, 150.000)])
-  layer(CustomLayer("Mechanical 1", Top)) = Polyline(0.0, [
-    Arc(3.570, 0.0, 0.390, 90.000, 180.000)])
-  layer(CustomLayer("Mechanical 1", Top)) = Polyline(0.0, [
-    Arc(3.630, 0.0, 0.390, 270.000, 180.000)])
-  layer(CustomLayer("Mechanical 1", Top)) = Polyline(0.0, [
-    Arc(4.625, -2.425, 0.375, 300.000, 150.000)])
-  layer(CustomLayer("Mechanical 1", Top)) = Polyline(0.0, [
-    Arc(5.000, -3.075, 0.375, 120.000, 60.000)])
-  layer(CustomLayer("Mechanical 13", Top)) = Polyline(0.200, [
-    Arc(-2.700, 3.000, 0.100, 0.0, 360.000)])
-  layer(CustomLayer("Mechanical 13", Top)) = Text("PCB EDGE", 1.2192, SW, loc(7.000, -6.500), "Arial", StrokeFont, false, false)
-  layer(Silkscreen("F-SilkS", Top)) = Text(">REF", 2.286, SW, loc(14.237, 9.893, 270.000), "Arial", StrokeFont, false, false)
-
-  copper(LayerIndex(0)) = Polygon([
-    Point(-5.732, -3.879)
-    Point(-5.665, -3.889)
-    Point(-5.599, -3.907)
-    Point(-5.536, -3.931)
-    Point(-5.475, -3.962)
-    Point(-5.418, -3.999)
-    Point(-5.365, -4.042)
-    Point(-5.317, -4.090)
-    Point(-5.274, -4.143)
-    Point(-5.237, -4.200)
-    Point(-5.206, -4.261)
-    Point(-5.182, -4.324)
-    Point(-5.164, -4.390)
-    Point(-5.154, -4.457)
-    Point(-5.150, -4.525)
-    Point(-5.150, -5.575)
-    Point(-5.154, -5.643)
-    Point(-5.164, -5.710)
-    Point(-5.182, -5.776)
-    Point(-5.206, -5.839)
-    Point(-5.237, -5.900)
-    Point(-5.274, -5.957)
-    Point(-5.317, -6.010)
-    Point(-5.365, -6.058)
-    Point(-5.418, -6.101)
-    Point(-5.475, -6.138)
-    Point(-5.536, -6.169)
-    Point(-5.599, -6.193)
-    Point(-5.665, -6.211)
-    Point(-5.732, -6.221)
-    Point(-5.800, -6.225)
-    Point(-5.868, -6.221)
-    Point(-5.935, -6.211)
-    Point(-6.001, -6.193)
-    Point(-6.064, -6.169)
-    Point(-6.125, -6.138)
-    Point(-6.182, -6.101)
-    Point(-6.235, -6.058)
-    Point(-6.283, -6.010)
-    Point(-6.326, -5.957)
-    Point(-6.363, -5.900)
-    Point(-6.394, -5.839)
-    Point(-6.418, -5.776)
-    Point(-6.436, -5.710)
-    Point(-6.446, -5.643)
-    Point(-6.450, -5.575)
-    Point(-6.450, -4.525)
-    Point(-6.446, -4.457)
-    Point(-6.436, -4.390)
-    Point(-6.418, -4.324)
-    Point(-6.394, -4.261)
-    Point(-6.363, -4.200)
-    Point(-6.326, -4.143)
-    Point(-6.283, -4.090)
-    Point(-6.235, -4.042)
-    Point(-6.182, -3.999)
-    Point(-6.125, -3.962)
-    Point(-6.064, -3.931)
-    Point(-6.001, -3.907)
-    Point(-5.935, -3.889)
-    Point(-5.868, -3.879)
-    Point(-5.800, -3.875)])
-  copper(LayerIndex(0)) = Polygon([
-    Point(-5.032, 0.791)
-    Point(-4.965, 0.781)
-    Point(-4.899, 0.763)
-    Point(-4.836, 0.739)
-    Point(-4.775, 0.708)
-    Point(-4.718, 0.671)
-    Point(-4.665, 0.628)
-    Point(-4.617, 0.580)
-    Point(-4.574, 0.527)
-    Point(-4.537, 0.470)
-    Point(-4.506, 0.409)
-    Point(-4.482, 0.346)
-    Point(-4.464, 0.280)
-    Point(-4.454, 0.213)
-    Point(-4.450, 0.145)
-    Point(-4.450, -0.905)
-    Point(-4.454, -0.973)
-    Point(-4.464, -1.040)
-    Point(-4.482, -1.106)
-    Point(-4.506, -1.169)
-    Point(-4.537, -1.230)
-    Point(-4.574, -1.287)
-    Point(-4.617, -1.340)
-    Point(-4.665, -1.388)
-    Point(-4.718, -1.431)
-    Point(-4.775, -1.468)
-    Point(-4.836, -1.499)
-    Point(-4.899, -1.523)
-    Point(-4.965, -1.541)
-    Point(-5.032, -1.551)
-    Point(-5.100, -1.555)
-    Point(-5.168, -1.551)
-    Point(-5.235, -1.541)
-    Point(-5.301, -1.523)
-    Point(-5.364, -1.499)
-    Point(-5.425, -1.468)
-    Point(-5.482, -1.431)
-    Point(-5.535, -1.388)
-    Point(-5.583, -1.340)
-    Point(-5.626, -1.287)
-    Point(-5.663, -1.230)
-    Point(-5.694, -1.169)
-    Point(-5.718, -1.106)
-    Point(-5.736, -1.040)
-    Point(-5.746, -0.973)
-    Point(-5.750, -0.905)
-    Point(-5.750, 0.145)
-    Point(-5.746, 0.213)
-    Point(-5.736, 0.280)
-    Point(-5.718, 0.346)
-    Point(-5.694, 0.409)
-    Point(-5.663, 0.470)
-    Point(-5.626, 0.527)
-    Point(-5.583, 0.580)
-    Point(-5.535, 0.628)
-    Point(-5.482, 0.671)
-    Point(-5.425, 0.708)
-    Point(-5.364, 0.739)
-    Point(-5.301, 0.763)
-    Point(-5.235, 0.781)
-    Point(-5.168, 0.791)
-    Point(-5.100, 0.795)])
-  copper(LayerIndex(0)) = Polygon([
-    Point(5.168, 0.791)
-    Point(5.235, 0.781)
-    Point(5.301, 0.763)
-    Point(5.364, 0.739)
-    Point(5.425, 0.708)
-    Point(5.482, 0.671)
-    Point(5.535, 0.628)
-    Point(5.583, 0.580)
-    Point(5.626, 0.527)
-    Point(5.663, 0.470)
-    Point(5.694, 0.409)
-    Point(5.718, 0.346)
-    Point(5.736, 0.280)
-    Point(5.746, 0.213)
-    Point(5.750, 0.145)
-    Point(5.750, -0.905)
-    Point(5.746, -0.973)
-    Point(5.736, -1.040)
-    Point(5.718, -1.106)
-    Point(5.694, -1.169)
-    Point(5.663, -1.230)
-    Point(5.626, -1.287)
-    Point(5.583, -1.340)
-    Point(5.535, -1.388)
-    Point(5.482, -1.431)
-    Point(5.425, -1.468)
-    Point(5.364, -1.499)
-    Point(5.301, -1.523)
-    Point(5.235, -1.541)
-    Point(5.168, -1.551)
-    Point(5.100, -1.555)
-    Point(5.032, -1.551)
-    Point(4.965, -1.541)
-    Point(4.899, -1.523)
-    Point(4.836, -1.499)
-    Point(4.775, -1.468)
-    Point(4.718, -1.431)
-    Point(4.665, -1.388)
-    Point(4.617, -1.340)
-    Point(4.574, -1.287)
-    Point(4.537, -1.230)
-    Point(4.506, -1.169)
-    Point(4.482, -1.106)
-    Point(4.464, -1.040)
-    Point(4.454, -0.973)
-    Point(4.450, -0.905)
-    Point(4.450, 0.145)
-    Point(4.454, 0.213)
-    Point(4.464, 0.280)
-    Point(4.482, 0.346)
-    Point(4.506, 0.409)
-    Point(4.537, 0.470)
-    Point(4.574, 0.527)
-    Point(4.617, 0.580)
-    Point(4.665, 0.628)
-    Point(4.718, 0.671)
-    Point(4.775, 0.708)
-    Point(4.836, 0.739)
-    Point(4.899, 0.763)
-    Point(4.965, 0.781)
-    Point(5.032, 0.791)
-    Point(5.100, 0.795)])
-  copper(LayerIndex(0)) = Polygon([
-    Point(5.868, -3.879)
-    Point(5.935, -3.889)
-    Point(6.001, -3.907)
-    Point(6.064, -3.931)
-    Point(6.125, -3.962)
-    Point(6.182, -3.999)
-    Point(6.235, -4.042)
-    Point(6.283, -4.090)
-    Point(6.326, -4.143)
-    Point(6.363, -4.200)
-    Point(6.394, -4.261)
-    Point(6.418, -4.324)
-    Point(6.436, -4.390)
-    Point(6.446, -4.457)
-    Point(6.450, -4.525)
-    Point(6.450, -5.575)
-    Point(6.446, -5.643)
-    Point(6.436, -5.710)
-    Point(6.418, -5.776)
-    Point(6.394, -5.839)
-    Point(6.363, -5.900)
-    Point(6.326, -5.957)
-    Point(6.283, -6.010)
-    Point(6.235, -6.058)
-    Point(6.182, -6.101)
-    Point(6.125, -6.138)
-    Point(6.064, -6.169)
-    Point(6.001, -6.193)
-    Point(5.935, -6.211)
-    Point(5.868, -6.221)
-    Point(5.800, -6.225)
-    Point(5.732, -6.221)
-    Point(5.665, -6.211)
-    Point(5.599, -6.193)
-    Point(5.536, -6.169)
-    Point(5.475, -6.138)
-    Point(5.418, -6.101)
-    Point(5.365, -6.058)
-    Point(5.317, -6.010)
-    Point(5.274, -5.957)
-    Point(5.237, -5.900)
-    Point(5.206, -5.839)
-    Point(5.182, -5.776)
-    Point(5.164, -5.710)
-    Point(5.154, -5.643)
-    Point(5.150, -5.575)
-    Point(5.150, -4.525)
-    Point(5.154, -4.457)
-    Point(5.164, -4.390)
-    Point(5.182, -4.324)
-    Point(5.206, -4.261)
-    Point(5.237, -4.200)
-    Point(5.274, -4.143)
-    Point(5.317, -4.090)
-    Point(5.365, -4.042)
-    Point(5.418, -3.999)
-    Point(5.475, -3.962)
-    Point(5.536, -3.931)
-    Point(5.599, -3.907)
-    Point(5.665, -3.889)
-    Point(5.732, -3.879)
-    Point(5.800, -3.875)])
-  copper(LayerIndex(0, Bottom)) = Polygon([
-    Point(-5.732, -3.879)
-    Point(-5.665, -3.889)
-    Point(-5.599, -3.907)
-    Point(-5.536, -3.931)
-    Point(-5.475, -3.962)
-    Point(-5.418, -3.999)
-    Point(-5.365, -4.042)
-    Point(-5.317, -4.090)
-    Point(-5.274, -4.143)
-    Point(-5.237, -4.200)
-    Point(-5.206, -4.261)
-    Point(-5.182, -4.324)
-    Point(-5.164, -4.390)
-    Point(-5.154, -4.457)
-    Point(-5.150, -4.525)
-    Point(-5.150, -5.575)
-    Point(-5.154, -5.643)
-    Point(-5.164, -5.710)
-    Point(-5.182, -5.776)
-    Point(-5.206, -5.839)
-    Point(-5.237, -5.900)
-    Point(-5.274, -5.957)
-    Point(-5.317, -6.010)
-    Point(-5.365, -6.058)
-    Point(-5.418, -6.101)
-    Point(-5.475, -6.138)
-    Point(-5.536, -6.169)
-    Point(-5.599, -6.193)
-    Point(-5.665, -6.211)
-    Point(-5.732, -6.221)
-    Point(-5.800, -6.225)
-    Point(-5.868, -6.221)
-    Point(-5.935, -6.211)
-    Point(-6.001, -6.193)
-    Point(-6.064, -6.169)
-    Point(-6.125, -6.138)
-    Point(-6.182, -6.101)
-    Point(-6.235, -6.058)
-    Point(-6.283, -6.010)
-    Point(-6.326, -5.957)
-    Point(-6.363, -5.900)
-    Point(-6.394, -5.839)
-    Point(-6.418, -5.776)
-    Point(-6.436, -5.710)
-    Point(-6.446, -5.643)
-    Point(-6.450, -5.575)
-    Point(-6.450, -4.525)
-    Point(-6.446, -4.457)
-    Point(-6.436, -4.390)
-    Point(-6.418, -4.324)
-    Point(-6.394, -4.261)
-    Point(-6.363, -4.200)
-    Point(-6.326, -4.143)
-    Point(-6.283, -4.090)
-    Point(-6.235, -4.042)
-    Point(-6.182, -3.999)
-    Point(-6.125, -3.962)
-    Point(-6.064, -3.931)
-    Point(-6.001, -3.907)
-    Point(-5.935, -3.889)
-    Point(-5.868, -3.879)
-    Point(-5.800, -3.875)])
-  copper(LayerIndex(0, Bottom)) = Polygon([
-    Point(-5.032, 0.791)
-    Point(-4.965, 0.781)
-    Point(-4.899, 0.763)
-    Point(-4.836, 0.739)
-    Point(-4.775, 0.708)
-    Point(-4.718, 0.671)
-    Point(-4.665, 0.628)
-    Point(-4.617, 0.580)
-    Point(-4.574, 0.527)
-    Point(-4.537, 0.470)
-    Point(-4.506, 0.409)
-    Point(-4.482, 0.346)
-    Point(-4.464, 0.280)
-    Point(-4.454, 0.213)
-    Point(-4.450, 0.145)
-    Point(-4.450, -0.905)
-    Point(-4.454, -0.973)
-    Point(-4.464, -1.040)
-    Point(-4.482, -1.106)
-    Point(-4.506, -1.169)
-    Point(-4.537, -1.230)
-    Point(-4.574, -1.287)
-    Point(-4.617, -1.340)
-    Point(-4.665, -1.388)
-    Point(-4.718, -1.431)
-    Point(-4.775, -1.468)
-    Point(-4.836, -1.499)
-    Point(-4.899, -1.523)
-    Point(-4.965, -1.541)
-    Point(-5.032, -1.551)
-    Point(-5.100, -1.555)
-    Point(-5.168, -1.551)
-    Point(-5.235, -1.541)
-    Point(-5.301, -1.523)
-    Point(-5.364, -1.499)
-    Point(-5.425, -1.468)
-    Point(-5.482, -1.431)
-    Point(-5.535, -1.388)
-    Point(-5.583, -1.340)
-    Point(-5.626, -1.287)
-    Point(-5.663, -1.230)
-    Point(-5.694, -1.169)
-    Point(-5.718, -1.106)
-    Point(-5.736, -1.040)
-    Point(-5.746, -0.973)
-    Point(-5.750, -0.905)
-    Point(-5.750, 0.145)
-    Point(-5.746, 0.213)
-    Point(-5.736, 0.280)
-    Point(-5.718, 0.346)
-    Point(-5.694, 0.409)
-    Point(-5.663, 0.470)
-    Point(-5.626, 0.527)
-    Point(-5.583, 0.580)
-    Point(-5.535, 0.628)
-    Point(-5.482, 0.671)
-    Point(-5.425, 0.708)
-    Point(-5.364, 0.739)
-    Point(-5.301, 0.763)
-    Point(-5.235, 0.781)
-    Point(-5.168, 0.791)
-    Point(-5.100, 0.795)])
-  copper(LayerIndex(0, Bottom)) = Polygon([
-    Point(5.168, 0.791)
-    Point(5.235, 0.781)
-    Point(5.301, 0.763)
-    Point(5.364, 0.739)
-    Point(5.425, 0.708)
-    Point(5.482, 0.671)
-    Point(5.535, 0.628)
-    Point(5.583, 0.580)
-    Point(5.626, 0.527)
-    Point(5.663, 0.470)
-    Point(5.694, 0.409)
-    Point(5.718, 0.346)
-    Point(5.736, 0.280)
-    Point(5.746, 0.213)
-    Point(5.750, 0.145)
-    Point(5.750, -0.905)
-    Point(5.746, -0.973)
-    Point(5.736, -1.040)
-    Point(5.718, -1.106)
-    Point(5.694, -1.169)
-    Point(5.663, -1.230)
-    Point(5.626, -1.287)
-    Point(5.583, -1.340)
-    Point(5.535, -1.388)
-    Point(5.482, -1.431)
-    Point(5.425, -1.468)
-    Point(5.364, -1.499)
-    Point(5.301, -1.523)
-    Point(5.235, -1.541)
-    Point(5.168, -1.551)
-    Point(5.100, -1.555)
-    Point(5.032, -1.551)
-    Point(4.965, -1.541)
-    Point(4.899, -1.523)
-    Point(4.836, -1.499)
-    Point(4.775, -1.468)
-    Point(4.718, -1.431)
-    Point(4.665, -1.388)
-    Point(4.617, -1.340)
-    Point(4.574, -1.287)
-    Point(4.537, -1.230)
-    Point(4.506, -1.169)
-    Point(4.482, -1.106)
-    Point(4.464, -1.040)
-    Point(4.454, -0.973)
-    Point(4.450, -0.905)
-    Point(4.450, 0.145)
-    Point(4.454, 0.213)
-    Point(4.464, 0.280)
-    Point(4.482, 0.346)
-    Point(4.506, 0.409)
-    Point(4.537, 0.470)
-    Point(4.574, 0.527)
-    Point(4.617, 0.580)
-    Point(4.665, 0.628)
-    Point(4.718, 0.671)
-    Point(4.775, 0.708)
-    Point(4.836, 0.739)
-    Point(4.899, 0.763)
-    Point(4.965, 0.781)
-    Point(5.032, 0.791)
-    Point(5.100, 0.795)])
-  copper(LayerIndex(0, Bottom)) = Polygon([
-    Point(5.868, -3.879)
-    Point(5.935, -3.889)
-    Point(6.001, -3.907)
-    Point(6.064, -3.931)
-    Point(6.125, -3.962)
-    Point(6.182, -3.999)
-    Point(6.235, -4.042)
-    Point(6.283, -4.090)
-    Point(6.326, -4.143)
-    Point(6.363, -4.200)
-    Point(6.394, -4.261)
-    Point(6.418, -4.324)
-    Point(6.436, -4.390)
-    Point(6.446, -4.457)
-    Point(6.450, -4.525)
-    Point(6.450, -5.575)
-    Point(6.446, -5.643)
-    Point(6.436, -5.710)
-    Point(6.418, -5.776)
-    Point(6.394, -5.839)
-    Point(6.363, -5.900)
-    Point(6.326, -5.957)
-    Point(6.283, -6.010)
-    Point(6.235, -6.058)
-    Point(6.182, -6.101)
-    Point(6.125, -6.138)
-    Point(6.064, -6.169)
-    Point(6.001, -6.193)
-    Point(5.935, -6.211)
-    Point(5.868, -6.221)
-    Point(5.800, -6.225)
-    Point(5.732, -6.221)
-    Point(5.665, -6.211)
-    Point(5.599, -6.193)
-    Point(5.536, -6.169)
-    Point(5.475, -6.138)
-    Point(5.418, -6.101)
-    Point(5.365, -6.058)
-    Point(5.317, -6.010)
-    Point(5.274, -5.957)
-    Point(5.237, -5.900)
-    Point(5.206, -5.839)
-    Point(5.182, -5.776)
-    Point(5.164, -5.710)
-    Point(5.154, -5.643)
-    Point(5.150, -5.575)
-    Point(5.150, -4.525)
-    Point(5.154, -4.457)
-    Point(5.164, -4.390)
-    Point(5.182, -4.324)
-    Point(5.206, -4.261)
-    Point(5.237, -4.200)
-    Point(5.274, -4.143)
-    Point(5.317, -4.090)
-    Point(5.365, -4.042)
-    Point(5.418, -3.999)
-    Point(5.475, -3.962)
-    Point(5.536, -3.931)
-    Point(5.599, -3.907)
-    Point(5.665, -3.889)
-    Point(5.732, -3.879)
-    Point(5.800, -3.875)])
 
   model3d = Model3D("../../3d-models/TE_2388749-1_g76A1E4C8.STEP",
     Vec3D(0.0, 0.0, 0.0),
@@ -1345,7 +800,6 @@ public pcb-component conn-component :
   diff-pin-model(self.RX1, delay = typ(0.0))
   diff-pin-model(self.RX2, delay = typ(0.0))
 
-  reversible-dual-pair(self.D0, self.D1)
 
   assign-landpattern(TE_2388749-1)
   ; assign-symbol(_2388749-1)
@@ -1355,10 +809,10 @@ public pcb-component conn-component :
   property(self.manufacturer) = "TE Connectivity"
 
 
-public pcb-module device :
+public pcb-module module :
   port conn : usb-c-connector
 
-  public inst J : conn-component
+  inst J : conn-component
 
   net (conn.vbus.V+ J.VBUS[0] J.VBUS[1] J.VBUS[2] J.VBUS[3])
   net (J.CC1, conn.bus.cc[0])
@@ -1367,26 +821,49 @@ public pcb-module device :
   net (J.SBU1 conn.bus.sbu[0])
   net (J.SBU2 conn.bus.sbu[1])
 
+  reversible-dual-pair(J.D0, J.D1)
+
   require usb-data : dual-pair from J
   topo-net(conn.bus.data, usb-data.A)
   topo-net(usb-data.A, usb-data.B)
 
-  topo-net(J.TX1, conn.bus.lane[0].TX)
-  topo-net(J.RX1, conn.bus.lane[0].RX)
-  topo-net(J.TX2, conn.bus.lane[1].TX)
-  topo-net(J.RX2, conn.bus.lane[1].RX)
+  supports lane-pair:
+    lane-pair.TX.P => J.TX1.P
+    lane-pair.TX.N => J.TX1.N
+    lane-pair.RX.P => J.RX1.P
+    lane-pair.RX.N => J.RX1.N
+
+  supports lane-pair:
+    lane-pair.TX.P => J.TX2.P
+    lane-pair.TX.N => J.TX2.N
+    lane-pair.RX.P => J.RX2.P
+    lane-pair.RX.N => J.RX2.N
+
+  require lp:lane-pair[2] from self
+
+  for i in 0 to length(lp) do:
+    topo-net(conn.bus.lane[i].TX => lp[i].TX)
+    topo-net(conn.bus.lane[i].RX => lp[i].RX)
+
+
+  ; topo-net(J.TX1, conn.bus.lane[0].TX)
+  ; topo-net(J.RX1, conn.bus.lane[0].RX)
+  ; topo-net(J.TX2, conn.bus.lane[1].TX)
+  ; topo-net(J.RX2, conn.bus.lane[1].RX)
 
   val usb_c = usb-c(2)
   supports usb_c :
     usb_c.data.P => conn.bus.data.P
     usb_c.data.N => conn.bus.data.N
     for i in 0 to 2 do :
-      usb_c.cc[i] => conn.bus.cc[i]
+      usb_c.cc[i] =>  conn.bus.cc[i]
       usb_c.sbu[i] => conn.bus.sbu[i]
+
       usb_c.lane[i].RX.P => conn.bus.lane[i].RX.P
       usb_c.lane[i].RX.N => conn.bus.lane[i].RX.N
       usb_c.lane[i].TX.P => conn.bus.lane[i].TX.P
       usb_c.lane[i].TX.N => conn.bus.lane[i].TX.N
+
 
   net (J.GND[0] J.GND[1] J.GND[2] J.GND[3] conn.vbus.V-)
   net (conn.shield J.SHIELD)
@@ -1413,14 +890,15 @@ Circuit Includes:
 
 <DOC>
 public defn USBC-HighSpeed-Iface (
-  R-query:ResistorQuery = ResistorQuery(),
+  R-query:ResistorQuery = get-default-resistor-query()
+  ; R-query:ResistorQuery = ResistorQuery(),
   C-query:CapacitorQuery = CapacitorQuery(),
   ):
   pcb-module USBC-HighSpeed-Iface:
     port USB : usb-data
     port VDD-USB : power
 
-    public inst USBC : device
+    public inst USBC : module
 
     net (VDD-USB, USBC.conn.vbus)
     net GND (VDD-USB.V-)
@@ -1450,3 +928,131 @@ public defn USBC-HighSpeed-Iface (
     net (shield-term.GND, GND)
 
   USBC-HighSpeed-Iface 
+
+
+
+doc: \<DOC>
+USB-C USB 4.0 High-Speed Interface
+
+This is the basic USB2 480mbps capable USB-C interface extended wtih USB4 constraints.
+
+Circuit Includes:
+1.  USB-C connector
+2.  Pull-downs for CC1 and CC2
+3.  ESD protection diodes for the USB2 data bus.
+4.  Shield termination
+
+@param R-query Resistor query parameters - default is `ResistorQuery()`.
+@param C-query Capacitor query parameters - default is `CapacitorQuery()`.
+
+@member USB USB2 Differential Signaling Bus
+@member VDD-USB USB Power Rail, typically 5V.
+
+<DOC>
+public defn USBC-USB4-Iface (
+  R-query:ResistorQuery = get-default-resistor-query(),
+  C-query:CapacitorQuery = get-default-capacitor-query()
+):
+  pcb-module USBC-USB4-Iface:
+    ; port USB : usb-data
+    port USB : usb-c
+    port VDD-USB : power
+
+    public inst USBC : module
+
+    net (VDD-USB, USBC.conn.vbus)
+    net GND (VDD-USB.V-)
+
+    ; According to USB4 System Design Guidelines
+    val bleed-R = create-resistor(R-query, 
+                                case = valid-smd-pkgs("0201"), 
+                                resistance = Interval(150.0e3, 250.0e3)
+                                )
+                                ; resistance = 200.0e3)
+    
+    val rx-ac-C = create-capacitor(C-query, 
+                                 case = valid-smd-pkgs("0201"), 
+                                 capacitance = 300.0e-9)
+
+    val tx-ac-C = create-capacitor(C-query,
+                                 case = valid-smd-pkgs("0201"), 
+                                 capacitance = 200.0e-9)
+    
+
+    ; Process each lane
+    for i in indices(USBC.conn.bus.lane) do:
+      ; RX bleed resistors
+      insert-pulldown(USBC.conn.bus.lane[i].RX.P, GND, 
+                     elem-type = bleed-R,
+                     inst-name? = to-string("RX_P%_-R" % [i]), 
+                     make-public = true)
+      insert-pulldown(USBC.conn.bus.lane[i].RX.N, GND,
+                     elem-type = bleed-R,
+                     inst-name? = to-string("RX_N%_-R" % [i]),
+                     make-public = true)
+
+      ; TX bleed resistors
+      insert-pulldown(USBC.conn.bus.lane[i].TX.P, GND,
+                     elem-type = bleed-R,
+                     inst-name? = to-string("TX_P%_-R" % [i]),
+                     make-public = true)
+      insert-pulldown(USBC.conn.bus.lane[i].TX.N, GND,
+                     elem-type = bleed-R,
+                     inst-name? = to-string("TX_N%_-R" % [i]),
+                     make-public = true)
+
+      ; RX AC coupling caps
+      ; insert-capacitor(USBC.conn.bus.lane[i].RX.P, usb_c.lane[i].RX.P, C-query, capacitance = 100.0e-9)
+      ; insert-capacitor(USBC.conn.bus.lane[i].RX.N, usb_c.lane[i].RX.N, C-query, capacitance = 100.0e-9)
+
+      ; ; TX AC coupling caps  
+      ; insert-capacitor(USBC.conn.bus.lane[i].TX.P, usb_c.lane[i].TX.P, C-query, capacitance = 100.0e-9)
+      ; insert-capacitor(USBC.conn.bus.lane[i].TX.N, usb_c.lane[i].TX.N, C-query, capacitance = 100.0e-9)
+
+
+    ; USB-C CC pull-down resistors
+    val cc-R = create-resistor(R-query, resistance = 5.1e3, precision = (1 %))
+    for i in indices(USBC.conn.bus.cc) do:
+      val n = to-string("CC%_-R" % [i])
+      insert-pulldown(USBC.conn.bus.cc[i], GND,
+                     elem-type = cc-R,
+                     inst-name? = n,
+                     make-public = true)
+
+    ; CC/SBU connections to external
+    net (USB.cc, USBC.conn.bus.cc)
+    net (USB.sbu, USBC.conn.bus.sbu)
+
+
+    ; ESD Protection
+
+    val esd = diodes/ESD224DQAR/create-esd-pool(3, GND)
+
+    ; USB Data Path
+    require esd-pair:dual-pair from esd
+    topo-pair(USB.data => esd-pair.A => esd-pair.B => USBC.conn.bus.data)
+    ;          A       =>       B                  => C
+    set-signal-end(USB.data, USBC.conn.bus.data)
+
+    for i in 0 to length(USBC.conn.bus.lanes) do:
+      inst tx-bcap : dp-coupler(tx-ac-C)
+
+      require tx-esd:dual-pair from esd
+      topo-pair(USB.bus.lane[i].TX => tx-bcap => tx-esd => USBC.conn.bus.lane[i].TX)
+      set-signal-end(USB.bus.lane[i].TX, USBC.conn.bus.lane[i].TX)
+
+      require rx-esd:dual-pair from esd
+      topo-pair(USB.bus.lane[i].RX => rx-esd => USBC.conn.bus.lane[i].RX)
+      set-signal-end(USB.bus.lane[i].RX, USBC.conn.bus.lane[i].RX)
+
+
+    ; Shield Termination
+    inst shield-term : shield-termination(R-query, C-query)
+    net (shield-term.SHIELD, USBC.conn.shield)
+    net (shield-term.GND, GND)
+
+    
+
+
+
+  USBC-USB4-Iface

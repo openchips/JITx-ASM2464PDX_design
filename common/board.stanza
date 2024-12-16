@@ -1,5 +1,5 @@
 #use-added-syntax(jitx)
-defpackage jsl/examples/protocols/common/example-board :
+defpackage ASM001/common/board :
   import core
   import jitx
   import jitx/commands
@@ -88,6 +88,7 @@ public pcb-via gen-via (vip:True|False, via-start:LayerIndex via-stop:LayerIndex
   type = LaserDrill
   via-in-pad = vip
 
+
 doc: \<DOC>
 @brief Simple board shape
 This variable defines a shape for a board.
@@ -95,21 +96,38 @@ This variable defines a shape for a board.
 ; Define the shape/size of the board
 public val board-shape = RoundedRectangle(50.0, 30.0, 0.25)
 
-public val uTop-1 = gen-via(true,  LayerIndex(0,Top), LayerIndex(1,Top), "uTop-1") ; Gnd
-public val uTop-2 = gen-via(true,  LayerIndex(0,Top), LayerIndex(2,Top), "uTop-2") ; Signal
-public val uTop-3 = gen-via(true,  LayerIndex(0,Top), LayerIndex(3,Top) "uTop-3")  ; Gnd
-public val uTop-4 = gen-via(true,  LayerIndex(0,Top), LayerIndex(4,Top) "uTop-4")  ; Signal
-public val default-TH = gen-via(false, LayerIndex(0,Top), LayerIndex(0,Bottom) "th") ; Signal
+public val default-TH = gen-via(false, LayerIndex(0,Top), LayerIndex(5,Bottom), "th") ; Full stackup
+
+; Standard through-hole via (no extra cost)
+public val std-via = jlc-pcb/stackups/vias/std-via-preferred
+
+; Smaller vias with increasing costs
+public val via-cost1 = jlc-pcb/stackups/vias/multi-via-cost+1-preferred
+public val via-cost2 = jlc-pcb/stackups/vias/multi-via-cost+2-preferred
+public val via-cost3 = jlc-pcb/stackups/vias/multi-via-cost+3-preferred
+
+; Via for components that require via-in-pad
+public val filled-via = jlc-pcb/stackups/vias/tented-filled-std-via
+
+; Make all vias available to the design
+public val available-vias = [
+  std-via          ; 0.45mm pad / 0.30mm hole
+  via-cost1        ; 0.40mm pad / 0.25mm hole
+  via-cost2        ; 0.35mm pad / 0.20mm hole
+  via-cost3        ; 0.30mm pad / 0.15mm hole
+  filled-via       ; 0.45mm pad / 0.30mm hole (tented & filled)
+]
+
 doc: \<DOC>
 @brief Simple board definition function
 This function call defines a board by creating a board with shape, stackup and allowable vias.
 @param outline the shape of the board
 <DOC>
-public pcb-board an-example-board (outline:Shape) :
+public pcb-board ASM001-board (outline:Shape) :
   stackup = example-stackup
   boundary = outline
   signal-boundary = outline
-  vias = [ uTop-1, uTop-2, uTop-3, uTop-4, default-TH]
+  vias = available-vias
 
 doc: \<DOC>
 @brief Simple board setup function
@@ -118,7 +136,7 @@ This function call sets up a board for a design by creating a board with a shape
 
 ; Setup the board
 public defn setup-board () :
-  set-board(an-example-board(board-shape))
+  set-board(ASM001-board(board-shape))
   set-rules(example-board-rules)
 
 doc: \<DOC>
