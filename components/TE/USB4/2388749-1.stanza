@@ -823,7 +823,7 @@ public pcb-module module :
 
   reversible-dual-pair(J.D0, J.D1)
 
-  require usb-data : dual-pair from J
+  require usb-data : dual-pair from self
   topo-net(conn.bus.data, usb-data.A)
   topo-net(usb-data.A, usb-data.B)
 
@@ -1025,20 +1025,20 @@ public defn USBC-USB4-Iface (
     ;          A       =>       B                  => C
     set-signal-end(USB.data, USBC.conn.bus.data)
 
-    for i in 0 to length(USBC.conn.bus.lanes) do:
+    for i in 0 to length(USBC.conn.bus.lane) do:
       inst tx-bcap : dp-coupler(tx-ac-C)
       inst rx-bcap : dp-coupler(rx-ac-C)
 
       require tx-esd:dual-pair from esd
-      topo-pair(USB.bus.lane[i].TX => tx-bcap => tx-esd => USBC.conn.bus.lane[i].TX)
-      set-signal-end(USB.bus.lane[i].TX, USBC.conn.bus.lane[i].TX)
+      topo-pair(USB.lane[i].TX => tx-bcap => tx-esd => USBC.conn.bus.lane[i].TX)
+      set-signal-end(USB.lane[i].TX, USBC.conn.bus.lane[i].TX)
 
       require rx-esd:dual-pair from esd
       if tx-side == true:
-        topo-pair(USB.bus.lane[i].RX => rx-bcap => rx-esd => USBC.conn.bus.lane[i].RX)
+        topo-pair(USB.lane[i].RX => rx-bcap => rx-esd => USBC.conn.bus.lane[i].RX)
       else:
-        topo-pair(USB.bus.lane[i].RX => rx-esd => USBC.conn.bus.lane[i].RX)
-      set-signal-end(USB.bus.lane[i].RX, USBC.conn.bus.lane[i].RX)
+        topo-pair(USB.lane[i].RX => rx-esd => USBC.conn.bus.lane[i].RX)
+      set-signal-end(USB.lane[i].RX, USBC.conn.bus.lane[i].RX)
 
 
     ; Shield Termination
