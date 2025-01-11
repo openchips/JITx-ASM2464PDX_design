@@ -287,7 +287,7 @@
 						"ref":	"U2",
 						"fileinfo":	{
 							"filename":	"components\\Generic\\USBTypeC.stanza",
-							"line":	228,
+							"line":	248,
 							"column":	4
 						}
 					}],
@@ -1092,7 +1092,7 @@
 						"ref":	"U2",
 						"fileinfo":	{
 							"filename":	"components\\Generic\\USBTypeC.stanza",
-							"line":	229,
+							"line":	248,
 							"column":	4
 						}
 					}],

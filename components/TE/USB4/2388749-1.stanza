@@ -828,11 +828,29 @@ public pcb-module module :
 
   set-signal-end(usb-data.data, conn.bus.data)
 
+  supports lane-pair:
+    lane-pair.TX.P => J.TX1.P
+    lane-pair.TX.N => J.TX1.N
+    lane-pair.RX.P => J.RX1.P
+    lane-pair.RX.N => J.RX1.N
 
-  topo-pair(J.TX1 => conn.bus.lane[0].TX)
-  topo-pair(J.RX1 => conn.bus.lane[0].RX)
-  topo-pair(J.TX2 => conn.bus.lane[1].TX)
-  topo-pair(J.RX2 => conn.bus.lane[1].RX)
+  supports lane-pair:
+    lane-pair.TX.P => J.TX2.P
+    lane-pair.TX.N => J.TX2.N
+    lane-pair.RX.P => J.RX2.P
+    lane-pair.RX.N => J.RX2.N
+
+  require lp:lane-pair[2] from self
+
+  for i in 0 to length(lp) do:
+    topo-net(conn.bus.lane[i].TX => lp[i].TX)
+    topo-net(conn.bus.lane[i].RX => lp[i].RX)
+
+
+  ; topo-net(J.TX1, conn.bus.lane[0].TX)
+  ; topo-net(J.RX1, conn.bus.lane[0].RX)
+  ; topo-net(J.TX2, conn.bus.lane[1].TX)
+  ; topo-net(J.RX2, conn.bus.lane[1].RX)
 
   net (J.GND[0] J.GND[1] J.GND[2] J.GND[3] conn.vbus.V-)
   net (conn.shield J.SHIELD)
