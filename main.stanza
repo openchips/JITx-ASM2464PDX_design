@@ -61,21 +61,21 @@ pcb-module my-design :
 
   ; val b-cap = block-cap(100.0e-9)
 
-  ; val ti-3 = usb-get-trace-impedance(USB3)
-  ; val usb3-constraints = USB-Constraint(proto = USB3, route-struct = diff(ti-3))
-  ; val lane-constraint = LaneConstraint(usb3-constraints)
-  ; for i in indices(ep1.lane) do :
-  ;   within [src, dst] = constrain-topology(ep1.lane[i] => ep2.lane[i], lane-constraint):
-  ;     ; Here we construct the differential pair topology for the lane.
-  ;     ; The Lane consists of two diff-pairs - TX and RX
-  ;     topo-net(src.RX => dst.RX)
+  val ti-3 = usb-get-trace-impedance(USB3)
+  val usb3-constraints = USB-Constraint(proto = USB3, route-struct = diff(ti-3))
+  val lane-constraint = LaneConstraint(usb3-constraints)
+  for i in indices(ep1.lane) do :
+    within [src, dst] = constrain-topology(ep1.lane[i] => ep2.lane[i], lane-constraint):
+      ; Here we construct the differential pair topology for the lane.
+      ; The Lane consists of two diff-pairs - TX and RX
+      topo-net(src.RX => dst.RX)
 
-  ;     ; The TX channel needs a blocking capacitor which we add with
-  ;     ;  the help of the `topo-pair` utility. This is like `topo-net`
-  ;     ;  but handles extracting the `dual-pair` require from the
-  ;     ;  `tx-bcap` for us.
-  ;     inst tx-bcap : dp-coupler(b-cap)
-  ;     topo-pair(src.TX => tx-bcap => dst.TX)
+      ; The TX channel needs a blocking capacitor which we add with
+      ;  the help of the `topo-pair` utility. This is like `topo-net`
+      ;  but handles extracting the `dual-pair` require from the
+      ;  `tx-bcap` for us.
+      ; inst tx-bcap : dp-coupler(b-cap)
+      topo-pair(src.TX => dst.TX)
 
   inst header : pin-header(2, 1)
   place(header) at loc(-20.0, 15.0) on Top
