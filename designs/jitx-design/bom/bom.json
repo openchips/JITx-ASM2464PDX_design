@@ -233,6 +233,254 @@
 				"query_properties":	null
 			}, {
 				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"7.9V 14V 3.6V DFN-10(1x2.5)  ESD Protection Devices ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"usb4_type_c"
+									},
+									"field":	{
+										"name":	"esd"
+									}
+								},
+								"field":	{
+									"name":	"pool-esd"
+								}
+							},
+							"index":	2
+						},
+						"ref":	"U4",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"usb4_type_c"
+									},
+									"field":	{
+										"name":	"esd"
+									}
+								},
+								"field":	{
+									"name":	"pool-esd"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"U3",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"usb4_type_c"
+									},
+									"field":	{
+										"name":	"esd"
+									}
+								},
+								"field":	{
+									"name":	"pool-esd"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"U2",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://datasheet.lcsc.com/lcsc/2302221330_Texas-Instruments-ESD224DQAR_C1981316.pdf",
+				"manufacturer":	"Texas Instruments",
+				"mpn":	"ESD224DQAR",
+				"vendor":	"Arrow",
+				"sku":	"ESD224DQAR",
+				"price":	0.4376,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"50mW Thick Film Resistors 25V ±1% ±200ppm/℃ 200kΩ 0201  Chip Resistor - Surface Mount ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"name":	"usb4_type_c"
+							},
+							"field":	{
+								"name":	"TX_N1-R"
+							}
+						},
+						"ref":	"R8",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"name":	"usb4_type_c"
+							},
+							"field":	{
+								"name":	"TX_P1-R"
+							}
+						},
+						"ref":	"R7",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"name":	"usb4_type_c"
+							},
+							"field":	{
+								"name":	"RX_N1-R"
+							}
+						},
+						"ref":	"R6",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"name":	"usb4_type_c"
+							},
+							"field":	{
+								"name":	"RX_P1-R"
+							}
+						},
+						"ref":	"R5",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"name":	"usb4_type_c"
+							},
+							"field":	{
+								"name":	"TX_N0-R"
+							}
+						},
+						"ref":	"R4",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"name":	"usb4_type_c"
+							},
+							"field":	{
+								"name":	"TX_P0-R"
+							}
+						},
+						"ref":	"R3",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"name":	"usb4_type_c"
+							},
+							"field":	{
+								"name":	"RX_N0-R"
+							}
+						},
+						"ref":	"R2",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"name":	"usb4_type_c"
+							},
+							"field":	{
+								"name":	"RX_P0-R"
+							}
+						},
+						"ref":	"R1",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2205311945_UNI-ROYAL-Uniroyal-Elec-0201WMF2003TEE_C270357.pdf",
+				"manufacturer":	"Uniroyal",
+				"mpn":	"0201WMF2003TEE",
+				"vendor":	"JLCPCB",
+				"sku":	"0201WMF2003TEE",
+				"price":	0.000614286,
+				"preferred":	false,
+				"query_properties":	{
+					"case":	["0201", "0603m", "0202", "0606m", "0204", "0510m", "Wide 0402", "0306", "0816m", "Wide 0603", "0402", "1005m", "0505", "1414m", "0508", "1220m", "Wide 0805", "0603", "1608m", "0612", "1632m", "Wide 1206", "0805", "2012m", "1111", "2828m", "1206", "3216m", "1210", "3225m", "1218", "3246m", "Wide 1812", "1225", "3263m", "Wide 2512", "1530", "3876m", "Wide 3015", "1808", "4520m", "1812", "4532m", "1825", "4564m", "1835", "4589", "Wide 3518", "5020m", "2010", "5025m", "2043", "Wide 4320", "2220", "5750m", "2225", "5763m", "2312", "6032m", "2512", "6331m", "2725", "7142m", "2728", "7142m", "Wide 2827", "2816", "2817", "7142m", "2953", "Wide 5929", "3920", "1052m"],
+					"min-resistance":	200000,
+					"max-resistance":	242000,
+					"category":	"resistor"
+				}
+			}, {
+				"status":	{
+					"code":	5,
+					"name":	"Potential Alternate Vendors"
+				},
+				"description":	"RES 0 OHM JUMPER 1/32W 01005",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"usb4_type_c"
+								},
+								"field":	{
+									"name":	"shield-term"
+								}
+							},
+							"field":	{
+								"name":	"R"
+							}
+						},
+						"ref":	"R11",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://b2b-api.panasonic.eu/file_stream/pids/fileversion/1107",
+				"manufacturer":	"PANASONIC",
+				"mpn":	"ERJ-U0X0R00Y",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	5,
+					"name":	"Potential Alternate Vendors"
+				},
+				"description":	"31.25mW Thick Film Resistors ±1% ±200ppm/℃ 5.1kΩ 01005  Chip Resistor - Surface Mount ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"name":	"usb4_type_c"
+							},
+							"field":	{
+								"name":	"CC1-R"
+							}
+						},
+						"ref":	"R10",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"name":	"usb4_type_c"
+							},
+							"field":	{
+								"name":	"CC0-R"
+							}
+						},
+						"ref":	"R9",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://datasheet.lcsc.com/lcsc/2205312030_UNI-ROYAL-Uniroyal-Elec-0105WHF5101TDE_C2766348.pdf",
+				"manufacturer":	"Uniroyal",
+				"mpn":	"0105WHF5101TDE",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
 					"code":	5,
 					"name":	"Potential Alternate Vendors"
 				},
@@ -240,7 +488,12 @@
 				"insts":	[{
 						"inst":	{
 							"ref":	{
-								"name":	"usb4_type_c"
+								"ref":	{
+									"name":	"usb4_type_c"
+								},
+								"field":	{
+									"name":	"USBC"
+								}
 							},
 							"field":	{
 								"name":	"J"
@@ -316,8 +569,270 @@
 				"price":	null,
 				"preferred":	false,
 				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	5,
+					"name":	"Potential Alternate Vendors"
+				},
+				"description":	"16V 150nF X5R ±20% 0201  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"usb4_type_c"
+									},
+									"field":	{
+										"name":	"tx-bcap"
+									}
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C14",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"usb4_type_c"
+									},
+									"field":	{
+										"name":	"tx-bcap"
+									}
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C13",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"usb4_type_c"
+									},
+									"field":	{
+										"name":	"tx-bcap"
+									}
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C2",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"usb4_type_c"
+									},
+									"field":	{
+										"name":	"tx-bcap"
+									}
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C1",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2401221324_TDK-C0603X5R1C154M030BC_C3868636.pdf",
+				"manufacturer":	"TDK Corp",
+				"mpn":	"C0603X5R1C154M030BC",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	4,
+					"name":	"Not Enough Stock"
+				},
+				"description":	"50V 4.7nF X5R ±10% 0201  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"usb4_type_c"
+								},
+								"field":	{
+									"name":	"shield-term"
+								}
+							},
+							"field":	{
+								"name":	"C"
+							}
+						},
+						"ref":	"C17",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2211282000_Taiyo-Yuden-UMK063BJ472KP-F_C2187482.pdf",
+				"manufacturer":	"Taiyo Yuden  Inc",
+				"mpn":	"UMK063BJ472KP-F",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	{
+					"capacitance":	4.7e-09,
+					"_sort":	["rated-voltage"],
+					"min-rated-voltage":	50,
+					"category":	"capacitor"
+				}
+			}, {
+				"status":	{
+					"code":	4,
+					"name":	"Not Enough Stock"
+				},
+				"description":	"6.3V 330nF X5R ±20% 0201 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"usb4_type_c"
+									},
+									"field":	{
+										"name":	"rx-bcap"
+									}
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C16",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"usb4_type_c"
+									},
+									"field":	{
+										"name":	"rx-bcap"
+									}
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C15",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"usb4_type_c"
+									},
+									"field":	{
+										"name":	"rx-bcap"
+									}
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C12",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"usb4_type_c"
+									},
+									"field":	{
+										"name":	"rx-bcap"
+									}
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C3",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2309201533_Walsin-Tech-Corp-0201X334M6R3CT_C3838856.pdf",
+				"manufacturer":	"WALSIN",
+				"mpn":	"0201X334M6R3CT",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	{
+					"case":	["0201", "0603m", "0202", "0606m", "0204", "0510m", "Wide 0402", "0306", "0816m", "Wide 0603", "0402", "1005m", "0505", "1414m", "0508", "1220m", "Wide 0805", "0603", "1608m", "0612", "1632m", "Wide 1206", "0805", "2012m", "1111", "2828m", "1206", "3216m", "1210", "3225m", "1218", "3246m", "Wide 1812", "1225", "3263m", "Wide 2512", "1530", "3876m", "Wide 3015", "1808", "4520m", "1812", "4532m", "1825", "4564m", "1835", "4589", "Wide 3518", "5020m", "2010", "5025m", "2043", "Wide 4320", "2220", "5750m", "2225", "5763m", "2312", "6032m", "2512", "6331m", "2725", "7142m", "2728", "7142m", "Wide 2827", "2816", "2817", "7142m", "2953", "Wide 5929", "3920", "1052m"],
+					"min-capacitance":	3e-07,
+					"max-capacitance":	363000,
+					"category":	"capacitor"
+				}
 			}],
 		"entries":	[{
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
 			}, {
 			}, {
 			}, {
@@ -326,13 +841,13 @@
 	},
 	"metrics":	[{
 			"name":	"Line Items",
-			"value":	5
-		}, {
-			"name":	"Components",
 			"value":	12
 		}, {
+			"name":	"Components",
+			"value":	35
+		}, {
 			"name":	"Cost",
-			"value":	"$2.14"
+			"value":	"$3.46"
 		}],
 	"is_update":	false,
 	"old_bom":	{
@@ -363,7 +878,7 @@
 				"mpn":	"1-2199230-6",
 				"vendor":	"Arrow",
 				"sku":	"1-2199230-6",
-				"price":	1.0834,
+				"price":	1.3433,
 				"preferred":	false,
 				"query_properties":	null
 			}, {
@@ -527,6 +1042,254 @@
 				"query_properties":	null
 			}, {
 				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"7.9V 14V 3.6V DFN-10(1x2.5)  ESD Protection Devices ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"usb4_type_c"
+									},
+									"field":	{
+										"name":	"esd"
+									}
+								},
+								"field":	{
+									"name":	"pool-esd"
+								}
+							},
+							"index":	2
+						},
+						"ref":	"U4",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"usb4_type_c"
+									},
+									"field":	{
+										"name":	"esd"
+									}
+								},
+								"field":	{
+									"name":	"pool-esd"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"U3",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"usb4_type_c"
+									},
+									"field":	{
+										"name":	"esd"
+									}
+								},
+								"field":	{
+									"name":	"pool-esd"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"U2",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://datasheet.lcsc.com/lcsc/2302221330_Texas-Instruments-ESD224DQAR_C1981316.pdf",
+				"manufacturer":	"Texas Instruments",
+				"mpn":	"ESD224DQAR",
+				"vendor":	"Arrow",
+				"sku":	"ESD224DQAR",
+				"price":	0.4376,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"50mW Thick Film Resistors 25V ±1% ±200ppm/℃ 200kΩ 0201  Chip Resistor - Surface Mount ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"name":	"usb4_type_c"
+							},
+							"field":	{
+								"name":	"TX_N1-R"
+							}
+						},
+						"ref":	"R8",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"name":	"usb4_type_c"
+							},
+							"field":	{
+								"name":	"TX_P1-R"
+							}
+						},
+						"ref":	"R7",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"name":	"usb4_type_c"
+							},
+							"field":	{
+								"name":	"RX_N1-R"
+							}
+						},
+						"ref":	"R6",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"name":	"usb4_type_c"
+							},
+							"field":	{
+								"name":	"RX_P1-R"
+							}
+						},
+						"ref":	"R5",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"name":	"usb4_type_c"
+							},
+							"field":	{
+								"name":	"TX_N0-R"
+							}
+						},
+						"ref":	"R4",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"name":	"usb4_type_c"
+							},
+							"field":	{
+								"name":	"TX_P0-R"
+							}
+						},
+						"ref":	"R3",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"name":	"usb4_type_c"
+							},
+							"field":	{
+								"name":	"RX_N0-R"
+							}
+						},
+						"ref":	"R2",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"name":	"usb4_type_c"
+							},
+							"field":	{
+								"name":	"RX_P0-R"
+							}
+						},
+						"ref":	"R1",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2205311945_UNI-ROYAL-Uniroyal-Elec-0201WMF2003TEE_C270357.pdf",
+				"manufacturer":	"Uniroyal",
+				"mpn":	"0201WMF2003TEE",
+				"vendor":	"JLCPCB",
+				"sku":	"0201WMF2003TEE",
+				"price":	0.000614286,
+				"preferred":	false,
+				"query_properties":	{
+					"case":	["0201", "0603m", "0202", "0606m", "0204", "0510m", "Wide 0402", "0306", "0816m", "Wide 0603", "0402", "1005m", "0505", "1414m", "0508", "1220m", "Wide 0805", "0603", "1608m", "0612", "1632m", "Wide 1206", "0805", "2012m", "1111", "2828m", "1206", "3216m", "1210", "3225m", "1218", "3246m", "Wide 1812", "1225", "3263m", "Wide 2512", "1530", "3876m", "Wide 3015", "1808", "4520m", "1812", "4532m", "1825", "4564m", "1835", "4589", "Wide 3518", "5020m", "2010", "5025m", "2043", "Wide 4320", "2220", "5750m", "2225", "5763m", "2312", "6032m", "2512", "6331m", "2725", "7142m", "2728", "7142m", "Wide 2827", "2816", "2817", "7142m", "2953", "Wide 5929", "3920", "1052m"],
+					"min-resistance":	200000,
+					"max-resistance":	242000,
+					"category":	"resistor"
+				}
+			}, {
+				"status":	{
+					"code":	5,
+					"name":	"Potential Alternate Vendors"
+				},
+				"description":	"RES 0 OHM JUMPER 1/32W 01005",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"usb4_type_c"
+								},
+								"field":	{
+									"name":	"shield-term"
+								}
+							},
+							"field":	{
+								"name":	"R"
+							}
+						},
+						"ref":	"R11",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://b2b-api.panasonic.eu/file_stream/pids/fileversion/1107",
+				"manufacturer":	"PANASONIC",
+				"mpn":	"ERJ-U0X0R00Y",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	5,
+					"name":	"Potential Alternate Vendors"
+				},
+				"description":	"31.25mW Thick Film Resistors ±1% ±200ppm/℃ 5.1kΩ 01005  Chip Resistor - Surface Mount ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"name":	"usb4_type_c"
+							},
+							"field":	{
+								"name":	"CC1-R"
+							}
+						},
+						"ref":	"R10",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"name":	"usb4_type_c"
+							},
+							"field":	{
+								"name":	"CC0-R"
+							}
+						},
+						"ref":	"R9",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://datasheet.lcsc.com/lcsc/2205312030_UNI-ROYAL-Uniroyal-Elec-0105WHF5101TDE_C2766348.pdf",
+				"manufacturer":	"Uniroyal",
+				"mpn":	"0105WHF5101TDE",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
 					"code":	5,
 					"name":	"Potential Alternate Vendors"
 				},
@@ -534,7 +1297,12 @@
 				"insts":	[{
 						"inst":	{
 							"ref":	{
-								"name":	"usb4_type_c"
+								"ref":	{
+									"name":	"usb4_type_c"
+								},
+								"field":	{
+									"name":	"USBC"
+								}
 							},
 							"field":	{
 								"name":	"J"
@@ -597,7 +1365,7 @@
 						},
 						"ref":	"J2",
 						"fileinfo":	{
-							"filename":	"c:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\main.stanza",
+							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
 							"line":	80,
 							"column":	2
 						}
@@ -610,8 +1378,270 @@
 				"price":	null,
 				"preferred":	false,
 				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	5,
+					"name":	"Potential Alternate Vendors"
+				},
+				"description":	"16V 150nF X5R ±20% 0201  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"usb4_type_c"
+									},
+									"field":	{
+										"name":	"tx-bcap"
+									}
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C14",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"usb4_type_c"
+									},
+									"field":	{
+										"name":	"tx-bcap"
+									}
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C13",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"usb4_type_c"
+									},
+									"field":	{
+										"name":	"tx-bcap"
+									}
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C2",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"usb4_type_c"
+									},
+									"field":	{
+										"name":	"tx-bcap"
+									}
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C1",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2401221324_TDK-C0603X5R1C154M030BC_C3868636.pdf",
+				"manufacturer":	"TDK Corp",
+				"mpn":	"C0603X5R1C154M030BC",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	4,
+					"name":	"Not Enough Stock"
+				},
+				"description":	"50V 4.7nF X5R ±10% 0201  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"usb4_type_c"
+								},
+								"field":	{
+									"name":	"shield-term"
+								}
+							},
+							"field":	{
+								"name":	"C"
+							}
+						},
+						"ref":	"C17",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2211282000_Taiyo-Yuden-UMK063BJ472KP-F_C2187482.pdf",
+				"manufacturer":	"Taiyo Yuden  Inc",
+				"mpn":	"UMK063BJ472KP-F",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	{
+					"capacitance":	4.7e-09,
+					"_sort":	["rated-voltage"],
+					"min-rated-voltage":	50,
+					"category":	"capacitor"
+				}
+			}, {
+				"status":	{
+					"code":	4,
+					"name":	"Not Enough Stock"
+				},
+				"description":	"6.3V 330nF X5R ±20% 0201 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"usb4_type_c"
+									},
+									"field":	{
+										"name":	"rx-bcap"
+									}
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C16",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"usb4_type_c"
+									},
+									"field":	{
+										"name":	"rx-bcap"
+									}
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C15",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"usb4_type_c"
+									},
+									"field":	{
+										"name":	"rx-bcap"
+									}
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C12",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"usb4_type_c"
+									},
+									"field":	{
+										"name":	"rx-bcap"
+									}
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C3",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2309201533_Walsin-Tech-Corp-0201X334M6R3CT_C3838856.pdf",
+				"manufacturer":	"WALSIN",
+				"mpn":	"0201X334M6R3CT",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	{
+					"case":	["0201", "0603m", "0202", "0606m", "0204", "0510m", "Wide 0402", "0306", "0816m", "Wide 0603", "0402", "1005m", "0505", "1414m", "0508", "1220m", "Wide 0805", "0603", "1608m", "0612", "1632m", "Wide 1206", "0805", "2012m", "1111", "2828m", "1206", "3216m", "1210", "3225m", "1218", "3246m", "Wide 1812", "1225", "3263m", "Wide 2512", "1530", "3876m", "Wide 3015", "1808", "4520m", "1812", "4532m", "1825", "4564m", "1835", "4589", "Wide 3518", "5020m", "2010", "5025m", "2043", "Wide 4320", "2220", "5750m", "2225", "5763m", "2312", "6032m", "2512", "6331m", "2725", "7142m", "2728", "7142m", "Wide 2827", "2816", "2817", "7142m", "2953", "Wide 5929", "3920", "1052m"],
+					"min-capacitance":	3e-07,
+					"max-capacitance":	363000,
+					"category":	"capacitor"
+				}
 			}],
 		"entries":	[{
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
 			}, {
 			}, {
 			}, {

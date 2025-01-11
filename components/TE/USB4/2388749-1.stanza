@@ -823,7 +823,7 @@ public pcb-module module :
 
   reversible-dual-pair(J.D0, J.D1)
 
-  require usb-data : dual-pair from J
+  require usb-data : dual-pair from self
   topo-net(conn.bus.data, usb-data.A)
   topo-net(usb-data.A, usb-data.B)
 
@@ -846,10 +846,10 @@ public pcb-module module :
     topo-net(conn.bus.lane[i].RX => lp[i].RX)
 
 
-  ; topo-net(J.TX1, conn.bus.lane[0].TX)
-  ; topo-net(J.RX1, conn.bus.lane[0].RX)
-  ; topo-net(J.TX2, conn.bus.lane[1].TX)
-  ; topo-net(J.RX2, conn.bus.lane[1].RX)
+  topo-net(J.TX1, conn.bus.lane[0].TX)
+  topo-net(J.RX1, conn.bus.lane[0].RX)
+  topo-net(J.TX2, conn.bus.lane[1].TX)
+  topo-net(J.RX2, conn.bus.lane[1].RX)
 
   val usb_c = usb-c(2)
   supports usb_c :
@@ -955,14 +955,14 @@ public defn USBC-USB4-Iface (
   tx-side:True|False = true
 ):
   pcb-module USBC-USB4-Iface:
-    ; port USB : usb-data
-    port USB : usb-c(2)
-    port VDD-USB : power
+    port USB : usb-data
+    port USB-CONN : usb-c-connector
+
 
     public inst USBC : module
 
-    net (VDD-USB, USBC.conn.vbus)
-    net GND (VDD-USB.V-)
+    net (USB-CONN.vbus, USBC.conn.vbus)
+    net GND (USB-CONN.vbus.V-)
 
     ; According to USB4 System Design Guidelines
     val bleed-R = create-resistor(R-query, 
@@ -1011,8 +1011,8 @@ public defn USBC-USB4-Iface (
                      make-public = true)
 
     ; CC/SBU connections to external
-    net (USB.cc, USBC.conn.bus.cc)
-    net (USB.sbu, USBC.conn.bus.sbu)
+    net (USB-CONN.bus.cc, USBC.conn.bus.cc)
+    net (USB-CONN.bus.sbu, USBC.conn.bus.sbu)
 
 
     ; ESD Protection
@@ -1025,25 +1025,25 @@ public defn USBC-USB4-Iface (
     ;          A       =>       B                  => C
     set-signal-end(USB.data, USBC.conn.bus.data)
 
-    for i in 0 to length(USBC.conn.bus.lanes) do:
+    for i in 0 to length(USBC.conn.bus.lane) do:
       inst tx-bcap : dp-coupler(tx-ac-C)
       inst rx-bcap : dp-coupler(rx-ac-C)
 
       require tx-esd:dual-pair from esd
-      topo-pair(USB.bus.lane[i].TX => tx-bcap => tx-esd => USBC.conn.bus.lane[i].TX)
-      set-signal-end(USB.bus.lane[i].TX, USBC.conn.bus.lane[i].TX)
+      topo-pair(USB-CONN.bus.lane[i].TX => tx-bcap => tx-esd => USBC.conn.bus.lane[i].TX)
+      set-signal-end(USB-CONN.bus.lane[i].TX, USBC.conn.bus.lane[i].TX)
 
       require rx-esd:dual-pair from esd
       if tx-side == true:
-        topo-pair(USB.bus.lane[i].RX => rx-bcap => rx-esd => USBC.conn.bus.lane[i].RX)
+        topo-pair(USB-CONN.bus.lane[i].RX => rx-bcap => rx-esd => USBC.conn.bus.lane[i].RX)
       else:
-        topo-pair(USB.bus.lane[i].RX => rx-esd => USBC.conn.bus.lane[i].RX)
-      set-signal-end(USB.bus.lane[i].RX, USBC.conn.bus.lane[i].RX)
+        topo-pair(USB-CONN.bus.lane[i].RX => rx-esd => USBC.conn.bus.lane[i].RX)
+      set-signal-end(USB-CONN.bus.lane[i].RX, USBC.conn.bus.lane[i].RX)
 
 
     ; Shield Termination
     inst shield-term : shield-termination(R-query, C-query)
-    net (shield-term.SHIELD, USBC.conn.shield)
+    net (shield-term.SHIELD, USB-CONN.shield)
     net (shield-term.GND, GND)
 
     
