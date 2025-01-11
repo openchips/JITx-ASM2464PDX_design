@@ -951,11 +951,12 @@ Circuit Includes:
 <DOC>
 public defn USBC-USB4-Iface (
   R-query:ResistorQuery = get-default-resistor-query(),
-  C-query:CapacitorQuery = get-default-capacitor-query()
+  C-query:CapacitorQuery = get-default-capacitor-query(),
+  tx-side:True|False = true
 ):
   pcb-module USBC-USB4-Iface:
-    port USB : usb-data
-    ;port USB : usb-c(2)
+    ; port USB : usb-data
+    port USB : usb-c(2)
     port VDD-USB : power
 
     public inst USBC : module
@@ -966,17 +967,16 @@ public defn USBC-USB4-Iface (
     ; According to USB4 System Design Guidelines
     val bleed-R = create-resistor(R-query, 
                                 case = valid-smd-pkgs("0201"), 
-                                resistance = Interval(150.0e3, 250.0e3)
+                                resistance = Interval(200.0e3, 242.0e3)
                                 )
-                                ; resistance = 200.0e3)
     
     val rx-ac-C = create-capacitor(C-query, 
                                  case = valid-smd-pkgs("0201"), 
-                                 capacitance = 300.0e-9)
+                                 capacitance = Interval(300.0e-9, 363.0e3))
 
     val tx-ac-C = create-capacitor(C-query,
                                  case = valid-smd-pkgs("0201"), 
-                                 capacitance = 200.0e-9)
+                                 capacitance = Interval(135.0e-9, 265.0e3))
     
 
     ; Process each lane
@@ -1000,15 +1000,6 @@ public defn USBC-USB4-Iface (
                      elem-type = bleed-R,
                      inst-name? = to-string("TX_N%_-R" % [i]),
                      make-public = true)
-
-      ; RX AC coupling caps
-      ; insert-capacitor(USBC.conn.bus.lane[i].RX.P, usb_c.lane[i].RX.P, C-query, capacitance = 100.0e-9)
-      ; insert-capacitor(USBC.conn.bus.lane[i].RX.N, usb_c.lane[i].RX.N, C-query, capacitance = 100.0e-9)
-
-      ; ; TX AC coupling caps  
-      ; insert-capacitor(USBC.conn.bus.lane[i].TX.P, usb_c.lane[i].TX.P, C-query, capacitance = 100.0e-9)
-      ; insert-capacitor(USBC.conn.bus.lane[i].TX.N, usb_c.lane[i].TX.N, C-query, capacitance = 100.0e-9)
-
 
     ; USB-C CC pull-down resistors
     val cc-R = create-resistor(R-query, resistance = 5.1e3, precision = (1 %))
@@ -1036,13 +1027,17 @@ public defn USBC-USB4-Iface (
 
     for i in 0 to length(USBC.conn.bus.lanes) do:
       inst tx-bcap : dp-coupler(tx-ac-C)
+      inst rx-bcap : dp-coupler(rx-ac-C)
 
       require tx-esd:dual-pair from esd
       topo-pair(USB.bus.lane[i].TX => tx-bcap => tx-esd => USBC.conn.bus.lane[i].TX)
       set-signal-end(USB.bus.lane[i].TX, USBC.conn.bus.lane[i].TX)
 
       require rx-esd:dual-pair from esd
-      topo-pair(USB.bus.lane[i].RX => rx-esd => USBC.conn.bus.lane[i].RX)
+      if tx-side == true:
+        topo-pair(USB.bus.lane[i].RX => rx-bcap => rx-esd => USBC.conn.bus.lane[i].RX)
+      else:
+        topo-pair(USB.bus.lane[i].RX => rx-esd => USBC.conn.bus.lane[i].RX)
       set-signal-end(USB.bus.lane[i].RX, USBC.conn.bus.lane[i].RX)
 
 

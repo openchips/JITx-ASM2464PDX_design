@@ -48,9 +48,9 @@ pcb-module my-design :
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 
   inst asm2464pdx : ASM001/components/Asmedia/ASM2464PDX/module
-  inst usb4_type_c : ASM001/components/TE_2388749-1/module
+  ; inst usb4_type_c : ASM001/components/TE_2388749-1/module
 
-  ; inst usb4_type_c : USBC-USB4-Iface()
+  inst usb4_type_c : USBC-USB4-Iface()
 
   require ep1 : usb-c() from asm2464pdx
   require ep2 : usb-c() from usb4_type_c
