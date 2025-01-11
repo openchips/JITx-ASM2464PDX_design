@@ -322,7 +322,9 @@ public defn USBC-USB4-Iface (
         usb_c.lane[i].TX.N  => USB-SS.lane[i].TX.N
         set-signal-end(usb_c.lane[i].RX, USBC.conn.bus.lane[i].RX)
         set-signal-end(usb_c.lane[i].TX, USBC.conn.bus.lane[i].TX)
- 
+
+    require usb_c_inst:usb_c from self
+
     ; Shield Termination
     inst shield-term : shield-termination(R-query, C-query)
     net (shield-term.SHIELD, USBC.conn.shield)
