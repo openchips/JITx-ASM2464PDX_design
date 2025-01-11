@@ -49,17 +49,18 @@ pcb-module my-design :
 
   inst asm2464pdx : ASM001/components/Asmedia/ASM2464PDX/module
   ; inst usb4_type_c : ASM001/components/TE_2388749-1/module
+  inst usb4_type_c : ASM001/components/USB/USBTypeC/USBC-USB4-Iface()
 
-  inst usb4_type_c : USBC-USB4-Iface()
+  ; inst usb4_type_c : USBC-USB4-Iface()
 
-  require ep1 : usb-c() from asm2464pdx
-  require ep2 : usb-c() from usb4_type_c
+  require ep1 : usb-c(2) from asm2464pdx
+  require ep2 : usb-c(2) from usb4_type_c
 
   val ti-2 = usb-get-trace-impedance(USB2)
   val usb2-constraints = USB-Constraint(proto = USB2, route-struct = diff(ti-2))
   constrain-topology(ep1.data => ep2.data, usb2-constraints)
 
-  ; val b-cap = block-cap(100.0e-9)
+  val b-cap = block-cap(100.0e-9)
 
   val ti-3 = usb-get-trace-impedance(USB3)
   val usb3-constraints = USB-Constraint(proto = USB3, route-struct = diff(ti-3))
@@ -68,7 +69,7 @@ pcb-module my-design :
     within [src, dst] = constrain-topology(ep1.lane[i] => ep2.lane[i], lane-constraint):
       ; Here we construct the differential pair topology for the lane.
       ; The Lane consists of two diff-pairs - TX and RX
-      topo-net(src.RX => dst.RX)
+      topo-pair(src.RX => dst.RX)
 
       ; The TX channel needs a blocking capacitor which we add with
       ;  the help of the `topo-pair` utility. This is like `topo-net`

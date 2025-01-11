@@ -9,6 +9,9 @@ package ASM001/common/board defined-in "common/board.stanza"
 package ASM001/common/components defined-in "common/common-components.stanza"
 
 package ASM001/components/Asmedia/ASM2464PDX defined-in "components/Asmedia/ASM2464PDX.stanza"
+
+package ASM001/components/USB/USBTypeC defined-in "components/Generic/USBTypeC.stanza"
+
 package ASM001/components/TE_1-2199230-6 defined-in "components/TE/M.2/1-2199230-6.stanza"
 package ASM001/components/TE_2388749-1 defined-in "components/TE/USB4/2388749-1.stanza"
 package ASM001/components/Winbond/W25Q32JVSSIQ defined-in "components/Winbond/W25Q32JVSSIQ.stanza"

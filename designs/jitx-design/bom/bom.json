@@ -252,7 +252,7 @@
 									"name":	"pool-esd"
 								}
 							},
-							"index":	2
+							"index":	1
 						},
 						"ref":	"U4",
 						"fileinfo":	null
@@ -271,29 +271,25 @@
 									"name":	"pool-esd"
 								}
 							},
-							"index":	1
+							"index":	0
 						},
 						"ref":	"U3",
 						"fileinfo":	null
 					}, {
 						"inst":	{
 							"ref":	{
-								"ref":	{
-									"ref":	{
-										"name":	"usb4_type_c"
-									},
-									"field":	{
-										"name":	"esd"
-									}
-								},
-								"field":	{
-									"name":	"pool-esd"
-								}
+								"name":	"usb4_type_c"
 							},
-							"index":	0
+							"field":	{
+								"name":	"esd-prot"
+							}
 						},
 						"ref":	"U2",
-						"fileinfo":	null
+						"fileinfo":	{
+							"filename":	"components\\Generic\\USBTypeC.stanza",
+							"line":	228,
+							"column":	4
+						}
 					}],
 				"datasheet":	"https://datasheet.lcsc.com/lcsc/2302221330_Texas-Instruments-ESD224DQAR_C1981316.pdf",
 				"manufacturer":	"Texas Instruments",
@@ -301,6 +297,41 @@
 				"vendor":	"Arrow",
 				"sku":	"ESD224DQAR",
 				"price":	0.4376,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"USB Type-C SMD Connectors ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"usb4_type_c"
+								},
+								"field":	{
+									"name":	"USBC"
+								}
+							},
+							"field":	{
+								"name":	"J"
+							}
+						},
+						"ref":	"J1",
+						"fileinfo":	{
+							"filename":	"components\\Generic\\USBTypeC.stanza",
+							"line":	104,
+							"column":	2
+						}
+					}],
+				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_2407021105_MOLEX-2012670005_C565324.pdf",
+				"manufacturer":	"MOLEX",
+				"mpn":	"2012670005",
+				"vendor":	"Arrow",
+				"sku":	"2012670005",
+				"price":	1.4592,
 				"preferred":	false,
 				"query_properties":	null
 			}, {
@@ -318,7 +349,7 @@
 								"name":	"TX_N1-R"
 							}
 						},
-						"ref":	"R8",
+						"ref":	"R11",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -329,7 +360,7 @@
 								"name":	"TX_P1-R"
 							}
 						},
-						"ref":	"R7",
+						"ref":	"R10",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -340,7 +371,7 @@
 								"name":	"RX_N1-R"
 							}
 						},
-						"ref":	"R6",
+						"ref":	"R9",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -351,7 +382,7 @@
 								"name":	"RX_P1-R"
 							}
 						},
-						"ref":	"R5",
+						"ref":	"R8",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -362,7 +393,7 @@
 								"name":	"TX_N0-R"
 							}
 						},
-						"ref":	"R4",
+						"ref":	"R7",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -373,7 +404,7 @@
 								"name":	"TX_P0-R"
 							}
 						},
-						"ref":	"R3",
+						"ref":	"R6",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -384,7 +415,7 @@
 								"name":	"RX_N0-R"
 							}
 						},
-						"ref":	"R2",
+						"ref":	"R5",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -395,7 +426,7 @@
 								"name":	"RX_P0-R"
 							}
 						},
-						"ref":	"R1",
+						"ref":	"R4",
 						"fileinfo":	null
 					}],
 				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2205311945_UNI-ROYAL-Uniroyal-Elec-0201WMF2003TEE_C270357.pdf",
@@ -416,37 +447,6 @@
 					"code":	5,
 					"name":	"Potential Alternate Vendors"
 				},
-				"description":	"RES 0 OHM JUMPER 1/32W 01005",
-				"insts":	[{
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"usb4_type_c"
-								},
-								"field":	{
-									"name":	"shield-term"
-								}
-							},
-							"field":	{
-								"name":	"R"
-							}
-						},
-						"ref":	"R11",
-						"fileinfo":	null
-					}],
-				"datasheet":	"https://b2b-api.panasonic.eu/file_stream/pids/fileversion/1107",
-				"manufacturer":	"PANASONIC",
-				"mpn":	"ERJ-U0X0R00Y",
-				"vendor":	null,
-				"sku":	null,
-				"price":	null,
-				"preferred":	false,
-				"query_properties":	null
-			}, {
-				"status":	{
-					"code":	5,
-					"name":	"Potential Alternate Vendors"
-				},
 				"description":	"31.25mW Thick Film Resistors ±1% ±200ppm/℃ 5.1kΩ 01005  Chip Resistor - Surface Mount ROHS",
 				"insts":	[{
 						"inst":	{
@@ -457,7 +457,7 @@
 								"name":	"CC1-R"
 							}
 						},
-						"ref":	"R10",
+						"ref":	"R2",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -468,7 +468,7 @@
 								"name":	"CC0-R"
 							}
 						},
-						"ref":	"R9",
+						"ref":	"R1",
 						"fileinfo":	null
 					}],
 				"datasheet":	"https://datasheet.lcsc.com/lcsc/2205312030_UNI-ROYAL-Uniroyal-Elec-0105WHF5101TDE_C2766348.pdf",
@@ -484,7 +484,7 @@
 					"code":	5,
 					"name":	"Potential Alternate Vendors"
 				},
-				"description":	"USB4 Type-C SMD Connectors ROHS",
+				"description":	"RES 0 OHM JUMPER 1/32W 01005",
 				"insts":	[{
 						"inst":	{
 							"ref":	{
@@ -492,23 +492,19 @@
 									"name":	"usb4_type_c"
 								},
 								"field":	{
-									"name":	"USBC"
+									"name":	"shield-term"
 								}
 							},
 							"field":	{
-								"name":	"J"
+								"name":	"R"
 							}
 						},
-						"ref":	"J1",
-						"fileinfo":	{
-							"filename":	"components\\TE\\USB4\\2388749-1.stanza",
-							"line":	815,
-							"column":	2
-						}
+						"ref":	"R3",
+						"fileinfo":	null
 					}],
-				"datasheet":	null,
-				"manufacturer":	"TE",
-				"mpn":	"2388749-1",
+				"datasheet":	"https://b2b-api.panasonic.eu/file_stream/pids/fileversion/1107",
+				"manufacturer":	"PANASONIC",
+				"mpn":	"ERJ-U0X0R00Y",
 				"vendor":	null,
 				"sku":	null,
 				"price":	null,
@@ -557,7 +553,7 @@
 						"ref":	"J2",
 						"fileinfo":	{
 							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
-							"line":	80,
+							"line":	81,
 							"column":	2
 						}
 					}],
@@ -592,7 +588,7 @@
 							},
 							"index":	1
 						},
-						"ref":	"C14",
+						"ref":	"C15",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -615,7 +611,7 @@
 							},
 							"index":	0
 						},
-						"ref":	"C13",
+						"ref":	"C14",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -638,7 +634,7 @@
 							},
 							"index":	1
 						},
-						"ref":	"C2",
+						"ref":	"C3",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -661,7 +657,7 @@
 							},
 							"index":	0
 						},
-						"ref":	"C1",
+						"ref":	"C2",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -696,7 +692,7 @@
 								"name":	"C"
 							}
 						},
-						"ref":	"C17",
+						"ref":	"C1",
 						"fileinfo":	null
 					}],
 				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2211282000_Taiyo-Yuden-UMK063BJ472KP-F_C2187482.pdf",
@@ -735,7 +731,7 @@
 							},
 							"index":	1
 						},
-						"ref":	"C16",
+						"ref":	"C17",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -758,7 +754,7 @@
 							},
 							"index":	0
 						},
-						"ref":	"C15",
+						"ref":	"C16",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -781,7 +777,7 @@
 							},
 							"index":	1
 						},
-						"ref":	"C12",
+						"ref":	"C13",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -804,7 +800,7 @@
 							},
 							"index":	0
 						},
-						"ref":	"C3",
+						"ref":	"C12",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -847,7 +843,7 @@
 			"value":	35
 		}, {
 			"name":	"Cost",
-			"value":	"$3.46"
+			"value":	"$4.92"
 		}],
 	"is_update":	false,
 	"old_bom":	{
@@ -1061,7 +1057,7 @@
 									"name":	"pool-esd"
 								}
 							},
-							"index":	2
+							"index":	1
 						},
 						"ref":	"U4",
 						"fileinfo":	null
@@ -1080,29 +1076,25 @@
 									"name":	"pool-esd"
 								}
 							},
-							"index":	1
+							"index":	0
 						},
 						"ref":	"U3",
 						"fileinfo":	null
 					}, {
 						"inst":	{
 							"ref":	{
-								"ref":	{
-									"ref":	{
-										"name":	"usb4_type_c"
-									},
-									"field":	{
-										"name":	"esd"
-									}
-								},
-								"field":	{
-									"name":	"pool-esd"
-								}
+								"name":	"usb4_type_c"
 							},
-							"index":	0
+							"field":	{
+								"name":	"esd-prot"
+							}
 						},
 						"ref":	"U2",
-						"fileinfo":	null
+						"fileinfo":	{
+							"filename":	"components\\Generic\\USBTypeC.stanza",
+							"line":	229,
+							"column":	4
+						}
 					}],
 				"datasheet":	"https://datasheet.lcsc.com/lcsc/2302221330_Texas-Instruments-ESD224DQAR_C1981316.pdf",
 				"manufacturer":	"Texas Instruments",
@@ -1110,6 +1102,41 @@
 				"vendor":	"Arrow",
 				"sku":	"ESD224DQAR",
 				"price":	0.4376,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"USB Type-C SMD Connectors ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"usb4_type_c"
+								},
+								"field":	{
+									"name":	"USBC"
+								}
+							},
+							"field":	{
+								"name":	"J"
+							}
+						},
+						"ref":	"J1",
+						"fileinfo":	{
+							"filename":	"components\\Generic\\USBTypeC.stanza",
+							"line":	104,
+							"column":	2
+						}
+					}],
+				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_2407021105_MOLEX-2012670005_C565324.pdf",
+				"manufacturer":	"MOLEX",
+				"mpn":	"2012670005",
+				"vendor":	"Arrow",
+				"sku":	"2012670005",
+				"price":	1.4592,
 				"preferred":	false,
 				"query_properties":	null
 			}, {
@@ -1127,7 +1154,7 @@
 								"name":	"TX_N1-R"
 							}
 						},
-						"ref":	"R8",
+						"ref":	"R11",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -1138,7 +1165,7 @@
 								"name":	"TX_P1-R"
 							}
 						},
-						"ref":	"R7",
+						"ref":	"R10",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -1149,7 +1176,7 @@
 								"name":	"RX_N1-R"
 							}
 						},
-						"ref":	"R6",
+						"ref":	"R9",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -1160,7 +1187,7 @@
 								"name":	"RX_P1-R"
 							}
 						},
-						"ref":	"R5",
+						"ref":	"R8",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -1171,7 +1198,7 @@
 								"name":	"TX_N0-R"
 							}
 						},
-						"ref":	"R4",
+						"ref":	"R7",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -1182,7 +1209,7 @@
 								"name":	"TX_P0-R"
 							}
 						},
-						"ref":	"R3",
+						"ref":	"R6",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -1193,7 +1220,7 @@
 								"name":	"RX_N0-R"
 							}
 						},
-						"ref":	"R2",
+						"ref":	"R5",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -1204,7 +1231,7 @@
 								"name":	"RX_P0-R"
 							}
 						},
-						"ref":	"R1",
+						"ref":	"R4",
 						"fileinfo":	null
 					}],
 				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2205311945_UNI-ROYAL-Uniroyal-Elec-0201WMF2003TEE_C270357.pdf",
@@ -1225,37 +1252,6 @@
 					"code":	5,
 					"name":	"Potential Alternate Vendors"
 				},
-				"description":	"RES 0 OHM JUMPER 1/32W 01005",
-				"insts":	[{
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"usb4_type_c"
-								},
-								"field":	{
-									"name":	"shield-term"
-								}
-							},
-							"field":	{
-								"name":	"R"
-							}
-						},
-						"ref":	"R11",
-						"fileinfo":	null
-					}],
-				"datasheet":	"https://b2b-api.panasonic.eu/file_stream/pids/fileversion/1107",
-				"manufacturer":	"PANASONIC",
-				"mpn":	"ERJ-U0X0R00Y",
-				"vendor":	null,
-				"sku":	null,
-				"price":	null,
-				"preferred":	false,
-				"query_properties":	null
-			}, {
-				"status":	{
-					"code":	5,
-					"name":	"Potential Alternate Vendors"
-				},
 				"description":	"31.25mW Thick Film Resistors ±1% ±200ppm/℃ 5.1kΩ 01005  Chip Resistor - Surface Mount ROHS",
 				"insts":	[{
 						"inst":	{
@@ -1266,7 +1262,7 @@
 								"name":	"CC1-R"
 							}
 						},
-						"ref":	"R10",
+						"ref":	"R2",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -1277,7 +1273,7 @@
 								"name":	"CC0-R"
 							}
 						},
-						"ref":	"R9",
+						"ref":	"R1",
 						"fileinfo":	null
 					}],
 				"datasheet":	"https://datasheet.lcsc.com/lcsc/2205312030_UNI-ROYAL-Uniroyal-Elec-0105WHF5101TDE_C2766348.pdf",
@@ -1293,7 +1289,7 @@
 					"code":	5,
 					"name":	"Potential Alternate Vendors"
 				},
-				"description":	"USB4 Type-C SMD Connectors ROHS",
+				"description":	"RES 0 OHM JUMPER 1/32W 01005",
 				"insts":	[{
 						"inst":	{
 							"ref":	{
@@ -1301,23 +1297,19 @@
 									"name":	"usb4_type_c"
 								},
 								"field":	{
-									"name":	"USBC"
+									"name":	"shield-term"
 								}
 							},
 							"field":	{
-								"name":	"J"
+								"name":	"R"
 							}
 						},
-						"ref":	"J1",
-						"fileinfo":	{
-							"filename":	"components\\TE\\USB4\\2388749-1.stanza",
-							"line":	815,
-							"column":	2
-						}
+						"ref":	"R3",
+						"fileinfo":	null
 					}],
-				"datasheet":	null,
-				"manufacturer":	"TE",
-				"mpn":	"2388749-1",
+				"datasheet":	"https://b2b-api.panasonic.eu/file_stream/pids/fileversion/1107",
+				"manufacturer":	"PANASONIC",
+				"mpn":	"ERJ-U0X0R00Y",
 				"vendor":	null,
 				"sku":	null,
 				"price":	null,
@@ -1366,7 +1358,7 @@
 						"ref":	"J2",
 						"fileinfo":	{
 							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
-							"line":	80,
+							"line":	81,
 							"column":	2
 						}
 					}],
@@ -1401,7 +1393,7 @@
 							},
 							"index":	1
 						},
-						"ref":	"C14",
+						"ref":	"C15",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -1424,7 +1416,7 @@
 							},
 							"index":	0
 						},
-						"ref":	"C13",
+						"ref":	"C14",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -1447,7 +1439,7 @@
 							},
 							"index":	1
 						},
-						"ref":	"C2",
+						"ref":	"C3",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -1470,7 +1462,7 @@
 							},
 							"index":	0
 						},
-						"ref":	"C1",
+						"ref":	"C2",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -1505,7 +1497,7 @@
 								"name":	"C"
 							}
 						},
-						"ref":	"C17",
+						"ref":	"C1",
 						"fileinfo":	null
 					}],
 				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2211282000_Taiyo-Yuden-UMK063BJ472KP-F_C2187482.pdf",
@@ -1544,7 +1536,7 @@
 							},
 							"index":	1
 						},
-						"ref":	"C16",
+						"ref":	"C17",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -1567,7 +1559,7 @@
 							},
 							"index":	0
 						},
-						"ref":	"C15",
+						"ref":	"C16",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -1590,7 +1582,7 @@
 							},
 							"index":	1
 						},
-						"ref":	"C12",
+						"ref":	"C13",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -1613,7 +1605,7 @@
 							},
 							"index":	0
 						},
-						"ref":	"C3",
+						"ref":	"C12",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,

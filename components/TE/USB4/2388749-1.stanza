@@ -811,6 +811,7 @@ public pcb-component conn-component :
 
 public pcb-module module :
   port conn : usb-c-connector
+  port usbdata: usb-data
 
   public inst J : conn-component
 
@@ -821,9 +822,12 @@ public pcb-module module :
   net (J.SBU1 conn.bus.sbu[0])
   net (J.SBU2 conn.bus.sbu[1])
 
-  require usb-data : dual-pair from J
-  topo-net(conn.bus.data, usb-data.A)
-  topo-net(usb-data.A, usb-data.B)
+  require usb_data : dual-pair from J
+  topo-net(conn.bus.data, usb_data.A)
+  topo-net(usb_data.A, usb_data.B)
+
+  set-signal-end(usb-data.data, conn.bus.data)
+
 
   topo-pair(J.TX1 => conn.bus.lane[0].TX)
   topo-pair(J.RX1 => conn.bus.lane[0].RX)
@@ -920,11 +924,11 @@ public defn USBC-USB4-Iface (
   tx-side:True|False = true
 ):
   pcb-module USBC-USB4-Iface:
-    ; port USB : usb-c(2)
-    port USB-DATA: usb-data
+    ; port USB-C : usb-c(2)
     port VDD-USB : power
-    val usb_c = usb-c(2)
-
+    port usb_data : usb-data
+    val usb_c = usb-c()
+    
     public inst USBC : module
 
     net (VDD-USB, USBC.conn.vbus)
@@ -983,28 +987,32 @@ public defn USBC-USB4-Iface (
 
     ; ESD Protection
 
-    val esd = diodes/ESD224DQAR/create-esd-pool(3, GND)
+    ; val esd = diodes/ESD224DQAR/create-esd-pool(3, GND)
 
-    ; USB Data Path
-    require esd-pair:dual-pair from esd
-    topo-pair(USB-DATA.data => esd-pair.A => esd-pair.B => USBC.conn.bus.data)
-    ;          A       =>       B                  => C
-    set-signal-end(USB-DATA.data, USBC.conn.bus.data)
+    ; ; USB Data Path
+    ; require usb-c:usb_c from self
+    ; require esd-pair:dual-pair from esd
+    ; topo-pair(usb-c.data => esd-pair.A => esd-pair.B => USBC.conn.bus.data)
+    ; ;          A       =>       B                  => C
+    ; set-signal-end(usb-c.data, USBC.conn.bus.data)
+    ; supports usb-data: 
+    ;   usb-data.data.P => USBC.conn.bus.data
+    ;   usb-data.data.N => USBC.conn.bus.data
 
-    for i in 0 to length(USBC.conn.bus.lane) do:
-      inst tx-bcap : dp-coupler(tx-ac-C)
-      inst rx-bcap : dp-coupler(rx-ac-C)
+    ; for i in 0 to length(USBC.conn.bus.lane) do:
+    ;   inst tx-bcap : dp-coupler(tx-ac-C)
+    ;   inst rx-bcap : dp-coupler(rx-ac-C)
 
-      require tx-esd:dual-pair from esd
-      topo-pair(USB.lane[i].TX => tx-bcap => tx-esd => USBC.conn.bus.lane[i].TX)
-      set-signal-end(USB.lane[i].TX, USBC.conn.bus.lane[i].TX)
+    ;   require tx-esd:dual-pair from esd
+    ;   topo-pair(usb-c.lane[i].TX => tx-bcap => tx-esd => USBC.conn.bus.lane[i].TX)
+    ;   set-signal-end(usb_c.lane[i].TX, USBC.conn.bus.lane[i].TX)
 
-      require rx-esd:dual-pair from esd
-      if tx-side == true:
-        topo-pair(USB.lane[i].RX => rx-bcap => rx-esd => USBC.conn.bus.lane[i].RX)
-      else:
-        topo-pair(USB.lane[i].RX => rx-esd => USBC.conn.bus.lane[i].RX)
-      set-signal-end(USB.lane[i].RX, USBC.conn.bus.lane[i].RX)
+    ;   require rx-esd:dual-pair from esd
+    ;   if tx-side == true:
+    ;     topo-pair(usb-c.lane[i].RX => rx-bcap => rx-esd => USBC.conn.bus.lane[i].RX)
+    ;   else:
+    ;     topo-pair(usb-c.lane[i].RX => rx-esd => USBC.conn.bus.lane[i].RX)
+    ;   set-signal-end(usb-c.lane[i].RX, USBC.conn.bus.lane[i].RX)
 
 
     ; Shield Termination
@@ -1012,22 +1020,17 @@ public defn USBC-USB4-Iface (
     net (shield-term.SHIELD, USBC.conn.shield)
     net (shield-term.GND, GND)
 
-    
-    supports usb-data :
-      usb-data.data.P => USB.data.P
-      usb-data.data.N => USB.data.N
-
     supports usb_c :
-      usb_c.data.P => USB.data.P
-      usb_c.data.N => USB.data.N
+      usb_c.data.P => USBC.conn.bus.data.P
+      usb_c.data.N => USBC.conn.bus.data.N
       for i in 0 to 2 do :
-        usb_c.cc[i] =>  USB.cc[i]
-        usb_c.sbu[i] => USB.sbu[i]
+        usb_c.cc[i] =>  USBC.conn.bus.cc[i]
+        usb_c.sbu[i] => USBC.conn.bus.sbu[i]
 
-        usb_c.lane[i].RX.P => USB.lane[i].RX.P
-        usb_c.lane[i].RX.N => USB.lane[i].RX.N
-        usb_c.lane[i].TX.P => USB.lane[i].TX.P
-        usb_c.lane[i].TX.N => USB.lane[i].TX.N
+        usb_c.lane[i].RX.P => USBC.conn.bus.lane[i].RX.P
+        usb_c.lane[i].RX.N => USBC.conn.bus.lane[i].RX.N
+        usb_c.lane[i].TX.P => USBC.conn.bus.lane[i].TX.P
+        usb_c.lane[i].TX.N => USBC.conn.bus.lane[i].TX.N
 
 
   USBC-USB4-Iface
