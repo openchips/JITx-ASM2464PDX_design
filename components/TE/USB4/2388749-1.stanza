@@ -649,7 +649,7 @@ public pcb-symbol _2388749-1 :
   pin SHIELD at Point(-12.700, -20.320) with :
     direction = Left
     length = 5.080
-    number-size = 1.270
+    number-size = 1.270    
     name-size = 1.270
   pin VBUS[2] at Point(12.700, 12.700) with :
     direction = Right
@@ -954,8 +954,8 @@ public defn USBC-USB4-Iface (
   C-query:CapacitorQuery = get-default-capacitor-query()
 ):
   pcb-module USBC-USB4-Iface:
-    ; port USB : usb-data
-    port USB : usb-c
+    port USB : usb-data
+    ;port USB : usb-c(2)
     port VDD-USB : power
 
     public inst USBC : module

@@ -69,7 +69,7 @@
 				"mpn":	"1-2199230-6",
 				"vendor":	"Arrow",
 				"sku":	"1-2199230-6",
-				"price":	1.6885,
+				"price":	1.3433,
 				"preferred":	false,
 				"query_properties":	null
 			}, {
@@ -92,7 +92,7 @@
 						},
 						"ref":	"C11",
 						"fileinfo":	{
-							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
 							"column":	2
 						}
@@ -110,7 +110,7 @@
 						},
 						"ref":	"C10",
 						"fileinfo":	{
-							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
 							"column":	2
 						}
@@ -128,7 +128,7 @@
 						},
 						"ref":	"C9",
 						"fileinfo":	{
-							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
 							"column":	2
 						}
@@ -146,7 +146,7 @@
 						},
 						"ref":	"C8",
 						"fileinfo":	{
-							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
 							"column":	2
 						}
@@ -164,7 +164,7 @@
 						},
 						"ref":	"C7",
 						"fileinfo":	{
-							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
 							"column":	2
 						}
@@ -182,7 +182,7 @@
 						},
 						"ref":	"C6",
 						"fileinfo":	{
-							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
 							"column":	2
 						}
@@ -200,7 +200,7 @@
 						},
 						"ref":	"C5",
 						"fileinfo":	{
-							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
 							"column":	2
 						}
@@ -218,7 +218,7 @@
 						},
 						"ref":	"C4",
 						"fileinfo":	{
-							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
 							"column":	2
 						}
@@ -249,7 +249,7 @@
 						"ref":	"J1",
 						"fileinfo":	{
 							"filename":	"components\\TE\\USB4\\2388749-1.stanza",
-							"line":	816,
+							"line":	815,
 							"column":	2
 						}
 					}],
@@ -303,7 +303,7 @@
 						},
 						"ref":	"J2",
 						"fileinfo":	{
-							"filename":	"c:\\\\\\\\Users\\\\\\\\jamms\\\\\\\\OneDrive\\\\\\\\JITx\\\\\\\\Projects\\\\\\\\JITx-ASM2464PDX_design2\\\\\\\\main.stanza",
+							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
 							"line":	80,
 							"column":	2
 						}
@@ -332,7 +332,7 @@
 			"value":	12
 		}, {
 			"name":	"Cost",
-			"value":	"$2.49"
+			"value":	"$2.14"
 		}],
 	"is_update":	false,
 	"old_bom":	{
@@ -363,7 +363,7 @@
 				"mpn":	"1-2199230-6",
 				"vendor":	"Arrow",
 				"sku":	"1-2199230-6",
-				"price":	1.6885,
+				"price":	1.0834,
 				"preferred":	false,
 				"query_properties":	null
 			}, {
@@ -386,7 +386,7 @@
 						},
 						"ref":	"C11",
 						"fileinfo":	{
-							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
 							"column":	2
 						}
@@ -404,7 +404,7 @@
 						},
 						"ref":	"C10",
 						"fileinfo":	{
-							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
 							"column":	2
 						}
@@ -422,7 +422,7 @@
 						},
 						"ref":	"C9",
 						"fileinfo":	{
-							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
 							"column":	2
 						}
@@ -440,7 +440,7 @@
 						},
 						"ref":	"C8",
 						"fileinfo":	{
-							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
 							"column":	2
 						}
@@ -458,7 +458,7 @@
 						},
 						"ref":	"C7",
 						"fileinfo":	{
-							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
 							"column":	2
 						}
@@ -476,7 +476,7 @@
 						},
 						"ref":	"C6",
 						"fileinfo":	{
-							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
 							"column":	2
 						}
@@ -494,7 +494,7 @@
 						},
 						"ref":	"C5",
 						"fileinfo":	{
-							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
 							"column":	2
 						}
@@ -512,7 +512,7 @@
 						},
 						"ref":	"C4",
 						"fileinfo":	{
-							"filename":	"C:\\Users\\jamms\\OneDrive\\JITx\\Projects\\JITx-ASM2464PDX_design2\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
 							"column":	2
 						}
@@ -543,7 +543,7 @@
 						"ref":	"J1",
 						"fileinfo":	{
 							"filename":	"components\\TE\\USB4\\2388749-1.stanza",
-							"line":	816,
+							"line":	815,
 							"column":	2
 						}
 					}],
@@ -597,7 +597,7 @@
 						},
 						"ref":	"J2",
 						"fileinfo":	{
-							"filename":	"c:\\\\\\\\Users\\\\\\\\jamms\\\\\\\\OneDrive\\\\\\\\JITx\\\\\\\\Projects\\\\\\\\JITx-ASM2464PDX_design2\\\\\\\\main.stanza",
+							"filename":	"c:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\main.stanza",
 							"line":	80,
 							"column":	2
 						}

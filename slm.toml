@@ -1,7 +1,6 @@
-name = "design-template"
-version = "0.1.0"
+name = "asm2464pdx"
+version = "0.3.0"
 [dependencies]
 JITX3 = { path = "{SLM_ROOT}/JITX3" }
 jlc-pcb = { git = "JITx-Inc/jlc-pcb", version = "0.3.2" }
-jsl = { git = "JITx-Inc/jsl", version = "0.9.0" }
 diodes = { git = "JITx-Inc/diodes", version = "0.2.0" }

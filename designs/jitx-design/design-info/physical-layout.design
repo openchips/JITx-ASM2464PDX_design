@@ -1,5 +1,4 @@
 {  
-  "operations": [  
-    {"operation":"place","place":{"placements":[{"id":"FGGGdn9Pc9pM2R5j9kQF9j","pose":{"center":{"x":70.37454921875,"y":5.5415002861022948},"angle":270},"side":"top"},{"id":"53gZgENRPRhRdYnsLXGZJB","pose":{"center":{"x":32.3516,"y":12.87375040435791},"angle":90},"side":"top"},{"id":"9F7X1GKyab9VqwR63rhLHx","pose":{"center":{"x":72.664048978424077,"y":-8.846},"angle":180},"side":"top"},{"id":"9NubFG7z4NM9oc9w3ukZ8s","pose":{"center":{"x":48.1677997795105,"y":4.91650022649765},"angle":0},"side":"top"},{"id":"9wrJSBvLYDeaFh7jvAkUQA","pose":{"center":{"x":48.377799758052831,"y":21.041001037597656},"angle":270},"side":"top"},{"id":"A87RqDGkdfcTmZbNgXbJEK","pose":{"center":{"x":48.377799817657476,"y":-8.28799995044619},"angle":270},"side":"top"},{"id":"Fe8xqoDFXDViSLugy2egHb","pose":{"center":{"x":35.17330005794615,"y":-8.4979999504089356},"angle":180},"side":"top"}]}}
+  "operations": [
   ]
 }
