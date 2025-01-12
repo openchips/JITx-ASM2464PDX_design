@@ -94,7 +94,7 @@ doc: \<DOC>
 This variable defines a shape for a board.
 <DOC>
 ; Define the shape/size of the board
-public val board-shape = RoundedRectangle(50.0, 30.0, 0.25)
+public val board-shape = RoundedRectangle(100.0, 50.0, 0.25)
 
 public val default-TH = gen-via(false, LayerIndex(0,Top), LayerIndex(5,Bottom), "th") ; Full stackup
 

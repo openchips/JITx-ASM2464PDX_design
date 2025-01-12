@@ -4,4 +4,3 @@ version = "0.3.0"
 JITX3 = { path = "{SLM_ROOT}/JITX3" }
 jlc-pcb = { git = "JITx-Inc/jlc-pcb", version = "0.3.2" }
 diodes = { git = "JITx-Inc/diodes", version = "0.2.0" }
-connectors = { git = "JITx-Inc/connectors", version = "0.4.1" }

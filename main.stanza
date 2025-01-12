@@ -30,7 +30,7 @@ defpackage main :
 
 
 ; Module to run as a design
-pcb-module my-design :
+pcb-module ASM001-design :
   ; define some pins/ports
   port gnd
   port vdd
@@ -49,16 +49,71 @@ pcb-module my-design :
 
   inst asm2464pdx : ASM001/components/Asmedia/ASM2464PDX/module
   ; inst usb4_type_c : ASM001/components/TE_2388749-1/module
-  inst usb4_type_c : ASM001/components/USB/USBTypeC/USBC-USB4-Iface()
+  inst usb4_type_c : ASM001/components/USB/USBTypeC/conn-component
 
   ; inst usb4_type_c : USBC-USB4-Iface()
 
   require ep1 : usb-c(2) from asm2464pdx
-  require ep2 : usb-c(2) from usb4_type_c
+  require ep2 : usb-c-connector from usb4_type_c
+  ; require lp:lane-pair[2] from self
+
+  val R-query = get-default-resistor-query()
+  val C-query = get-default-capacitor-query()
+
+  ; Two separate pull down resistors per the USB-C
+  ;  spec Section 4.5.1.2.1
+  ; https://www.usb.org/sites/default/files/USB%20Type-C%20Spec%20R2.0%20-%20August%202019.pdf
+  val pu-R = create-resistor(R-query, resistance = 5.1e3, precision = (1 %))
+  for i in indices(ep2.bus.cc) do:
+    val n = to-string("CC%_-R" % [i])
+    insert-pulldown(ep2.bus.cc[i], GND, elem-type = pu-R, inst-name? = n, make-public = true)
+
+  public inst esd-prot : diodes/ESD224DQAR/device
+  net (esd-prot.GND[1], esd-prot.GND[2], GND)
+
+  ; Construct the topology from the module port, through
+  ;  the ESD protector, and then terminating in the connector device.
+  require esd-pair:dual-pair from esd-prot
+  topo-pair(ep1.data => esd-pair.A => esd-pair.B => ep2.bus.data)
+  ; By setting the signal end - then the routing structure application
+  ;   can apply to the entirety of the bus.
+  ; set-signal-end(ep1.data, ep2.bus.data)
+
+  
+  ; According to USB4 System Design Guidelines
+  val bleed-R = create-resistor(R-query, 
+                              case = valid-smd-pkgs("0201"), 
+                              resistance = Interval(200.0e3, 242.0e3)
+                              )
+  
+  val rx-ac-C = create-capacitor(C-query, 
+                                case = valid-smd-pkgs("0201"), 
+                                capacitance = Interval(300.0e-9, 363.0e3))
+
+  val tx-ac-C = create-capacitor(C-query,
+                                case = valid-smd-pkgs("0201"), 
+                                capacitance = Interval(135.0e-9, 265.0e3))
+
+  val esd-lanes = diodes/ESD224DQAR/create-esd-pool(2, GND)
+
+  for i in 0 to length(ep1.lane) do:
+    inst tx-bcap : dp-coupler(tx-ac-C)
+    inst rx-bcap : dp-coupler(rx-ac-C)
+
+    require tx-esd:dual-pair from esd-lanes
+    topo-pair(ep1.lane[i].TX => tx-bcap => tx-esd => ep2.bus.lane[i].TX)
+
+    require rx-esd:dual-pair from esd-lanes
+    topo-pair(ep1.lane[i].RX => rx-bcap => rx-esd => ep2.bus.lane[i].RX)
+
+  ; Shield Termination
+  inst shield-term : shield-termination(R-query, C-query)
+  net (shield-term.SHIELD, ep2.shield)
+  net (shield-term.GND, GND)
 
   val ti-2 = usb-get-trace-impedance(USB2)
   val usb2-constraints = USB-Constraint(proto = USB2, route-struct = diff(ti-2))
-  constrain-topology(ep1.data => ep2.data, usb2-constraints)
+  constrain-topology(ep1.data => ep2.bus.data, usb2-constraints)
 
   val b-cap = block-cap(100.0e-9)
 
@@ -66,7 +121,7 @@ pcb-module my-design :
   val usb4-constraints = USB-Constraint(proto = USB4, route-struct = diff(ti-4))
   val lane-constraint = LaneConstraint(usb4-constraints)
   for i in indices(ep1.lane) do :
-    within [src, dst] = constrain-topology(ep1.lane[i] => ep2.lane[i], lane-constraint):
+    within [src, dst] = constrain-topology(ep1.lane[i] => ep2.bus.lane[i], lane-constraint):
       ; Here we construct the differential pair topology for the lane.
       ; The Lane consists of two diff-pairs - TX and RX
       topo-pair(src.RX => dst.RX)
@@ -127,7 +182,7 @@ pcb-module my-design :
 setup-design("jitx-design", board-shape)
 
 ; Set the top level module (the module to be compile into a schematic and PCB)
-set-main-module(my-design)
+set-main-module(ASM001-design)
 
 ; View the results
 ; take a look at the BOM that was generated
