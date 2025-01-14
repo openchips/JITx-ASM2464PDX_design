@@ -10,12 +10,132 @@ defpackage board :
   import jsl/layerstack
 
 public defn setup-my-board (outline:Shape) :
-  set-board(this-board(outline))
+  set-board(ASM001-board(outline))
   set-rules(jlc-pcb/rules/multi_1oz/jlcpcb-rules-multi-1oz)
 
-; Creates a pcb-board with a typical JLCPCB stackup given board outline.
-public pcb-board this-board (outline:Shape) :
+doc: \<DOC>
+@brief Parametric via generator for laser-drilled vias
+This function creates vias based on the input arguments
+@param via-start the layer that the via starts on
+@param via-stop the layer that the via ends on
+For other via types and arguments, please
+consult: https://docs.jitx.com/reference/statements/viastmt/heading.html
+<DOC>
+
+public pcb-via gen-via (vip:True|False, via-start:LayerIndex via-stop:LayerIndex via-name:String) :
+  name = via-name
+  start = via-start
+  stop = via-stop
+  diameter = 0.200
+  hole-diameter = 0.100
+  type = LaserDrill
+  via-in-pad = vip
+
+public val default-TH = gen-via(false, LayerIndex(0,Top), LayerIndex(5,Bottom), "th") ; Full stackup
+
+; Standard through-hole via (no extra cost)
+public val std-via = jlc-pcb/stackups/vias/std-via-preferred
+
+; Smaller vias with increasing costs
+public val via-cost1 = jlc-pcb/stackups/vias/multi-via-cost+1-preferred
+public val via-cost2 = jlc-pcb/stackups/vias/multi-via-cost+2-preferred
+public val via-cost3 = jlc-pcb/stackups/vias/multi-via-cost+3-preferred
+
+; Via for components that require via-in-pad
+public val filled-via = jlc-pcb/stackups/vias/tented-filled-std-via
+
+; Make all vias available to the design
+public val available-vias = [
+  std-via          ; 0.45mm pad / 0.30mm hole
+  via-cost1        ; 0.40mm pad / 0.25mm hole
+  via-cost2        ; 0.35mm pad / 0.20mm hole
+  via-cost3        ; 0.30mm pad / 0.15mm hole
+  filled-via       ; 0.45mm pad / 0.30mm hole (tented & filled)
+]
+
+
+doc: \<DOC>
+@brief Simple board definition function
+This function call defines a board by creating a board with shape, stackup and allowable vias.
+@param outline the shape of the board
+<DOC>
+public pcb-board ASM001-board (outline:Shape) :
   stackup = create-pcb-stackup(jlc-pcb/stackups/JLC06161H-7628/stackup-gen)
   boundary = outline
   signal-boundary = outline
-  vias = [jlc-pcb/stackups/vias/std-via-preferred, jlc-pcb/stackups/vias/multi-via-cost+3-preferred]
+  vias = available-vias
+
+doc: \<DOC>
+The pcb-differential-routing-structure template below is an example of a differential-routing-structure needed
+by different protocols. This pcb-differential-routing-structure will be applied to the differential traces
+in the targeted bus by using the helper function `<bus>-apply-routing-structure()`.
+It should also reference a single ended routing structure for the uncoupled region.
+@param trace-impedance Target impedance. Accepted values are 85, 90, and 100 ohm.
+<DOC>
+public pcb-differential-routing-structure diff (trace-impedance:Toleranced|Double):
+  name = "Differential Impedance - Select Values"
+  val ti = match(trace-impedance):
+    (t:Toleranced): typ(t)
+    (d:Double): d
+  val tw = switch(ti) :
+    85.0  : 0.1400
+    90.0 : 0.1475
+    100.0 : 0.1510
+  ; whatever layers are to be used for routing the differential pairs (defined by the user)
+  layer-constraints(Top) :
+    trace-width  = tw       ; mm
+    pair-spacing = tw / 1.2 ; mm
+    clearance    = 0.150    ; mm
+    velocity = 0.19e12      ; mm/s
+    insertion-loss = 0.008  ; db/mm @ 1GHz
+
+  layer-constraints(LayerIndex(1, Top)) :
+    trace-width  = tw       ; mm
+    pair-spacing = 2.0 * tw ; mm
+    clearance    = 0.300    ; mm
+    velocity = 0.19e12      ; mm/s
+    insertion-loss = 0.008  ; db/mm @ 1GHz
+
+  layer-constraints(LayerIndex(1, Bottom)) :
+    trace-width  = tw       ; mm
+    pair-spacing = 2.0 * tw ; mm
+    clearance    = 0.300    ; mm
+    velocity = 0.19e12      ; mm/s
+    insertion-loss = 0.008  ; db/mm @ 1GHz
+
+  layer-constraints(Bottom) :
+    trace-width  = tw       ; mm
+    pair-spacing = tw / 1.2 ; mm
+    clearance    = 0.150    ; mm
+    velocity = 0.19e12      ; mm/s
+    insertion-loss = 0.008  ; db/mm @ 1GHz
+
+
+  uncoupled-region = se-50
+
+
+doc: \<DOC>
+The pcb-routing-structure(s) below are just examples of the routing structures that need to be maintained
+in the project code because they are dependant on the stack-up and other factors.
+<DOC>
+public pcb-routing-structure se-50 :
+  name = "50 Ohm single-ended"
+  layer-constraints(Top) :
+    trace-width = 0.15    ; mm
+    clearance = 0.15     ; mm
+    velocity = 0.19e12   ; mm/s
+    insertion-loss = 0.008  ; db/mm @ 1GHz
+    neck-down = NeckDown(
+      trace-width = 0.156
+      clearance = 0.1
+    )
+
+  layer-constraints(Bottom) :
+    trace-width = 0.15    ; mm
+    clearance = 0.15         ; mm
+    velocity = 0.19e12   ; mm/s
+    insertion-loss = 0.008  ; db/mm @ 1GHz
+    neck-down = NeckDown(
+      trace-width = 0.156
+      clearance = 0.1
+    )

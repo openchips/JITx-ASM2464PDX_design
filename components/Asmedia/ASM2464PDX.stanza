@@ -210,7 +210,6 @@ public pcb-component component :
     [PTXP[3]    | Y[15]  | Left  | A]
     [PTXN[2]    | AA[17] | Left  | A]
     [PTXP[2]    | Y[17]  | Left  | A]
-    [PERST#[0]    | G[21]  | Right | A]
     [RST#       | H[1]   | Right | A]
     [TEST_EN    | H[21]  | Left | A]
     [I2C_DATA_P | F[1]   | Right | A]
@@ -279,9 +278,10 @@ public pcb-component component :
     [REFCLKP[2] | AA[10] | Left  | B]  ; ASM2464PDX
     [REFCLKN[1] | Y[11]  | Left  | B]  ; ASM2464PDX
     [REFCLKP[1] | AA[11] | Left  | B]  ; ASM2464PDX
-    [PERST#[3]    | D[21]  | Left  | B]  ; ASM2464PDX
-    [PERST#[2]    | E[21]  | Left  | B]  ; ASM2464PDX
-    [PERST#[1]    | F[21]  | Left  | B]  ; ASM2464PDX
+    [PERST#[3]  | D[21]  | Left  | B]  ; ASM2464PDX
+    [PERST#[2]  | E[21]  | Left  | B]  ; ASM2464PDX
+    [PERST#[1]  | F[21]  | Left  | B]  ; ASM2464PDX
+    [PERST#[0]  | G[21]  | Left  | B]
     [GND[0]     | K[2]   | Right | C]
     [GND[1]     | D[4]   | Right | C]
     [GND[2]     | E[4]   | Right | C]
@@ -545,4 +545,97 @@ public pcb-module module :
     bd-4x.control.PEWAKE# => sw.GPIO[22]
     bd-4x.control.PERST#  => sw.PERST#[0]
     bd-4x.control.CLKREQ# => sw.GPIO[8]
+
+  val bd-4x-prsnt = pcie(4, PCIe-PRSNT#)
+  supports bd-4x-prsnt :
+    for i in 0 to 4 do :
+      bd-4x-prsnt.data.lane[i].RX.P => sw.PRXP[i]
+      bd-4x-prsnt.data.lane[i].RX.N => sw.PRXN[i]
+      bd-4x-prsnt.data.lane[i].TX.P => sw.PTXP[i]
+      bd-4x-prsnt.data.lane[i].TX.N => sw.PTXN[i]
+    bd-4x-prsnt.data.refclk.P => sw.REFCLKP[0]
+    bd-4x-prsnt.data.refclk.N => sw.REFCLKN[0]
+
+    bd-4x-prsnt.control.PEWAKE# => sw.GPIO[22]
+    bd-4x-prsnt.control.PERST#  => sw.PERST#[0]
+    bd-4x-prsnt.control.PRSNT#  => sw.GPIO[2]
+    bd-4x-prsnt.control.CLKREQ# => sw.GPIO[8]
+
+  val ctls-2x = [
+    [sw.GPIO[22], sw.GPIO[2], sw.GPIO[8]],
+    [sw.GPIO[22], sw.GPIO[19], sw.GPIO[14]]
+  ]
+  val bd-2x = pcie(2)
+  for j in 0 to 2 do:
+    supports bd-2x:
+      val ch-offset = (2 * j)
+      for i in 0 to 2 do :
+        bd-2x.data.lane[i].RX.P => sw.PRXP[i + ch-offset]
+        bd-2x.data.lane[i].RX.N => sw.PRXN[i + ch-offset]
+        bd-2x.data.lane[i].TX.P => sw.PTXP[i + ch-offset]
+        bd-2x.data.lane[i].TX.N => sw.PTXN[i + ch-offset]
+      bd-2x.data.refclk.P => sw.REFCLKP[ch-offset]
+      bd-2x.data.refclk.N => sw.REFCLKN[ch-offset]
+
+      val [wake, present, clkreq] = ctls-2x[j]
+
+      bd-2x.control.PEWAKE# => wake
+      bd-2x.control.PERST#  => sw.PERST#[ch-offset]
+      bd-2x.control.CLKREQ# => clkreq
+
+  val bd-2x-prsnt = pcie(2, PCIe-PRSNT#)
+  for j in 0 to 2 do:
+    supports bd-2x-prsnt:
+      val ch-offset = (2 * j)
+      for i in 0 to 2 do :
+        bd-2x-prsnt.data.lane[i].RX.P => sw.PRXP[i + ch-offset]
+        bd-2x-prsnt.data.lane[i].RX.N => sw.PRXN[i + ch-offset]
+        bd-2x-prsnt.data.lane[i].TX.P => sw.PTXP[i + ch-offset]
+        bd-2x-prsnt.data.lane[i].TX.N => sw.PTXN[i + ch-offset]
+      bd-2x-prsnt.data.refclk.P => sw.REFCLKP[ch-offset]
+      bd-2x-prsnt.data.refclk.N => sw.REFCLKN[ch-offset]
+
+      val [wake, present, clkreq] = ctls-2x[j]
+
+      bd-2x-prsnt.control.PEWAKE# => wake
+      bd-2x-prsnt.control.PERST#  => sw.PERST#[ch-offset]
+      bd-2x-prsnt.control.PRSNT# => present
+      bd-2x-prsnt.control.CLKREQ# => clkreq
+
+  val bd-1x = pcie(1)
+  val ctls-1x = [
+    [sw.GPIO[22], sw.GPIO[2], sw.GPIO[8]],
+    [sw.GPIO[22], sw.GPIO[19], sw.GPIO[14]],
+    [sw.GPIO[22], sw.GPIO[21], sw.GPIO[23]],
+    [sw.GPIO[22], sw.GPIO[27], sw.GPIO[24]],
+  ]
+  for j in 0 to 4 do:
+    supports bd-1x:
+      bd-1x.data.lane[0].RX.P => sw.PRXP[j]
+      bd-1x.data.lane[0].RX.N => sw.PRXN[j]
+      bd-1x.data.lane[0].TX.P => sw.PTXP[j]
+      bd-1x.data.lane[0].TX.N => sw.PTXN[j]
+      bd-1x.data.refclk.P => sw.REFCLKP[j]
+      bd-1x.data.refclk.N => sw.REFCLKN[j]
+
+      val [wake, present, clkreq] = ctls-1x[j]
+      bd-1x.control.PEWAKE# => wake
+      bd-1x.control.PERST#  => sw.PERST#[j]
+      bd-1x.control.CLKREQ# => clkreq
+
+  val bd-1x-prsnt = pcie(1, PCIe-PRSNT#)
+  for j in 0 to 4 do:
+    supports bd-1x-prsnt:
+      bd-1x-prsnt.data.lane[0].RX.P => sw.PRXP[j]
+      bd-1x-prsnt.data.lane[0].RX.N => sw.PRXN[j]
+      bd-1x-prsnt.data.lane[0].TX.P => sw.PTXP[j]
+      bd-1x-prsnt.data.lane[0].TX.N => sw.PTXN[j]
+      bd-1x-prsnt.data.refclk.P => sw.REFCLKP[j]
+      bd-1x-prsnt.data.refclk.N => sw.REFCLKN[j]
+
+      val [wake, present, clkreq] = ctls-1x[j]
+      bd-1x-prsnt.control.PERST#  => sw.PERST#[j]
+      bd-1x-prsnt.control.PEWAKE# => wake
+      bd-1x-prsnt.control.PRSNT# => present
+      bd-1x-prsnt.control.CLKREQ# => clkreq
 
