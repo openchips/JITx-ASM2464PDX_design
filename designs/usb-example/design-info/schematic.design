@@ -1,0 +1,102 @@
+{  
+  "version": 3,
+  "assignments": [  
+    {"require-pin":"ApdeScUjt8yRgewwWuP8At","support-pin":"9tjq7Zpf9EbTWkcpzxnSge"},
+    {"require-pin":"z46HzrMSDi4kwBjjU8tZU","support-pin":"FyV2g4NTHy6BMFoFMc1KPB"},
+    {"require-pin":"4u2Zd414AK8Fymo2yJg5kR","support-pin":"Fxs7Uk8dksugKguK4T5ED5"},
+    {"require-pin":"GAXhnUYgjwuDFzNGLc3FPt","support-pin":"6ewmgiqcZLBCvXrkde8nP6"},
+    {"require-pin":"Dc1R1cSTJrFi6RRBw54kEJ","support-pin":"3JQth4rQNH6J7qd5ragYvz"},
+    {"require-pin":"6gnBs9DVuTuGb9K2vjYvoW","support-pin":"6cnyD6EC8EW9QWD9scPVW3"},
+    {"require-pin":"3gT4HRoS7YEGyxdPC2QdyE","support-pin":"3PYBCiqYFdyoJCrxdAFt77"},
+    {"require-pin":"DTD5KjCxswetXTuGcr1J6z","support-pin":"Czzq6ayyW4LJLLhkvdnM3o"},
+    {"require-pin":"F3jWkKQ3QmirNNTfmg4h7s","support-pin":"CRVBq7B3AWFYJVpbqeWiYB"},
+    {"require-pin":"8iZA8ejReF8MQJqfpifFTs","support-pin":"CzUbfDAuBziaG9q26kzbU9"},
+    {"require-pin":"7c42XhWTymyDbwrjEjURfr","support-pin":"85WnnGYzQd1DJ8P6XA8scx"},
+    {"require-pin":"BEnQzt7nRK6AXEqvgueAtW","support-pin":"D3gmgRUMSZkj9qaRE2ijTy"},
+    {"require-pin":"EeJaDduCMDJbMkQRhbVo1u","support-pin":"9xEvA1NmFSWtN5p3ZtcjtR"},
+    {"require-pin":"DR1sKhUXf9WbHxagJPMZ9S","support-pin":"7Bb1mP2EpDFnzSS17S1BwS"},
+    {"require-pin":"6x1JWBKMuSp2vCDzp2yG28","support-pin":"85yQPvq5mnsqgFdake2KBL"},
+    {"require-pin":"AtxsWpgiGxHKQQAxMis7G3","support-pin":"EYo5Ah4gGiFRP7aB7dAt3n"}
+  ],
+  "id-mapping": {  
+    "boxes": [  
+      [{"id":"111111111114BDErXz","unit-id":0},8],
+      [{"id":"1111111111145w5C5e","unit-id":0},11],
+      [{"id":"5yLm7MzinWBgCtheUqD2Ng","unit-id":0},14],
+      [{"id":"8ekZsXaDkcxjHgYxXYNBtX","unit-id":0},23]
+    ],
+    "inst-boxes": [  
+      [{"id":"Ga2Nipn6f4tfoWEthJ5ido","unit-id":0},24],
+      [{"id":"uH3LxAgXEiW9fPvuhfgnT","unit-id":0},25],
+      [{"id":"eqQgLHyTLenhrhJSh7C6e","unit-id":0},26],
+      [{"id":"7mqitoohvUevfGNa2fLuGH","unit-id":0},27]
+    ],
+    "nets": [
+    ],
+    "ports": [  
+      ["1111111111189wJchn",0],
+      ["111111111118FdpM6x",1],
+      ["111111111118MubAyk",2],
+      ["111111111118ULPms4",3],
+      ["111111111118ZenVQj",4],
+      ["111111111118i2QJvr",5],
+      ["111111111118pRgYZb",6],
+      ["111111111118uhBRkj",7],
+      ["111111111117vy6MFQ",9],
+      ["1111111111183MCjJA",10],
+      ["111111111114yN8Yi7",12],
+      ["111111111114rXF8ht",13],
+      ["111111111114W34mFW",15],
+      ["111111111114de9uRD",16],
+      ["111111111115LTZJaz",17],
+      ["111111111114nA12bk",18],
+      ["1111111111157EYnka",19],
+      ["111111111115EFu3jV",20],
+      ["111111111114HmZ1eh",21],
+      ["111111111114Pxm7nN",22]
+    ]
+  },
+  "design": {  
+    "input": {  
+      "paper-size": {  
+        "x": 200,
+        "y": 125
+      },
+      "label-style": {  
+        "type": "monospace-label-style",
+        "height-in-grid-units": 0.8,
+        "char-width-relative-to-height": 0.6
+      },
+      "boxes": [  
+        {"id":8,"sw":{"x":-3,"y":-8},"ne":{"x":3,"y":9},"ports":[{"id":0,"pt":{"x":-3,"y":4},"dir":"Left","tag":"AnyTag"},{"id":1,"pt":{"x":-3,"y":3},"dir":"Left","tag":"AnyTag"},{"id":2,"pt":{"x":-3,"y":2},"dir":"Left","tag":"AnyTag"},{"id":3,"pt":{"x":-3,"y":1},"dir":"Left","tag":"AnyTag"},{"id":4,"pt":{"x":-3,"y":0},"dir":"Left","tag":"AnyTag"},{"id":5,"pt":{"x":-3,"y":-1},"dir":"Left","tag":"AnyTag"},{"id":6,"pt":{"x":-3,"y":-2},"dir":"Left","tag":"AnyTag"},{"id":7,"pt":{"x":-3,"y":-3},"dir":"Left","tag":"AnyTag"}],"orientation":{"type":"prefer-rotation","rotations":[0]}},
+        {"id":11,"sw":{"x":-2,"y":-2},"ne":{"x":7,"y":2},"ports":[{"id":9,"pt":{"x":0,"y":2},"dir":"Up","tag":"AnyTag"},{"id":10,"pt":{"x":0,"y":-2},"dir":"Down","tag":"AnyTag"}],"orientation":{"type":"any-rotation"}},
+        {"id":14,"sw":{"x":-2,"y":-2},"ne":{"x":7,"y":2},"ports":[{"id":12,"pt":{"x":0,"y":2},"dir":"Up","tag":"AnyTag"},{"id":13,"pt":{"x":0,"y":-2},"dir":"Down","tag":"AnyTag"}],"orientation":{"type":"any-rotation"}},
+        {"id":23,"sw":{"x":-3,"y":-8},"ne":{"x":3,"y":9},"ports":[{"id":15,"pt":{"x":-3,"y":4},"dir":"Left","tag":"AnyTag"},{"id":16,"pt":{"x":-3,"y":3},"dir":"Left","tag":"AnyTag"},{"id":17,"pt":{"x":-3,"y":2},"dir":"Left","tag":"AnyTag"},{"id":18,"pt":{"x":-3,"y":1},"dir":"Left","tag":"AnyTag"},{"id":19,"pt":{"x":-3,"y":0},"dir":"Left","tag":"AnyTag"},{"id":20,"pt":{"x":-3,"y":-1},"dir":"Left","tag":"AnyTag"},{"id":21,"pt":{"x":-3,"y":-2},"dir":"Left","tag":"AnyTag"},{"id":22,"pt":{"x":-3,"y":-3},"dir":"Left","tag":"AnyTag"}],"orientation":{"type":"prefer-rotation","rotations":[0]}}
+      ],
+      "insts": [  
+        {"id":24,"box":23,"group":null},
+        {"id":25,"box":23,"group":null},
+        {"id":26,"box":14,"group":"tx-bcap"},
+        {"id":27,"box":14,"group":"tx-bcap"}
+      ],
+      "nets": [  
+        {"id":43,"name":{"type":"ref","value":"ep1.data.P"},"refs":[{"inst":25,"port":15},{"inst":24,"port":17}],"labeled?":{"type":"no-label"}},
+        {"id":45,"name":{"type":"ref","value":"x.A.N"},"refs":[{"inst":27,"port":12},{"inst":24,"port":20}],"labeled?":{"type":"no-label"}},
+        {"id":46,"name":{"type":"ref","value":"ep2.data.N"},"refs":[{"inst":24,"port":18},{"inst":25,"port":16}],"labeled?":{"type":"no-label"}},
+        {"id":47,"name":{"type":"ref","value":"tx-bcap.c[0].p[2]"},"refs":[{"inst":26,"port":13},{"inst":25,"port":21}],"labeled?":{"type":"no-label"}},
+        {"id":48,"name":{"type":"ref","value":"tx-bcap.c[1].p[2]"},"refs":[{"inst":27,"port":13},{"inst":25,"port":22}],"labeled?":{"type":"no-label"}},
+        {"id":49,"name":{"type":"ref","value":"ep1.lane[0].RX.P"},"refs":[{"inst":25,"port":19},{"inst":24,"port":21}],"labeled?":{"type":"no-label"}},
+        {"id":50,"name":{"type":"ref","value":"ep1.lane[0].RX.N"},"refs":[{"inst":24,"port":22},{"inst":25,"port":20}],"labeled?":{"type":"no-label"}},
+        {"id":51,"name":{"type":"ref","value":"x.A.P"},"refs":[{"inst":26,"port":12},{"inst":24,"port":19}],"labeled?":{"type":"no-label"}}
+      ],
+      "shorts": [
+      ],
+      "schematic-group-order": [
+      ]
+    },
+    "sheets": [  
+      {"id":84,"title":null,"groups":[{"id":52,"groups":[null],"border":{"sw":{"x":67,"y":51},"ne":{"x":96,"y":74}},"insts":[{"inst":25,"pose":{"center":{"x":72,"y":61},"angle":0,"flip-x?":true}},{"inst":24,"pose":{"center":{"x":91,"y":63},"angle":0,"flip-x?":false}}],"children":[]},{"id":53,"groups":["tx-bcap"],"border":{"sw":{"x":97,"y":46},"ne":{"x":121,"y":66}},"insts":[{"inst":27,"pose":{"center":{"x":101,"y":59},"angle":0,"flip-x?":false}},{"inst":26,"pose":{"center":{"x":112,"y":59},"angle":0,"flip-x?":false}}],"children":[]}],"nets":[{"id":75,"net":51,"refs":[{"inst":24,"port":19}],"wires":[],"label?":{"type":"string","id":74,"pose":{"center":{"x":88,"y":63},"angle":180,"flip-x?":false}}},{"id":73,"net":45,"refs":[{"inst":24,"port":20}],"wires":[],"label?":{"type":"string","id":72,"pose":{"center":{"x":88,"y":62},"angle":180,"flip-x?":false}}},{"id":71,"net":47,"refs":[{"inst":25,"port":21}],"wires":[],"label?":{"type":"string","id":70,"pose":{"center":{"x":75,"y":59},"angle":0,"flip-x?":false}}},{"id":69,"net":48,"refs":[{"inst":25,"port":22}],"wires":[],"label?":{"type":"string","id":68,"pose":{"center":{"x":75,"y":58},"angle":0,"flip-x?":false}}},{"id":65,"net":46,"refs":[{"inst":25,"port":16},{"inst":24,"port":18}],"wires":[{"id":101,"a":{"x":75,"y":64},"b":{"x":88,"y":64}}],"label?":null},{"id":62,"net":43,"refs":[{"inst":24,"port":17},{"inst":25,"port":15}],"wires":[{"id":87,"a":{"x":75,"y":65},"b":{"x":88,"y":65}}],"label?":null},{"id":59,"net":50,"refs":[{"inst":25,"port":20},{"inst":24,"port":22}],"wires":[{"id":86,"a":{"x":75,"y":60},"b":{"x":88,"y":60}}],"label?":null},{"id":55,"net":49,"refs":[{"inst":24,"port":21},{"inst":25,"port":19}],"wires":[{"id":85,"a":{"x":75,"y":61},"b":{"x":88,"y":61}}],"label?":null},{"id":83,"net":51,"refs":[{"inst":26,"port":12}],"wires":[],"label?":{"type":"string","id":82,"pose":{"center":{"x":112,"y":61},"angle":90,"flip-x?":false}}},{"id":81,"net":47,"refs":[{"inst":26,"port":13}],"wires":[],"label?":{"type":"string","id":80,"pose":{"center":{"x":112,"y":57},"angle":270,"flip-x?":false}}},{"id":79,"net":45,"refs":[{"inst":27,"port":12}],"wires":[],"label?":{"type":"string","id":78,"pose":{"center":{"x":101,"y":61},"angle":90,"flip-x?":false}}},{"id":77,"net":48,"refs":[{"inst":27,"port":13}],"wires":[],"label?":{"type":"string","id":76,"pose":{"center":{"x":101,"y":57},"angle":270,"flip-x?":false}}}]}
+    ],
+    "hierarchical-diagram": null
+  }
+}

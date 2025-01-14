@@ -9,32 +9,46 @@ defpackage helpers :
   import jitx/commands
   import jitx/parts
 
-  import board
-
+  import jsl
 ; ==================
 ; setup-part-search
 ; ==================
 jsl/design/settings/OPERATING-TEMPERATURE = min-max(0.0 50.0)
 
-public var res-query
-public var cap-query
 
-public defn setup-part-query (--
-                              vendors:Tuple<String|AuthorizedVendor> = jsl/design/settings/APPROVED-DISTRIBUTOR-LIST
-                             ) :
+public var R-query
+public var C-query
 
-  var general-query = BaseQuery(sellers! = vendors)
-  var smd-query = add(general-query,
-                        mounting = "smd"
-                        case = valid-smd-pkgs("0402"),
-                        operating-temperature = jsl/design/settings/OPERATING-TEMPERATURE
-                      )
-  res-query = ResistorQuery(smd-query)
-  cap-query = CapacitorQuery(smd-query,
-                              type = "ceramic",
-                              temperature-coefficient_code = ["X7R" "X5R"],
-                              rated-voltage = 6.0,
-                            )
+public defn setup-part-query (
+  --
+  vendors:Tuple<String|AuthorizedVendor> = jsl/design/settings/APPROVED-DISTRIBUTOR-LIST
+  ) :
+
+  set-global-query-defaults!(
+    min-stock = 1,
+    sellers! = vendors
+    )
+
+  val all-cats = BaseQuery(
+    mounting = "smd",
+    case = ["0402", "0603", "1210"],
+  )
+
+  ; Must instantiate after setting global defaults.
+  R-query = ResistorQuery(
+    all-cats,
+    precision = (1 %)
+  )
+  set-default-resistor-query!(R-query)
+
+  C-query = CapacitorQuery(
+    all-cats,
+    type = "ceramic",
+    temperature-coefficient_code = ["X7R", "X5R"],
+    precision = (10 %),
+    rated-voltage = AtLeast(6.0)
+  )
+  set-default-capacitor-query!(C-query)
 
 ; =================
 ; Setup BOM stuff
@@ -60,22 +74,29 @@ public defn setup-bill-of-materials (qty:Int, vendors:Tuple<String|AuthorizedVen
   set-bom-vendors(vendors)
   set-bom-design-quantity(qty)
 
+; ====================
+; Setup the board information using https://github.com/JITx-Inc/jlc-pcb.git
+; ====================
+public val substrate = jlc-pcb/stackups/JLC04161H-1080/JLC04161H-1080()
+
 ; ============
 ; setup-design
 ; ============
 public defn setup-design (name:String, board-shape:Shape
                           --
+                          signal-shrink:Double = ?
                           vendors:Tuple<String|AuthorizedVendor> = jsl/design/settings/APPROVED-DISTRIBUTOR-LIST
                           quantity:Int = jsl/design/settings/DESIGN-QUANTITY
                           paper-size:Paper = ANSI-A
                           ) :
   set-current-design(name)
   setup-part-query(vendors = vendors)
-  setup-my-board(board-shape)
+  set-board(make-board-def(substrate, board-shape, signal-shrink = signal-shrink))
+  set-rules(jlc-pcb/rules/multi_1oz/jlcpcb-rules-multi-1oz)
   setup-bill-of-materials(quantity, vendors)
   set-paper(paper-size)
   set-use-layout-groups()
-  set-export-backend(`altium) ; set the CAD software for export to be altium (also supported: `kicad)
+  set-export-backend(`kicad) ; set the CAD software for export to be kicad (also supported: `altium)
 
 ; ====================
 ; Actual Export design
@@ -83,7 +104,7 @@ public defn setup-design (name:String, board-shape:Shape
 public defn export-to-cad () :
   ; if we are exporting to Kicad for boards assembled at JLCPCB, we can add:
   ; ["vendor_part_numbers.lcsc" => "LCSC"] to the argument of export-cad()
-  export-cad()
+  export-cad(["vendor_part_numbers.lcsc" => "LCSC"])
 
 ; ====================
 ; Export design to CAD

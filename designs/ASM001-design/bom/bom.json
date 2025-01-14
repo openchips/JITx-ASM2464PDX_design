@@ -1,5 +1,5 @@
 {
-	"proj-name":	"jitx-design",
+	"proj-name":	"ASM001-design",
 	"headers":	[{
 			"field":	"status",
 			"name":	"Status",
@@ -54,8 +54,8 @@
 						},
 						"ref":	"J1",
 						"fileinfo":	{
-							"filename":	"c:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\main.stanza",
-							"line":	102,
+							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
+							"line":	99,
 							"column":	2
 						}
 					}],
@@ -87,7 +87,7 @@
 								"name":	"r-hi"
 							}
 						},
-						"ref":	"R11",
+						"ref":	"R2",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\voltage-divider\\src\\circuits.stanza",
 							"line":	39,
@@ -131,7 +131,7 @@
 								"name":	"r-hi"
 							}
 						},
-						"ref":	"R8",
+						"ref":	"R5",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\voltage-divider\\src\\circuits.stanza",
 							"line":	39,
@@ -175,7 +175,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C23",
+						"ref":	"C20",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -191,7 +191,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C30",
+						"ref":	"C13",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -207,7 +207,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C37",
+						"ref":	"C6",
 						"fileinfo":	null
 					}],
 				"datasheet":	"https://datasheets.avx.com/cx5r.pdf",
@@ -249,7 +249,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"R4",
+						"ref":	"R7",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -265,7 +265,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"R7",
+						"ref":	"R4",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -281,7 +281,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"R10",
+						"ref":	"R1",
 						"fileinfo":	null
 					}],
 				"datasheet":	"https://www.bourns.com/docs/product-datasheets/CRxxxxx.pdf",
@@ -317,7 +317,7 @@
 								"name":	"r-lo"
 							}
 						},
-						"ref":	"R9",
+						"ref":	"R6",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\voltage-divider\\src\\circuits.stanza",
 							"line":	40,
@@ -356,7 +356,7 @@
 								"name":	"R"
 							}
 						},
-						"ref":	"R3",
+						"ref":	"R12",
 						"fileinfo":	null
 					}],
 				"datasheet":	"https://datasheet.lcsc.com/lcsc/2207281800_Sunway-SC0402F0000I2ANRH_C3152056.pdf",
@@ -390,7 +390,7 @@
 								"name":	"sw"
 							}
 						},
-						"ref":	"J3",
+						"ref":	"J2",
 						"fileinfo":	{
 							"filename":	"components\\TE\\M.2\\1-2199230-6.stanza",
 							"line":	571,
@@ -425,7 +425,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C33",
+						"ref":	"C2",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -441,7 +441,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C32",
+						"ref":	"C1",
 						"fileinfo":	null
 					}],
 				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2407081117_YAGEO-CC0402KRX5R6BB824_C576724.pdf",
@@ -484,7 +484,7 @@
 								"name":	"r-lo"
 							}
 						},
-						"ref":	"R12",
+						"ref":	"R3",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\voltage-divider\\src\\circuits.stanza",
 							"line":	40,
@@ -523,7 +523,7 @@
 								"name":	"C"
 							}
 						},
-						"ref":	"C9",
+						"ref":	"C30",
 						"fileinfo":	null
 					}],
 				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2308111716_Murata-Electronics-GRM155R71H472KA01J_C2168177.pdf",
@@ -565,7 +565,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C19",
+						"ref":	"C17",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -581,7 +581,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C27",
+						"ref":	"C10",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -597,7 +597,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C34",
+						"ref":	"C3",
 						"fileinfo":	null
 					}],
 				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2201131300_Murata-Electronics-GRM155R71H472JA01D_C913548.pdf",
@@ -639,7 +639,7 @@
 								"name":	"r-lo"
 							}
 						},
-						"ref":	"R6",
+						"ref":	"R9",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\voltage-divider\\src\\circuits.stanza",
 							"line":	40,
@@ -668,50 +668,15 @@
 					"code":	1,
 					"name":	"Auto Selected"
 				},
-				"description":	"RES SMD 5.1K OHM 1% 1/16W 0402",
-				"insts":	[{
-						"inst":	{
-							"name":	"CC1-R"
-						},
-						"ref":	"R2",
-						"fileinfo":	null
-					}, {
-						"inst":	{
-							"name":	"CC0-R"
-						},
-						"ref":	"R1",
-						"fileinfo":	null
-					}],
-				"datasheet":	"https://www.bourns.com/docs/product-datasheets/CRxxxxx.pdf",
-				"manufacturer":	"BOURNS",
-				"mpn":	"CR0402-FX-5101GLF",
-				"vendor":	"Arrow",
-				"sku":	"CR0402-FX-5101GLF",
-				"price":	0.002,
-				"preferred":	false,
-				"query_properties":	{
-					"tolerance":	0.01,
-					"resistance":	5100,
-					"category":	"resistor",
-					"case":	["0402", "0603", "1210"],
-					"mounting":	"smd",
-					"min-stock":	1,
-					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
-				}
-			}, {
-				"status":	{
-					"code":	1,
-					"name":	"Auto Selected"
-				},
 				"description":	"7.9V 14V 3.6V DFN-10(1x2.5)  ESD Protection Devices ROHS",
 				"insts":	[{
 						"inst":	{
 							"name":	"esd-prot"
 						},
-						"ref":	"U2",
+						"ref":	"U5",
 						"fileinfo":	{
-							"filename":	"c:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\main.stanza",
-							"line":	119,
+							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
+							"line":	118,
 							"column":	2
 						}
 					}],
@@ -743,7 +708,7 @@
 								"name":	"r-hi"
 							}
 						},
-						"ref":	"R5",
+						"ref":	"R8",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\voltage-divider\\src\\circuits.stanza",
 							"line":	39,
@@ -785,7 +750,7 @@
 							},
 							"index":	1
 						},
-						"ref":	"C6",
+						"ref":	"C27",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -803,7 +768,7 @@
 							},
 							"index":	0
 						},
-						"ref":	"C5",
+						"ref":	"C26",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -821,7 +786,7 @@
 							},
 							"index":	1
 						},
-						"ref":	"C2",
+						"ref":	"C23",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -839,7 +804,7 @@
 							},
 							"index":	0
 						},
-						"ref":	"C1",
+						"ref":	"C22",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -886,7 +851,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C22",
+						"ref":	"C16",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -902,7 +867,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C21",
+						"ref":	"C15",
 						"fileinfo":	null
 					}],
 				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2304140030_TDK-CGA6P3X7R1E685K250AB_C2179267.pdf",
@@ -943,7 +908,7 @@
 							},
 							"index":	1
 						},
-						"ref":	"C17",
+						"ref":	"C38",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -961,7 +926,7 @@
 							},
 							"index":	0
 						},
-						"ref":	"C16",
+						"ref":	"C37",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -979,7 +944,7 @@
 							},
 							"index":	1
 						},
-						"ref":	"C15",
+						"ref":	"C36",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -997,7 +962,7 @@
 							},
 							"index":	0
 						},
-						"ref":	"C14",
+						"ref":	"C35",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -1015,7 +980,7 @@
 							},
 							"index":	1
 						},
-						"ref":	"C13",
+						"ref":	"C34",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -1033,7 +998,7 @@
 							},
 							"index":	0
 						},
-						"ref":	"C12",
+						"ref":	"C33",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -1051,7 +1016,7 @@
 							},
 							"index":	1
 						},
-						"ref":	"C11",
+						"ref":	"C32",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -1069,7 +1034,7 @@
 							},
 							"index":	0
 						},
-						"ref":	"C10",
+						"ref":	"C31",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -1104,7 +1069,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C18",
+						"ref":	"C19",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -1120,7 +1085,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C20",
+						"ref":	"C18",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -1136,7 +1101,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C29",
+						"ref":	"C12",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -1152,7 +1117,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C28",
+						"ref":	"C11",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -1168,7 +1133,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C36",
+						"ref":	"C5",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -1184,7 +1149,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C35",
+						"ref":	"C4",
 						"fileinfo":	null
 					}],
 				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL10A106KP8NNNC_C19702.pdf",
@@ -1224,7 +1189,7 @@
 							},
 							"index":	1
 						},
-						"ref":	"C8",
+						"ref":	"C29",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -1242,7 +1207,7 @@
 							},
 							"index":	0
 						},
-						"ref":	"C7",
+						"ref":	"C28",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -1260,7 +1225,7 @@
 							},
 							"index":	1
 						},
-						"ref":	"C4",
+						"ref":	"C25",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -1278,7 +1243,7 @@
 							},
 							"index":	0
 						},
-						"ref":	"C3",
+						"ref":	"C24",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -1325,7 +1290,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C26",
+						"ref":	"C9",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -1341,7 +1306,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C25",
+						"ref":	"C8",
 						"fileinfo":	null
 					}],
 				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_2407081117_YAGEO-CC0402KRX5R5BB474_C107012.pdf",
@@ -1384,7 +1349,7 @@
 								"name":	"SW"
 							}
 						},
-						"ref":	"U5",
+						"ref":	"U3",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\TI-vreg\\src\\components\\TPS6293x.stanza",
 							"line":	296,
@@ -1404,7 +1369,7 @@
 								"name":	"SW"
 							}
 						},
-						"ref":	"U6",
+						"ref":	"U2",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\TI-vreg\\src\\components\\TPS6293x.stanza",
 							"line":	296,
@@ -1424,7 +1389,7 @@
 								"name":	"SW"
 							}
 						},
-						"ref":	"U7",
+						"ref":	"U1",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\TI-vreg\\src\\components\\TPS6293x.stanza",
 							"line":	296,
@@ -1454,7 +1419,7 @@
 								"name":	"sw"
 							}
 						},
-						"ref":	"U1",
+						"ref":	"U4",
 						"fileinfo":	{
 							"filename":	"components\\Asmedia\\ASM2464PDX.stanza",
 							"line":	483,
@@ -1489,7 +1454,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"L1",
+						"ref":	"L3",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -1521,7 +1486,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"L3",
+						"ref":	"L1",
 						"fileinfo":	null
 					}],
 				"datasheet":	"https://www.yuden.co.jp/productdata/catalog/wound04_e.pdf",
@@ -1534,7 +1499,6 @@
 				"query_properties":	null
 			}],
 		"entries":	[{
-			}, {
 			}, {
 			}, {
 			}, {
@@ -1562,13 +1526,13 @@
 	},
 	"metrics":	[{
 			"name":	"Line Items",
-			"value":	25
+			"value":	24
 		}, {
 			"name":	"Components",
-			"value":	57
+			"value":	55
 		}, {
 			"name":	"Cost",
-			"value":	"$4.78"
+			"value":	"$4.77"
 		}],
 	"is_update":	false,
 	"old_bom":	{
@@ -1584,8 +1548,8 @@
 						},
 						"ref":	"J1",
 						"fileinfo":	{
-							"filename":	"c:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\main.stanza",
-							"line":	103,
+							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
+							"line":	99,
 							"column":	2
 						}
 					}],
@@ -1617,7 +1581,7 @@
 								"name":	"r-hi"
 							}
 						},
-						"ref":	"R11",
+						"ref":	"R2",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\voltage-divider\\src\\circuits.stanza",
 							"line":	39,
@@ -1661,7 +1625,7 @@
 								"name":	"r-hi"
 							}
 						},
-						"ref":	"R8",
+						"ref":	"R5",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\voltage-divider\\src\\circuits.stanza",
 							"line":	39,
@@ -1705,7 +1669,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C23",
+						"ref":	"C20",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -1721,7 +1685,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C30",
+						"ref":	"C13",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -1737,7 +1701,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C37",
+						"ref":	"C6",
 						"fileinfo":	null
 					}],
 				"datasheet":	"https://datasheets.avx.com/cx5r.pdf",
@@ -1779,7 +1743,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"R4",
+						"ref":	"R7",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -1795,7 +1759,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"R7",
+						"ref":	"R4",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -1811,7 +1775,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"R10",
+						"ref":	"R1",
 						"fileinfo":	null
 					}],
 				"datasheet":	"https://www.bourns.com/docs/product-datasheets/CRxxxxx.pdf",
@@ -1847,7 +1811,7 @@
 								"name":	"r-lo"
 							}
 						},
-						"ref":	"R9",
+						"ref":	"R6",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\voltage-divider\\src\\circuits.stanza",
 							"line":	40,
@@ -1886,7 +1850,7 @@
 								"name":	"R"
 							}
 						},
-						"ref":	"R3",
+						"ref":	"R12",
 						"fileinfo":	null
 					}],
 				"datasheet":	"https://datasheet.lcsc.com/lcsc/2207281800_Sunway-SC0402F0000I2ANRH_C3152056.pdf",
@@ -1920,7 +1884,7 @@
 								"name":	"sw"
 							}
 						},
-						"ref":	"J3",
+						"ref":	"J2",
 						"fileinfo":	{
 							"filename":	"components\\TE\\M.2\\1-2199230-6.stanza",
 							"line":	571,
@@ -1955,7 +1919,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C33",
+						"ref":	"C2",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -1971,7 +1935,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C32",
+						"ref":	"C1",
 						"fileinfo":	null
 					}],
 				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2407081117_YAGEO-CC0402KRX5R6BB824_C576724.pdf",
@@ -2014,7 +1978,7 @@
 								"name":	"r-lo"
 							}
 						},
-						"ref":	"R12",
+						"ref":	"R3",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\voltage-divider\\src\\circuits.stanza",
 							"line":	40,
@@ -2053,7 +2017,7 @@
 								"name":	"C"
 							}
 						},
-						"ref":	"C9",
+						"ref":	"C30",
 						"fileinfo":	null
 					}],
 				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2308111716_Murata-Electronics-GRM155R71H472KA01J_C2168177.pdf",
@@ -2095,7 +2059,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C19",
+						"ref":	"C17",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -2111,7 +2075,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C27",
+						"ref":	"C10",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -2127,7 +2091,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C34",
+						"ref":	"C3",
 						"fileinfo":	null
 					}],
 				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2201131300_Murata-Electronics-GRM155R71H472JA01D_C913548.pdf",
@@ -2169,7 +2133,7 @@
 								"name":	"r-lo"
 							}
 						},
-						"ref":	"R6",
+						"ref":	"R9",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\voltage-divider\\src\\circuits.stanza",
 							"line":	40,
@@ -2198,50 +2162,15 @@
 					"code":	1,
 					"name":	"Auto Selected"
 				},
-				"description":	"RES SMD 5.1K OHM 1% 1/16W 0402",
-				"insts":	[{
-						"inst":	{
-							"name":	"CC1-R"
-						},
-						"ref":	"R2",
-						"fileinfo":	null
-					}, {
-						"inst":	{
-							"name":	"CC0-R"
-						},
-						"ref":	"R1",
-						"fileinfo":	null
-					}],
-				"datasheet":	"https://www.bourns.com/docs/product-datasheets/CRxxxxx.pdf",
-				"manufacturer":	"BOURNS",
-				"mpn":	"CR0402-FX-5101GLF",
-				"vendor":	"Arrow",
-				"sku":	"CR0402-FX-5101GLF",
-				"price":	0.002,
-				"preferred":	false,
-				"query_properties":	{
-					"tolerance":	0.01,
-					"resistance":	5100,
-					"category":	"resistor",
-					"case":	["0402", "0603", "1210"],
-					"mounting":	"smd",
-					"min-stock":	1,
-					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
-				}
-			}, {
-				"status":	{
-					"code":	1,
-					"name":	"Auto Selected"
-				},
 				"description":	"7.9V 14V 3.6V DFN-10(1x2.5)  ESD Protection Devices ROHS",
 				"insts":	[{
 						"inst":	{
 							"name":	"esd-prot"
 						},
-						"ref":	"U2",
+						"ref":	"U5",
 						"fileinfo":	{
-							"filename":	"c:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\main.stanza",
-							"line":	120,
+							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
+							"line":	114,
 							"column":	2
 						}
 					}],
@@ -2273,7 +2202,7 @@
 								"name":	"r-hi"
 							}
 						},
-						"ref":	"R5",
+						"ref":	"R8",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\voltage-divider\\src\\circuits.stanza",
 							"line":	39,
@@ -2315,7 +2244,7 @@
 							},
 							"index":	1
 						},
-						"ref":	"C6",
+						"ref":	"C27",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -2333,7 +2262,7 @@
 							},
 							"index":	0
 						},
-						"ref":	"C5",
+						"ref":	"C26",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -2351,7 +2280,7 @@
 							},
 							"index":	1
 						},
-						"ref":	"C2",
+						"ref":	"C23",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -2369,7 +2298,7 @@
 							},
 							"index":	0
 						},
-						"ref":	"C1",
+						"ref":	"C22",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -2416,7 +2345,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C22",
+						"ref":	"C16",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -2432,7 +2361,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C21",
+						"ref":	"C15",
 						"fileinfo":	null
 					}],
 				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2304140030_TDK-CGA6P3X7R1E685K250AB_C2179267.pdf",
@@ -2473,7 +2402,7 @@
 							},
 							"index":	1
 						},
-						"ref":	"C17",
+						"ref":	"C38",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -2491,7 +2420,7 @@
 							},
 							"index":	0
 						},
-						"ref":	"C16",
+						"ref":	"C37",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -2509,7 +2438,7 @@
 							},
 							"index":	1
 						},
-						"ref":	"C15",
+						"ref":	"C36",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -2527,7 +2456,7 @@
 							},
 							"index":	0
 						},
-						"ref":	"C14",
+						"ref":	"C35",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -2545,7 +2474,7 @@
 							},
 							"index":	1
 						},
-						"ref":	"C13",
+						"ref":	"C34",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -2563,7 +2492,7 @@
 							},
 							"index":	0
 						},
-						"ref":	"C12",
+						"ref":	"C33",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -2581,7 +2510,7 @@
 							},
 							"index":	1
 						},
-						"ref":	"C11",
+						"ref":	"C32",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -2599,7 +2528,7 @@
 							},
 							"index":	0
 						},
-						"ref":	"C10",
+						"ref":	"C31",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -2634,7 +2563,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C18",
+						"ref":	"C19",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -2650,7 +2579,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C20",
+						"ref":	"C18",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -2666,7 +2595,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C29",
+						"ref":	"C12",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -2682,7 +2611,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C28",
+						"ref":	"C11",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -2698,7 +2627,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C36",
+						"ref":	"C5",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -2714,7 +2643,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C35",
+						"ref":	"C4",
 						"fileinfo":	null
 					}],
 				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL10A106KP8NNNC_C19702.pdf",
@@ -2754,7 +2683,7 @@
 							},
 							"index":	1
 						},
-						"ref":	"C8",
+						"ref":	"C29",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -2772,7 +2701,7 @@
 							},
 							"index":	0
 						},
-						"ref":	"C7",
+						"ref":	"C28",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -2790,7 +2719,7 @@
 							},
 							"index":	1
 						},
-						"ref":	"C4",
+						"ref":	"C25",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -2808,7 +2737,7 @@
 							},
 							"index":	0
 						},
-						"ref":	"C3",
+						"ref":	"C24",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
 							"line":	35,
@@ -2855,7 +2784,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C26",
+						"ref":	"C9",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -2871,7 +2800,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"C25",
+						"ref":	"C8",
 						"fileinfo":	null
 					}],
 				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_2407081117_YAGEO-CC0402KRX5R5BB474_C107012.pdf",
@@ -2914,7 +2843,7 @@
 								"name":	"SW"
 							}
 						},
-						"ref":	"U5",
+						"ref":	"U3",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\TI-vreg\\src\\components\\TPS6293x.stanza",
 							"line":	296,
@@ -2934,7 +2863,7 @@
 								"name":	"SW"
 							}
 						},
-						"ref":	"U6",
+						"ref":	"U2",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\TI-vreg\\src\\components\\TPS6293x.stanza",
 							"line":	296,
@@ -2954,7 +2883,7 @@
 								"name":	"SW"
 							}
 						},
-						"ref":	"U7",
+						"ref":	"U1",
 						"fileinfo":	{
 							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\TI-vreg\\src\\components\\TPS6293x.stanza",
 							"line":	296,
@@ -2984,7 +2913,7 @@
 								"name":	"sw"
 							}
 						},
-						"ref":	"U1",
+						"ref":	"U4",
 						"fileinfo":	{
 							"filename":	"components\\Asmedia\\ASM2464PDX.stanza",
 							"line":	483,
@@ -3019,7 +2948,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"L1",
+						"ref":	"L3",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -3051,7 +2980,7 @@
 								"name":	"elem"
 							}
 						},
-						"ref":	"L3",
+						"ref":	"L1",
 						"fileinfo":	null
 					}],
 				"datasheet":	"https://www.yuden.co.jp/productdata/catalog/wound04_e.pdf",
@@ -3064,7 +2993,6 @@
 				"query_properties":	null
 			}],
 		"entries":	[{
-			}, {
 			}, {
 			}, {
 			}, {

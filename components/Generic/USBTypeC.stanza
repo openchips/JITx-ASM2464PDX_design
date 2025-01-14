@@ -1,0 +1,326 @@
+#use-added-syntax(jitx)
+defpackage ASM001/components/USB/USBTypeC :
+  import core
+  import jitx
+  import jitx/commands
+  import jitx/parts
+
+  import jsl
+
+public pcb-component conn-component :
+  description = "USB Type-C SMD Connectors ROHS"
+  manufacturer = "Molex"
+  mpn = "2012670005"
+  datasheet = "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/201/201267/2012670005_sd.pdf"
+  reference-prefix = "J"
+
+  property(self.rated-temperature) = min-max(-40.0, 105.0)
+
+  port TX1 : diff-pair
+  port TX2 : diff-pair
+
+  port RX1 : diff-pair
+  port RX2 : diff-pair
+
+  port D0 : diff-pair
+  port D1 : diff-pair
+
+  pin-properties :
+    [pin:Ref | pads:Ref ... | side:Dir | bank:Ref | row:Int ]
+
+    [VBUS[0] | A[4] | Right | A-side | 0]
+    [VBUS[1] | A[9] | Right | A-side | 0]
+    [VBUS[3] | B[4] | Right | B-side | 0]
+    [VBUS[2] | B[9] | Right | B-side | 0]
+
+    [D0.P | A[6] | Left | A-side | 1]
+    [D0.N | A[7] | Left | A-side | 1]
+
+    [TX1.P | A[2] | Left | A-side | 1]
+    [TX1.N | A[3] | Left | A-side | 1]
+
+    [RX1.P | B[11] | Left | A-side | 1]
+    [RX1.N | B[10] | Left | A-side | 1]
+
+    [CC1 | A[5] | Left | A-side | 1]
+    [SBU1 | A[8] | Left | A-side | 1]
+
+    [D1.P | B[6] | Left | B-side | 1]
+    [D1.N | B[7] | Left | B-side | 1]
+
+    [TX2.P | B[2] | Left | B-side | 1]
+    [TX2.N | B[3] | Left | B-side | 1]
+
+    [RX2.P | A[11] | Left | B-side | 1]
+    [RX2.N | A[10] | Left | B-side | 1]
+
+    [CC2 | B[5] | Left | B-side | 1]
+    [SBU2 | B[8] | Left | B-side | 1]
+
+    [GND[0] | A[1] | Left | A-side | 2]
+    [GND[1] | A[12] | Left | A-side | 2]
+    [GND[2] | B[12] | Left | B-side | 2]
+    [GND[3] | B[1] | Left | B-side | 2]
+
+    ; Shield
+    [SHIELD | M[1] M[2] M[3] M[4] | Right | A-side | 2]
+
+
+  val box = BoxSymbol(self)
+  set-grid(box, [3, 2], Ref("A-side"))
+  set-grid(box, [3, 2], Ref("B-side"))
+
+  set-alignment(N, self.VBUS)
+  set-alignment(S, self.GND)
+  set-alignment(S, self.SHIELD)
+
+  set-head-margin(0.5, self.TX1.P, self.TX2.P)
+  set-head-margin(0.5, self.RX1.P, self.RX2.P)
+  set-head-margin(0.5, self.CC1, self.CC2)
+
+  assign-symbols(
+    Ref("A-side") => box,
+    Ref("B-side") => box,
+  )
+
+  val pkg = USBTypeC-Pkg()
+  assign-landpattern $ create-landpattern(pkg)
+
+  diff-pin-model(self.D0, delay = typ(0.0))
+  diff-pin-model(self.D1, delay = typ(0.0))
+
+  diff-pin-model(self.TX1, delay = typ(0.0))
+  diff-pin-model(self.TX2, delay = typ(0.0))
+
+  diff-pin-model(self.RX1, delay = typ(0.0))
+  diff-pin-model(self.RX2, delay = typ(0.0))
+
+  reversible-dual-pair(self.D0, self.D1)
+
+  val conn = usb-c-connector
+  supports conn:
+    conn.vbus.V+ => self.VBUS[0] self.VBUS[1] self.VBUS[2] self.VBUS[3]
+
+    conn.bus.cc[0] => self.CC1
+    conn.bus.cc[1] => self.CC2
+
+    conn.bus.sbu[0] => self.SBU1
+    conn.bus.sbu[1] => self.SBU2
+  
+    conn.bus.data.P => self.D0.P self.D1.P
+    conn.bus.data.N => self.D0.N self.D1.N
+    conn.bus.lane[0].TX.P => self.TX1.P
+    conn.bus.lane[0].TX.N => self.TX1.N
+    conn.bus.lane[0].RX.P => self.RX1.P
+    conn.bus.lane[0].RX.N => self.RX1.N
+    conn.bus.lane[1].TX.P => self.TX2.P
+    conn.bus.lane[1].TX.N => self.TX2.N
+    conn.bus.lane[1].RX.P => self.RX2.P
+    conn.bus.lane[1].RX.N => self.RX2.N    
+
+    conn.vbus.V- => self.GND[0] self.GND[1] self.GND[2] self.GND[3]
+    conn.shield => self.SHIELD
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; LandPattern Generator
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+val TYPE-C-WIDTH = 9.39
+val TYPE-C-LENGTH = 8.3
+
+public defstruct USBTypeC-Pkg <: Package :
+  num-leads:Int with:
+    as-method => true
+    default => 24
+  package-body:PackageBody with:
+    as-method => true
+    default => PackageBody(
+      width = TYPE-C-WIDTH +/- 0.15
+      length = typ(TYPE-C-LENGTH),
+      height = 3.71 +/- 0.15
+    )
+  density-level:DensityLevel with:
+    as-method => true
+    default => DENSITY-LEVEL
+with:
+  printer => true
+  keyword-constructor => true
+
+public defmethod name (pkg:USBTypeC-Pkg) -> String :
+  "USB Type C Connector"
+
+defn compute-offset () -> Pose :
+  ; Compute the offset coordinate system which I'm defining
+  ;   to be the upper right mounting hole for the recommended
+  ;   landpattern as shown on page 2 of the datasheet
+  val w2 = 8.64 / 2.0
+  ;  The mounting hole is a bit off-center from the connector body
+  ;  Here I adjust for that. We need to mark the board edge as
+  ;  slighty offset from the package body.
+  val temp = TYPE-C-LENGTH - (7.13 + 0.18)
+  val h2 = (TYPE-C-LENGTH / 2.0) - temp
+  loc(w2, h2)
+
+public defmethod build-all (
+  pkg:USBTypeC-Pkg,
+  root:VirtualLP
+  ) -> False :
+  ; Create a child node with its center shift from the center of mass of the
+  ;  connector's 3D body to the location specified as the quasi-origin of the
+  ;  mechanical drawing of the datasheet on page 4.
+  ;  This origin is centered in the left mechanical mounting hole
+  val origin = create-child(root, offset = compute-offset(), name = "origin" )
+  package-build-all-order(pkg, root)
+
+public defmethod build-silkscreen (
+  pkg:USBTypeC-Pkg
+  root:VirtualLP
+  ) -> False:
+  create-silkscreen-outline(root, package-body(pkg), density-level = density-level(pkg))
+  build-smd-pin-1-dot(root, dir = Up, pin-1-id = #R(A[1]))
+  add-reference-designator(root)
+
+public defmethod courtyard-excess (
+  pkg:USBTypeC-Pkg
+) -> Double :
+  0.25
+
+public defmethod build-pads (
+  pkg:USBTypeC-Pkg,
+  root:VirtualLP
+  ) :
+
+  val vp = get-child!(root, "origin")
+
+  ; I'm considering the footprint as being made of 3 sets of
+  ;   of pads that compose into one land pattern.
+  ; 1. The staggered grid of pins for the communications interface, ie A1-12, B2-11
+  ; 2. The Ground pads B1 and B12 which are shaped and placed differently than the
+  ;     staggered grid
+  ; 3. The through-hole mounting slots.
+
+  build-staggered-grid(pkg, vp)
+  build-ground-pads(pkg, vp)
+  build-mounting-holes(pkg, vp)
+
+
+public defstruct USBCGridNumbering <: Numbering:
+  num-cols:Int
+
+public defmethod to-pad-id (x:USBCGridNumbering, row:Int, column:Int ) -> Int|Ref :
+  ; Staggered grids use 2x the number of columns
+  ;   so we convert to the standard grid for the
+  ;   ref to correct.
+  var index = column / 2
+  val ret = if row == 0 :
+    ;  Incrementing
+    ;  There is a skip in the middle of the row.
+    if index > 5:
+      index = index - 1
+    #R(A)[index + 1]
+  else:
+    ; Decrementing
+    val d-index = num-cols(x) - index - 1
+    #R(B)[d-index]
+
+  ret
+
+defn build-staggered-grid (
+  pkg:USBTypeC-Pkg,
+  vp:VirtualLP
+  ):
+
+  val pad-H = 0.7
+  val pad-W = 0.3
+  val pad-pitch = 0.5
+  val x-span = 6.0
+  val x-off = x-span + ((8.64 - x-span) / 2.0)
+  val origin = create-child(vp, offset = loc((- x-off), 0.46 - (1.0 / 2.0)))
+
+  val num-cols = 13
+  val pad-seq = to-tuple $ pad-grid-smt(
+    pad-size = Dims(pad-W, pad-H)
+    planner = StaggerPadPlanner(shaper = rect-shaper, omits = [[0, 12], [1, 1], [1, 23], [1, 25]]),
+    lead-grid = GridPlanner(
+      ; Stagger Planner Creates 2x the number of columns
+      ;   as pads - hence the pitch is half the actual
+      ;   physical pitch between pins.
+      pitch = Dims(pad-pitch / 2.0, 1.0 + pad-H)
+      columns = 2 * num-cols
+      rows = 2,
+      anchor = W
+    )
+    ; Skip every other other column because of the stagger
+    ;  grid.
+    num-scheme = USBCGridNumbering(num-cols)
+    )
+
+  append-all(origin, pad-seq)
+
+
+defn build-ground-pads (
+  pkg:USBTypeC-Pkg,
+  vp:VirtualLP
+  ):
+  val pad-H = 0.7
+  val pad-W = 0.3
+  val x-off = (8.64 - 6.1) / 2.0
+  val y-off = 0.46 - (1.0 + (pad-H / 2.0))
+  val origin = create-child(vp, offset = loc((- x-off), y-off) )
+
+  val padDef = smd-pad(0.9, pad-H)
+  val B1 = VirtualPad(#R(B[1]), padDef, loc(0.0, 0.0))
+  append(origin, B1)
+  val B12 = VirtualPad(#R(B[12]), padDef, loc((- 6.10), 0.0))
+  append(origin, B12)
+
+defn build-mounting-holes (
+  pkg:USBTypeC-Pkg,
+  vp:VirtualLP
+  ):
+
+  val M12-L = 8.64
+  val M34-L = 9.24
+
+  val M12-L2 = M12-L / 2.0
+  val M34-L2 = M34-L / 2.0
+
+  val origin = create-child(vp, offset = loc((- M12-L2), 0.0))
+
+  val h1 = Capsule(0.6, 1.6)
+  val cu1 = Capsule(1.1, 2.1)
+  val M12-def = pth-pad(h1, cu1)
+
+  val M1 = VirtualPad(#R(M[1]), M12-def, loc((- M12-L2), 0.0))
+  val M2 = VirtualPad(#R(M[2]), M12-def, loc(M12-L2, 0.0))
+
+
+  val h2 = Capsule(0.6, 2.1)
+  val cu2 = Capsule(1.1, 3.6)
+
+  defn compute-cu-offset (h:Capsule, cu:Capsule):
+    ; Capsule for the copper pad and the hole are
+    ;  constrained such that the center marks for
+    ;  the hole and copper pad are co-centered on
+    ;  one side
+
+    val rh = width(h)
+    val rc = width(cu)
+
+    val H-l = (height(h) - (rh)) / 2.0
+    val C-l = (height(cu) - (rc)) / 2.0
+    C-l - H-l
+
+  val y-off = compute-cu-offset(h2, cu2)
+  val shifted-cu = loc(0.0, y-off) * cu2
+  val M34-def = pth-pad(h2, shifted-cu)
+
+  val M34-y-off = -5.36
+  val M3 = VirtualPad(#R(M[3]), M34-def, loc((- M34-L2), M34-y-off))
+  val M4 = VirtualPad(#R(M[4]), M34-def, loc(M34-L2, M34-y-off))
+
+  append-all(origin, [M1, M2, M3, M4])
+
+
+
+

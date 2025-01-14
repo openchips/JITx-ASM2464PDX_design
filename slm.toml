@@ -2,5 +2,6 @@ name = "asm2464pdx"
 version = "0.3.0"
 [dependencies]
 JITX3 = { path = "{SLM_ROOT}/JITX3" }
-jlc-pcb = { git = "JITx-Inc/jlc-pcb", version = "0.3.2" }
+jlc-pcb = { git = "JITx-Inc/jlc-pcb", version = "0.3.3" }
 diodes = { git = "JITx-Inc/diodes", version = "0.2.0" }
+TI-vreg = { git = "JITx-Inc/TI-VREG", version = "0.3.4" }
