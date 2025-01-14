@@ -1,11 +1,11 @@
 ; This file is generated based on the parts database query below:")
 ;   database-part(["manufacturer" => "Winbond", "mpn" => "W25Q32JVSSIQ"])
 #use-added-syntax(jitx)
-defpackage components/Winbond/W25Q32JVSSIQ :
+defpackage ASM001/components/Winbond/W25Q32JVSSIQ :
   import core
   import jitx
   import jitx/commands
-  import ocdb/utils/box-symbol
+  import jsl/bundles
 
 
 pcb-pad capsule-smd-pad :
@@ -51,17 +51,17 @@ pcb-landpattern lp :
     )
 
 pcb-symbol sym-W25Q32JVSSIQ :
-  pin CS_NOT at Point(-12.700, 3.810) with :
+  pin SPI_CS# at Point(-12.700, 3.810) with :
     direction = Left
     length = 2.540
     number-size = 1.000
     name-size = 1.000
-  pin \|DO（IO1）| at Point(-12.700, 1.270) with :
+  pin SPI_DO at Point(-12.700, 1.270) with :
     direction = Left
     length = 2.540
     number-size = 1.000
     name-size = 1.000
-  pin IO2 at Point(-12.700, -1.270) with :
+  pin SPI_IO2 at Point(-12.700, -1.270) with :
     direction = Left
     length = 2.540
     number-size = 1.000
@@ -71,17 +71,17 @@ pcb-symbol sym-W25Q32JVSSIQ :
     length = 2.540
     number-size = 1.000
     name-size = 1.000
-  pin \|DI（IO0）| at Point(12.700, -3.810) with :
+  pin SPI_DI at Point(12.700, -3.810) with :
     direction = Right
     length = 2.540
     number-size = 1.000
     name-size = 1.000
-  pin CLK at Point(12.700, -1.270) with :
+  pin SPI_CLK at Point(12.700, -1.270) with :
     direction = Right
     length = 2.540
     number-size = 1.000
     name-size = 1.000
-  pin IO3 at Point(12.700, 1.270) with :
+  pin SPI_IO3 at Point(12.700, 1.270) with :
     direction = Right
     length = 2.540
     number-size = 1.000
@@ -98,7 +98,7 @@ pcb-symbol sym-W25Q32JVSSIQ :
   draw("foreground") = Circle(-11.430, 5.588, 0.381)
   draw("foreground") = Circle(-11.430, 5.588, 0.381)
 
-public pcb-component component :
+pcb-component component :
   name = "C82344"
   description = "32Mbit SPI SOIC-8-208mil NOR FLASH ROHS"
   manufacturer = "Winbond"
@@ -107,14 +107,14 @@ public pcb-component component :
   reference-prefix = "U"
   pin-properties :
     [pin:Ref | pads:Ref ... | side:Dir | electrical-type:String | bank:Int]
-    [CS_NOT | p[1] | Left | "unspecified" | 0]
-    [\|DO（IO1）| | p[2] | Left | "unspecified" | 0]
-    [IO2 | p[3] | Left | "unspecified" | 0]
-    [GND | p[4] | Left | "unspecified" | 0]
-    [\|DI（IO0）| | p[5] | Right | "unspecified" | 0]
-    [CLK | p[6] | Right | "unspecified" | 0]
-    [IO3 | p[7] | Right | "unspecified" | 0]
-    [VCC | p[8] | Right | "unspecified" | 0]
+    [SPI_CS# | p[1] | Left | "unspecified" | 0]
+    [SPI_DO  | p[2] | Left | "unspecified" | 0]
+    [SPI_IO2 | p[3] | Left | "unspecified" | 0]
+    [GND     | p[4] | Left | "unspecified" | 0]
+    [SPI_DI  | p[5] | Right | "unspecified" | 0]
+    [SPI_CLK | p[6] | Right | "unspecified" | 0]
+    [SPI_IO3 | p[7] | Right | "unspecified" | 0]
+    [VCC     | p[8] | Right | "unspecified" | 0]
 
   assign-landpattern(lp)
   assign-symbol(sym-W25Q32JVSSIQ)
@@ -130,4 +130,25 @@ public pcb-component component :
   property(self.area) = 51.113
   property(self.case) = "SOIC-8-208mil"
   property(self.mounting) = "through-hole"
+
+
+public pcb-module module :
+
+  public inst sw : component
+
+  port GND
+  port VDD
+
+  net (VDD sw.VCC)
+  net (GND sw.GND)
+  
+  port spi : spi-with-cs()
+
+  net (spi.cs   sw.SPI_CS#)
+  net (spi.copi sw.SPI_DI)
+  net (spi.sck  sw.SPI_CLK)
+  net (spi.cipo sw.SPI_DO)
+
+
+
 

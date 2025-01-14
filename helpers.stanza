@@ -31,7 +31,7 @@ public defn setup-part-query (
 
   val all-cats = BaseQuery(
     mounting = "smd",
-    case = ["0402", "0603", "1210"],
+    case = ["0402", "0603", "0805", "1210"],
   )
 
   ; Must instantiate after setting global defaults.
@@ -77,7 +77,7 @@ public defn setup-bill-of-materials (qty:Int, vendors:Tuple<String|AuthorizedVen
 ; ====================
 ; Setup the board information using https://github.com/JITx-Inc/jlc-pcb.git
 ; ====================
-public val substrate = jlc-pcb/stackups/JLC04161H-1080/JLC04161H-1080()
+public val substrate = jlc-pcb/stackups/JLC06161H-3313/JLC06161H-3313()
 
 ; ============
 ; setup-design

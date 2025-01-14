@@ -6,7 +6,6 @@ defpackage ASM001/components/Asmedia/ASM2464PDX:
   import jitx/commands
 
   import jsl/design/settings
-  import jsl/ensure
   import jsl/geometry/basics
   import jsl/landpatterns
 
@@ -469,11 +468,12 @@ public pcb-component component :
 
 public pcb-module module :
   port GND
-  port GNDA
+  port VBUS
   port VDD
   port VCCL
   port VCCH
   port VCCA33
+  port RST#
 
   port i2c_data : i2c
 
@@ -482,12 +482,11 @@ public pcb-module module :
 
   public inst sw : component
 
-
   for g in pins(sw.GND) do :
     net (GND g)
 
   for g in pins(sw.GNDA) do :
-    net (GNDA g)
+    net (GND g)
   
   for v in pins(sw.VDD) do :
     net (VDD v)
@@ -499,6 +498,9 @@ public pcb-module module :
     net (VCCH v)
 
   net (VCCA33 sw.VCCA33)
+  net (VBUS sw.VBUS)
+  net (RST# sw.RST#)
+
 
   for n in pins(sw.NC) do :
     no-connect(n)

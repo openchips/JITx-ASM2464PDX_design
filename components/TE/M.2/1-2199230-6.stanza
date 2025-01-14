@@ -573,7 +573,6 @@ public pcb-module module :
   val bd-4x = pcie(4)
   supports bd-4x :
     for i in 0 to 4 do :
-    ;PE[0].RX.N
       bd-4x.data.lane[i].RX.P => sw.PE[i].RX.P
       bd-4x.data.lane[i].RX.N => sw.PE[i].RX.N
       bd-4x.data.lane[i].TX.P => sw.PE[i].TX.P
@@ -584,4 +583,32 @@ public pcb-module module :
     bd-4x.control.PEWAKE# => sw.PEWAKE#
     bd-4x.control.PERST#  => sw.PERST#
     bd-4x.control.CLKREQ# => sw.CLKREQ#
+
+  val bd-2x = pcie(2)
+  supports bd-2x :
+    for i in 0 to 2 do :
+      bd-2x.data.lane[i].RX.P => sw.PE[i].RX.P
+      bd-2x.data.lane[i].RX.N => sw.PE[i].RX.N
+      bd-2x.data.lane[i].TX.P => sw.PE[i].TX.P
+      bd-2x.data.lane[i].TX.N => sw.PE[i].TX.N
+    bd-2x.data.refclk.P => sw.REFCLKP
+    bd-2x.data.refclk.N => sw.REFCLKN
+
+    bd-2x.control.PEWAKE# => sw.PEWAKE#
+    bd-2x.control.PERST#  => sw.PERST#
+    bd-2x.control.CLKREQ# => sw.CLKREQ#
+
+  val bd-1x = pcie(1)
+  supports bd-1x :
+    bd-1x.data.lane[0].RX.P => sw.PE[0].RX.P
+    bd-1x.data.lane[0].RX.N => sw.PE[0].RX.N
+    bd-1x.data.lane[0].TX.P => sw.PE[0].TX.P
+    bd-1x.data.lane[0].TX.N => sw.PE[0].TX.N
+      
+    bd-1x.data.refclk.P => sw.REFCLKP
+    bd-1x.data.refclk.N => sw.REFCLKN
+
+    bd-1x.control.PEWAKE# => sw.PEWAKE#
+    bd-1x.control.PERST#  => sw.PERST#
+    bd-1x.control.CLKREQ# => sw.CLKREQ#
 
