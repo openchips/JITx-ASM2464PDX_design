@@ -52,10 +52,10 @@
 						"inst":	{
 							"name":	"usb4_type_c"
 						},
-						"ref":	"J1",
+						"ref":	"J2",
 						"fileinfo":	{
 							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
-							"line":	99,
+							"line":	47,
 							"column":	2
 						}
 					}],
@@ -77,7 +77,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v05"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
 								},
 								"field":	{
 									"name":	"fb-div"
@@ -106,7 +111,7 @@
 					"_exist":	["tcr.pos", "tcr.neg"],
 					"resistance":	2400,
 					"category":	"resistor",
-					"case":	["0402", "0603", "1210"],
+					"case":	["0402", "0603", "0805", "1210"],
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -121,7 +126,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-3v3"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
 								},
 								"field":	{
 									"name":	"fb-div"
@@ -150,7 +160,7 @@
 					"_exist":	["tcr.pos", "tcr.neg"],
 					"resistance":	24000,
 					"category":	"resistor",
-					"case":	["0402", "0603", "1210"],
+					"case":	["0402", "0603", "0805", "1210"],
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -165,7 +175,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v8"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
 								},
 								"field":	{
 									"name":	"bst-circ"
@@ -181,7 +196,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-3v3"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
 								},
 								"field":	{
 									"name":	"bst-circ"
@@ -197,7 +217,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v05"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
 								},
 								"field":	{
 									"name":	"bst-circ"
@@ -224,7 +249,7 @@
 					"type":	"ceramic",
 					"temperature-coefficient.code":	["X7R", "X5R"],
 					"category":	"capacitor",
-					"case":	["0402", "0603", "1210"],
+					"case":	["0402", "0603", "0805", "1210"],
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -234,69 +259,31 @@
 					"code":	1,
 					"name":	"Auto Selected"
 				},
-				"description":	"RES SMD 0 OHM JUMPER 1/20W 0201",
+				"description":	"32Mbit SPI SOIC-8-208mil NOR FLASH ROHS",
 				"insts":	[{
 						"inst":	{
 							"ref":	{
-								"ref":	{
-									"name":	"DCDC-1v8"
-								},
-								"field":	{
-									"name":	"bst-circ"
-								}
+								"name":	"W25Q32JVSSIQ"
 							},
 							"field":	{
-								"name":	"elem"
+								"name":	"sw"
 							}
 						},
-						"ref":	"R7",
-						"fileinfo":	null
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"DCDC-3v3"
-								},
-								"field":	{
-									"name":	"bst-circ"
-								}
-							},
-							"field":	{
-								"name":	"elem"
-							}
-						},
-						"ref":	"R4",
-						"fileinfo":	null
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"DCDC-1v05"
-								},
-								"field":	{
-									"name":	"bst-circ"
-								}
-							},
-							"field":	{
-								"name":	"elem"
-							}
-						},
-						"ref":	"R1",
-						"fileinfo":	null
+						"ref":	"U8",
+						"fileinfo":	{
+							"filename":	"components\\Winbond\\W25Q32JVSSIQ.stanza",
+							"line":	137,
+							"column":	2
+						}
 					}],
-				"datasheet":	"https://www.bourns.com/docs/product-datasheets/CRxxxxx.pdf",
-				"manufacturer":	"BOURNS",
-				"mpn":	"CR0201-J/-000GLF",
-				"vendor":	"Arrow",
-				"sku":	"CR0201-J/-000GLF",
-				"price":	0.0009,
+				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_1811101814_Winbond-Elec-W25Q32JVSSIQ_C82344.pdf",
+				"manufacturer":	"Winbond",
+				"mpn":	"W25Q32JVSSIQ",
+				"vendor":	"DigiKey",
+				"sku":	"W25Q32JVSSIQ",
+				"price":	0.8,
 				"preferred":	false,
-				"query_properties":	{
-					"resistance":	0,
-					"category":	"resistor",
-					"min-stock":	1,
-					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
-				}
+				"query_properties":	null
 			}, {
 				"status":	{
 					"code":	1,
@@ -307,7 +294,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-3v3"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
 								},
 								"field":	{
 									"name":	"fb-div"
@@ -336,7 +328,7 @@
 					"_exist":	["tcr.pos", "tcr.neg"],
 					"resistance":	7680,
 					"category":	"resistor",
-					"case":	["0402", "0603", "1210"],
+					"case":	["0402", "0603", "0805", "1210"],
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -346,31 +338,107 @@
 					"code":	1,
 					"name":	"Auto Selected"
 				},
-				"description":	"62.5mW ±300ppm/℃ ±1% 0Ω 0402  Chip Resistor - Surface Mount ROHS",
+				"description":	"6.3V 10uF X5R ±10% 0603  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
 				"insts":	[{
 						"inst":	{
 							"ref":	{
-								"name":	"shield-term"
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
 							},
 							"field":	{
-								"name":	"R"
+								"name":	"elem"
 							}
 						},
-						"ref":	"R12",
+						"ref":	"C19",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C18",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C12",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C11",
 						"fileinfo":	null
 					}],
-				"datasheet":	"https://datasheet.lcsc.com/lcsc/2207281800_Sunway-SC0402F0000I2ANRH_C3152056.pdf",
-				"manufacturer":	"Sunway",
-				"mpn":	"SC0402F0000I2ANRH",
-				"vendor":	"JLCPCB",
-				"sku":	"SC0402F0000I2ANRH",
-				"price":	0.000357143,
+				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Walsin-Tech-Corp-0603X106K6R3CT_C123607.pdf",
+				"manufacturer":	"WALSIN",
+				"mpn":	"0603X106K6R3CT",
+				"vendor":	"Arrow",
+				"sku":	"0603X106K6R3CT",
+				"price":	0.0429,
 				"preferred":	false,
 				"query_properties":	{
-					"resistance":	0,
-					"tolerance":	0.01,
-					"category":	"resistor",
-					"case":	["0402", "0603", "1210"],
+					"tolerance":	0.1,
+					"min-rated-voltage":	0.5562,
+					"capacitance":	1.0000000000000006e-05,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"category":	"capacitor",
+					"case":	["0402", "0603", "0805", "1210"],
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -390,7 +458,7 @@
 								"name":	"sw"
 							}
 						},
-						"ref":	"J2",
+						"ref":	"J1",
 						"fileinfo":	{
 							"filename":	"components\\TE\\M.2\\1-2199230-6.stanza",
 							"line":	571,
@@ -415,7 +483,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v05"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
 								},
 								"field":	{
 									"name":	"cin-circ"
@@ -431,7 +504,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v05"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
 								},
 								"field":	{
 									"name":	"cin-circ"
@@ -459,7 +537,7 @@
 					"type":	"ceramic",
 					"temperature-coefficient.code":	["X7R", "X5R"],
 					"category":	"capacitor",
-					"case":	["0402", "0603", "1210"],
+					"case":	["0402", "0603", "0805", "1210"],
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -474,7 +552,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v05"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
 								},
 								"field":	{
 									"name":	"fb-div"
@@ -503,7 +586,7 @@
 					"_exist":	["tcr.pos", "tcr.neg"],
 					"resistance":	7680,
 					"category":	"resistor",
-					"case":	["0402", "0603", "1210"],
+					"case":	["0402", "0603", "0805", "1210"],
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -540,7 +623,7 @@
 					"temperature-coefficient.code":	["X7R", "X5R"],
 					"min-rated-voltage":	6,
 					"category":	"capacitor",
-					"case":	["0402", "0603", "1210"],
+					"case":	["0402", "0603", "0805", "1210"],
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -555,7 +638,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v8"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
 								},
 								"field":	{
 									"name":	"cout-circ"
@@ -571,7 +659,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-3v3"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
 								},
 								"field":	{
 									"name":	"cout-circ"
@@ -587,7 +680,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v05"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
 								},
 								"field":	{
 									"name":	"cout-circ"
@@ -614,7 +712,7 @@
 					"type":	"ceramic",
 					"temperature-coefficient.code":	["X7R", "X5R"],
 					"category":	"capacitor",
-					"case":	["0402", "0603", "1210"],
+					"case":	["0402", "0603", "0805", "1210"],
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -629,7 +727,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v8"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
 								},
 								"field":	{
 									"name":	"fb-div"
@@ -658,7 +761,7 @@
 					"_exist":	["tcr.pos", "tcr.neg"],
 					"resistance":	7320,
 					"category":	"resistor",
-					"case":	["0402", "0603", "1210"],
+					"case":	["0402", "0603", "0805", "1210"],
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -671,12 +774,40 @@
 				"description":	"7.9V 14V 3.6V DFN-10(1x2.5)  ESD Protection Devices ROHS",
 				"insts":	[{
 						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"esd"
+								},
+								"field":	{
+									"name":	"pool-esd"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"U7",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"esd"
+								},
+								"field":	{
+									"name":	"pool-esd"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"U6",
+						"fileinfo":	null
+					}, {
+						"inst":	{
 							"name":	"esd-prot"
 						},
 						"ref":	"U5",
 						"fileinfo":	{
 							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
-							"line":	118,
+							"line":	75,
 							"column":	2
 						}
 					}],
@@ -698,7 +829,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v8"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
 								},
 								"field":	{
 									"name":	"fb-div"
@@ -727,7 +863,7 @@
 					"_exist":	["tcr.pos", "tcr.neg"],
 					"resistance":	9100,
 					"category":	"resistor",
-					"case":	["0402", "0603", "1210"],
+					"case":	["0402", "0603", "0805", "1210"],
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -841,7 +977,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v8"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
 								},
 								"field":	{
 									"name":	"cin-circ"
@@ -857,7 +998,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v8"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
 								},
 								"field":	{
 									"name":	"cin-circ"
@@ -885,7 +1031,76 @@
 					"type":	"ceramic",
 					"temperature-coefficient.code":	["X7R", "X5R"],
 					"category":	"capacitor",
-					"case":	["0402", "0603", "1210"],
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"6.3V 470nF X5R ±10% 0402  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"cin-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C9",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"cin-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C8",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2304140030_Samsung-Electro-Mechanics-CL05A474KQ5NNNC_C364319.pdf",
+				"manufacturer":	"Samsung Electro-Mechanics",
+				"mpn":	"CL05A474KQ5NNNC",
+				"vendor":	"Arrow",
+				"sku":	"CL05A474KQ5NNNC",
+				"price":	0.0092,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.1,
+					"min-rated-voltage":	1.53,
+					"min-capacitance":	3.9000000000000029e-07,
+					"max-capacitance":	4.7000000000000037e-07,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"category":	"capacitor",
+					"case":	["0402", "0603", "0805", "1210"],
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -1059,71 +1274,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v8"
-								},
-								"field":	{
-									"name":	"cout-circ"
-								}
-							},
-							"field":	{
-								"name":	"elem"
-							}
-						},
-						"ref":	"C19",
-						"fileinfo":	null
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"DCDC-1v8"
-								},
-								"field":	{
-									"name":	"cout-circ"
-								}
-							},
-							"field":	{
-								"name":	"elem"
-							}
-						},
-						"ref":	"C18",
-						"fileinfo":	null
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"DCDC-3v3"
-								},
-								"field":	{
-									"name":	"cout-circ"
-								}
-							},
-							"field":	{
-								"name":	"elem"
-							}
-						},
-						"ref":	"C12",
-						"fileinfo":	null
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"DCDC-3v3"
-								},
-								"field":	{
-									"name":	"cout-circ"
-								}
-							},
-							"field":	{
-								"name":	"elem"
-							}
-						},
-						"ref":	"C11",
-						"fileinfo":	null
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"DCDC-1v05"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
 								},
 								"field":	{
 									"name":	"cout-circ"
@@ -1139,7 +1295,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v05"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
 								},
 								"field":	{
 									"name":	"cout-circ"
@@ -1161,12 +1322,12 @@
 				"preferred":	false,
 				"query_properties":	{
 					"tolerance":	0.1,
-					"min-rated-voltage":	0.5562,
+					"min-rated-voltage":	0.32445,
 					"capacitance":	1.0000000000000006e-05,
 					"type":	"ceramic",
 					"temperature-coefficient.code":	["X7R", "X5R"],
 					"category":	"capacitor",
-					"case":	["0402", "0603", "1210"],
+					"case":	["0402", "0603", "0805", "1210"],
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -1275,60 +1436,196 @@
 					"code":	1,
 					"name":	"Auto Selected"
 				},
-				"description":	"6.3V 470nF X5R ±10% 0402  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"description":	"62.5mW ±300ppm/℃ ±1% 0Ω 0402  Chip Resistor - Surface Mount ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"name":	"shield-term"
+							},
+							"field":	{
+								"name":	"R"
+							}
+						},
+						"ref":	"R10",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://datasheet.lcsc.com/lcsc/2207281800_Sunway-SC0402F0000I2ANRH_C3152056.pdf",
+				"manufacturer":	"Sunway",
+				"mpn":	"SC0402F0000I2ANRH",
+				"vendor":	"JLCPCB",
+				"sku":	"SC0402F0000I2ANRH",
+				"price":	0.000357143,
+				"preferred":	false,
+				"query_properties":	{
+					"resistance":	0,
+					"tolerance":	0.01,
+					"category":	"resistor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"RES SMD 0 OHM JUMPER 1/20W 0201",
 				"insts":	[{
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-3v3"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
 								},
 								"field":	{
-									"name":	"cin-circ"
+									"name":	"bst-circ"
 								}
 							},
 							"field":	{
 								"name":	"elem"
 							}
 						},
-						"ref":	"C9",
+						"ref":	"R7",
 						"fileinfo":	null
 					}, {
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-3v3"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
 								},
 								"field":	{
-									"name":	"cin-circ"
+									"name":	"bst-circ"
 								}
 							},
 							"field":	{
 								"name":	"elem"
 							}
 						},
-						"ref":	"C8",
+						"ref":	"R4",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"bst-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"R1",
 						"fileinfo":	null
 					}],
-				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_2407081117_YAGEO-CC0402KRX5R5BB474_C107012.pdf",
-				"manufacturer":	"YAGEO",
-				"mpn":	"CC0402KRX5R5BB474",
+				"datasheet":	"https://www.bourns.com/docs/product-datasheets/CRxxxxx.pdf",
+				"manufacturer":	"BOURNS",
+				"mpn":	"CR0201-J/-000GLF",
 				"vendor":	"Arrow",
-				"sku":	"CC0402KRX5R5BB474",
-				"price":	0.0105,
+				"sku":	"CR0201-J/-000GLF",
+				"price":	0.0009,
 				"preferred":	false,
 				"query_properties":	{
-					"tolerance":	0.1,
-					"min-rated-voltage":	1.53,
-					"min-capacitance":	3.9000000000000029e-07,
-					"max-capacitance":	4.7000000000000037e-07,
-					"type":	"ceramic",
-					"temperature-coefficient.code":	["X7R", "X5R"],
-					"category":	"capacitor",
-					"case":	["0402", "0603", "1210"],
-					"mounting":	"smd",
+					"resistance":	0,
+					"category":	"resistor",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
 				}
+			}, {
+				"status":	{
+					"code":	5,
+					"name":	"Potential Alternate Vendors"
+				},
+				"description":	"Inductor, 1.5uH, 0.017 Ω DC",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"L"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"L3",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"L"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"L2",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"L"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"L1",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://www.yuden.co.jp/productdata/catalog/wound04_e.pdf",
+				"manufacturer":	"Taiyo Yuden",
+				"mpn":	"NRS5040T1R5NMGJV",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	null
 			}, {
 				"status":	{
 					"code":	5,
@@ -1339,7 +1636,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v8"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
 								},
 								"field":	{
 									"name":	"IC"
@@ -1359,7 +1661,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-3v3"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
 								},
 								"field":	{
 									"name":	"IC"
@@ -1379,7 +1686,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v05"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
 								},
 								"field":	{
 									"name":	"IC"
@@ -1434,71 +1746,10 @@
 				"price":	null,
 				"preferred":	false,
 				"query_properties":	null
-			}, {
-				"status":	{
-					"code":	5,
-					"name":	"Potential Alternate Vendors"
-				},
-				"description":	"Inductor, 1.5uH, 0.017 Ω DC",
-				"insts":	[{
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"DCDC-1v8"
-								},
-								"field":	{
-									"name":	"L"
-								}
-							},
-							"field":	{
-								"name":	"elem"
-							}
-						},
-						"ref":	"L3",
-						"fileinfo":	null
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"DCDC-3v3"
-								},
-								"field":	{
-									"name":	"L"
-								}
-							},
-							"field":	{
-								"name":	"elem"
-							}
-						},
-						"ref":	"L2",
-						"fileinfo":	null
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"DCDC-1v05"
-								},
-								"field":	{
-									"name":	"L"
-								}
-							},
-							"field":	{
-								"name":	"elem"
-							}
-						},
-						"ref":	"L1",
-						"fileinfo":	null
-					}],
-				"datasheet":	"https://www.yuden.co.jp/productdata/catalog/wound04_e.pdf",
-				"manufacturer":	"Taiyo Yuden",
-				"mpn":	"NRS5040T1R5NMGJV",
-				"vendor":	null,
-				"sku":	null,
-				"price":	null,
-				"preferred":	false,
-				"query_properties":	null
 			}],
 		"entries":	[{
+			}, {
+			}, {
 			}, {
 			}, {
 			}, {
@@ -1526,13 +1777,13 @@
 	},
 	"metrics":	[{
 			"name":	"Line Items",
-			"value":	24
+			"value":	26
 		}, {
 			"name":	"Components",
-			"value":	55
+			"value":	58
 		}, {
 			"name":	"Cost",
-			"value":	"$4.77"
+			"value":	"$6.52"
 		}],
 	"is_update":	false,
 	"old_bom":	{
@@ -1546,10 +1797,10 @@
 						"inst":	{
 							"name":	"usb4_type_c"
 						},
-						"ref":	"J1",
+						"ref":	"J2",
 						"fileinfo":	{
 							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
-							"line":	99,
+							"line":	47,
 							"column":	2
 						}
 					}],
@@ -1571,7 +1822,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v05"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
 								},
 								"field":	{
 									"name":	"fb-div"
@@ -1600,7 +1856,7 @@
 					"_exist":	["tcr.pos", "tcr.neg"],
 					"resistance":	2400,
 					"category":	"resistor",
-					"case":	["0402", "0603", "1210"],
+					"case":	["0402", "0603", "0805", "1210"],
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -1615,7 +1871,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-3v3"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
 								},
 								"field":	{
 									"name":	"fb-div"
@@ -1644,7 +1905,7 @@
 					"_exist":	["tcr.pos", "tcr.neg"],
 					"resistance":	24000,
 					"category":	"resistor",
-					"case":	["0402", "0603", "1210"],
+					"case":	["0402", "0603", "0805", "1210"],
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -1659,7 +1920,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v8"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
 								},
 								"field":	{
 									"name":	"bst-circ"
@@ -1675,7 +1941,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-3v3"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
 								},
 								"field":	{
 									"name":	"bst-circ"
@@ -1691,7 +1962,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v05"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
 								},
 								"field":	{
 									"name":	"bst-circ"
@@ -1718,7 +1994,7 @@
 					"type":	"ceramic",
 					"temperature-coefficient.code":	["X7R", "X5R"],
 					"category":	"capacitor",
-					"case":	["0402", "0603", "1210"],
+					"case":	["0402", "0603", "0805", "1210"],
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -1728,69 +2004,31 @@
 					"code":	1,
 					"name":	"Auto Selected"
 				},
-				"description":	"RES SMD 0 OHM JUMPER 1/20W 0201",
+				"description":	"32Mbit SPI SOIC-8-208mil NOR FLASH ROHS",
 				"insts":	[{
 						"inst":	{
 							"ref":	{
-								"ref":	{
-									"name":	"DCDC-1v8"
-								},
-								"field":	{
-									"name":	"bst-circ"
-								}
+								"name":	"W25Q32JVSSIQ"
 							},
 							"field":	{
-								"name":	"elem"
+								"name":	"sw"
 							}
 						},
-						"ref":	"R7",
-						"fileinfo":	null
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"DCDC-3v3"
-								},
-								"field":	{
-									"name":	"bst-circ"
-								}
-							},
-							"field":	{
-								"name":	"elem"
-							}
-						},
-						"ref":	"R4",
-						"fileinfo":	null
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"DCDC-1v05"
-								},
-								"field":	{
-									"name":	"bst-circ"
-								}
-							},
-							"field":	{
-								"name":	"elem"
-							}
-						},
-						"ref":	"R1",
-						"fileinfo":	null
+						"ref":	"U8",
+						"fileinfo":	{
+							"filename":	"components\\Winbond\\W25Q32JVSSIQ.stanza",
+							"line":	137,
+							"column":	2
+						}
 					}],
-				"datasheet":	"https://www.bourns.com/docs/product-datasheets/CRxxxxx.pdf",
-				"manufacturer":	"BOURNS",
-				"mpn":	"CR0201-J/-000GLF",
-				"vendor":	"Arrow",
-				"sku":	"CR0201-J/-000GLF",
-				"price":	0.0009,
+				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_1811101814_Winbond-Elec-W25Q32JVSSIQ_C82344.pdf",
+				"manufacturer":	"Winbond",
+				"mpn":	"W25Q32JVSSIQ",
+				"vendor":	"DigiKey",
+				"sku":	"W25Q32JVSSIQ",
+				"price":	0.8,
 				"preferred":	false,
-				"query_properties":	{
-					"resistance":	0,
-					"category":	"resistor",
-					"min-stock":	1,
-					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
-				}
+				"query_properties":	null
 			}, {
 				"status":	{
 					"code":	1,
@@ -1801,7 +2039,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-3v3"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
 								},
 								"field":	{
 									"name":	"fb-div"
@@ -1830,7 +2073,7 @@
 					"_exist":	["tcr.pos", "tcr.neg"],
 					"resistance":	7680,
 					"category":	"resistor",
-					"case":	["0402", "0603", "1210"],
+					"case":	["0402", "0603", "0805", "1210"],
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -1840,31 +2083,107 @@
 					"code":	1,
 					"name":	"Auto Selected"
 				},
-				"description":	"62.5mW ±300ppm/℃ ±1% 0Ω 0402  Chip Resistor - Surface Mount ROHS",
+				"description":	"6.3V 10uF X5R ±10% 0603  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
 				"insts":	[{
 						"inst":	{
 							"ref":	{
-								"name":	"shield-term"
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
 							},
 							"field":	{
-								"name":	"R"
+								"name":	"elem"
 							}
 						},
-						"ref":	"R12",
+						"ref":	"C19",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C18",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C12",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C11",
 						"fileinfo":	null
 					}],
-				"datasheet":	"https://datasheet.lcsc.com/lcsc/2207281800_Sunway-SC0402F0000I2ANRH_C3152056.pdf",
-				"manufacturer":	"Sunway",
-				"mpn":	"SC0402F0000I2ANRH",
-				"vendor":	"JLCPCB",
-				"sku":	"SC0402F0000I2ANRH",
-				"price":	0.000357143,
+				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Walsin-Tech-Corp-0603X106K6R3CT_C123607.pdf",
+				"manufacturer":	"WALSIN",
+				"mpn":	"0603X106K6R3CT",
+				"vendor":	"Arrow",
+				"sku":	"0603X106K6R3CT",
+				"price":	0.0429,
 				"preferred":	false,
 				"query_properties":	{
-					"resistance":	0,
-					"tolerance":	0.01,
-					"category":	"resistor",
-					"case":	["0402", "0603", "1210"],
+					"tolerance":	0.1,
+					"min-rated-voltage":	0.5562,
+					"capacitance":	1.0000000000000006e-05,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"category":	"capacitor",
+					"case":	["0402", "0603", "0805", "1210"],
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -1884,7 +2203,7 @@
 								"name":	"sw"
 							}
 						},
-						"ref":	"J2",
+						"ref":	"J1",
 						"fileinfo":	{
 							"filename":	"components\\TE\\M.2\\1-2199230-6.stanza",
 							"line":	571,
@@ -1909,7 +2228,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v05"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
 								},
 								"field":	{
 									"name":	"cin-circ"
@@ -1925,7 +2249,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v05"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
 								},
 								"field":	{
 									"name":	"cin-circ"
@@ -1953,7 +2282,7 @@
 					"type":	"ceramic",
 					"temperature-coefficient.code":	["X7R", "X5R"],
 					"category":	"capacitor",
-					"case":	["0402", "0603", "1210"],
+					"case":	["0402", "0603", "0805", "1210"],
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -1968,7 +2297,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v05"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
 								},
 								"field":	{
 									"name":	"fb-div"
@@ -1997,7 +2331,7 @@
 					"_exist":	["tcr.pos", "tcr.neg"],
 					"resistance":	7680,
 					"category":	"resistor",
-					"case":	["0402", "0603", "1210"],
+					"case":	["0402", "0603", "0805", "1210"],
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -2034,7 +2368,7 @@
 					"temperature-coefficient.code":	["X7R", "X5R"],
 					"min-rated-voltage":	6,
 					"category":	"capacitor",
-					"case":	["0402", "0603", "1210"],
+					"case":	["0402", "0603", "0805", "1210"],
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -2049,7 +2383,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v8"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
 								},
 								"field":	{
 									"name":	"cout-circ"
@@ -2065,7 +2404,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-3v3"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
 								},
 								"field":	{
 									"name":	"cout-circ"
@@ -2081,7 +2425,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v05"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
 								},
 								"field":	{
 									"name":	"cout-circ"
@@ -2108,7 +2457,7 @@
 					"type":	"ceramic",
 					"temperature-coefficient.code":	["X7R", "X5R"],
 					"category":	"capacitor",
-					"case":	["0402", "0603", "1210"],
+					"case":	["0402", "0603", "0805", "1210"],
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -2123,7 +2472,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v8"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
 								},
 								"field":	{
 									"name":	"fb-div"
@@ -2152,7 +2506,7 @@
 					"_exist":	["tcr.pos", "tcr.neg"],
 					"resistance":	7320,
 					"category":	"resistor",
-					"case":	["0402", "0603", "1210"],
+					"case":	["0402", "0603", "0805", "1210"],
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -2165,12 +2519,40 @@
 				"description":	"7.9V 14V 3.6V DFN-10(1x2.5)  ESD Protection Devices ROHS",
 				"insts":	[{
 						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"esd"
+								},
+								"field":	{
+									"name":	"pool-esd"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"U7",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"esd"
+								},
+								"field":	{
+									"name":	"pool-esd"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"U6",
+						"fileinfo":	null
+					}, {
+						"inst":	{
 							"name":	"esd-prot"
 						},
 						"ref":	"U5",
 						"fileinfo":	{
 							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
-							"line":	114,
+							"line":	75,
 							"column":	2
 						}
 					}],
@@ -2192,7 +2574,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v8"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
 								},
 								"field":	{
 									"name":	"fb-div"
@@ -2221,7 +2608,7 @@
 					"_exist":	["tcr.pos", "tcr.neg"],
 					"resistance":	9100,
 					"category":	"resistor",
-					"case":	["0402", "0603", "1210"],
+					"case":	["0402", "0603", "0805", "1210"],
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -2335,7 +2722,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v8"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
 								},
 								"field":	{
 									"name":	"cin-circ"
@@ -2351,7 +2743,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v8"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
 								},
 								"field":	{
 									"name":	"cin-circ"
@@ -2379,7 +2776,76 @@
 					"type":	"ceramic",
 					"temperature-coefficient.code":	["X7R", "X5R"],
 					"category":	"capacitor",
-					"case":	["0402", "0603", "1210"],
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"6.3V 470nF X5R ±10% 0402  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"cin-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C9",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"cin-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C8",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2304140030_Samsung-Electro-Mechanics-CL05A474KQ5NNNC_C364319.pdf",
+				"manufacturer":	"Samsung Electro-Mechanics",
+				"mpn":	"CL05A474KQ5NNNC",
+				"vendor":	"Arrow",
+				"sku":	"CL05A474KQ5NNNC",
+				"price":	0.0092,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.1,
+					"min-rated-voltage":	1.53,
+					"min-capacitance":	3.9000000000000029e-07,
+					"max-capacitance":	4.7000000000000037e-07,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"category":	"capacitor",
+					"case":	["0402", "0603", "0805", "1210"],
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -2553,71 +3019,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v8"
-								},
-								"field":	{
-									"name":	"cout-circ"
-								}
-							},
-							"field":	{
-								"name":	"elem"
-							}
-						},
-						"ref":	"C19",
-						"fileinfo":	null
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"DCDC-1v8"
-								},
-								"field":	{
-									"name":	"cout-circ"
-								}
-							},
-							"field":	{
-								"name":	"elem"
-							}
-						},
-						"ref":	"C18",
-						"fileinfo":	null
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"DCDC-3v3"
-								},
-								"field":	{
-									"name":	"cout-circ"
-								}
-							},
-							"field":	{
-								"name":	"elem"
-							}
-						},
-						"ref":	"C12",
-						"fileinfo":	null
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"DCDC-3v3"
-								},
-								"field":	{
-									"name":	"cout-circ"
-								}
-							},
-							"field":	{
-								"name":	"elem"
-							}
-						},
-						"ref":	"C11",
-						"fileinfo":	null
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"DCDC-1v05"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
 								},
 								"field":	{
 									"name":	"cout-circ"
@@ -2633,7 +3040,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v05"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
 								},
 								"field":	{
 									"name":	"cout-circ"
@@ -2655,12 +3067,12 @@
 				"preferred":	false,
 				"query_properties":	{
 					"tolerance":	0.1,
-					"min-rated-voltage":	0.5562,
+					"min-rated-voltage":	0.32445,
 					"capacitance":	1.0000000000000006e-05,
 					"type":	"ceramic",
 					"temperature-coefficient.code":	["X7R", "X5R"],
 					"category":	"capacitor",
-					"case":	["0402", "0603", "1210"],
+					"case":	["0402", "0603", "0805", "1210"],
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -2769,60 +3181,196 @@
 					"code":	1,
 					"name":	"Auto Selected"
 				},
-				"description":	"6.3V 470nF X5R ±10% 0402  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"description":	"62.5mW ±300ppm/℃ ±1% 0Ω 0402  Chip Resistor - Surface Mount ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"name":	"shield-term"
+							},
+							"field":	{
+								"name":	"R"
+							}
+						},
+						"ref":	"R10",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://datasheet.lcsc.com/lcsc/2207281800_Sunway-SC0402F0000I2ANRH_C3152056.pdf",
+				"manufacturer":	"Sunway",
+				"mpn":	"SC0402F0000I2ANRH",
+				"vendor":	"JLCPCB",
+				"sku":	"SC0402F0000I2ANRH",
+				"price":	0.000357143,
+				"preferred":	false,
+				"query_properties":	{
+					"resistance":	0,
+					"tolerance":	0.01,
+					"category":	"resistor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"RES SMD 0 OHM JUMPER 1/20W 0201",
 				"insts":	[{
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-3v3"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
 								},
 								"field":	{
-									"name":	"cin-circ"
+									"name":	"bst-circ"
 								}
 							},
 							"field":	{
 								"name":	"elem"
 							}
 						},
-						"ref":	"C9",
+						"ref":	"R7",
 						"fileinfo":	null
 					}, {
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-3v3"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
 								},
 								"field":	{
-									"name":	"cin-circ"
+									"name":	"bst-circ"
 								}
 							},
 							"field":	{
 								"name":	"elem"
 							}
 						},
-						"ref":	"C8",
+						"ref":	"R4",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"bst-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"R1",
 						"fileinfo":	null
 					}],
-				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_2407081117_YAGEO-CC0402KRX5R5BB474_C107012.pdf",
-				"manufacturer":	"YAGEO",
-				"mpn":	"CC0402KRX5R5BB474",
+				"datasheet":	"https://www.bourns.com/docs/product-datasheets/CRxxxxx.pdf",
+				"manufacturer":	"BOURNS",
+				"mpn":	"CR0201-J/-000GLF",
 				"vendor":	"Arrow",
-				"sku":	"CC0402KRX5R5BB474",
-				"price":	0.0105,
+				"sku":	"CR0201-J/-000GLF",
+				"price":	0.0009,
 				"preferred":	false,
 				"query_properties":	{
-					"tolerance":	0.1,
-					"min-rated-voltage":	1.53,
-					"min-capacitance":	3.9000000000000029e-07,
-					"max-capacitance":	4.7000000000000037e-07,
-					"type":	"ceramic",
-					"temperature-coefficient.code":	["X7R", "X5R"],
-					"category":	"capacitor",
-					"case":	["0402", "0603", "1210"],
-					"mounting":	"smd",
+					"resistance":	0,
+					"category":	"resistor",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
 				}
+			}, {
+				"status":	{
+					"code":	5,
+					"name":	"Potential Alternate Vendors"
+				},
+				"description":	"Inductor, 1.5uH, 0.017 Ω DC",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"L"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"L3",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"L"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"L2",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"L"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"L1",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://www.yuden.co.jp/productdata/catalog/wound04_e.pdf",
+				"manufacturer":	"Taiyo Yuden",
+				"mpn":	"NRS5040T1R5NMGJV",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	null
 			}, {
 				"status":	{
 					"code":	5,
@@ -2833,7 +3381,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v8"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
 								},
 								"field":	{
 									"name":	"IC"
@@ -2853,7 +3406,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-3v3"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
 								},
 								"field":	{
 									"name":	"IC"
@@ -2873,7 +3431,12 @@
 						"inst":	{
 							"ref":	{
 								"ref":	{
-									"name":	"DCDC-1v05"
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
 								},
 								"field":	{
 									"name":	"IC"
@@ -2928,71 +3491,10 @@
 				"price":	null,
 				"preferred":	false,
 				"query_properties":	null
-			}, {
-				"status":	{
-					"code":	5,
-					"name":	"Potential Alternate Vendors"
-				},
-				"description":	"Inductor, 1.5uH, 0.017 Ω DC",
-				"insts":	[{
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"DCDC-1v8"
-								},
-								"field":	{
-									"name":	"L"
-								}
-							},
-							"field":	{
-								"name":	"elem"
-							}
-						},
-						"ref":	"L3",
-						"fileinfo":	null
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"DCDC-3v3"
-								},
-								"field":	{
-									"name":	"L"
-								}
-							},
-							"field":	{
-								"name":	"elem"
-							}
-						},
-						"ref":	"L2",
-						"fileinfo":	null
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"DCDC-1v05"
-								},
-								"field":	{
-									"name":	"L"
-								}
-							},
-							"field":	{
-								"name":	"elem"
-							}
-						},
-						"ref":	"L1",
-						"fileinfo":	null
-					}],
-				"datasheet":	"https://www.yuden.co.jp/productdata/catalog/wound04_e.pdf",
-				"manufacturer":	"Taiyo Yuden",
-				"mpn":	"NRS5040T1R5NMGJV",
-				"vendor":	null,
-				"sku":	null,
-				"price":	null,
-				"preferred":	false,
-				"query_properties":	null
 			}],
 		"entries":	[{
+			}, {
+			}, {
 			}, {
 			}, {
 			}, {

@@ -1,5 +1,5 @@
 #use-added-syntax(jitx)
-defpackage ASM001/components/UNKNOWN/XPS628303ARZER :
+defpackage ASM001/components/Texas-Instruments/XPS628303ARZER :
   import core
   import collections
   import jitx

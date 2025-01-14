@@ -60,7 +60,7 @@ This function call defines a board by creating a board with shape, stackup and a
 @param outline the shape of the board
 <DOC>
 public pcb-board ASM001-board (outline:Shape) :
-  stackup = create-pcb-stackup(jlc-pcb/stackups/JLC06161H-7628/stackup-gen)
+  stackup = create-pcb-stackup(jlc-pcb/stackups/JLC06161H-3313/stackup-gen)
   boundary = outline
   signal-boundary = outline
   vias = available-vias

@@ -1,6 +1,0 @@
-{  
-  "operations": [  
-    {"operation":"place","place":{"placements":[{"id":"EakTXqLeLDdkPzqBjfjRGw","pose":{"center":{"x":30.73,"y":-14.285},"angle":0},"side":"top"},{"id":"Ga2Nipn6f4tfoWEthJ5ido","pose":{"center":{"x":38.603300552368168,"y":-11.046699616909027},"angle":0},"side":"top"},{"id":"uH3LxAgXEiW9fPvuhfgnT","pose":{"center":{"x":44.106501083374027,"y":-11.046699616909027},"angle":0},"side":"top"}]}},
-    {"operation":"place","place":{"placements":[{"id":"Ga2Nipn6f4tfoWEthJ5ido","pose":{"center":{"x":24.540800552368172,"y":-9.6404496169090272},"angle":0},"side":"top"}]}}
-  ]
-}

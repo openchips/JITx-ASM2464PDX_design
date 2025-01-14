@@ -1,0 +1,82 @@
+{  
+  "version": 3,
+  "assignments": [
+  ],
+  "id-mapping": {  
+    "boxes": [  
+      [{"id":"1111111111113Hn4wx","unit-id":0},10],
+      [{"id":"BruMdm9pCxqPi79GbZ8WQf","unit-id":0},21],
+      [{"id":"B317fMz6FwwFDrnuHBzLK9","unit-id":0},32]
+    ],
+    "inst-boxes": [  
+      [{"id":"489jfAXC8bU2V4MMBtr4wA","unit-id":0},33],
+      [{"id":"8C12z6XxGGaSY9GEtCQtWf","unit-id":0},34]
+    ],
+    "nets": [
+    ],
+    "ports": [  
+      ["111111111113sTVf5M",0],
+      ["111111111113yYmsCu",1],
+      ["1111111111144pzi34",2],
+      ["111111111114Co5Jbt",3],
+      ["111111111114KYmjSp",4],
+      ["111111111114SDSphX",5],
+      ["111111111114WDUgxi",6],
+      ["111111111114e8C5wZ",7],
+      ["111111111114mHGnXw",8],
+      ["111111111114qzBEKX",9],
+      ["11111111111oDD34q",11],
+      ["1111111111124xU11v",12],
+      ["11111111111utcmKd",13],
+      ["111111111112WsqFSS",14],
+      ["111111111112QdbJVz",15],
+      ["111111111112Gumwk3",16],
+      ["1111111111128YavEY",17],
+      ["11111111111czQTMy",18],
+      ["11111111111VrubWZ",19],
+      ["11111111111jWtn5m",20],
+      ["111111111112cEN5EX",22],
+      ["111111111113Jy57xo",23],
+      ["1111111111135xkqZn",24],
+      ["111111111112xmWoBL",25],
+      ["1111111111139d7B4K",26],
+      ["111111111112ierjse",27],
+      ["111111111112pomSru",28],
+      ["11111111111FmnqXc",29],
+      ["111111111117j3QPE",30],
+      ["11111111111NExHx2",31]
+    ]
+  },
+  "design": {  
+    "input": {  
+      "paper-size": {  
+        "x": 200,
+        "y": 125
+      },
+      "label-style": {  
+        "type": "monospace-label-style",
+        "height-in-grid-units": 0.8,
+        "char-width-relative-to-height": 0.6
+      },
+      "boxes": [  
+        {"id":10,"sw":{"x":0,"y":2},"ne":{"x":1,"y":20},"ports":[{"id":0,"pt":{"x":0,"y":2},"dir":"Down","tag":"AnyTag"},{"id":1,"pt":{"x":0,"y":4},"dir":"Left","tag":"AnyTag"},{"id":2,"pt":{"x":0,"y":6},"dir":"Left","tag":"AnyTag"},{"id":3,"pt":{"x":0,"y":8},"dir":"Left","tag":"AnyTag"},{"id":4,"pt":{"x":0,"y":10},"dir":"Left","tag":"AnyTag"},{"id":5,"pt":{"x":0,"y":12},"dir":"Left","tag":"AnyTag"},{"id":6,"pt":{"x":0,"y":14},"dir":"Left","tag":"AnyTag"},{"id":7,"pt":{"x":0,"y":16},"dir":"Left","tag":"AnyTag"},{"id":8,"pt":{"x":0,"y":18},"dir":"Left","tag":"AnyTag"},{"id":9,"pt":{"x":0,"y":20},"dir":"Up","tag":"AnyTag"}],"orientation":{"type":"any-rotation"}},
+        {"id":21,"sw":{"x":0,"y":2},"ne":{"x":1,"y":20},"ports":[{"id":11,"pt":{"x":0,"y":2},"dir":"Down","tag":"AnyTag"},{"id":12,"pt":{"x":0,"y":4},"dir":"Left","tag":"AnyTag"},{"id":13,"pt":{"x":0,"y":6},"dir":"Left","tag":"AnyTag"},{"id":14,"pt":{"x":0,"y":8},"dir":"Left","tag":"AnyTag"},{"id":15,"pt":{"x":0,"y":10},"dir":"Left","tag":"AnyTag"},{"id":16,"pt":{"x":0,"y":12},"dir":"Left","tag":"AnyTag"},{"id":17,"pt":{"x":0,"y":14},"dir":"Left","tag":"AnyTag"},{"id":18,"pt":{"x":0,"y":16},"dir":"Left","tag":"AnyTag"},{"id":19,"pt":{"x":0,"y":18},"dir":"Left","tag":"AnyTag"},{"id":20,"pt":{"x":0,"y":20},"dir":"Up","tag":"AnyTag"}],"orientation":{"type":"any-rotation"}},
+        {"id":32,"sw":{"x":0,"y":2},"ne":{"x":1,"y":20},"ports":[{"id":22,"pt":{"x":0,"y":2},"dir":"Down","tag":"AnyTag"},{"id":23,"pt":{"x":0,"y":4},"dir":"Left","tag":"AnyTag"},{"id":24,"pt":{"x":0,"y":6},"dir":"Left","tag":"AnyTag"},{"id":25,"pt":{"x":0,"y":8},"dir":"Left","tag":"AnyTag"},{"id":26,"pt":{"x":0,"y":10},"dir":"Left","tag":"AnyTag"},{"id":27,"pt":{"x":0,"y":12},"dir":"Left","tag":"AnyTag"},{"id":28,"pt":{"x":0,"y":14},"dir":"Left","tag":"AnyTag"},{"id":29,"pt":{"x":0,"y":16},"dir":"Left","tag":"AnyTag"},{"id":30,"pt":{"x":0,"y":18},"dir":"Left","tag":"AnyTag"},{"id":31,"pt":{"x":0,"y":20},"dir":"Up","tag":"AnyTag"}],"orientation":{"type":"any-rotation"}}
+      ],
+      "insts": [  
+        {"id":33,"box":21,"group":null},
+        {"id":34,"box":32,"group":null}
+      ],
+      "nets": [
+      ],
+      "shorts": [
+      ],
+      "schematic-group-order": [
+      ]
+    },
+    "sheets": [  
+      {"id":38,"title":null,"groups":[{"id":37,"groups":[null],"border":{"sw":{"x":96,"y":51},"ne":{"x":104,"y":73}},"insts":[{"inst":34,"pose":{"center":{"x":98,"y":51},"angle":0,"flip-x?":false}},{"inst":33,"pose":{"center":{"x":101,"y":51},"angle":0,"flip-x?":false}}],"children":[]}],"nets":[]}
+    ],
+    "hierarchical-diagram": null
+  }
+}
