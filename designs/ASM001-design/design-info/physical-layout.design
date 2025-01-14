@@ -31,6 +31,7 @@
     {"operation":"place","place":{"placements":[{"id":"3qXVo1m4FUtX4XEpcDKQR5","pose":{"center":{"x":-4.88338242434097,"y":14.134482597965416},"angle":0},"side":"top"}]}},
     {"operation":"place","place":{"placements":[{"id":"C9qFMhHHJjCmiGAuxk68VT","pose":{"center":{"x":43.547019144733028,"y":-21.6858474310513},"angle":180},"side":"top"}]}},
     {"operation":"place","place":{"placements":[{"id":"C9qFMhHHJjCmiGAuxk68VT","pose":{"center":{"x":-18.495534046756362,"y":-3.0475495587108732},"angle":180},"side":"top"}]}},
-    {"operation":"place","place":{"placements":[{"id":"C9qFMhHHJjCmiGAuxk68VT","pose":{"center":{"x":-18.969446038402666,"y":-4.1082097304906924},"angle":90},"side":"top"}]}}
+    {"operation":"place","place":{"placements":[{"id":"C9qFMhHHJjCmiGAuxk68VT","pose":{"center":{"x":-18.969446038402666,"y":-4.1082097304906924},"angle":90},"side":"top"}]}},
+    {"operation":"place","place":{"placements":[{"id":"6oZWkgebUHWvxEikmy4AR9","pose":{"center":{"x":23.97465998164,"y":-8.02085079609931},"angle":90},"side":"top"}]}}
   ]
 }
