@@ -1,0 +1,117 @@
+; This file is generated based on the parts database query below:")
+;   database-part(["manufacturer" => "ABRACON", "mpn" => "ABMM2-25.000MHZ-D1-T"])
+#use-added-syntax(jitx)
+defpackage ASM001/components/ABRACON/ABMM2-25_000MHZ-D1-T :
+  import core
+  import jitx
+  import jitx/commands
+  import ocdb/utils/box-symbol
+
+
+pcb-pad rectangle-smd-pad :
+  name = "rectangle-smd-pad"
+  type = SMD
+  shape = Rectangle(1.800, 1.400)
+  layer(SolderMask(Top)) = Rectangle(1.902, 1.502)
+  layer(Paste(Top)) = Rectangle(1.902, 1.502)
+
+pcb-landpattern lp :
+  pad p[1] : rectangle-smd-pad at loc(-2.200, -1.200) on Top
+  pad p[2] : rectangle-smd-pad at loc(2.200, -1.200) on Top
+  pad p[3] : rectangle-smd-pad at loc(2.200, 1.199) on Top
+  pad p[4] : rectangle-smd-pad at loc(-2.200, 1.199) on Top
+
+  layer(Silkscreen("F-SilkS", Top)) = Text(">REF", 0.5, W, loc(-0.750, 3.656))
+  layer(CustomLayer("Fab", Top)) = Text(">VALUE", 0.5, W, loc(-0.750, 2.656))
+  layer(Silkscreen("F-SilkS", Top)) = Line(0.200, [Point(1.096, 1.800), Point(-1.096, 1.800)])
+  layer(Silkscreen("F-SilkS", Top)) = Line(0.200, [Point(3.000, 0.253), Point(3.000, -0.296)])
+  layer(Silkscreen("F-SilkS", Top)) = Line(0.200, [Point(-1.096, -1.801), Point(1.045, -1.801)])
+  layer(Silkscreen("F-SilkS", Top)) = Line(0.200, [Point(-3.000, -0.296), Point(-3.000, 0.295)])
+  layer(Silkscreen("F-SilkS", Top)) = Polyline(0.300, [
+    Arc(-2.286, -2.287, 0.150, 90.485, -0.970)])
+  layer(CustomLayer("Fab", Top)) = Polyline(0.060, [
+    Arc(-3.000, -1.801, 0.030, 0.0, -360.000)])
+  layer(CustomLayer("Fab", Top)) = Polyline(0.500, [
+    Arc(-2.540, -1.398, 0.250, 0.0, -360.000)])
+  layer(Courtyard(Top)) = Rectangle(6.302, 3.901)
+
+  model3d = Model3D("{USER_PROJECT_ROOT}/3d-models/jitx-64d254f9b789d8dc4b996f8d.stp",
+    Vec3D(0.0, 0.0, 0.0),
+    Vec3D(1.000, 1.000, 1.000),
+    Vec3D(0.0, 0.0, 0.0),
+    [],
+    )
+
+pcb-symbol sym-ABMM2-25_000MHZ-D1-T :
+  pin GND0 at Point(5.080, -2.540) with :
+    direction = Right
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin GND1 at Point(-5.080, 2.540) with :
+    direction = Left
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin p[3] at Point(5.080, 2.540) with :
+    direction = Right
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin p[1] at Point(-5.080, -2.540) with :
+    direction = Left
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+
+  draw("value") = Text(">VALUE", 0.7056, C, loc(0.0, 3.540))
+  draw("reference") = Text(">REF", 0.7056, C, loc(0.0, 4.540))
+  draw("foreground") = Rectangle(1.016, 3.556)
+  draw("foreground") = Rectangle(10.160, 10.160)
+  draw("foreground") = Circle(-3.810, -3.810, 0.381)
+  draw("foreground") = Polyline(0.254, [
+    Point(5.080, 2.540)
+    Point(2.540, 2.540)
+    Point(2.540, 0.0)
+    Point(1.270, 0.0)])
+  draw("foreground") = Polyline(0.254, [
+    Point(-5.080, -2.540)
+    Point(-2.540, -2.540)
+    Point(-2.540, 0.0)
+    Point(-1.270, 0.0)])
+  draw("foreground") = Polyline(0.254, [
+    Point(1.270, -1.778)
+    Point(1.270, 1.778)])
+  draw("foreground") = Polyline(0.254, [
+    Point(-1.270, -1.778)
+    Point(-1.270, 1.778)])
+
+public pcb-component component :
+  name = "C1985419"
+  description = "25MHz 18pF ±20ppm SMD-4P  Crystals ROHS"
+  manufacturer = "ABRACON"
+  mpn = "ABMM2-25.000MHZ-D1-T"
+  datasheet = "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2304140030_Abracon-LLC-ABMM2-25-000MHZ-D1-T_C1985419.pdf"
+  reference-prefix = "X"
+  pin-properties :
+    [pin:Ref | pads:Ref ... | side:Dir | electrical-type:String | bank:Int]
+    [GND0 | p[2] | Right | "input" | 0]
+    [GND1 | p[4] | Left | "input" | 0]
+    [p[3] | p[3] | Right | "input" | 0]
+    [p[1] | p[1] | Left | "input" | 0]
+
+  assign-landpattern(lp)
+  assign-symbol(sym-ABMM2-25_000MHZ-D1-T)
+
+  property(self.category) = "resonator"
+  property(self.manufacturer_aliases) = ["Abracon LLC"]
+  property(self.mpn_aliases) = ["ABMM2-25.000MHZ-D1-T"]
+  property(self.cofactr_id) = "OSDU487NIJMB"
+  property(self.reference_prefix) = "X"
+  property(self.trust) = "low"
+  property(self.x) = 6.302
+  property(self.y) = 3.901
+  property(self.area) = 24.584
+  property(self.case) = "SMD6036-4P"
+  property(self.mounting) = "smd"
+

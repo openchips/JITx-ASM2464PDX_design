@@ -1,0 +1,94 @@
+; This file is generated based on the parts database query below:")
+;   database-part(["manufacturer" => "Infineon", "mpn" => "ESD132-B1-W0201 E6327"])
+#use-added-syntax(jitx)
+defpackage ASM001/components/Infineon/ESD132-B1-W0201-E6327 :
+  import core
+  import jitx
+  import jitx/commands
+  import ocdb/utils/box-symbol
+
+
+pcb-pad rectangle-smd-pad :
+  name = "rectangle-smd-pad"
+  type = SMD
+  shape = Rectangle(0.300, 0.200)
+  layer(SolderMask(Top)) = Rectangle(0.402, 0.302)
+  layer(Paste(Top)) = Rectangle(0.402, 0.302)
+
+pcb-landpattern lp :
+  pad p[1] : rectangle-smd-pad at loc(-0.200, 1.13686837721616e-013, 270.000) on Top
+  pad p[2] : rectangle-smd-pad at loc(0.200, 1.13686837721616e-013, 270.000) on Top
+
+  layer(Silkscreen("F-SilkS", Top)) = Text(">REF", 0.5, W, loc(-0.750, 2.087))
+  layer(CustomLayer("Fab", Top)) = Text(">VALUE", 0.5, W, loc(-0.750, 1.087))
+  layer(Silkscreen("F-SilkS", Top)) = Line(0.102, [Point(-0.500, 0.330), Point(-0.500, -0.330)])
+  layer(Silkscreen("F-SilkS", Top)) = Line(0.102, [Point(-0.500, 0.330), Point(0.500, 0.330)])
+  layer(Silkscreen("F-SilkS", Top)) = Line(0.102, [Point(-0.500, -0.330), Point(0.500, -0.330)])
+  layer(Silkscreen("F-SilkS", Top)) = Line(0.102, [Point(0.500, 0.330), Point(0.500, -0.330)])
+  layer(CustomLayer("Fab", Top)) = Polyline(0.060, [
+    Arc(-0.290, -0.140, 0.030, 0.0, -360.000)])
+  layer(Courtyard(Top)) = Rectangle(1.102, 0.762)
+
+  model3d = Model3D("{USER_PROJECT_ROOT}/3d-models/jitx-64d141cdb789d8dc4b7a4f70.stp",
+    Vec3D(0.0, 0.0, 0.0),
+    Vec3D(1.000, 1.000, 1.000),
+    Vec3D(0.0, 0.0, 0.0),
+    [],
+    )
+
+pcb-symbol sym-ESD132-B1-W0201_E6327 :
+  pin p[1] at Point(-2.540, 0.0) with :
+    direction = Left
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin p[2] at Point(2.540, 0.0) with :
+    direction = Right
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+
+  draw("value") = Text(">VALUE", 0.7056, C, loc(0.0, 2.524))
+  draw("reference") = Text(">REF", 0.7056, C, loc(0.0, 3.524))
+  draw("foreground") = Polyline(0.254, [
+    Point(-0.508, 1.524)
+    Point(-0.508, 1.524)
+    Point(0.0, 1.524)
+    Point(0.0, -1.524)
+    Point(0.508, -1.524)
+    Point(0.508, -1.524)])
+  draw("foreground") = Polygon([
+    Point(2.540, 1.270)
+    Point(0.0, 0.0)
+    Point(2.540, -1.270)])
+  draw("foreground") = Polygon([
+    Point(-2.540, 1.270)
+    Point(0.0, 0.0)
+    Point(-2.540, -1.270)])
+
+public pcb-component component :
+  name = "C535164"
+  description = " WLL-2-3  ESD Protection Devices ROHS"
+  manufacturer = "Infineon"
+  mpn = "ESD132-B1-W0201 E6327"
+  datasheet = "https://www.lcsc.com/datasheet/lcsc_datasheet_2005291706_Infineon-Technologies-ESD132-B1-W0201-E6327_C535164.pdf"
+  reference-prefix = "U"
+  pin-properties :
+    [pin:Ref | pads:Ref ... | side:Dir | electrical-type:String | bank:Int]
+    [p[1] | p[1] | Left | "unspecified" | 0]
+    [p[2] | p[2] | Right | "unspecified" | 0]
+
+  assign-landpattern(lp)
+  assign-symbol(sym-ESD132-B1-W0201_E6327)
+
+  property(self.category) = "ic"
+  property(self.manufacturer_aliases) = ["Infineon Technologies"]
+  property(self.mpn_aliases) = ["ESD132-B1-W0201 E6327"]
+  property(self.cofactr_id) = "XXRARWCT0RJE"
+  property(self.reference_prefix) = "U"
+  property(self.trust) = "low"
+  property(self.x) = 1.102
+  property(self.y) = 0.762
+  property(self.area) = 0.840
+  property(self.case) = "WLL-2-3"
+

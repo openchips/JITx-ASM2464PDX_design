@@ -236,7 +236,7 @@ public pcb-component component :
     [GPIO[25]   | A[16]  | Right | A]
     [GPIO[26]   | A[17]  | Right | A]
     [GPIO[27]   | A[18]  | Right | A]
-    [REXT       | AA[3]  | Right | A]
+    [UREXT      | AA[3]  | Right | A]
     [XI         | AA[4]  | Right | A]
     [XO         | Y[4]   | Right | A]
     [NC[0]      | J[2]   | Left  | B]
@@ -477,6 +477,11 @@ public pcb-module module :
 
   port i2c_data : i2c
 
+  port XI
+  port XO
+
+  port UREXT
+
   port spi : spi-with-cs()
   port uart : minimal-uart()
 
@@ -500,7 +505,13 @@ public pcb-module module :
   net (VCCA33 sw.VCCA33)
   net (VBUS sw.VBUS)
   net (RST# sw.RST#)
+  
+  net (XI sw.XI)
+  net (XO sw.XO)
 
+  net (UREXT sw.UREXT)
+
+  
 
   for n in pins(sw.NC) do :
     no-connect(n)

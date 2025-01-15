@@ -75,7 +75,7 @@
       ]
     },
     "sheets": [  
-      {"id":38,"title":null,"groups":[{"id":37,"groups":[null],"border":{"sw":{"x":96,"y":51},"ne":{"x":104,"y":73}},"insts":[{"inst":34,"pose":{"center":{"x":98,"y":51},"angle":0,"flip-x?":false}},{"inst":33,"pose":{"center":{"x":101,"y":51},"angle":0,"flip-x?":false}}],"children":[]}],"nets":[]}
+      {"id":36,"title":null,"groups":[{"id":35,"groups":[null],"border":{"sw":{"x":96,"y":51},"ne":{"x":104,"y":73}},"insts":[{"inst":34,"pose":{"center":{"x":98,"y":51},"angle":0,"flip-x?":false}},{"inst":33,"pose":{"center":{"x":101,"y":51},"angle":0,"flip-x?":false}}],"children":[]}],"nets":[]}
     ],
     "hierarchical-diagram": null
   }
