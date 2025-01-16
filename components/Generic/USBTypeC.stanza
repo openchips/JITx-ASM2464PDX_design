@@ -99,7 +99,7 @@ public pcb-component conn-component :
 
   val conn = usb-c-connector
   supports conn:
-    conn.vbus.V+ => self.VBUS[0] self.VBUS[1] self.VBUS[2] self.VBUS[3]
+    conn.vbus.V+ => (self.VBUS[0] self.VBUS[1] self.VBUS[2] self.VBUS[3])
 
     conn.bus.cc[0] => self.CC1
     conn.bus.cc[1] => self.CC2
@@ -107,8 +107,8 @@ public pcb-component conn-component :
     conn.bus.sbu[0] => self.SBU1
     conn.bus.sbu[1] => self.SBU2
   
-    conn.bus.data.P => self.D0.P self.D1.P
-    conn.bus.data.N => self.D0.N self.D1.N
+    conn.bus.data.P => (self.D0.P self.D1.P)
+    conn.bus.data.N => (self.D0.N self.D1.N)
     conn.bus.lane[0].TX.P => self.TX1.P
     conn.bus.lane[0].TX.N => self.TX1.N
     conn.bus.lane[0].RX.P => self.RX1.P
@@ -118,7 +118,7 @@ public pcb-component conn-component :
     conn.bus.lane[1].RX.P => self.RX2.P
     conn.bus.lane[1].RX.N => self.RX2.N    
 
-    conn.vbus.V- => self.GND[0] self.GND[1] self.GND[2] self.GND[3]
+    conn.vbus.V- => (self.GND[0] self.GND[1] self.GND[2] self.GND[3])
     conn.shield => self.SHIELD
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

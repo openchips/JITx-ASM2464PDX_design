@@ -7,20 +7,11 @@ defpackage ASM001/module/power :
   import jitx/parts
 
   import jsl
-  import helpers
-  import jsl/bundles
-
-  import jsl/protocols/usb
-  import jsl/si/constraints
-  import jsl/si/pairs
-  import jsl/si/helpers
-  import jsl/si/couplers
   import jsl/symbols/net-symbols
 
-  import board
-  import ASM001/common/components
+  import ASM001/board
   
-  import ASM001/components/headers
+  ; import ASM001/components/headers
 
   import TI-vreg/components/TPS6293x
 

@@ -3,7 +3,7 @@
 ; update your design in CAD, etc.
 ; ====================
 #use-added-syntax(jitx)
-defpackage helpers :
+defpackage ASM001/helpers :
   import core
   import jitx
   import jitx/commands
@@ -87,7 +87,7 @@ public defn setup-design (name:String, board-shape:Shape
                           signal-shrink:Double = ?
                           vendors:Tuple<String|AuthorizedVendor> = jsl/design/settings/APPROVED-DISTRIBUTOR-LIST
                           quantity:Int = jsl/design/settings/DESIGN-QUANTITY
-                          paper-size:Paper = ANSI-A
+                          paper-size:Paper = ANSI-B
                           ) :
   set-current-design(name)
   setup-part-query(vendors = vendors)

@@ -1,0 +1,132 @@
+; This file is generated based on the parts database query below:")
+;   database-part(["manufacturer" => "JGHC", "mpn" => "S2225000181060"])
+#use-added-syntax(jitx)
+defpackage ASM001/components/JGHC/S2225000181060 :
+  import core
+  import jitx
+  import jitx/commands
+  import ocdb/utils/box-symbol
+
+
+pcb-pad rectangle-smd-pad :
+  name = "rectangle-smd-pad"
+  type = SMD
+  shape = Rectangle(1.200, 1.100)
+  layer(SolderMask(Top)) = Rectangle(1.302, 1.202)
+  layer(Paste(Top)) = Rectangle(1.302, 1.202)
+
+pcb-landpattern lp :
+  pad p[1] : rectangle-smd-pad at loc(-0.836, -0.636) on Top
+  pad p[2] : rectangle-smd-pad at loc(1.064, -0.636) on Top
+  pad p[3] : rectangle-smd-pad at loc(1.064, 0.865) on Top
+  pad p[4] : rectangle-smd-pad at loc(-0.836, 0.865) on Top
+
+  layer(Silkscreen("F-SilkS", Top)) = Text(">REF", 0.5, W, loc(-0.750, 3.425))
+  layer(CustomLayer("Fab", Top)) = Text(">VALUE", 0.5, W, loc(-0.750, 2.425))
+  layer(Silkscreen("F-SilkS", Top)) = Polyline(0.152, [
+    Point(-1.893, -0.086)
+    Point(-1.893, -1.643)
+    Point(-0.236, -1.643)])
+  layer(Silkscreen("F-SilkS", Top)) = Polyline(0.152, [
+    Point(-1.665, -1.414)
+    Point(-1.665, 1.643)
+    Point(1.893, 1.643)
+    Point(1.893, -1.414)
+    Point(-1.665, -1.414)])
+  layer(CustomLayer("Fab", Top)) = Polyline(0.060, [
+    Arc(-1.136, -0.886, 0.030, 0.0, -360.000)])
+  layer(CustomLayer("Fab", Top)) = Polyline(0.200, [
+    Arc(-1.029, -1.156, 0.100, 0.0, -360.000)])
+  layer(Courtyard(Top)) = Rectangle(3.938, 3.438)
+
+pcb-symbol sym-S2225000181060 :
+  pin GND0 at Point(-5.080, 2.540) with :
+    direction = Left
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin GND1 at Point(5.080, -2.540) with :
+    direction = Right
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin OSC1 at Point(-5.080, -2.540) with :
+    direction = Left
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+  pin OSC2 at Point(5.080, 2.540) with :
+    direction = Right
+    length = 2.540
+    number-size = 1.000
+    name-size = 1.000
+
+  draw("value") = Text(">VALUE", 0.7056, C, loc(0.0, 3.540))
+  draw("reference") = Text(">REF", 0.7056, C, loc(0.0, 4.540))
+  draw("foreground") = Rectangle(10.160, 10.160)
+  draw("foreground") = Polyline(0.254, [
+    Point(-1.270, -1.016)
+    Point(-1.270, 1.016)])
+  draw("foreground") = Polyline(0.254, [
+    Point(0.762, -1.778)
+    Point(-0.762, -1.778)])
+  draw("foreground") = Polyline(0.254, [
+    Point(1.270, -1.016)
+    Point(1.270, 1.016)])
+  draw("foreground") = Polyline(0.254, [
+    Point(-0.762, -1.778)
+    Point(-0.762, 1.778)
+    Point(0.762, 1.778)
+    Point(0.762, -1.778)])
+  draw("foreground") = Polyline(0.254, [
+    Point(5.080, 2.540)
+    Point(2.540, 2.540)
+    Point(2.540, 0.0)
+    Point(1.524, 0.0)])
+  draw("foreground") = Polyline(0.254, [
+    Point(-5.080, -2.540)
+    Point(-2.540, -2.540)
+    Point(-2.540, 0.0)
+    Point(-1.524, 0.0)])
+  draw("foreground") = Polyline(0.254, [
+    Point(1.270, -1.778)
+    Point(1.270, 1.778)])
+  draw("foreground") = Polyline(0.254, [
+    Point(-1.270, -1.778)
+    Point(-1.270, 1.778)])
+  draw("foreground") = Polyline(0.254, [
+    Point(0.762, 1.778)
+    Point(0.762, -1.778)
+    Point(-0.762, -1.778)
+    Point(-0.762, 1.778)
+    Point(0.762, 1.778)])
+
+public pcb-component component :
+  name = "C426967"
+  description = "25MHz 18pF ±10ppm SMD2520-4P  Crystals ROHS"
+  manufacturer = "JGHC"
+  mpn = "S2225000181060"
+  datasheet = "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2304140030_JGHC-S2225000181060_C426967.pdf"
+  reference-prefix = "X"
+  pin-properties :
+    [pin:Ref | pads:Ref ... | side:Dir | electrical-type:String | bank:Int]
+    [GND0 | p[4] | Left | "unspecified" | 0]
+    [GND1 | p[2] | Right | "unspecified" | 0]
+    [OSC1 | p[1] | Left | "unspecified" | 0]
+    [OSC2 | p[3] | Right | "unspecified" | 0]
+
+  assign-landpattern(lp)
+  assign-symbol(sym-S2225000181060)
+
+  property(self.category) = "resonator"
+  property(self.manufacturer_aliases) = ["JGHC"]
+  property(self.mpn_aliases) = ["S2225000181060"]
+  property(self.cofactr_id) = "OSEDQF5DN9YF"
+  property(self.reference_prefix) = "X"
+  property(self.trust) = "low"
+  property(self.x) = 3.938
+  property(self.y) = 3.438
+  property(self.area) = 13.539
+  property(self.case) = "SMD2520-4P"
+  property(self.mounting) = "smd"
+
