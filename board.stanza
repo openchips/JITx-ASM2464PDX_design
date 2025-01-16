@@ -2,7 +2,7 @@
 ; Setup the board information using https://github.com/JITx-Inc/jlc-pcb.git
 ; ====================
 #use-added-syntax(jitx)
-defpackage board :
+defpackage ASM001/board :
   import core
   import jitx
   import jitx/commands

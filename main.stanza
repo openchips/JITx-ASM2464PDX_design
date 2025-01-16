@@ -7,7 +7,6 @@ defpackage main :
   import jitx/parts
 
   import jsl
-  import helpers
   import jsl/bundles
 
   ; import jsl/protocols/usb
@@ -17,12 +16,9 @@ defpackage main :
   import jsl/si/couplers
   import jsl/symbols/net-symbols
 
-  import board
+  import ASM001/board
+  import ASM001/helpers
   import ASM001/common/components
-  ; import ASM001/components
-  
-
-  ; import ASM001/components/TE_2388749-1 ; Import the package containing the definition
 
 ; Define the shape/size of the board
 val board-shape = RoundedRectangle(100.0, 100.0, 0.25)
@@ -44,35 +40,8 @@ pcb-module ASM001-design :
   val R-query = get-default-resistor-query()
   val C-query = get-default-capacitor-query()
   
-  inst power-circuit : ASM001/module/power/circuit                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+  inst power-circuit : ASM001/module/power/circuit
   inst asm2464pdx : ASM001/components/Asmedia/ASM2464PDX/module
-  inst usb4_type_c : ASM001/components/USB/USBTypeC/conn-component
-  inst W25Q32JVSSIQ : ASM001/components/Winbond/W25Q32JVSSIQ/module
-  inst m2_connector : ASM001/components/TE_1-2199230-6/module
-
-
-  net (power-circuit.vbus asm2464pdx.VBUS VBUS)
-  net (power-circuit.vout-3v3-V+ asm2464pdx.VCCH asm2464pdx.VCCA33) ; VCCA33 should be connected to an LDO or at least a low pass filter
-  net (power-circuit.vout-1v8-V+ asm2464pdx.VCCL)
-  net (power-circuit.vout-1v05-V+ asm2464pdx.VDD)
-    
-  net (power-circuit.gnd GND)
-  net (m2_connector.gnd GND)
-
-  require asm2464pdx_usb-c : usb-c(2) from asm2464pdx
-  require connector_usb-c : usb-c-connector from usb4_type_c
-  ; require spi-data : spi-with-cs() from W25Q32JVSSIQ
-
-  net (W25Q32JVSSIQ.spi, asm2464pdx.spi)
-
-  net (connector_usb-c.vbus.V+ asm2464pdx.VCCH asm2464pdx.VBUS VBUS)
-  net (connector_usb-c.vbus.V- asm2464pdx.GND GND)
-
-  net (connector_usb-c.bus.cc[0], asm2464pdx_usb-c.cc[0])
-  net (connector_usb-c.bus.cc[1], asm2464pdx_usb-c.cc[1])
-
-  net (connector_usb-c.bus.sbu[0], asm2464pdx_usb-c.sbu[0])
-  net (connector_usb-c.bus.sbu[1], asm2464pdx_usb-c.sbu[1])
 
   ; ASM2464PDX 25Mhz 18Pf crystal
   inst crystal_25mhz: ASM001/components/ABRACON/ABMM2-25_000MHZ-D1-T/component
@@ -85,19 +54,80 @@ pcb-module ASM001-design :
   net (asm2464pdx.XI crystal_c.p[1])
   net (asm2464pdx.XO crystal_c.p[2])
 
-    
-  val urext-C = create-resistor(R-query, 
-                                case = ["0201", "0402"], 
-                                resistance = 12.1e3) ; 12.1K ohm
+  ; ASM2464PDX config straps
 
-  insert-pulldown(asm2464pdx.UREXT, GND,
-                    elem-type = urext-C,
-                    inst-name? = to-string("UREXT-C"),
+  val p_4k7-R = create-resistor(R-query, 
+                              case = ["0201", "0402"], 
+                              resistance = 4.7e3) ; 4.7K ohm
+
+  ; require asm2464pdx_uart : minimal-uart() from asm2464pdx
+
+  insert-pullup(asm2464pdx.sw.UART_TX, asm2464pdx.VCCH,
+                    elem-type = p_4k7-R,
+                    inst-name? = to-string("uart_tx-R"),
                     make-public = true)
 
+  val rst-R = create-resistor(R-query, 
+                              case = ["0201", "0402"], 
+                              resistance = 100.0e3) ; 100K ohm
 
-  ; ASM2464PDX config straps
-  net (asm2464pdx.RST#, asm2464pdx.VCCH)
+  val rst-C = create-capacitor(C-query, 
+                                case = ["0201", "0402"], 
+                                capacitance = 1.0e-6,
+                                rated-voltage = 50.0) ; 1uF, 50V
+
+  insert-pullup(asm2464pdx.RST#, asm2464pdx.VCCH,
+                    elem-type = rst-R,
+                    inst-name? = to-string("RST-R"),
+                    make-public = true)
+
+  insert-pulldown(asm2464pdx.RST#, GND,
+                    elem-type = rst-C,
+                    inst-name? = to-string("RST-C"),
+                    make-public = true)
+
+  val urext-R = create-resistor(R-query, 
+                              case = ["0201", "0402"], 
+                              resistance = 12.1e3,
+                              tolerance = 0.01) ; 12.1K ohm
+
+  insert-pulldown(asm2464pdx.UREXT, GND,
+                    elem-type = urext-R,
+                    inst-name? = to-string("UREXT-R"),
+                    make-public = true)
+
+  
+  ; net (asm2464pdx.TEST_EN GND)
+  insert-pulldown(asm2464pdx.TEST_EN, GND,
+                    elem-type = p_4k7-R,
+                    inst-name? = to-string("TEST_EN-R"),
+                    make-public = true)
+
+  inst usb4_type_c : ASM001/components/USB/USBTypeC/conn-component
+
+  require asm2464pdx_usb-c : usb-c(2) from asm2464pdx
+  require connector_usb-c : usb-c-connector from usb4_type_c
+
+  net (connector_usb-c.vbus.V+ asm2464pdx.VCCH asm2464pdx.VBUS VBUS)
+  net (connector_usb-c.vbus.V- asm2464pdx.GND GND)
+
+  net (connector_usb-c.bus.cc[0], asm2464pdx_usb-c.cc[0])
+  net (connector_usb-c.bus.cc[1], asm2464pdx_usb-c.cc[1])
+
+  net (connector_usb-c.bus.sbu[0], asm2464pdx_usb-c.sbu[0])
+  net (connector_usb-c.bus.sbu[1], asm2464pdx_usb-c.sbu[1])
+
+  inst W25Q32JVSSIQ : ASM001/components/Winbond/W25Q32JVSSIQ/module
+
+  net (power-circuit.vbus asm2464pdx.VBUS VBUS)
+  net (power-circuit.vout-3v3-V+ asm2464pdx.VCCH asm2464pdx.VCCA33) ; VCCA33 should be connected to an LDO or at least a low pass filter
+  net (power-circuit.vout-1v8-V+ asm2464pdx.VCCL)
+  net (power-circuit.vout-1v05-V+ asm2464pdx.VDD)
+  net (power-circuit.gnd GND)
+
+  ; require spi-data : spi-with-cs() from W25Q32JVSSIQ
+
+  net (asm2464pdx.spi W25Q32JVSSIQ.spi)
 
   public inst esd-prot : diodes/ESD224DQAR/device
   net (esd-prot.GND[1], esd-prot.GND[2], GND)
@@ -141,15 +171,16 @@ pcb-module ASM001-design :
     inst rx-bcap : dp-coupler(rx-ac-C)
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;ESD
-    val usb4-esd-cap = create-part(mpn = "ESD132-B1-W0201 E6327", manufacturer = "Infineon")
-    inst lane-esd-tx : dp-coupler(usb4-esd-cap)
-    inst lane-esd-rx : dp-coupler(usb4-esd-cap)
+    val lane-esd-cap = ASM001/components/Infineon/ESD132-B1-W0201-E6327/component
+    ; val usb4-esd-cap = create-part(mpn = "ESD132-B1-W0201 E6327", manufacturer = "Infineon")
+    inst lane-esd-tx : dp-coupler(lane-esd-cap)
+    inst lane-esd-rx : dp-coupler(lane-esd-cap)
     
     ; require tx-esd:dual-pair from esd-lanes
-    topo-pair(asm2464pdx_usb-c.lane[i].TX => lane-esd-tx => tx-bcap => connector_usb-c.bus.lane[i].TX)
+    topo-pair(connector_usb-c.bus.lane[i].TX => lane-esd-tx => asm2464pdx_usb-c.lane[i].TX) ;tx-bcap => 
 
     ; require rx-esd:dual-pair from esd-lanes
-    topo-pair(asm2464pdx_usb-c.lane[i].RX => lane-esd-rx => rx-bcap => connector_usb-c.bus.lane[i].RX)
+    topo-pair(connector_usb-c.bus.lane[i].RX => lane-esd-rx  => asm2464pdx_usb-c.lane[i].RX) ;=> rx-bcap
 
     ; RX bleed resistors
     insert-pulldown(asm2464pdx_usb-c.lane[i].RX.P, GND, 
@@ -204,6 +235,10 @@ pcb-module ASM001-design :
   ; place(header) at loc(-20.0, 15.0) on Top
 
   
+ 
+  val m2_connectors = 1
+  inst m2_connector : ASM001/components/TE_1-2199230-6/module[m2_connectors]
+  
   val version = PCIE-V4
   val trace-imped = pcie-get-trace-impedance(version)
   val cst = PCIe-Constraint(version, diff(trace-imped))
@@ -211,31 +246,33 @@ pcb-module ASM001-design :
   val pcie-b-cap = block-cap(220.0e-9)
 
   ; Construct a typical passive connector setup
-  ;  for a 4 lane configuration. This means a
+  ;  for a 4x 1 lane configuration. This means a
   ;  straight through `tx => tx` and `rx => rx`
   ;  configuration.
+  require src-ep : pcie(1) from asm2464pdx
 
+  for i in 0 to m2_connectors :
+    net (m2_connector[i].gnd GND)
 
+    require dst-ep : pcie(1) from m2_connector[i]
+   
+    within [src, dst] = constrain-topology(src-ep, dst-ep, cst):
+      ; Here we construct the circuit topology for the link
+      ;   Note that we don't need to worry about any of the constraint
+      ;   application, as that is handled by the `PCIe-Constraint` type.
+      ;   You can add other components in the topology as you wish - below
+      ;   is a typical basic implementation.
+      for i in indices(src.data.lane) do:
+        inst tx-coupler : dp-coupler(pcie-b-cap)
+        topo-pair(src.data.lane[i].TX => tx-coupler => dst.data.lane[i].TX)
+        ; No Blocking Caps on the Receive side.
+        topo-pair(src.data.lane[i].RX => dst.data.lane[i].RX)
 
-  require src-ep : pcie(4) from asm2464pdx
-  require dst-ep : pcie(4) from m2_connector
-
-  within [src, dst] = constrain-topology(src-ep, dst-ep, cst):
-    ; Here we construct the circuit topology for the link
-    ;   Note that we don't need to worry about any of the constraint
-    ;   application, as that is handled by the `PCIe-Constraint` type.
-    ;   You can add other components in the topology as you wish - below
-    ;   is a typical basic implementation.
-    for i in indices(src.data.lane) do:
-      inst tx-coupler : dp-coupler(pcie-b-cap)
-      topo-pair(src.data.lane[i].TX => tx-coupler => dst.data.lane[i].TX)
-      ; No Blocking Caps on the Receive side.
-      topo-pair(src.data.lane[i].RX => dst.data.lane[i].RX)
-
-    topo-net(src.data.refclk => dst.data.refclk)
-    ; The control signals do not demand a topology so
-    ;  we just use a straight net connection.
-    net (src.control, dst.control)
+      topo-net(src.data.refclk => dst.data.refclk)
+      ; The control signals do not demand a topology so
+      ;  we just use a straight net connection.
+      net (src.control, dst.control)
+      
 
   ; schematic symbols
   symbol(GND) = GND-SYMB

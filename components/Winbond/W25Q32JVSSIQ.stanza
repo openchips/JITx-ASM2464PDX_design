@@ -138,17 +138,17 @@ public pcb-module module :
 
   port GND
   port VDD
+  port spi : spi-with-cs()
 
   net (VDD sw.VCC)
   net (GND sw.GND)
   
-  port spi : spi-with-cs()
-
   net (spi.cs   sw.SPI_CS#)
   net (spi.copi sw.SPI_DI)
   net (spi.sck  sw.SPI_CLK)
   net (spi.cipo sw.SPI_DO)
 
+  
 
 
 

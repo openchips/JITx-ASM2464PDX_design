@@ -481,6 +481,7 @@ public pcb-module module :
   port XO
 
   port UREXT
+  port TEST_EN
 
   port spi : spi-with-cs()
   port uart : minimal-uart()
@@ -510,8 +511,7 @@ public pcb-module module :
   net (XO sw.XO)
 
   net (UREXT sw.UREXT)
-
-  
+  net (TEST_EN sw.TEST_EN)
 
   for n in pins(sw.NC) do :
     no-connect(n)
