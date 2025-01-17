@@ -20,6 +20,7 @@ defpackage main :
   import ASM001/helpers
   import ASM001/common/components
 
+
 ; Define the shape/size of the board
 val board-shape = RoundedRectangle(100.0, 100.0, 0.25)
 
@@ -28,9 +29,24 @@ pcb-module ASM001-design :
   ; define some pins/ports
   port gnd
   port vbus
+  port v3v3
+  port v1v8
+  port v1v05
 
   net GND (gnd)
   net VBUS (vbus)
+  net V3V3 (v3v3)
+  net V1V8 (v1v8)
+  net V1V05 (v1v05)
+
+  geom(VBUS) :
+    copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  board-shape
+  geom(V3V3) :
+    copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  board-shape
+  geom(V1V8) :
+    copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  board-shape
+  geom(V1V05) :
+    copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  board-shape
 
   geom(GND) :
     copper-pour(LayerIndex(1, Top), isolate = 0.127) =  board-shape
@@ -40,14 +56,122 @@ pcb-module ASM001-design :
   val R-query = get-default-resistor-query()
   val C-query = get-default-capacitor-query()
   
+  ;;;;; main power circuits
   inst power-circuit : ASM001/module/power/circuit
-  inst asm2464pdx : ASM001/components/Asmedia/ASM2464PDX/module
+  place(power-circuit.DCDC-1v05.IC.SW) at loc(-30.0, 35.0) on Top
+  place(power-circuit.DCDC-1v8.IC.SW) at loc(-10.0, 35.0) on Top
+  place(power-circuit.DCDC-3v3.IC.SW) at loc(10.0, 35.0) on Top
+  net (power-circuit.vbus VBUS)
+  net (power-circuit.vout-3v3-V+ V3V3) ; VCCA33 should be connected to an LDO or at least a low pass filter
+  net (power-circuit.vout-1v8-V+ V1V8)
+  net (power-circuit.vout-1v05-V+ V1V05)
+  net (power-circuit.gnd GND)
 
-  ; ASM2464PDX 25Mhz 18Pf crystal
+  inst asm2464pdx : ASM001/components/Asmedia/ASM2464PDX/module
+  net (VBUS asm2464pdx.VBUS)
+  net (V3V3 asm2464pdx.VCCH asm2464pdx.VCCA33)
+  net (V1V8 asm2464pdx.VCCL)
+  net (V1V05 asm2464pdx.VDD)
+
+  place(asm2464pdx.sw) at loc(0.0, 0.0, 0.0) on Top
+
+  inst usb4_type_c : ASM001/components/USB/USBTypeC/conn-component
+
+  place(usb4_type_c) at loc(-45.0, 15.0, 270.0) on Top
+
+  inst W25Q32JVSSIQ : ASM001/components/Winbond/W25Q32JVSSIQ/module
+
+  net (V3V3 W25Q32JVSSIQ.VDD)
+
+
+  ;;;;; generic component types
+  val r_4k7 = create-resistor(R-query, 
+                              case = ["0201", "0402"], 
+                              resistance = 4.7e3) ; 4.7K ohm
+  val r_100K = create-resistor(R-query, 
+                              case = ["0201", "0402"], 
+                              resistance = 100.0e3) ; 100K ohm
+
+  val r_12k1 = create-resistor(R-query, 
+                              case = ["0201", "0402"], 
+                              resistance = 12.1e3,
+                              tolerance = 0.01) ; 12.1K ohm
+
+  val c_1uF50V = create-capacitor(C-query, 
+                                case = ["0201", "0402"], 
+                                capacitance = 1.0e-6,
+                                rated-voltage = 50.0) ; 1uF, 50V
+
+  ;;;;; ASM2464PDX circuits 
+
+  ;; ASM2464PDX bypass caps
+  
+  val c_22uF6V3 = create-capacitor(C-query, 
+                              case = ["0201", "0402", "0805"],
+                              capacitance = 22.0e-6,
+                              rated-voltage = 6.3) ; 22uF, 6.3V
+  
+  val c_10uF6V3 = create-capacitor(C-query, 
+                              case = ["0201", "0402", "0805"], 
+                              capacitance = 10.0e-6,
+                              rated-voltage = 6.3) ; 10uF, 6.3V
+
+  val c_2u2F6V3 = create-capacitor(C-query, 
+                              case = ["0201"], 
+                              capacitance = 2.2e-6,
+                              rated-voltage = 6.3) ; 2.2uF, 6.3V
+
+  val c_0u22F6V3 = create-capacitor(C-query, 
+                              case = ["0201"], 
+                              capacitance = 0.22e-6,
+                              rated-voltage = 10.0) ; 0.22uF, 10V 
+  ; 1.05v
+  ; 11 x 22UF/6.3V
+  ; 3 x 10UF/6.3V
+  ; 4 x 0.22UF/10v
+
+  for i in 0 to 2 do :
+    val n = to-string("c_22uF6V3-%_-C" % [i])
+    ; val c = insert-capacitor(
+    ;   asm2464pdx.VDD asm2464pdx.GND
+    ;   c_22uF6V3
+    ;   capacitance = 2.2e-6
+    ;   short-trace? = true
+    ; )
+    val c = insert-bypass(asm2464pdx.sw.VDD[i], GND, inst-name = n, qb = CapacitorQuery(case = ["0201", "0402", "0805"],
+                              capacitance = 22.0e-6,
+                              rated-voltage = 6.3))
+    place(c) at loc(2.0, 0.0, 90.0) on Bottom
+
+  
+
+
+  ; for v in pins(sw.VDD) do :
+  ;   print(v.loc)
+  ;   net (VDD v)
+
+  ; 1.8v
+  ; 3 x 10UF/6.3V
+  ; 11 x 2.2UF/6.3V
+
+  ;; ASM2464PDX SPI memory
+  net (asm2464pdx.spi W25Q32JVSSIQ.spi)
+  insert-pullup(W25Q32JVSSIQ.sw.SPI_IO2, asm2464pdx.VCCH,
+                  elem-type = r_4k7,
+                  inst-name? = to-string("spi_wp#-R"),
+                  make-public = true)
+
+  insert-pullup(W25Q32JVSSIQ.sw.SPI_IO3, asm2464pdx.VCCH,
+                  elem-type = r_4k7,
+                  inst-name? = to-string("spi_hold#-R"),
+                  make-public = true)   
+
+  ;; ASM2464PDX 25Mhz 18Pf crystal
   inst crystal_25mhz: ASM001/components/ABRACON/ABMM2-25_000MHZ-D1-T/component
   inst crystal_c : ASM001/components/KYOCERA-AVX/_04025A100FAT2A/component
   net (crystal_25mhz.GND0 GND)
   net (crystal_25mhz.GND1 GND)
+
   net (asm2464pdx.XI crystal_25mhz.p[1])
   net (asm2464pdx.XO crystal_25mhz.p[3])
 
@@ -56,59 +180,37 @@ pcb-module ASM001-design :
 
   ; ASM2464PDX config straps
 
-  val p_4k7-R = create-resistor(R-query, 
-                              case = ["0201", "0402"], 
-                              resistance = 4.7e3) ; 4.7K ohm
-
-  ; require asm2464pdx_uart : minimal-uart() from asm2464pdx
-
   insert-pullup(asm2464pdx.sw.UART_TX, asm2464pdx.VCCH,
-                    elem-type = p_4k7-R,
+                    elem-type = r_4k7,
                     inst-name? = to-string("uart_tx-R"),
                     make-public = true)
 
-  val rst-R = create-resistor(R-query, 
-                              case = ["0201", "0402"], 
-                              resistance = 100.0e3) ; 100K ohm
-
-  val rst-C = create-capacitor(C-query, 
-                                case = ["0201", "0402"], 
-                                capacitance = 1.0e-6,
-                                rated-voltage = 50.0) ; 1uF, 50V
-
+  ;; RST# RC pull-up
   insert-pullup(asm2464pdx.RST#, asm2464pdx.VCCH,
-                    elem-type = rst-R,
-                    inst-name? = to-string("RST-R"),
+                    elem-type = r_100K,
+                    inst-name? = to-string("r_100K"),
                     make-public = true)
 
   insert-pulldown(asm2464pdx.RST#, GND,
-                    elem-type = rst-C,
-                    inst-name? = to-string("RST-C"),
+                    elem-type = c_1uF50V,
+                    inst-name? = to-string("c_1uF50V"),
                     make-public = true)
 
-  val urext-R = create-resistor(R-query, 
-                              case = ["0201", "0402"], 
-                              resistance = 12.1e3,
-                              tolerance = 0.01) ; 12.1K ohm
-
   insert-pulldown(asm2464pdx.UREXT, GND,
-                    elem-type = urext-R,
+                    elem-type = r_12k1,
                     inst-name? = to-string("UREXT-R"),
                     make-public = true)
 
   
-  ; net (asm2464pdx.TEST_EN GND)
   insert-pulldown(asm2464pdx.TEST_EN, GND,
-                    elem-type = p_4k7-R,
+                    elem-type = r_4k7,
                     inst-name? = to-string("TEST_EN-R"),
                     make-public = true)
-
-  inst usb4_type_c : ASM001/components/USB/USBTypeC/conn-component
 
   require asm2464pdx_usb-c : usb-c(2) from asm2464pdx
   require connector_usb-c : usb-c-connector from usb4_type_c
 
-  net (connector_usb-c.vbus.V+ asm2464pdx.VCCH asm2464pdx.VBUS VBUS)
+  net (connector_usb-c.vbus.V+ asm2464pdx.VBUS VBUS)
   net (connector_usb-c.vbus.V- asm2464pdx.GND GND)
 
   net (connector_usb-c.bus.cc[0], asm2464pdx_usb-c.cc[0])
@@ -116,18 +218,11 @@ pcb-module ASM001-design :
 
   net (connector_usb-c.bus.sbu[0], asm2464pdx_usb-c.sbu[0])
   net (connector_usb-c.bus.sbu[1], asm2464pdx_usb-c.sbu[1])
+         
 
-  inst W25Q32JVSSIQ : ASM001/components/Winbond/W25Q32JVSSIQ/module
 
-  net (power-circuit.vbus asm2464pdx.VBUS VBUS)
-  net (power-circuit.vout-3v3-V+ asm2464pdx.VCCH asm2464pdx.VCCA33) ; VCCA33 should be connected to an LDO or at least a low pass filter
-  net (power-circuit.vout-1v8-V+ asm2464pdx.VCCL)
-  net (power-circuit.vout-1v05-V+ asm2464pdx.VDD)
-  net (power-circuit.gnd GND)
 
-  ; require spi-data : spi-with-cs() from W25Q32JVSSIQ
 
-  net (asm2464pdx.spi W25Q32JVSSIQ.spi)
 
   public inst esd-prot : diodes/ESD224DQAR/device
   net (esd-prot.GND[1], esd-prot.GND[2], GND)
@@ -238,7 +333,8 @@ pcb-module ASM001-design :
  
   val m2_connectors = 1
   inst m2_connector : ASM001/components/TE_1-2199230-6/module[m2_connectors]
-  
+  place(m2_connector[0].sw) at loc(25.0, -10.0, 90.0) on Bottom
+
   val version = PCIE-V4
   val trace-imped = pcie-get-trace-impedance(version)
   val cst = PCIe-Constraint(version, diff(trace-imped))

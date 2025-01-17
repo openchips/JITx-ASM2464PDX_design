@@ -41,11 +41,13 @@ public pcb-module circuit :
   K = (40 %)
   )
 
-  inst DCDC-1v05 : TI-vreg/components/TPS6293x/circuit(
+  public inst DCDC-1v05 : TI-vreg/components/TPS6293x/circuit(
   TI-vreg/components/TPS6293x/TPS62932DRL
   cxt-1v05
   C-query? = C-query
   )
+
+  ; place(DCDC-1v05)  at loc(-20.0,0.0,0.0) on Top
 
 
   ; 3.3v buck regulator 4a
@@ -59,11 +61,12 @@ public pcb-module circuit :
   K = (40 %)
   )
 
-  inst DCDC-3v3 : TI-vreg/components/TPS6293x/circuit(
+  public inst DCDC-3v3 : TI-vreg/components/TPS6293x/circuit(
   TI-vreg/components/TPS6293x/TPS62932DRL
   cxt-3v3
   C-query? = C-query
   )
+  ; place(DCDC-1v05)  at loc(0.0,0.0,0.0) on Top
 
   ; 1.8v reg 2a/3a/4a
   val cxt-1v8 = power-systems/DC-DC/buck/BuckConstraints(
@@ -76,11 +79,12 @@ public pcb-module circuit :
   K = (40 %)
   )
 
-  inst DCDC-1v8 : TI-vreg/components/TPS6293x/circuit(
+  public inst DCDC-1v8 : TI-vreg/components/TPS6293x/circuit(
   TI-vreg/components/TPS6293x/TPS62932DRL
   cxt-1v8
   C-query? = C-query
   )
+  ; place(DCDC-1v05)  at loc(20.0,0.0,0.0) on Top
 
   ; 3.3v LDO 500mA
 

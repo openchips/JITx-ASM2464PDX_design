@@ -4,6 +4,10 @@ defpackage ASM001/components/Asmedia/ASM2464PDX:
   import collections
   import jitx
   import jitx/commands
+  import jitx/parts
+
+  import jsl
+  import jsl/bundles
 
   import jsl/design/settings
   import jsl/geometry/basics
@@ -11,7 +15,6 @@ defpackage ASM001/components/Asmedia/ASM2464PDX:
 
   import jsl/symbols
   import ocdb/utils/box-symbol
-  import jsl/bundles
   import jsl/protocols
   import jsl/si/helpers
 
@@ -184,8 +187,8 @@ public pcb-component component :
     [URXP[1]    | Y[2]   | Left  | A]
     [URXN[1]    | Y[1]   | Left  | A]
     [VBUS       | G[1]   | Left  | A]
-    [CC[1]        | AA[6]  | Left  | A]
-    [CC[2]        | Y[6]   | Left  | A]
+    [CC[1]      | AA[6]  | Left  | A]
+    [CC[2]      | Y[6]   | Left  | A]
     [SBU[1]     | K[1]   | Left  | A]
     [SBU[2]     | J[1]   | Left  | A]
     [REFCLKN[0] | Y[8]   | Left  | A]
@@ -463,16 +466,13 @@ public pcb-component component :
 
   diff-pin-model(self.UDP self.UDM delay = typ(10.0e-15) loss = typ(0.1))
 
-
-; TODO: update to latest JSL/PCIe convention
-
 public pcb-module module :
   port GND
-  port VBUS
-  port VDD
-  port VCCL
-  port VCCH
-  port VCCA33
+  port VBUS   ; 5.0v
+  port VDD    ; 3.3v
+  port VCCL   ; 1.05v
+  port VCCH   ; 1.8v
+  port VCCA33 ; 3.3v analog
   port RST#
 
   port i2c_data : i2c
@@ -486,7 +486,29 @@ public pcb-module module :
   port spi : spi-with-cs()
   port uart : minimal-uart()
 
-  public inst sw : component
+  val C-query = get-default-capacitor-query()
+
+  val c_22uF6V3 = CapacitorQuery( 
+                              case = ["0201", "0402", "0805"],
+                              capacitance = 22.0e-6,
+                              rated-voltage = 6.3) ; 22uF, 6.3V
+  
+  val c_10uF6V3 = CapacitorQuery( 
+                              case = ["0201", "0402", "0805"], 
+                              capacitance = 10.0e-6,
+                              rated-voltage = 6.3) ; 10uF, 6.3V
+
+  val c_2u2F6V3 = CapacitorQuery( 
+                              case = ["0201"], 
+                              capacitance = 2.2e-6,
+                              rated-voltage = 6.3) ; 2.2uF, 6.3V
+
+  val c_0u22F6V3 = CapacitorQuery( 
+                              case = ["0201"], 
+                              capacitance = 0.22e-6,
+                              rated-voltage = 10.0) ; 0.22uF, 10V                              
+
+  public inst sw : ASM001/components/Asmedia/ASM2464PDX/component
 
   for g in pins(sw.GND) do :
     net (GND g)
@@ -494,16 +516,43 @@ public pcb-module module :
   for g in pins(sw.GNDA) do :
     net (GND g)
   
+  ; 1.05v
+  ; 11 x 22UF/6.3V
+  ; 3 x 10UF/6.3V
+  ; 4 x 0.22UF/10v
+
+  ; for i in 0 to 1 do :
+  ;   val n = to-string("c_22uF6V3-%_-C" % [i])
+  ;   ; val c = insert-capacitor(
+  ;   ;   asm2464pdx.VDD asm2464pdx.GND
+  ;   ;   c_22uF6V3
+  ;   ;   capacitance = 2.2e-6
+  ;   ;   short-trace? = true
+  ;   ; )
+  ;   val c = insert-bypass(sw.VDD[i], GND, inst-name = n, qb = CapacitorQuery(case = ["0201", "0402", "0805"],
+  ;                             capacitance = 22.0e-6,
+  ;                             rated-voltage = 6.3))
+  ;   place(c)  at loc(0.0, 0.0) on Bottom
+
   for v in pins(sw.VDD) do :
     net (VDD v)
+
+  ; 1.8v
+  ; 3 x 10UF/6.3V
+  ; 11 x 2.2UF/6.3V
 
   for v in pins(sw.VCCL) do :
     net (VCCL v)
 
+  ; 3.3v
+  ; 1 x 22UF/6.3V
+  ; 2 x 10UF/6.3V
+  ; 10 x 2.2UF/6.3V
+  ; 5 x 0.22UF/10V
   for v in pins(sw.VCCH) do :
     net (VCCH v)
 
-  net (VCCA33 sw.VCCA33)
+  net (VCCA33 sw.VCCA33) ; internally hook up both 3.3v busses
   net (VBUS sw.VBUS)
   net (RST# sw.RST#)
   
