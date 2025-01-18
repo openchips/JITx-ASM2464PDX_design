@@ -18,14 +18,10 @@ defpackage ASM001/module/power :
 ; Module to provide the required power supplies for the ASM2464PDX
 public pcb-module circuit :
   ; define some pins/ports
-  port gnd
-  port vbus
-  port vout-1v05-V+
-  port vout-1v8-V+
-  port vout-3v3-V+
-
-  net GND (gnd)
-  net VBUS (vbus)
+  port vbus : power
+  port rail-3v3 : power
+  port rail-1v8 : power
+  port rail-1v05 : power
 
   val R-query = get-default-resistor-query()
   val C-query = get-default-capacitor-query()
@@ -41,32 +37,13 @@ public pcb-module circuit :
   K = (40 %)
   )
 
-  public inst DCDC-1v05 : TI-vreg/components/TPS6293x/circuit(
+  inst DCDC-1v05 : TI-vreg/components/TPS6293x/circuit(
   TI-vreg/components/TPS6293x/TPS62932DRL
   cxt-1v05
-  C-query? = C-query
+  C-query = C-query
   )
 
-  ; place(DCDC-1v05)  at loc(-20.0,0.0,0.0) on Top
-
-
-  ; 3.3v buck regulator 4a
-  val cxt-3v3 = power-systems/DC-DC/buck/BuckConstraints(
-  v-in = min-max(4.9, 5.1)
-  v-out = 3.3 +/- (3 %)
-  v-in-ripple-max = 0.6
-  v-out-ripple-max = 0.33
-  i-out = 3.0 +/- (30 %)
-  freq = 2.2e6
-  K = (40 %)
-  )
-
-  public inst DCDC-3v3 : TI-vreg/components/TPS6293x/circuit(
-  TI-vreg/components/TPS6293x/TPS62932DRL
-  cxt-3v3
-  C-query? = C-query
-  )
-  ; place(DCDC-1v05)  at loc(0.0,0.0,0.0) on Top
+  place(DCDC-1v05.IC.SW) at loc(0.0, 0.0) on Top
 
   ; 1.8v reg 2a/3a/4a
   val cxt-1v8 = power-systems/DC-DC/buck/BuckConstraints(
@@ -79,30 +56,40 @@ public pcb-module circuit :
   K = (40 %)
   )
 
-  public inst DCDC-1v8 : TI-vreg/components/TPS6293x/circuit(
+  inst DCDC-1v8 : TI-vreg/components/TPS6293x/circuit(
   TI-vreg/components/TPS6293x/TPS62932DRL
   cxt-1v8
-  C-query? = C-query
+  C-query = C-query
   )
   ; place(DCDC-1v05)  at loc(20.0,0.0,0.0) on Top
+  place(DCDC-1v8.IC.SW) at loc(20.0, 0.0) on Top
+
+  ; 3.3v buck regulator 4a
+  val cxt-3v3 = power-systems/DC-DC/buck/BuckConstraints(
+  v-in = min-max(4.9, 5.1)
+  v-out = 3.3 +/- (3 %)
+  v-in-ripple-max = 0.6
+  v-out-ripple-max = 0.33
+  i-out = 3.0 +/- (30 %)
+  freq = 2.2e6
+  K = (40 %)
+  )
+
+  inst DCDC-3v3 : TI-vreg/components/TPS6293x/circuit(
+  TI-vreg/components/TPS6293x/TPS62932DRL
+  cxt-3v3
+  C-query = C-query
+  )
+  ; place(DCDC-1v05)  at loc(0.0,0.0,0.0) on Top
+  place(DCDC-3v3.IC.SW) at loc(40.0, 0.0) on Top
 
   ; 3.3v LDO 500mA
 
-  net (DCDC-1v05.conv.VIN.V+ vbus)
-  net (DCDC-1v8.conv.VIN.V+ vbus)
-  net (DCDC-3v3.conv.VIN.V+ vbus)
+  net VBUS (vbus.V+ DCDC-3v3.conv.VIN.V+ DCDC-1v8.conv.VIN.V+ DCDC-1v05.conv.VIN.V+)
+  net GND (vbus.V- DCDC-1v05.conv.VIN.V- DCDC-1v8.conv.VIN.V- DCDC-3v3.conv.VIN.V-)
 
-  net (DCDC-1v05.conv.VIN.V- gnd)
-  net (DCDC-1v8.conv.VIN.V- gnd)
-  net (DCDC-3v3.conv.VIN.V- gnd)
-
-  net (DCDC-1v05.conv.VOUT.V+ vout-1v05-V+)
-  net (DCDC-1v8.conv.VOUT.V+ vout-1v8-V+)
-  net (DCDC-3v3.conv.VOUT.V+ vout-3v3-V+)
-
+  net (DCDC-1v05.conv.VOUT.V+ rail-1v05.V+)
+  net (DCDC-1v8.conv.VOUT.V+ rail-1v8.V+)
+  net (DCDC-3v3.conv.VOUT.V+ rail-3v3.V+)
 
   ; 3.3v LDO 500mA
-  
-  ; schematic symbols
-  symbol(GND) = GND-SYMB
-  symbol(VBUS) = PWR-SYMB

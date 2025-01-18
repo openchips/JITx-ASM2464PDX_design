@@ -97,29 +97,39 @@ public pcb-component conn-component :
 
   reversible-dual-pair(self.D0, self.D1)
 
-  val conn = usb-c-connector
-  supports conn:
-    conn.vbus.V+ => (self.VBUS[0] self.VBUS[1] self.VBUS[2] self.VBUS[3])
+public pcb-module circuit :
+  port GND
+  port VBUS
+  port SHIELD
+  port USB-C : usb-c(2)
 
-    conn.bus.cc[0] => self.CC1
-    conn.bus.cc[1] => self.CC2
+  public inst sw : ASM001/components/USB/USBTypeC/conn-component
 
-    conn.bus.sbu[0] => self.SBU1
-    conn.bus.sbu[1] => self.SBU2
+  for g in pins(sw.GND) do :
+    net (GND g)
   
-    conn.bus.data.P => (self.D0.P self.D1.P)
-    conn.bus.data.N => (self.D0.N self.D1.N)
-    conn.bus.lane[0].TX.P => self.TX1.P
-    conn.bus.lane[0].TX.N => self.TX1.N
-    conn.bus.lane[0].RX.P => self.RX1.P
-    conn.bus.lane[0].RX.N => self.RX1.N
-    conn.bus.lane[1].TX.P => self.TX2.P
-    conn.bus.lane[1].TX.N => self.TX2.N
-    conn.bus.lane[1].RX.P => self.RX2.P
-    conn.bus.lane[1].RX.N => self.RX2.N    
+  for g in pins(sw.VBUS) do :
+    net (VBUS g)
 
-    conn.vbus.V- => (self.GND[0] self.GND[1] self.GND[2] self.GND[3])
-    conn.shield => self.SHIELD
+  net (sw.CC1 USB-C.cc[0])
+  net (sw.CC2 USB-C.cc[1])
+
+  net (sw.SBU1 USB-C.sbu[0] )
+  net (sw.SBU2 USB-C.sbu[1] )
+
+  net (sw.D0.P sw.D1.P USB-C.data.P)
+  net (sw.D0.N sw.D1.N USB-C.data.N)
+  net (sw.TX1.P USB-C.lane[0].TX.P)
+  net (sw.TX1.N USB-C.lane[0].TX.N)
+  net (sw.RX1.P USB-C.lane[0].RX.P)
+  net (sw.RX1.N USB-C.lane[0].RX.N)
+  net (sw.TX2.P USB-C.lane[1].TX.P)
+  net (sw.TX2.N USB-C.lane[1].TX.N)
+  net (sw.RX2.P USB-C.lane[1].RX.P)
+  net (sw.RX2.N USB-C.lane[1].RX.N)
+
+  net (sw.SHIELD SHIELD)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; LandPattern Generator

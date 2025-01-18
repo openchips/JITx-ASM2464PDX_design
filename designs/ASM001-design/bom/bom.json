@@ -97,12 +97,17 @@
 				"description":	"USB Type-C SMD Connectors ROHS",
 				"insts":	[{
 						"inst":	{
-							"name":	"usb4_type_c"
+							"ref":	{
+								"name":	"usb4_type_c"
+							},
+							"field":	{
+								"name":	"sw"
+							}
 						},
 						"ref":	"J1",
 						"fileinfo":	{
-							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
-							"line":	78,
+							"filename":	"components\\Generic\\USBTypeC.stanza",
+							"line":	106,
 							"column":	2
 						}
 					}],
@@ -264,27 +269,6 @@
 										"name":	"power-circuit"
 									},
 									"field":	{
-										"name":	"DCDC-1v8"
-									}
-								},
-								"field":	{
-									"name":	"bst-circ"
-								}
-							},
-							"field":	{
-								"name":	"elem"
-							}
-						},
-						"ref":	"C20",
-						"fileinfo":	null
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"ref":	{
-										"name":	"power-circuit"
-									},
-									"field":	{
 										"name":	"DCDC-3v3"
 									}
 								},
@@ -297,6 +281,27 @@
 							}
 						},
 						"ref":	"C13",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"bst-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C20",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -344,27 +349,17 @@
 					"code":	1,
 					"name":	"Auto Selected"
 				},
-				"description":	"RES SMD 0 OHM JUMPER 1/20W 0201",
+				"description":	"62.5mW ±300ppm/℃ ±1% 0Ω 0402  Chip Resistor - Surface Mount ROHS",
 				"insts":	[{
 						"inst":	{
 							"ref":	{
-								"ref":	{
-									"ref":	{
-										"name":	"power-circuit"
-									},
-									"field":	{
-										"name":	"DCDC-1v8"
-									}
-								},
-								"field":	{
-									"name":	"bst-circ"
-								}
+								"name":	"shield-term"
 							},
 							"field":	{
-								"name":	"elem"
+								"name":	"R"
 							}
 						},
-						"ref":	"R7",
+						"ref":	"R24",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -395,6 +390,27 @@
 										"name":	"power-circuit"
 									},
 									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"bst-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"R7",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
 										"name":	"DCDC-1v05"
 									}
 								},
@@ -409,16 +425,19 @@
 						"ref":	"R1",
 						"fileinfo":	null
 					}],
-				"datasheet":	"https://www.bourns.com/docs/product-datasheets/CRxxxxx.pdf",
-				"manufacturer":	"BOURNS",
-				"mpn":	"CR0201-J/-000GLF",
-				"vendor":	"Arrow",
-				"sku":	"CR0201-J/-000GLF",
-				"price":	0.0009,
+				"datasheet":	"https://datasheet.lcsc.com/lcsc/2207281800_Sunway-SC0402F0000I2ANRH_C3152056.pdf",
+				"manufacturer":	"Sunway",
+				"mpn":	"SC0402F0000I2ANRH",
+				"vendor":	"JLCPCB",
+				"sku":	"SC0402F0000I2ANRH",
+				"price":	0.000357143,
 				"preferred":	false,
 				"query_properties":	{
 					"resistance":	0,
+					"tolerance":	0.01,
 					"category":	"resistor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
 				}
@@ -513,8 +532,8 @@
 						},
 						"ref":	"C24",
 						"fileinfo":	{
-							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
-							"line":	171,
+							"filename":	"c:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\main.stanza",
+							"line":	174,
 							"column":	2
 						}
 					}],
@@ -533,48 +552,6 @@
 				},
 				"description":	"6.3V 10uF X5R ±10% 0603  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
 				"insts":	[{
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"ref":	{
-										"name":	"power-circuit"
-									},
-									"field":	{
-										"name":	"DCDC-1v8"
-									}
-								},
-								"field":	{
-									"name":	"cout-circ"
-								}
-							},
-							"field":	{
-								"name":	"elem"
-							}
-						},
-						"ref":	"C19",
-						"fileinfo":	null
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"ref":	{
-										"name":	"power-circuit"
-									},
-									"field":	{
-										"name":	"DCDC-1v8"
-									}
-								},
-								"field":	{
-									"name":	"cout-circ"
-								}
-							},
-							"field":	{
-								"name":	"elem"
-							}
-						},
-						"ref":	"C18",
-						"fileinfo":	null
-					}, {
 						"inst":	{
 							"ref":	{
 								"ref":	{
@@ -616,6 +593,48 @@
 						},
 						"ref":	"C11",
 						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C19",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C18",
+						"fileinfo":	null
 					}],
 				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Walsin-Tech-Corp-0603X106K6R3CT_C123607.pdf",
 				"manufacturer":	"WALSIN",
@@ -626,7 +645,7 @@
 				"preferred":	false,
 				"query_properties":	{
 					"tolerance":	0.1,
-					"min-rated-voltage":	0.5562,
+					"min-rated-voltage":	1.0197,
 					"capacitance":	1.0000000000000006e-05,
 					"type":	"ceramic",
 					"temperature-coefficient.code":	["X7R", "X5R"],
@@ -641,31 +660,96 @@
 					"code":	1,
 					"name":	"Auto Selected"
 				},
-				"description":	"62.5mW ±300ppm/℃ ±1% 0Ω 0402  Chip Resistor - Surface Mount ROHS",
+				"description":	"6.3V 470nF X5R ±10% 0201  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
 				"insts":	[{
 						"inst":	{
 							"ref":	{
-								"name":	"shield-term"
+								"ref":	{
+									"name":	"rx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
 							},
-							"field":	{
-								"name":	"R"
-							}
+							"index":	1
 						},
-						"ref":	"R24",
-						"fileinfo":	null
+						"ref":	"C35",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"rx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C34",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"rx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C31",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"rx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C30",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
 					}],
-				"datasheet":	"https://datasheet.lcsc.com/lcsc/2207281800_Sunway-SC0402F0000I2ANRH_C3152056.pdf",
-				"manufacturer":	"Sunway",
-				"mpn":	"SC0402F0000I2ANRH",
-				"vendor":	"JLCPCB",
-				"sku":	"SC0402F0000I2ANRH",
-				"price":	0.000357143,
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2212052030_Murata-Electronics-GRM033R60J474KE90D_C85926.pdf",
+				"manufacturer":	"MURATA",
+				"mpn":	"GRM033R60J474KE90D",
+				"vendor":	"Arrow",
+				"sku":	"GRM033R60J474KE90D",
+				"price":	0.0036,
 				"preferred":	false,
 				"query_properties":	{
-					"resistance":	0,
-					"tolerance":	0.01,
-					"category":	"resistor",
-					"case":	["0402", "0603", "0805", "1210"],
+					"case":	["0201", "0603m", "0202", "0606m", "0204", "0510m", "Wide 0402", "0306", "0816m", "Wide 0603", "0402", "1005m", "0505", "1414m", "0508", "1220m", "Wide 0805", "0603", "1608m", "0612", "1632m", "Wide 1206", "0805", "2012m", "1111", "2828m", "1206", "3216m", "1210", "3225m", "1218", "3246m", "Wide 1812", "1225", "3263m", "Wide 2512", "1530", "3876m", "Wide 3015", "1808", "4520m", "1812", "4532m", "1825", "4564m", "1835", "4589", "Wide 3518", "5020m", "2010", "5025m", "2043", "Wide 4320", "2220", "5750m", "2225", "5763m", "2312", "6032m", "2512", "6331m", "2725", "7142m", "2728", "7142m", "Wide 2827", "2816", "2817", "7142m", "2953", "Wide 5929", "3920", "1052m"],
+					"min-capacitance":	3e-07,
+					"max-capacitance":	363000,
+					"tolerance":	0.1,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"min-rated-voltage":	6,
+					"category":	"capacitor",
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -973,27 +1057,6 @@
 										"name":	"power-circuit"
 									},
 									"field":	{
-										"name":	"DCDC-1v8"
-									}
-								},
-								"field":	{
-									"name":	"cout-circ"
-								}
-							},
-							"field":	{
-								"name":	"elem"
-							}
-						},
-						"ref":	"C17",
-						"fileinfo":	null
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"ref":	{
-										"name":	"power-circuit"
-									},
-									"field":	{
 										"name":	"DCDC-3v3"
 									}
 								},
@@ -1006,6 +1069,27 @@
 							}
 						},
 						"ref":	"C10",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C17",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -1038,7 +1122,7 @@
 				"preferred":	false,
 				"query_properties":	{
 					"tolerance":	0.05,
-					"min-rated-voltage":	0.5562,
+					"min-rated-voltage":	1.0197,
 					"capacitance":	4.7e-09,
 					"type":	"ceramic",
 					"temperature-coefficient.code":	["X7R", "X5R"],
@@ -1060,8 +1144,8 @@
 						},
 						"ref":	"X1",
 						"fileinfo":	{
-							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
-							"line":	170,
+							"filename":	"c:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\main.stanza",
+							"line":	173,
 							"column":	2
 						}
 					}],
@@ -1134,8 +1218,8 @@
 						},
 						"ref":	"U6",
 						"fileinfo":	{
-							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
-							"line":	227,
+							"filename":	"c:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\main.stanza",
+							"line":	229,
 							"column":	2
 						}
 					}],
@@ -1649,195 +1733,6 @@
 				}
 			}, {
 				"status":	{
-					"code":	1,
-					"name":	"Auto Selected"
-				},
-				"description":	"6.3V 470nF X5R ±10% 0201  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
-				"insts":	[{
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"rx-bcap"
-								},
-								"field":	{
-									"name":	"c"
-								}
-							},
-							"index":	1
-						},
-						"ref":	"C35",
-						"fileinfo":	{
-							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
-							"line":	35,
-							"column":	2
-						}
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"rx-bcap"
-								},
-								"field":	{
-									"name":	"c"
-								}
-							},
-							"index":	0
-						},
-						"ref":	"C34",
-						"fileinfo":	{
-							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
-							"line":	35,
-							"column":	2
-						}
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"rx-bcap"
-								},
-								"field":	{
-									"name":	"c"
-								}
-							},
-							"index":	1
-						},
-						"ref":	"C31",
-						"fileinfo":	{
-							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
-							"line":	35,
-							"column":	2
-						}
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"rx-bcap"
-								},
-								"field":	{
-									"name":	"c"
-								}
-							},
-							"index":	0
-						},
-						"ref":	"C30",
-						"fileinfo":	{
-							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
-							"line":	35,
-							"column":	2
-						}
-					}],
-				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2212052030_Murata-Electronics-GRM033R60J474KE90D_C85926.pdf",
-				"manufacturer":	"MURATA",
-				"mpn":	"GRM033R60J474KE90D",
-				"vendor":	"Arrow",
-				"sku":	"GRM033R60J474KE90D",
-				"price":	0.0036,
-				"preferred":	false,
-				"query_properties":	{
-					"case":	["0201", "0603m", "0202", "0606m", "0204", "0510m", "Wide 0402", "0306", "0816m", "Wide 0603", "0402", "1005m", "0505", "1414m", "0508", "1220m", "Wide 0805", "0603", "1608m", "0612", "1632m", "Wide 1206", "0805", "2012m", "1111", "2828m", "1206", "3216m", "1210", "3225m", "1218", "3246m", "Wide 1812", "1225", "3263m", "Wide 2512", "1530", "3876m", "Wide 3015", "1808", "4520m", "1812", "4532m", "1825", "4564m", "1835", "4589", "Wide 3518", "5020m", "2010", "5025m", "2043", "Wide 4320", "2220", "5750m", "2225", "5763m", "2312", "6032m", "2512", "6331m", "2725", "7142m", "2728", "7142m", "Wide 2827", "2816", "2817", "7142m", "2953", "Wide 5929", "3920", "1052m"],
-					"min-capacitance":	3e-07,
-					"max-capacitance":	363000,
-					"tolerance":	0.1,
-					"type":	"ceramic",
-					"temperature-coefficient.code":	["X7R", "X5R"],
-					"min-rated-voltage":	6,
-					"category":	"capacitor",
-					"mounting":	"smd",
-					"min-stock":	1,
-					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
-				}
-			}, {
-				"status":	{
-					"code":	5,
-					"name":	"Potential Alternate Vendors"
-				},
-				"description":	"Step-down type Adjustable 3.8V~30V 3A 0.8V~22V SOT-583  DC-DC Converters ROHS",
-				"insts":	[{
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"ref":	{
-										"name":	"power-circuit"
-									},
-									"field":	{
-										"name":	"DCDC-1v8"
-									}
-								},
-								"field":	{
-									"name":	"IC"
-								}
-							},
-							"field":	{
-								"name":	"SW"
-							}
-						},
-						"ref":	"U3",
-						"fileinfo":	{
-							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\TI-vreg\\src\\components\\TPS6293x.stanza",
-							"line":	296,
-							"column":	2
-						}
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"ref":	{
-										"name":	"power-circuit"
-									},
-									"field":	{
-										"name":	"DCDC-3v3"
-									}
-								},
-								"field":	{
-									"name":	"IC"
-								}
-							},
-							"field":	{
-								"name":	"SW"
-							}
-						},
-						"ref":	"U2",
-						"fileinfo":	{
-							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\TI-vreg\\src\\components\\TPS6293x.stanza",
-							"line":	296,
-							"column":	2
-						}
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"ref":	{
-										"name":	"power-circuit"
-									},
-									"field":	{
-										"name":	"DCDC-1v05"
-									}
-								},
-								"field":	{
-									"name":	"IC"
-								}
-							},
-							"field":	{
-								"name":	"SW"
-							}
-						},
-						"ref":	"U1",
-						"fileinfo":	{
-							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\TI-vreg\\src\\components\\TPS6293x.stanza",
-							"line":	296,
-							"column":	2
-						}
-					}],
-				"datasheet":	"https://www.ti.com/lit/ds/symlink/tps62932.pdf",
-				"manufacturer":	"Texas Instruments",
-				"mpn":	"TPS62932DRL",
-				"vendor":	null,
-				"sku":	null,
-				"price":	null,
-				"preferred":	false,
-				"query_properties":	null
-			}, {
-				"status":	{
 					"code":	5,
 					"name":	"Potential Alternate Vendors"
 				},
@@ -1871,8 +1766,33 @@
 					"code":	5,
 					"name":	"Potential Alternate Vendors"
 				},
-				"description":	"Inductor, 1.5uH, 0.017 Ω DC",
+				"description":	"Step-down type Adjustable 3.8V~30V 3A 0.8V~22V SOT-583  DC-DC Converters ROHS",
 				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"IC"
+								}
+							},
+							"field":	{
+								"name":	"SW"
+							}
+						},
+						"ref":	"U2",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\TI-vreg\\src\\components\\TPS6293x.stanza",
+							"line":	300,
+							"column":	4
+						}
+					}, {
 						"inst":	{
 							"ref":	{
 								"ref":	{
@@ -1884,16 +1804,60 @@
 									}
 								},
 								"field":	{
-									"name":	"L"
+									"name":	"IC"
 								}
 							},
 							"field":	{
-								"name":	"elem"
+								"name":	"SW"
 							}
 						},
-						"ref":	"L3",
-						"fileinfo":	null
+						"ref":	"U3",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\TI-vreg\\src\\components\\TPS6293x.stanza",
+							"line":	300,
+							"column":	4
+						}
 					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"IC"
+								}
+							},
+							"field":	{
+								"name":	"SW"
+							}
+						},
+						"ref":	"U1",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\TI-vreg\\src\\components\\TPS6293x.stanza",
+							"line":	300,
+							"column":	4
+						}
+					}],
+				"datasheet":	"https://www.ti.com/lit/ds/symlink/tps62932.pdf",
+				"manufacturer":	"Texas Instruments",
+				"mpn":	"TPS62932DRL",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	5,
+					"name":	"Potential Alternate Vendors"
+				},
+				"description":	"Inductor, 1.5uH, 0.017 Ω DC",
+				"insts":	[{
 						"inst":	{
 							"ref":	{
 								"ref":	{
@@ -1913,6 +1877,27 @@
 							}
 						},
 						"ref":	"L2",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"L"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"L3",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -2139,12 +2124,11 @@
 			}, {
 			}, {
 			}, {
-			}, {
 			}]
 	},
 	"metrics":	[{
 			"name":	"Line Items",
-			"value":	36
+			"value":	35
 		}, {
 			"name":	"Components",
 			"value":	79
@@ -2209,12 +2193,17 @@
 				"description":	"USB Type-C SMD Connectors ROHS",
 				"insts":	[{
 						"inst":	{
-							"name":	"usb4_type_c"
+							"ref":	{
+								"name":	"usb4_type_c"
+							},
+							"field":	{
+								"name":	"sw"
+							}
 						},
 						"ref":	"J1",
 						"fileinfo":	{
-							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
-							"line":	78,
+							"filename":	"components\\Generic\\USBTypeC.stanza",
+							"line":	106,
 							"column":	2
 						}
 					}],
@@ -2376,27 +2365,6 @@
 										"name":	"power-circuit"
 									},
 									"field":	{
-										"name":	"DCDC-1v8"
-									}
-								},
-								"field":	{
-									"name":	"bst-circ"
-								}
-							},
-							"field":	{
-								"name":	"elem"
-							}
-						},
-						"ref":	"C20",
-						"fileinfo":	null
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"ref":	{
-										"name":	"power-circuit"
-									},
-									"field":	{
 										"name":	"DCDC-3v3"
 									}
 								},
@@ -2409,6 +2377,27 @@
 							}
 						},
 						"ref":	"C13",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"bst-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C20",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -2456,27 +2445,17 @@
 					"code":	1,
 					"name":	"Auto Selected"
 				},
-				"description":	"RES SMD 0 OHM JUMPER 1/20W 0201",
+				"description":	"62.5mW ±300ppm/℃ ±1% 0Ω 0402  Chip Resistor - Surface Mount ROHS",
 				"insts":	[{
 						"inst":	{
 							"ref":	{
-								"ref":	{
-									"ref":	{
-										"name":	"power-circuit"
-									},
-									"field":	{
-										"name":	"DCDC-1v8"
-									}
-								},
-								"field":	{
-									"name":	"bst-circ"
-								}
+								"name":	"shield-term"
 							},
 							"field":	{
-								"name":	"elem"
+								"name":	"R"
 							}
 						},
-						"ref":	"R7",
+						"ref":	"R24",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -2507,6 +2486,27 @@
 										"name":	"power-circuit"
 									},
 									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"bst-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"R7",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
 										"name":	"DCDC-1v05"
 									}
 								},
@@ -2521,16 +2521,19 @@
 						"ref":	"R1",
 						"fileinfo":	null
 					}],
-				"datasheet":	"https://www.bourns.com/docs/product-datasheets/CRxxxxx.pdf",
-				"manufacturer":	"BOURNS",
-				"mpn":	"CR0201-J/-000GLF",
-				"vendor":	"Arrow",
-				"sku":	"CR0201-J/-000GLF",
-				"price":	0.0009,
+				"datasheet":	"https://datasheet.lcsc.com/lcsc/2207281800_Sunway-SC0402F0000I2ANRH_C3152056.pdf",
+				"manufacturer":	"Sunway",
+				"mpn":	"SC0402F0000I2ANRH",
+				"vendor":	"JLCPCB",
+				"sku":	"SC0402F0000I2ANRH",
+				"price":	0.000357143,
 				"preferred":	false,
 				"query_properties":	{
 					"resistance":	0,
+					"tolerance":	0.01,
 					"category":	"resistor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
 				}
@@ -2625,8 +2628,8 @@
 						},
 						"ref":	"C24",
 						"fileinfo":	{
-							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
-							"line":	171,
+							"filename":	"c:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\main.stanza",
+							"line":	170,
 							"column":	2
 						}
 					}],
@@ -2645,48 +2648,6 @@
 				},
 				"description":	"6.3V 10uF X5R ±10% 0603  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
 				"insts":	[{
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"ref":	{
-										"name":	"power-circuit"
-									},
-									"field":	{
-										"name":	"DCDC-1v8"
-									}
-								},
-								"field":	{
-									"name":	"cout-circ"
-								}
-							},
-							"field":	{
-								"name":	"elem"
-							}
-						},
-						"ref":	"C19",
-						"fileinfo":	null
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"ref":	{
-										"name":	"power-circuit"
-									},
-									"field":	{
-										"name":	"DCDC-1v8"
-									}
-								},
-								"field":	{
-									"name":	"cout-circ"
-								}
-							},
-							"field":	{
-								"name":	"elem"
-							}
-						},
-						"ref":	"C18",
-						"fileinfo":	null
-					}, {
 						"inst":	{
 							"ref":	{
 								"ref":	{
@@ -2728,6 +2689,48 @@
 						},
 						"ref":	"C11",
 						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C19",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C18",
+						"fileinfo":	null
 					}],
 				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Walsin-Tech-Corp-0603X106K6R3CT_C123607.pdf",
 				"manufacturer":	"WALSIN",
@@ -2738,7 +2741,7 @@
 				"preferred":	false,
 				"query_properties":	{
 					"tolerance":	0.1,
-					"min-rated-voltage":	0.5562,
+					"min-rated-voltage":	1.0197,
 					"capacitance":	1.0000000000000006e-05,
 					"type":	"ceramic",
 					"temperature-coefficient.code":	["X7R", "X5R"],
@@ -2753,31 +2756,96 @@
 					"code":	1,
 					"name":	"Auto Selected"
 				},
-				"description":	"62.5mW ±300ppm/℃ ±1% 0Ω 0402  Chip Resistor - Surface Mount ROHS",
+				"description":	"6.3V 470nF X5R ±10% 0201  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
 				"insts":	[{
 						"inst":	{
 							"ref":	{
-								"name":	"shield-term"
+								"ref":	{
+									"name":	"rx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
 							},
-							"field":	{
-								"name":	"R"
-							}
+							"index":	1
 						},
-						"ref":	"R24",
-						"fileinfo":	null
+						"ref":	"C35",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"rx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C34",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"rx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C31",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"rx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C30",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
 					}],
-				"datasheet":	"https://datasheet.lcsc.com/lcsc/2207281800_Sunway-SC0402F0000I2ANRH_C3152056.pdf",
-				"manufacturer":	"Sunway",
-				"mpn":	"SC0402F0000I2ANRH",
-				"vendor":	"JLCPCB",
-				"sku":	"SC0402F0000I2ANRH",
-				"price":	0.000357143,
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2212052030_Murata-Electronics-GRM033R60J474KE90D_C85926.pdf",
+				"manufacturer":	"MURATA",
+				"mpn":	"GRM033R60J474KE90D",
+				"vendor":	"Arrow",
+				"sku":	"GRM033R60J474KE90D",
+				"price":	0.0036,
 				"preferred":	false,
 				"query_properties":	{
-					"resistance":	0,
-					"tolerance":	0.01,
-					"category":	"resistor",
-					"case":	["0402", "0603", "0805", "1210"],
+					"case":	["0201", "0603m", "0202", "0606m", "0204", "0510m", "Wide 0402", "0306", "0816m", "Wide 0603", "0402", "1005m", "0505", "1414m", "0508", "1220m", "Wide 0805", "0603", "1608m", "0612", "1632m", "Wide 1206", "0805", "2012m", "1111", "2828m", "1206", "3216m", "1210", "3225m", "1218", "3246m", "Wide 1812", "1225", "3263m", "Wide 2512", "1530", "3876m", "Wide 3015", "1808", "4520m", "1812", "4532m", "1825", "4564m", "1835", "4589", "Wide 3518", "5020m", "2010", "5025m", "2043", "Wide 4320", "2220", "5750m", "2225", "5763m", "2312", "6032m", "2512", "6331m", "2725", "7142m", "2728", "7142m", "Wide 2827", "2816", "2817", "7142m", "2953", "Wide 5929", "3920", "1052m"],
+					"min-capacitance":	3e-07,
+					"max-capacitance":	363000,
+					"tolerance":	0.1,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"min-rated-voltage":	6,
+					"category":	"capacitor",
 					"mounting":	"smd",
 					"min-stock":	1,
 					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
@@ -3085,27 +3153,6 @@
 										"name":	"power-circuit"
 									},
 									"field":	{
-										"name":	"DCDC-1v8"
-									}
-								},
-								"field":	{
-									"name":	"cout-circ"
-								}
-							},
-							"field":	{
-								"name":	"elem"
-							}
-						},
-						"ref":	"C17",
-						"fileinfo":	null
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"ref":	{
-										"name":	"power-circuit"
-									},
-									"field":	{
 										"name":	"DCDC-3v3"
 									}
 								},
@@ -3118,6 +3165,27 @@
 							}
 						},
 						"ref":	"C10",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C17",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -3150,7 +3218,7 @@
 				"preferred":	false,
 				"query_properties":	{
 					"tolerance":	0.05,
-					"min-rated-voltage":	0.5562,
+					"min-rated-voltage":	1.0197,
 					"capacitance":	4.7e-09,
 					"type":	"ceramic",
 					"temperature-coefficient.code":	["X7R", "X5R"],
@@ -3172,8 +3240,8 @@
 						},
 						"ref":	"X1",
 						"fileinfo":	{
-							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
-							"line":	170,
+							"filename":	"c:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\main.stanza",
+							"line":	169,
 							"column":	2
 						}
 					}],
@@ -3246,8 +3314,8 @@
 						},
 						"ref":	"U6",
 						"fileinfo":	{
-							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
-							"line":	227,
+							"filename":	"c:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\main.stanza",
+							"line":	225,
 							"column":	2
 						}
 					}],
@@ -3761,195 +3829,6 @@
 				}
 			}, {
 				"status":	{
-					"code":	1,
-					"name":	"Auto Selected"
-				},
-				"description":	"6.3V 470nF X5R ±10% 0201  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
-				"insts":	[{
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"rx-bcap"
-								},
-								"field":	{
-									"name":	"c"
-								}
-							},
-							"index":	1
-						},
-						"ref":	"C35",
-						"fileinfo":	{
-							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
-							"line":	35,
-							"column":	2
-						}
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"rx-bcap"
-								},
-								"field":	{
-									"name":	"c"
-								}
-							},
-							"index":	0
-						},
-						"ref":	"C34",
-						"fileinfo":	{
-							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
-							"line":	35,
-							"column":	2
-						}
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"rx-bcap"
-								},
-								"field":	{
-									"name":	"c"
-								}
-							},
-							"index":	1
-						},
-						"ref":	"C31",
-						"fileinfo":	{
-							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
-							"line":	35,
-							"column":	2
-						}
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"name":	"rx-bcap"
-								},
-								"field":	{
-									"name":	"c"
-								}
-							},
-							"index":	0
-						},
-						"ref":	"C30",
-						"fileinfo":	{
-							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
-							"line":	35,
-							"column":	2
-						}
-					}],
-				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2212052030_Murata-Electronics-GRM033R60J474KE90D_C85926.pdf",
-				"manufacturer":	"MURATA",
-				"mpn":	"GRM033R60J474KE90D",
-				"vendor":	"Arrow",
-				"sku":	"GRM033R60J474KE90D",
-				"price":	0.0036,
-				"preferred":	false,
-				"query_properties":	{
-					"case":	["0201", "0603m", "0202", "0606m", "0204", "0510m", "Wide 0402", "0306", "0816m", "Wide 0603", "0402", "1005m", "0505", "1414m", "0508", "1220m", "Wide 0805", "0603", "1608m", "0612", "1632m", "Wide 1206", "0805", "2012m", "1111", "2828m", "1206", "3216m", "1210", "3225m", "1218", "3246m", "Wide 1812", "1225", "3263m", "Wide 2512", "1530", "3876m", "Wide 3015", "1808", "4520m", "1812", "4532m", "1825", "4564m", "1835", "4589", "Wide 3518", "5020m", "2010", "5025m", "2043", "Wide 4320", "2220", "5750m", "2225", "5763m", "2312", "6032m", "2512", "6331m", "2725", "7142m", "2728", "7142m", "Wide 2827", "2816", "2817", "7142m", "2953", "Wide 5929", "3920", "1052m"],
-					"min-capacitance":	3e-07,
-					"max-capacitance":	363000,
-					"tolerance":	0.1,
-					"type":	"ceramic",
-					"temperature-coefficient.code":	["X7R", "X5R"],
-					"min-rated-voltage":	6,
-					"category":	"capacitor",
-					"mounting":	"smd",
-					"min-stock":	1,
-					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
-				}
-			}, {
-				"status":	{
-					"code":	5,
-					"name":	"Potential Alternate Vendors"
-				},
-				"description":	"Step-down type Adjustable 3.8V~30V 3A 0.8V~22V SOT-583  DC-DC Converters ROHS",
-				"insts":	[{
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"ref":	{
-										"name":	"power-circuit"
-									},
-									"field":	{
-										"name":	"DCDC-1v8"
-									}
-								},
-								"field":	{
-									"name":	"IC"
-								}
-							},
-							"field":	{
-								"name":	"SW"
-							}
-						},
-						"ref":	"U3",
-						"fileinfo":	{
-							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\TI-vreg\\src\\components\\TPS6293x.stanza",
-							"line":	296,
-							"column":	2
-						}
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"ref":	{
-										"name":	"power-circuit"
-									},
-									"field":	{
-										"name":	"DCDC-3v3"
-									}
-								},
-								"field":	{
-									"name":	"IC"
-								}
-							},
-							"field":	{
-								"name":	"SW"
-							}
-						},
-						"ref":	"U2",
-						"fileinfo":	{
-							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\TI-vreg\\src\\components\\TPS6293x.stanza",
-							"line":	296,
-							"column":	2
-						}
-					}, {
-						"inst":	{
-							"ref":	{
-								"ref":	{
-									"ref":	{
-										"name":	"power-circuit"
-									},
-									"field":	{
-										"name":	"DCDC-1v05"
-									}
-								},
-								"field":	{
-									"name":	"IC"
-								}
-							},
-							"field":	{
-								"name":	"SW"
-							}
-						},
-						"ref":	"U1",
-						"fileinfo":	{
-							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\TI-vreg\\src\\components\\TPS6293x.stanza",
-							"line":	296,
-							"column":	2
-						}
-					}],
-				"datasheet":	"https://www.ti.com/lit/ds/symlink/tps62932.pdf",
-				"manufacturer":	"Texas Instruments",
-				"mpn":	"TPS62932DRL",
-				"vendor":	null,
-				"sku":	null,
-				"price":	null,
-				"preferred":	false,
-				"query_properties":	null
-			}, {
-				"status":	{
 					"code":	5,
 					"name":	"Potential Alternate Vendors"
 				},
@@ -3983,8 +3862,33 @@
 					"code":	5,
 					"name":	"Potential Alternate Vendors"
 				},
-				"description":	"Inductor, 1.5uH, 0.017 Ω DC",
+				"description":	"Step-down type Adjustable 3.8V~30V 3A 0.8V~22V SOT-583  DC-DC Converters ROHS",
 				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"IC"
+								}
+							},
+							"field":	{
+								"name":	"SW"
+							}
+						},
+						"ref":	"U2",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\TI-vreg\\src\\components\\TPS6293x.stanza",
+							"line":	300,
+							"column":	4
+						}
+					}, {
 						"inst":	{
 							"ref":	{
 								"ref":	{
@@ -3996,16 +3900,60 @@
 									}
 								},
 								"field":	{
-									"name":	"L"
+									"name":	"IC"
 								}
 							},
 							"field":	{
-								"name":	"elem"
+								"name":	"SW"
 							}
 						},
-						"ref":	"L3",
-						"fileinfo":	null
+						"ref":	"U3",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\TI-vreg\\src\\components\\TPS6293x.stanza",
+							"line":	300,
+							"column":	4
+						}
 					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"IC"
+								}
+							},
+							"field":	{
+								"name":	"SW"
+							}
+						},
+						"ref":	"U1",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\TI-vreg\\src\\components\\TPS6293x.stanza",
+							"line":	300,
+							"column":	4
+						}
+					}],
+				"datasheet":	"https://www.ti.com/lit/ds/symlink/tps62932.pdf",
+				"manufacturer":	"Texas Instruments",
+				"mpn":	"TPS62932DRL",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	5,
+					"name":	"Potential Alternate Vendors"
+				},
+				"description":	"Inductor, 1.5uH, 0.017 Ω DC",
+				"insts":	[{
 						"inst":	{
 							"ref":	{
 								"ref":	{
@@ -4025,6 +3973,27 @@
 							}
 						},
 						"ref":	"L2",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"L"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"L3",
 						"fileinfo":	null
 					}, {
 						"inst":	{
@@ -4217,7 +4186,6 @@
 				"query_properties":	null
 			}],
 		"entries":	[{
-			}, {
 			}, {
 			}, {
 			}, {

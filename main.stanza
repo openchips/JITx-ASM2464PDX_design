@@ -23,65 +23,68 @@ defpackage main :
 
 ; Define the shape/size of the board
 val board-shape = RoundedRectangle(100.0, 100.0, 0.25)
+val VBUS-shape = RoundedRectangle(100.0, 100.0, 0.25)
+val P3V3-shape = RoundedRectangle(100.0, 100.0, 0.25)
+val P1V8-shape = RoundedRectangle(100.0, 100.0, 0.25)
+val P1V05-shape = RoundedRectangle(100.0, 100.0, 0.25)
 
 ; Module to run as a design
 pcb-module ASM001-design :
-  ; define some pins/ports
-  port gnd
-  port vbus
-  port v3v3
-  port v1v8
-  port v1v05
-
-  net GND (gnd)
-  net VBUS (vbus)
-  net V3V3 (v3v3)
-  net V1V8 (v1v8)
-  net V1V05 (v1v05)
-
-  geom(VBUS) :
-    copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  board-shape
-  geom(V3V3) :
-    copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  board-shape
-  geom(V1V8) :
-    copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  board-shape
-  geom(V1V05) :
-    copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  board-shape
-
-  geom(GND) :
-    copper-pour(LayerIndex(1, Top), isolate = 0.127) =  board-shape
-    copper-pour(LayerIndex(3, Top), isolate = 0.127) =  board-shape
-    copper-pour(LayerIndex(4, Top), isolate = 0.127) =  board-shape
 
   val R-query = get-default-resistor-query()
   val C-query = get-default-capacitor-query()
   
   ;;;;; main power circuits
   inst power-circuit : ASM001/module/power/circuit
-  place(power-circuit.DCDC-1v05.IC.SW) at loc(-30.0, 35.0) on Top
-  place(power-circuit.DCDC-1v8.IC.SW) at loc(-10.0, 35.0) on Top
-  place(power-circuit.DCDC-3v3.IC.SW) at loc(10.0, 35.0) on Top
-  net (power-circuit.vbus VBUS)
-  net (power-circuit.vout-3v3-V+ V3V3) ; VCCA33 should be connected to an LDO or at least a low pass filter
-  net (power-circuit.vout-1v8-V+ V1V8)
-  net (power-circuit.vout-1v05-V+ V1V05)
-  net (power-circuit.gnd GND)
+  place(power-circuit) at loc(-30.0, 35.0) on Top
+
+  net VBUS (power-circuit.vbus.V+)
+  net GND (power-circuit.vbus.V- power-circuit.rail-3v3.V- power-circuit.rail-1v8.V- power-circuit.rail-1v05.V-)
+
+  net P3V3 (power-circuit.rail-3v3.V+)
+  net P1V8 (power-circuit.rail-1v8.V+)
+  net P1V05 (power-circuit.rail-1v05.V+)
+
+
+
+
+  geom(VBUS) :
+    copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  board-shape
+  geom(GND) :
+    copper-pour(LayerIndex(1, Top), isolate = 0.127, rank = 1) =  board-shape
+    copper-pour(LayerIndex(3, Top), isolate = 0.127, rank = 1) =  board-shape
+    copper-pour(LayerIndex(4, Top), isolate = 0.127, rank = 1) =  board-shape
+  ; geom(P3V3) :
+  ;   copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  board-shape
+  ; geom(P1V8) :
+  ;   copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  board-shape
+  ; geom(P1V05) :
+  ;   copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  board-shape
+
+  geom(GND) :
+    copper-pour(LayerIndex(1, Top), isolate = 0.127) =  board-shape
+    copper-pour(LayerIndex(3, Top), isolate = 0.127) =  board-shape
+    copper-pour(LayerIndex(4, Top), isolate = 0.127) =  board-shape
+
 
   inst asm2464pdx : ASM001/components/Asmedia/ASM2464PDX/module
   net (VBUS asm2464pdx.VBUS)
-  net (V3V3 asm2464pdx.VCCH asm2464pdx.VCCA33)
-  net (V1V8 asm2464pdx.VCCL)
-  net (V1V05 asm2464pdx.VDD)
+  net (P3V3 asm2464pdx.VCCH asm2464pdx.VCCA33)
+  net (P1V8 asm2464pdx.VCCL)
+  net (P1V05 asm2464pdx.VDD)
 
   place(asm2464pdx.sw) at loc(0.0, 0.0, 0.0) on Top
 
-  inst usb4_type_c : ASM001/components/USB/USBTypeC/conn-component
+  inst usb4_type_c : ASM001/components/USB/USBTypeC/circuit
+
+  net (usb4_type_c.VBUS VBUS)
+  net (usb4_type_c.GND GND)
 
   place(usb4_type_c) at loc(-45.0, 15.0, 270.0) on Top
 
   inst W25Q32JVSSIQ : ASM001/components/Winbond/W25Q32JVSSIQ/module
 
-  net (V3V3 W25Q32JVSSIQ.VDD)
+  net (P3V3 W25Q32JVSSIQ.VDD)
 
 
   ;;;;; generic component types
@@ -208,16 +211,15 @@ pcb-module ASM001-design :
                     make-public = true)
 
   require asm2464pdx_usb-c : usb-c(2) from asm2464pdx
-  require connector_usb-c : usb-c-connector from usb4_type_c
 
-  net (connector_usb-c.vbus.V+ asm2464pdx.VBUS VBUS)
-  net (connector_usb-c.vbus.V- asm2464pdx.GND GND)
+  net (usb4_type_c.VBUS asm2464pdx.VBUS)
+  net (usb4_type_c.GND asm2464pdx.GND)
 
-  net (connector_usb-c.bus.cc[0], asm2464pdx_usb-c.cc[0])
-  net (connector_usb-c.bus.cc[1], asm2464pdx_usb-c.cc[1])
+  net (usb4_type_c.USB-C.cc[0], asm2464pdx_usb-c.cc[0])
+  net (usb4_type_c.USB-C.cc[1], asm2464pdx_usb-c.cc[1])
 
-  net (connector_usb-c.bus.sbu[0], asm2464pdx_usb-c.sbu[0])
-  net (connector_usb-c.bus.sbu[1], asm2464pdx_usb-c.sbu[1])
+  net (usb4_type_c.USB-C.sbu[0], asm2464pdx_usb-c.sbu[0])
+  net (usb4_type_c.USB-C.sbu[1], asm2464pdx_usb-c.sbu[1])
          
 
 
@@ -230,11 +232,11 @@ pcb-module ASM001-design :
   ; Construct the topology from the module port, through
   ;  the ESD protector, and then terminating in the connector device.
   require esd-pair:dual-pair from esd-prot
-  topo-pair(asm2464pdx_usb-c.data => esd-pair.A => esd-pair.B => connector_usb-c.bus.data)
+  topo-pair(asm2464pdx_usb-c.data => esd-pair.A => esd-pair.B => usb4_type_c.USB-C.data)
   ; By setting the signal end - then the routing structure application
   ;   can apply to the entirety of the bus.
-  ; set-signal-end(asm2464pdx_usb-c.data.P, connector_usb-c.bus.data.P)
-  ; set-signal-end(asm2464pdx_usb-c.data.N, connector_usb-c.bus.data.N)
+  ; set-signal-end(asm2464pdx_usb-c.data.P, usb4_type_c.USB-C.data.P)
+  ; set-signal-end(asm2464pdx_usb-c.data.N, usb4_type_c.USB-C.data.N)
   
   ; According to USB4 System Design Guidelines
   val bleed-R = create-resistor(R-query, 
@@ -272,10 +274,10 @@ pcb-module ASM001-design :
     inst lane-esd-rx : dp-coupler(lane-esd-cap)
     
     ; require tx-esd:dual-pair from esd-lanes
-    topo-pair(connector_usb-c.bus.lane[i].TX => lane-esd-tx => asm2464pdx_usb-c.lane[i].TX) ;tx-bcap => 
+    topo-pair(usb4_type_c.USB-C.lane[i].TX => lane-esd-tx => tx-bcap => usb4_type_c.USB-C.lane[i].TX) ;tx-bcap => 
 
     ; require rx-esd:dual-pair from esd-lanes
-    topo-pair(connector_usb-c.bus.lane[i].RX => lane-esd-rx  => asm2464pdx_usb-c.lane[i].RX) ;=> rx-bcap
+    topo-pair(usb4_type_c.USB-C.lane[i].RX => lane-esd-rx => rx-bcap => usb4_type_c.USB-C.lane[i].RX) ;=> rx-bcap
 
     ; RX bleed resistors
     insert-pulldown(asm2464pdx_usb-c.lane[i].RX.P, GND, 
@@ -300,12 +302,12 @@ pcb-module ASM001-design :
     
   ; Shield Termination
   inst shield-term : shield-termination(R-query, C-query)
-  net (shield-term.SHIELD, connector_usb-c.shield)
+  net (shield-term.SHIELD, usb4_type_c.SHIELD)
   net (shield-term.GND, GND)
 
   val ti-2 = usb-get-trace-impedance(USB2)
   val usb2-constraints = USB-Constraint(proto = USB2, route-struct = diff(ti-2))
-  constrain-topology(asm2464pdx_usb-c.data => connector_usb-c.bus.data, usb2-constraints)
+  constrain-topology(asm2464pdx_usb-c.data => usb4_type_c.USB-C.data, usb2-constraints)
 
   val b-cap = block-cap(100.0e-9)
 
@@ -313,7 +315,7 @@ pcb-module ASM001-design :
   val usb4-constraints = USB-Constraint(proto = USB4, route-struct = diff(ti-4))
   val lane-constraint = LaneConstraint(usb4-constraints)
   for i in indices(asm2464pdx_usb-c.lane) do :
-    within [src, dst] = constrain-topology(asm2464pdx_usb-c.lane[i] => connector_usb-c.bus.lane[i], lane-constraint):
+    within [src, dst] = constrain-topology(asm2464pdx_usb-c.lane[i] => usb4_type_c.USB-C.lane[i], lane-constraint):
       ; Here we construct the differential pair topology for the lane.
       ; The Lane consists of two diff-pairs - TX and RX
       topo-pair(src.RX => dst.RX)
@@ -324,7 +326,7 @@ pcb-module ASM001-design :
       ;  `tx-bcap` for us.
       ; inst tx-bcap : dp-coupler(b-cap)
       topo-pair(src.TX => dst.TX)
-    ; set-signal-end(asm2464pdx_usb-c.lane, connector_usb-c.bus.lane)
+    ; set-signal-end(asm2464pdx_usb-c.lane, usb4_type_c.USB-C.lane)
     
   ; inst header : ASM001/components/headers/header-test(2,1)
   ; place(header) at loc(-20.0, 15.0) on Top
@@ -373,6 +375,9 @@ pcb-module ASM001-design :
   ; schematic symbols
   symbol(GND) = GND-SYMB
   symbol(VBUS) = PWR-SYMB
+  symbol(P3V3) = PWR-SYMB
+  symbol(P1V8) = PWR-SYMB
+  symbol(P1V05) = PWR-SYMB
 
 ; Set the :
 ;     design-name     - a directory with this name will be created in the "designs" directory
