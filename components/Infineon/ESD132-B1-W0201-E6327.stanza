@@ -81,6 +81,8 @@ public pcb-component component :
   assign-landpattern(lp)
   assign-symbol(sym-ESD132-B1-W0201_E6327)
 
+  pin-model(self.p[1] self.p[2]) = PinModel(typ(0.0), typ(0.0))
+
   property(self.category) = "ic"
   property(self.manufacturer_aliases) = ["Infineon Technologies"]
   property(self.mpn_aliases) = ["ESD132-B1-W0201 E6327"]

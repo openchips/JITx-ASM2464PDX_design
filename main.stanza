@@ -23,14 +23,13 @@ defpackage main :
 
 ; Define the shape/size of the board
 val board-shape = RoundedRectangle(100.0, 100.0, 0.25)
-val VBUS-shape = Rectangle(50.0, 50.0, loc(0.0, 0.0))
+val VBUS-shape = Rectangle(50.0, 50.0, loc(-50.0, -50.0))
 val P3V3-shape = RoundedRectangle(100.0, 100.0, 0.25)
 val P1V8-shape = RoundedRectangle(100.0, 100.0, 0.25)
 val P1V05-shape = RoundedRectangle(100.0, 100.0, 0.25)
 
 ; Module to run as a design
 pcb-module ASM001-design :
-
   val R-query = get-default-resistor-query()
   val C-query = get-default-capacitor-query()
   
@@ -48,18 +47,18 @@ pcb-module ASM001-design :
 
 
 
-  geom(VBUS) :
-    copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  VBUS-shape
+  ; geom(VBUS) :
+  ;   copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  VBUS-shape
   ; geom(GND) :
   ;   copper-pour(LayerIndex(1, Top), isolate = 0.127, rank = 1) =  board-shape
   ;   copper-pour(LayerIndex(3, Top), isolate = 0.127, rank = 1) =  board-shape
   ;   copper-pour(LayerIndex(4, Top), isolate = 0.127, rank = 1) =  board-shape
-  ; ; geom(P3V3) :
-  ; ;   copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  board-shape
-  ; ; geom(P1V8) :
-  ; ;   copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  board-shape
-  ; ; geom(P1V05) :
-  ; ;   copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  board-shape
+  ; geom(P3V3) :
+  ;   copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  board-shape
+  ; geom(P1V8) :
+  ;   copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  board-shape
+  ; geom(P1V05) :
+  ;   copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  board-shape
 
   geom(GND) :
     copper-pour(LayerIndex(1, Top), isolate = 0.127) =  board-shape
@@ -213,33 +212,30 @@ pcb-module ASM001-design :
                     inst-name? = to-string("TEST_EN-R"),
                     make-public = true)
 
+  require usb4_type_c_usb-c : usb-c(2) from usb4_type_c
   require asm2464pdx_usb-c : usb-c(2) from asm2464pdx
+  ; require asm2464pdx_usb-c-2 : usb-c(2) from asm2464pdx
 
   net (usb4_type_c.VBUS asm2464pdx.VBUS)
   net (usb4_type_c.GND asm2464pdx.GND)
 
-  net (usb4_type_c.USB-C.cc[0], asm2464pdx_usb-c.cc[0])
-  net (usb4_type_c.USB-C.cc[1], asm2464pdx_usb-c.cc[1])
+  net (usb4_type_c_usb-c.cc[0], asm2464pdx_usb-c.cc[0])
+  net (usb4_type_c_usb-c.cc[1], asm2464pdx_usb-c.cc[1])
 
-  net (usb4_type_c.USB-C.sbu[0], asm2464pdx_usb-c.sbu[0])
-  net (usb4_type_c.USB-C.sbu[1], asm2464pdx_usb-c.sbu[1])
+  net (usb4_type_c_usb-c.sbu[0], asm2464pdx_usb-c.sbu[0])
+  net (usb4_type_c_usb-c.sbu[1], asm2464pdx_usb-c.sbu[1])
          
-
-
-
-
-
   public inst esd-prot : diodes/ESD224DQAR/device
   net (esd-prot.GND[1], esd-prot.GND[2], GND)
 
   ; Construct the topology from the module port, through
   ;  the ESD protector, and then terminating in the connector device.
   require esd-pair:dual-pair from esd-prot
-  topo-pair(asm2464pdx_usb-c.data => esd-pair.A => esd-pair.B => usb4_type_c.USB-C.data)
+  topo-pair(asm2464pdx_usb-c.data => esd-pair.A => esd-pair.B => usb4_type_c_usb-c.data)
   ; By setting the signal end - then the routing structure application
   ;   can apply to the entirety of the bus.
-  ; set-signal-end(asm2464pdx_usb-c.data.P, usb4_type_c.USB-C.data.P)
-  ; set-signal-end(asm2464pdx_usb-c.data.N, usb4_type_c.USB-C.data.N)
+  set-signal-end(asm2464pdx_usb-c.data.P, usb4_type_c_usb-c.data.P)
+  set-signal-end(asm2464pdx_usb-c.data.N, usb4_type_c_usb-c.data.N)
   
   ; According to USB4 System Design Guidelines
   val bleed-R = create-resistor(R-query, 
@@ -266,41 +262,10 @@ pcb-module ASM001-design :
                   inst-name? = n,
                   make-public = true)
 
-  for i in 0 to length(asm2464pdx_usb-c.lane) do:
-    inst tx-bcap : dp-coupler(tx-ac-C)
-    inst rx-bcap : dp-coupler(rx-ac-C)
+  ; for i in 0 to length(asm2464pdx_usb-c.lane) do:
 
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;ESD
-    val lane-esd-cap = ASM001/components/Infineon/ESD132-B1-W0201-E6327/component
-    ; val usb4-esd-cap = create-part(mpn = "ESD132-B1-W0201 E6327", manufacturer = "Infineon")
-    inst lane-esd-tx : dp-coupler(lane-esd-cap)
-    inst lane-esd-rx : dp-coupler(lane-esd-cap)
     
-    ; require tx-esd:dual-pair from esd-lanes
-    topo-pair(usb4_type_c.USB-C.lane[i].TX => lane-esd-tx => tx-bcap => usb4_type_c.USB-C.lane[i].TX) ;tx-bcap => 
-
-    ; require rx-esd:dual-pair from esd-lanes
-    topo-pair(usb4_type_c.USB-C.lane[i].RX => lane-esd-rx => rx-bcap => usb4_type_c.USB-C.lane[i].RX) ;=> rx-bcap
-
-    ; RX bleed resistors
-    insert-pulldown(asm2464pdx_usb-c.lane[i].RX.P, GND, 
-                    elem-type = bleed-R,
-                    inst-name? = to-string("RX_P%_-R" % [i]), 
-                    make-public = true)
-    insert-pulldown(asm2464pdx_usb-c.lane[i].RX.N, GND,
-                    elem-type = bleed-R,
-                    inst-name? = to-string("RX_N%_-R" % [i]),
-                    make-public = true)
-
-    ; TX bleed resistors
-    insert-pulldown(asm2464pdx_usb-c.lane[i].TX.P, GND,
-                    elem-type = bleed-R,
-                    inst-name? = to-string("TX_P%_-R" % [i]),
-                    make-public = true)
-    insert-pulldown(asm2464pdx_usb-c.lane[i].TX.N, GND,
-                    elem-type = bleed-R,
-                    inst-name? = to-string("TX_N%_-R" % [i]),
-                    make-public = true)
+    
 
     
   ; Shield Termination
@@ -310,26 +275,67 @@ pcb-module ASM001-design :
 
   val ti-2 = usb-get-trace-impedance(USB2)
   val usb2-constraints = USB-Constraint(proto = USB2, route-struct = diff(ti-2))
-  constrain-topology(asm2464pdx_usb-c.data => usb4_type_c.USB-C.data, usb2-constraints)
+  constrain-topology(asm2464pdx_usb-c.data => usb4_type_c_usb-c.data, usb2-constraints)
 
   val b-cap = block-cap(100.0e-9)
+  val lane-esd-cap = ASM001/components/Infineon/ESD132-B1-W0201-E6327/component
+
 
   val ti-4 = usb-get-trace-impedance(USB4)
   val usb4-constraints = USB-Constraint(proto = USB4, route-struct = diff(ti-4))
   val lane-constraint = LaneConstraint(usb4-constraints)
   for i in indices(asm2464pdx_usb-c.lane) do :
-    within [src, dst] = constrain-topology(asm2464pdx_usb-c.lane[i] => usb4_type_c.USB-C.lane[i], lane-constraint):
+    
+
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;ESD
+    ; val usb4-esd-cap = create-part(mpn = "ESD132-B1-W0201 E6327", manufacturer = "Infineon")
+    inst lane-esd-tx : dp-coupler(lane-esd-cap)
+    inst lane-esd-rx : dp-coupler(lane-esd-cap)
+    inst tx-bcap : dp-coupler(tx-ac-C)
+    inst rx-bcap : dp-coupler(rx-ac-C)
+    within [src, dst] = constrain-topology(usb4_type_c_usb-c.lane[i] => asm2464pdx_usb-c.lane[i], lane-constraint):
       ; Here we construct the differential pair topology for the lane.
       ; The Lane consists of two diff-pairs - TX and RX
-      topo-pair(src.RX => dst.RX)
+      ; require tx-esd:dual-pair from esd-lanes
+      ; topo-pair(usb4_type_c_usb-c.lane[i].TX => lane-esd-tx => tx-bcap => asm2464pdx_usb-c.lane[i].TX) ;tx-bcap => 
+      ; set-signal-end(usb4_type_c_usb-c.lane[i].TX.P, asm2464pdx_usb-c.lane[i].TX.P)
+      ; set-signal-end(usb4_type_c_usb-c.lane[i].TX.N, asm2464pdx_usb-c.lane[i].TX.N)
+
+      ; ; require rx-esd:dual-pair from esd-lanes
+      ; topo-pair(usb4_type_c_usb-c.lane[i].RX => lane-esd-rx => rx-bcap => asm2464pdx_usb-c.lane[i].RX) ;=> rx-bcap
+      ; set-signal-end(usb4_type_c_usb-c.lane[i].RX.P, asm2464pdx_usb-c.lane[i].RX.P)
+      ; set-signal-end(usb4_type_c_usb-c.lane[i].RX.N, asm2464pdx_usb-c.lane[i].RX.N)
+      
+      
+      topo-pair(src.RX => lane-esd-rx => rx-bcap => dst.RX)
 
       ; The TX channel needs a blocking capacitor which we add with
       ;  the help of the `topo-pair` utility. This is like `topo-net`
       ;  but handles extracting the `dual-pair` require from the
       ;  `tx-bcap` for us.
       ; inst tx-bcap : dp-coupler(b-cap)
-      topo-pair(src.TX => dst.TX)
-    ; set-signal-end(asm2464pdx_usb-c.lane, usb4_type_c.USB-C.lane)
+      topo-pair(src.TX => lane-esd-tx => tx-bcap => dst.TX)
+
+            ; RX bleed resistors
+      insert-pulldown(asm2464pdx_usb-c.lane[i].RX.P, GND, 
+                      elem-type = bleed-R,
+                      inst-name? = to-string("RX_P%_-R" % [i]), 
+                      make-public = true)
+      insert-pulldown(asm2464pdx_usb-c.lane[i].RX.N, GND,
+                      elem-type = bleed-R,
+                      inst-name? = to-string("RX_N%_-R" % [i]),
+                      make-public = true)
+
+      ; TX bleed resistors
+      insert-pulldown(asm2464pdx_usb-c.lane[i].TX.P, GND,
+                      elem-type = bleed-R,
+                      inst-name? = to-string("TX_P%_-R" % [i]),
+                      make-public = true)
+      insert-pulldown(asm2464pdx_usb-c.lane[i].TX.N, GND,
+                      elem-type = bleed-R,
+                      inst-name? = to-string("TX_N%_-R" % [i]),
+                      make-public = true)
+    ; set-signal-end(usb4_type_c_usb-c.lane, asm2464pdx_usb-c.lane)
     
   ; inst header : ASM001/components/headers/header-test(2,1)
   ; place(header) at loc(-20.0, 15.0) on Top
@@ -393,12 +399,18 @@ setup-design("ASM001-design", board-shape, signal-shrink = 0.5)
 ; Set the top level module (the module to be compile into a schematic and PCB)
 set-main-module(ASM001-design)
 
+; set-current-design(ASM001-design)
+
 ; View the results
 ; take a look at the BOM that was generated
 ; view-bom(BOM-STD)
+; exame the design explorer
+; view-design-explorer()
 ; examine the schematic that was auto-generated
 ; view-schematic()
 ; view the board that was created
 view-board()
+
+
 
 

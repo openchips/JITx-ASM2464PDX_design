@@ -476,6 +476,8 @@ public pcb-module module :
   port RST#
 
   port i2c_data : i2c
+  ; port usb_c : usb-c(2)
+
 
   port XI
   port XO

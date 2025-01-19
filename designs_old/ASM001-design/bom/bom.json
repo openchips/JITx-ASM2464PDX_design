@@ -1,0 +1,4273 @@
+{
+	"proj-name":	"ASM001-design",
+	"headers":	[{
+			"field":	"status",
+			"name":	"Status",
+			"width":	10
+		}, {
+			"field":	"_quantity",
+			"name":	"Qty",
+			"width":	5
+		}, {
+			"field":	"insts",
+			"name":	"References",
+			"width":	10
+		}, {
+			"field":	"mpn",
+			"name":	"MPN",
+			"width":	10
+		}, {
+			"field":	"manufacturer",
+			"name":	"Manufacturer",
+			"width":	10
+		}, {
+			"field":	"description",
+			"name":	"Description",
+			"width":	20
+		}, {
+			"field":	"vendor",
+			"name":	"Supplier",
+			"width":	10
+		}, {
+			"field":	"sku",
+			"name":	"SKU",
+			"width":	10
+		}, {
+			"field":	"datasheet",
+			"name":	"Datasheet",
+			"width":	10
+		}, {
+			"field":	"_preferred",
+			"name":	"Preferred",
+			"width":	5
+		}],
+	"new_bom":	{
+		"rows":	[{
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"50mW Thick Film Resistors 25V ±1% ±200ppm/℃ 4.7kΩ 0201  Chip Resistor - Surface Mount ROHS",
+				"insts":	[{
+						"inst":	{
+							"name":	"TEST_EN-R"
+						},
+						"ref":	"R15",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"uart_tx-R"
+						},
+						"ref":	"R12",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"spi_hold#-R"
+						},
+						"ref":	"R11",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"spi_wp#-R"
+						},
+						"ref":	"R10",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2203081130_YAGEO-AC0201FR-074K7L_C226571.pdf",
+				"manufacturer":	"YAGEO",
+				"mpn":	"AC0201FR-074K7L",
+				"vendor":	"Arrow",
+				"sku":	"AC0201FR-074K7L",
+				"price":	0.0046,
+				"preferred":	false,
+				"query_properties":	{
+					"case":	["0201", "0402"],
+					"resistance":	4700,
+					"tolerance":	0.01,
+					"category":	"resistor",
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"USB Type-C SMD Connectors ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"name":	"usb4_type_c"
+							},
+							"field":	{
+								"name":	"sw"
+							}
+						},
+						"ref":	"J1",
+						"fileinfo":	{
+							"filename":	"components\\Generic\\USBTypeC.stanza",
+							"line":	106,
+							"column":	2
+						}
+					}],
+				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_2407021105_MOLEX-2012670005_C565324.pdf",
+				"manufacturer":	"MOLEX",
+				"mpn":	"2012670005",
+				"vendor":	"Arrow",
+				"sku":	"2012670005",
+				"price":	1.4592,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"50V 2.2nF X7R ±10% 0402  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"name":	"CC1-R"
+						},
+						"ref":	"C27",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"CC0-R"
+						},
+						"ref":	"C26",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_1810241335_YAGEO-CC0402KRX7R9BB222_C106861.pdf",
+				"manufacturer":	"YAGEO",
+				"mpn":	"CC0402KRX7R9BB222",
+				"vendor":	"Arrow",
+				"sku":	"CC0402KRX7R9BB222",
+				"price":	0.0604,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.1,
+					"rated-voltage":	50,
+					"capacitance":	2.2e-09,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"category":	"capacitor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"62.5mW Thick Film Resistors ±100ppm/℃ ±1% 2.4kΩ 0402  Chip Resistor - Surface Mount ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"fb-div"
+								}
+							},
+							"field":	{
+								"name":	"r-hi"
+							}
+						},
+						"ref":	"R2",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\voltage-divider\\src\\circuits.stanza",
+							"line":	39,
+							"column":	4
+						}
+					}],
+				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_YAGEO-RC0402FR-072K4L_C112296.pdf",
+				"manufacturer":	"YAGEO",
+				"mpn":	"RC0402FR-072K4L",
+				"vendor":	"Arrow",
+				"sku":	"RC0402FR-072K4L",
+				"price":	0.002,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.01,
+					"_exist":	["tcr.pos", "tcr.neg"],
+					"resistance":	2400,
+					"category":	"resistor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"100mW Thin Film Resistor ±25ppm/℃ ±0.1% 24kΩ 0603  Chip Resistor - Surface Mount ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"fb-div"
+								}
+							},
+							"field":	{
+								"name":	"r-hi"
+							}
+						},
+						"ref":	"R5",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\voltage-divider\\src\\circuits.stanza",
+							"line":	39,
+							"column":	4
+						}
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2204261415_YAGEO-RT0603BRD0724KL_C326729.pdf",
+				"manufacturer":	"YAGEO",
+				"mpn":	"RT0603BRD0724KL",
+				"vendor":	"Arrow",
+				"sku":	"RT0603BRD0724KL",
+				"price":	0.0806,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.001,
+					"_exist":	["tcr.pos", "tcr.neg"],
+					"resistance":	24000,
+					"category":	"resistor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"CAP CER 0.1UF 6.3V X5R 0402",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"bst-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C13",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"bst-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C20",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"bst-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C6",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://datasheets.avx.com/cx5r.pdf",
+				"manufacturer":	"KYOCERA AVX",
+				"mpn":	"04026D104KAT2A",
+				"vendor":	"Arrow",
+				"sku":	"04026D104KAT2A",
+				"price":	0.041,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.1,
+					"min-rated-voltage":	1.53,
+					"capacitance":	1e-07,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"category":	"capacitor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"62.5mW ±300ppm/℃ ±1% 0Ω 0402  Chip Resistor - Surface Mount ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"name":	"shield-term"
+							},
+							"field":	{
+								"name":	"R"
+							}
+						},
+						"ref":	"R24",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"bst-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"R4",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"bst-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"R7",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"bst-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"R1",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://datasheet.lcsc.com/lcsc/2207281800_Sunway-SC0402F0000I2ANRH_C3152056.pdf",
+				"manufacturer":	"Sunway",
+				"mpn":	"SC0402F0000I2ANRH",
+				"vendor":	"JLCPCB",
+				"sku":	"SC0402F0000I2ANRH",
+				"price":	0.000357143,
+				"preferred":	false,
+				"query_properties":	{
+					"resistance":	0,
+					"tolerance":	0.01,
+					"category":	"resistor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"32Mbit SPI SOIC-8-208mil NOR FLASH ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"name":	"W25Q32JVSSIQ"
+							},
+							"field":	{
+								"name":	"sw"
+							}
+						},
+						"ref":	"U5",
+						"fileinfo":	{
+							"filename":	"components\\Winbond\\W25Q32JVSSIQ.stanza",
+							"line":	137,
+							"column":	2
+						}
+					}],
+				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_1811101814_Winbond-Elec-W25Q32JVSSIQ_C82344.pdf",
+				"manufacturer":	"Winbond",
+				"mpn":	"W25Q32JVSSIQ",
+				"vendor":	"DigiKey",
+				"sku":	"W25Q32JVSSIQ",
+				"price":	0.8,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"RES SMD 7.68KOHM 0.1% 1/10W 0603",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"fb-div"
+								}
+							},
+							"field":	{
+								"name":	"r-lo"
+							}
+						},
+						"ref":	"R6",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\voltage-divider\\src\\circuits.stanza",
+							"line":	40,
+							"column":	4
+						}
+					}],
+				"datasheet":	"https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf",
+				"manufacturer":	"PANASONIC",
+				"mpn":	"ERA-3AEB7681V",
+				"vendor":	"Arrow",
+				"sku":	"ERA-3AEB7681V",
+				"price":	0.0987,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.001,
+					"_exist":	["tcr.pos", "tcr.neg"],
+					"resistance":	7680,
+					"category":	"resistor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"CAP CER 10PF 50V NP0 0402",
+				"insts":	[{
+						"inst":	{
+							"name":	"crystal_c"
+						},
+						"ref":	"C24",
+						"fileinfo":	{
+							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
+							"line":	175,
+							"column":	2
+						}
+					}],
+				"datasheet":	"https://datasheets.avx.com/C0GNP0-Dielectric.pdf",
+				"manufacturer":	"KYOCERA AVX",
+				"mpn":	"04025A100FAT2A",
+				"vendor":	"Avnet",
+				"sku":	"04025A100FAT2A",
+				"price":	0.10965,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"6.3V 10uF X5R ±10% 0603  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C12",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C11",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C19",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C18",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Walsin-Tech-Corp-0603X106K6R3CT_C123607.pdf",
+				"manufacturer":	"WALSIN",
+				"mpn":	"0603X106K6R3CT",
+				"vendor":	"Arrow",
+				"sku":	"0603X106K6R3CT",
+				"price":	0.0429,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.1,
+					"min-rated-voltage":	1.0197,
+					"capacitance":	1.0000000000000006e-05,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"category":	"capacitor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"6.3V 470nF X5R ±10% 0201  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"rx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C35",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"rx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C34",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"rx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C31",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"rx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C30",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2212052030_Murata-Electronics-GRM033R60J474KE90D_C85926.pdf",
+				"manufacturer":	"MURATA",
+				"mpn":	"GRM033R60J474KE90D",
+				"vendor":	"Arrow",
+				"sku":	"GRM033R60J474KE90D",
+				"price":	0.0036,
+				"preferred":	false,
+				"query_properties":	{
+					"case":	["0201", "0603m", "0202", "0606m", "0204", "0510m", "Wide 0402", "0306", "0816m", "Wide 0603", "0402", "1005m", "0505", "1414m", "0508", "1220m", "Wide 0805", "0603", "1608m", "0612", "1632m", "Wide 1206", "0805", "2012m", "1111", "2828m", "1206", "3216m", "1210", "3225m", "1218", "3246m", "Wide 1812", "1225", "3263m", "Wide 2512", "1530", "3876m", "Wide 3015", "1808", "4520m", "1812", "4532m", "1825", "4564m", "1835", "4589", "Wide 3518", "5020m", "2010", "5025m", "2043", "Wide 4320", "2220", "5750m", "2225", "5763m", "2312", "6032m", "2512", "6331m", "2725", "7142m", "2728", "7142m", "Wide 2827", "2816", "2817", "7142m", "2953", "Wide 5929", "3920", "1052m"],
+					"min-capacitance":	3e-07,
+					"max-capacitance":	363000,
+					"tolerance":	0.1,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"min-rated-voltage":	6,
+					"category":	"capacitor",
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"m2_connector"
+								},
+								"index":	0
+							},
+							"field":	{
+								"name":	"sw"
+							}
+						},
+						"ref":	"J2",
+						"fileinfo":	{
+							"filename":	"components\\TE\\M.2\\1-2199230-6.stanza",
+							"line":	578,
+							"column":	2
+						}
+					}],
+				"datasheet":	"",
+				"manufacturer":	"",
+				"mpn":	"1-2199230-6",
+				"vendor":	"Arrow",
+				"sku":	"1-2199230-6",
+				"price":	1.0891,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"10V 820nF X5R ±10% 0402  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"cin-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C2",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"cin-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C1",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2407081117_YAGEO-CC0402KRX5R6BB824_C576724.pdf",
+				"manufacturer":	"YAGEO",
+				"mpn":	"CC0402KRX5R6BB824",
+				"vendor":	"JLCPCB",
+				"sku":	"CC0402KRX5R6BB824",
+				"price":	0.006685714,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.1,
+					"min-rated-voltage":	1.53,
+					"min-capacitance":	6.8000000000000048e-07,
+					"max-capacitance":	8.2000000000000051e-07,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"category":	"capacitor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"62.5mW Thick Film Resistors ±100ppm/℃ ±1% 7.68kΩ 0402  Chip Resistor - Surface Mount ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"fb-div"
+								}
+							},
+							"field":	{
+								"name":	"r-lo"
+							}
+						},
+						"ref":	"R3",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\voltage-divider\\src\\circuits.stanza",
+							"line":	40,
+							"column":	4
+						}
+					}],
+				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_1810241327_YAGEO-RC0402FR-077K68L_C155695.pdf",
+				"manufacturer":	"YAGEO",
+				"mpn":	"RC0402FR-077K68L",
+				"vendor":	"Arrow",
+				"sku":	"RC0402FR-077K68L",
+				"price":	0.053,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.01,
+					"_exist":	["tcr.pos", "tcr.neg"],
+					"resistance":	7680,
+					"category":	"resistor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"50mW Thick Film Resistors 25V ±1% ±200ppm/℃ 200kΩ 0201  Chip Resistor - Surface Mount ROHS",
+				"insts":	[{
+						"inst":	{
+							"name":	"TX_N1-R"
+						},
+						"ref":	"R23",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"TX_P1-R"
+						},
+						"ref":	"R22",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"RX_N1-R"
+						},
+						"ref":	"R21",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"RX_P1-R"
+						},
+						"ref":	"R20",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"TX_N0-R"
+						},
+						"ref":	"R19",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"TX_P0-R"
+						},
+						"ref":	"R18",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"RX_N0-R"
+						},
+						"ref":	"R17",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"RX_P0-R"
+						},
+						"ref":	"R16",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_YAGEO-RC0201FR-07200KL_C138163.pdf",
+				"manufacturer":	"YAGEO",
+				"mpn":	"RC0201FR-07200KL",
+				"vendor":	"Arrow",
+				"sku":	"RC0201FR-07200KL",
+				"price":	0.0168,
+				"preferred":	false,
+				"query_properties":	{
+					"case":	["0201", "0603m", "0202", "0606m", "0204", "0510m", "Wide 0402", "0306", "0816m", "Wide 0603", "0402", "1005m", "0505", "1414m", "0508", "1220m", "Wide 0805", "0603", "1608m", "0612", "1632m", "Wide 1206", "0805", "2012m", "1111", "2828m", "1206", "3216m", "1210", "3225m", "1218", "3246m", "Wide 1812", "1225", "3263m", "Wide 2512", "1530", "3876m", "Wide 3015", "1808", "4520m", "1812", "4532m", "1825", "4564m", "1835", "4589", "Wide 3518", "5020m", "2010", "5025m", "2043", "Wide 4320", "2220", "5750m", "2225", "5763m", "2312", "6032m", "2512", "6331m", "2725", "7142m", "2728", "7142m", "Wide 2827", "2816", "2817", "7142m", "2953", "Wide 5929", "3920", "1052m"],
+					"min-resistance":	200000,
+					"max-resistance":	242000,
+					"tolerance":	0.01,
+					"category":	"resistor",
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"50V 4.7nF X7R ±10% 0402  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"name":	"shield-term"
+							},
+							"field":	{
+								"name":	"C"
+							}
+						},
+						"ref":	"C36",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2308111716_Murata-Electronics-GRM155R71H472KA01J_C2168177.pdf",
+				"manufacturer":	"MURATA",
+				"mpn":	"GRM155R71H472KA01J",
+				"vendor":	"Arrow",
+				"sku":	"GRM155R71H472KA01J",
+				"price":	0.0029,
+				"preferred":	false,
+				"query_properties":	{
+					"capacitance":	4.7e-09,
+					"tolerance":	0.1,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"min-rated-voltage":	6,
+					"category":	"capacitor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"50mW Thick Film Resistors ±1% ±200ppm/℃ 12.1kΩ 0201  Chip Resistor - Surface Mount ROHS",
+				"insts":	[{
+						"inst":	{
+							"name":	"UREXT-R"
+						},
+						"ref":	"R14",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2311211101_YAGEO-RC0201FR-0712K1L_C474513.pdf",
+				"manufacturer":	"YAGEO",
+				"mpn":	"RC0201FR-0712K1L",
+				"vendor":	"Arrow",
+				"sku":	"RC0201FR-0712K1L",
+				"price":	0.0014,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.01,
+					"case":	["0201", "0402"],
+					"resistance":	12100,
+					"category":	"resistor",
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"null 4.7nF X7R ±5% 0402  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C10",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C17",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C3",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2201131300_Murata-Electronics-GRM155R71H472JA01D_C913548.pdf",
+				"manufacturer":	"MURATA",
+				"mpn":	"GRM155R71H472JA01D",
+				"vendor":	"Arrow",
+				"sku":	"GRM155R71H472JA01D",
+				"price":	0.0044,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.05,
+					"min-rated-voltage":	1.0197,
+					"capacitance":	4.7e-09,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"category":	"capacitor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"25MHz 18pF ±20ppm SMD-4P  Crystals ROHS",
+				"insts":	[{
+						"inst":	{
+							"name":	"crystal_25mhz"
+						},
+						"ref":	"X1",
+						"fileinfo":	{
+							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
+							"line":	174,
+							"column":	2
+						}
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2304140030_Abracon-LLC-ABMM2-25-000MHZ-D1-T_C1985419.pdf",
+				"manufacturer":	"ABRACON",
+				"mpn":	"ABMM2-25.000MHZ-D1-T",
+				"vendor":	"DigiKey",
+				"sku":	"ABMM2-25.000MHZ-D1-T",
+				"price":	1.11,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"RES SMD 7.32KOHM 0.1% 1/16W 0402",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"fb-div"
+								}
+							},
+							"field":	{
+								"name":	"r-lo"
+							}
+						},
+						"ref":	"R9",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\voltage-divider\\src\\circuits.stanza",
+							"line":	40,
+							"column":	4
+						}
+					}],
+				"datasheet":	"https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf",
+				"manufacturer":	"PANASONIC",
+				"mpn":	"ERA-2AEB7321X",
+				"vendor":	"Arrow",
+				"sku":	"ERA-2AEB7321X",
+				"price":	0.0583,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.001,
+					"_exist":	["tcr.pos", "tcr.neg"],
+					"resistance":	7320,
+					"category":	"resistor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"7.9V 14V 3.6V DFN-10(1x2.5)  ESD Protection Devices ROHS",
+				"insts":	[{
+						"inst":	{
+							"name":	"esd-prot"
+						},
+						"ref":	"U6",
+						"fileinfo":	{
+							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
+							"line":	230,
+							"column":	2
+						}
+					}],
+				"datasheet":	"https://datasheet.lcsc.com/lcsc/2302221330_Texas-Instruments-ESD224DQAR_C1981316.pdf",
+				"manufacturer":	"Texas Instruments",
+				"mpn":	"ESD224DQAR",
+				"vendor":	"Arrow",
+				"sku":	"ESD224DQAR",
+				"price":	0.4376,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"RES SMD 9.1K OHM 0.1% 1/10W 0603",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"fb-div"
+								}
+							},
+							"field":	{
+								"name":	"r-hi"
+							}
+						},
+						"ref":	"R8",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\voltage-divider\\src\\circuits.stanza",
+							"line":	39,
+							"column":	4
+						}
+					}],
+				"datasheet":	"https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf",
+				"manufacturer":	"PANASONIC",
+				"mpn":	"ERA-3AEB912V",
+				"vendor":	"Arrow",
+				"sku":	"ERA-3AEB912V",
+				"price":	0.0295,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.001,
+					"_exist":	["tcr.pos", "tcr.neg"],
+					"resistance":	9100,
+					"category":	"resistor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"50mW Thick Film Resistors ±1% ±250ppm/℃ 100kΩ 0201  Chip Resistor - Surface Mount ROHS",
+				"insts":	[{
+						"inst":	{
+							"name":	"r_100K"
+						},
+						"ref":	"R13",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2310271816_Samsung-Electro-Mechanics-RC0603F104CS_C7604168.pdf",
+				"manufacturer":	"Samsung Electro-Mechanics",
+				"mpn":	"RC0603F104CS",
+				"vendor":	"Arrow",
+				"sku":	"RC0603F104CS",
+				"price":	0.001,
+				"preferred":	false,
+				"query_properties":	{
+					"case":	["0201", "0402"],
+					"resistance":	100000,
+					"tolerance":	0.01,
+					"category":	"resistor",
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"10V 220nF X5R ±10% 0201  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C33",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C32",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C29",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C28",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/1811081514_Murata-Electronics-GRM033R61A224KE90D_C76936.pdf",
+				"manufacturer":	"MURATA",
+				"mpn":	"GRM033R61A224KE90D",
+				"vendor":	"Arrow",
+				"sku":	"GRM033R61A224KE90D",
+				"price":	0.0032,
+				"preferred":	false,
+				"query_properties":	{
+					"case":	["0201", "0603m", "0202", "0606m", "0204", "0510m", "Wide 0402", "0306", "0816m", "Wide 0603", "0402", "1005m", "0505", "1414m", "0508", "1220m", "Wide 0805", "0603", "1608m", "0612", "1632m", "Wide 1206", "0805", "2012m", "1111", "2828m", "1206", "3216m", "1210", "3225m", "1218", "3246m", "Wide 1812", "1225", "3263m", "Wide 2512", "1530", "3876m", "Wide 3015", "1808", "4520m", "1812", "4532m", "1825", "4564m", "1835", "4589", "Wide 3518", "5020m", "2010", "5025m", "2043", "Wide 4320", "2220", "5750m", "2225", "5763m", "2312", "6032m", "2512", "6331m", "2725", "7142m", "2728", "7142m", "Wide 2827", "2816", "2817", "7142m", "2953", "Wide 5929", "3920", "1052m"],
+					"min-capacitance":	1.35e-07,
+					"max-capacitance":	265000,
+					"tolerance":	0.1,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"min-rated-voltage":	6,
+					"category":	"capacitor",
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"25V 6.8uF X7R ±10% 1210  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"cin-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C16",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"cin-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C15",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2304140030_TDK-CGA6P3X7R1E685K250AB_C2179267.pdf",
+				"manufacturer":	"TDK Corp",
+				"mpn":	"CGA6P3X7R1E685K250AB",
+				"vendor":	"Arrow",
+				"sku":	"CGA6P3X7R1E685K250AB",
+				"price":	0.1563,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.1,
+					"min-rated-voltage":	1.53,
+					"min-capacitance":	5.6000000000000031e-06,
+					"max-capacitance":	6.8000000000000035e-06,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"category":	"capacitor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"6.3V 470nF X5R ±10% 0402  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"cin-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C9",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"cin-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C8",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2304140030_Samsung-Electro-Mechanics-CL05A474KQ5NNNC_C364319.pdf",
+				"manufacturer":	"Samsung Electro-Mechanics",
+				"mpn":	"CL05A474KQ5NNNC",
+				"vendor":	"Arrow",
+				"sku":	"CL05A474KQ5NNNC",
+				"price":	0.0092,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.1,
+					"min-rated-voltage":	1.53,
+					"min-capacitance":	3.9000000000000029e-07,
+					"max-capacitance":	4.7000000000000037e-07,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"category":	"capacitor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"50V 1uF X5R ±10% 0402  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"name":	"c_1uF50V"
+						},
+						"ref":	"C25",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2201180430_Murata-Electronics-GRM155R61H105KE05D_C1518208.pdf",
+				"manufacturer":	"MURATA",
+				"mpn":	"GRM155R61H105KE05D",
+				"vendor":	"DigiKey",
+				"sku":	"GRM155R61H105KE05D",
+				"price":	0.1,
+				"preferred":	false,
+				"query_properties":	{
+					"case":	["0201", "0402"],
+					"rated-voltage":	50,
+					"capacitance":	1e-06,
+					"tolerance":	0.1,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"category":	"capacitor",
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"CAP CER 1.5PF 25V NP0 0201",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-coupler"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C38",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-coupler"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C37",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}],
+				"datasheet":	"https://datasheets.avx.com/C0GNP0-Dielectric.pdf",
+				"manufacturer":	"KYOCERA AVX",
+				"mpn":	"02013A1R5BAT2A",
+				"vendor":	"Mouser",
+				"sku":	"02013A1R5BAT2A",
+				"price":	0.1,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"10V 100nF X5R ±20% 0201  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"name":	"c_22uF6V3-5-C"
+						},
+						"ref":	"C42",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"c_22uF6V3-4-C"
+						},
+						"ref":	"C41",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"c_22uF6V3-3-C"
+						},
+						"ref":	"C40",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"c_22uF6V3-2-C"
+						},
+						"ref":	"C39",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"c_22uF6V3-1-C"
+						},
+						"ref":	"C23",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"c_22uF6V3-0-C"
+						},
+						"ref":	"C22",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2304140030_Murata-Electronics-GRM033R61A104ME15D_C408130.pdf",
+				"manufacturer":	"MURATA",
+				"mpn":	"GRM033R61A104ME15D",
+				"vendor":	"Arrow",
+				"sku":	"GRM033R61A104ME15D",
+				"price":	0.0018,
+				"preferred":	false,
+				"query_properties":	{
+					"capacitance":	1e-07,
+					"case":	["0201", "0402", "0805"],
+					"rated-voltage":	6.3,
+					"category":	"capacitor",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"10V 10uF X5R ±10% 0603  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C5",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C4",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL10A106KP8NNNC_C19702.pdf",
+				"manufacturer":	"Samsung Electro-Mechanics",
+				"mpn":	"CL10A106KP8NNNC",
+				"vendor":	"Arrow",
+				"sku":	"CL10A106KP8NNNC",
+				"price":	0.024,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.1,
+					"min-rated-voltage":	0.32445,
+					"capacitance":	1.0000000000000006e-05,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"category":	"capacitor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	5,
+					"name":	"Potential Alternate Vendors"
+				},
+				"description":	"USB4/Thunderbolt to PCIe Gen4 x4 Controller for Multi-PCIe Devices",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"name":	"asm2464pdx"
+							},
+							"field":	{
+								"name":	"sw"
+							}
+						},
+						"ref":	"U4",
+						"fileinfo":	{
+							"filename":	"components\\Asmedia\\ASM2464PDX.stanza",
+							"line":	511,
+							"column":	2
+						}
+					}],
+				"datasheet":	null,
+				"manufacturer":	null,
+				"mpn":	"ASM2464PDX",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	5,
+					"name":	"Potential Alternate Vendors"
+				},
+				"description":	"Step-down type Adjustable 3.8V~30V 3A 0.8V~22V SOT-583  DC-DC Converters ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"IC"
+								}
+							},
+							"field":	{
+								"name":	"SW"
+							}
+						},
+						"ref":	"U2",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\TI-vreg\\src\\components\\TPS6293x.stanza",
+							"line":	300,
+							"column":	4
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"IC"
+								}
+							},
+							"field":	{
+								"name":	"SW"
+							}
+						},
+						"ref":	"U3",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\TI-vreg\\src\\components\\TPS6293x.stanza",
+							"line":	300,
+							"column":	4
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"IC"
+								}
+							},
+							"field":	{
+								"name":	"SW"
+							}
+						},
+						"ref":	"U1",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\TI-vreg\\src\\components\\TPS6293x.stanza",
+							"line":	300,
+							"column":	4
+						}
+					}],
+				"datasheet":	"https://www.ti.com/lit/ds/symlink/tps62932.pdf",
+				"manufacturer":	"Texas Instruments",
+				"mpn":	"TPS62932DRL",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	5,
+					"name":	"Potential Alternate Vendors"
+				},
+				"description":	"Inductor, 1.5uH, 0.017 Ω DC",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"L"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"L2",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"L"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"L3",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"L"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"L1",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://www.yuden.co.jp/productdata/catalog/wound04_e.pdf",
+				"manufacturer":	"Taiyo Yuden",
+				"mpn":	"NRS5040T1R5NMGJV",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	4,
+					"name":	"Not Enough Stock"
+				},
+				"description":	" WLL-2-3  ESD Protection Devices ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"lane-esd-rx"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"U14",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"lane-esd-rx"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"U13",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"lane-esd-tx"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"U12",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"lane-esd-tx"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"U11",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"lane-esd-rx"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"U10",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"lane-esd-rx"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"U9",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"lane-esd-tx"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"U8",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"lane-esd-tx"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"U7",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}],
+				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_2005291706_Infineon-Technologies-ESD132-B1-W0201-E6327_C535164.pdf",
+				"manufacturer":	"Infineon",
+				"mpn":	"ESD132-B1-W0201 E6327",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	null
+			}],
+		"entries":	[{
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}]
+	},
+	"metrics":	[{
+			"name":	"Line Items",
+			"value":	35
+		}, {
+			"name":	"Components",
+			"value":	83
+		}, {
+			"name":	"Cost",
+			"value":	"$6.65"
+		}],
+	"is_update":	false,
+	"old_bom":	{
+		"rows":	[{
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"50mW Thick Film Resistors 25V ±1% ±200ppm/℃ 4.7kΩ 0201  Chip Resistor - Surface Mount ROHS",
+				"insts":	[{
+						"inst":	{
+							"name":	"TEST_EN-R"
+						},
+						"ref":	"R15",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"uart_tx-R"
+						},
+						"ref":	"R12",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"spi_hold#-R"
+						},
+						"ref":	"R11",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"spi_wp#-R"
+						},
+						"ref":	"R10",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2203081130_YAGEO-AC0201FR-074K7L_C226571.pdf",
+				"manufacturer":	"YAGEO",
+				"mpn":	"AC0201FR-074K7L",
+				"vendor":	"Arrow",
+				"sku":	"AC0201FR-074K7L",
+				"price":	0.0046,
+				"preferred":	false,
+				"query_properties":	{
+					"case":	["0201", "0402"],
+					"resistance":	4700,
+					"tolerance":	0.01,
+					"category":	"resistor",
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"USB Type-C SMD Connectors ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"name":	"usb4_type_c"
+							},
+							"field":	{
+								"name":	"sw"
+							}
+						},
+						"ref":	"J1",
+						"fileinfo":	{
+							"filename":	"components\\Generic\\USBTypeC.stanza",
+							"line":	106,
+							"column":	2
+						}
+					}],
+				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_2407021105_MOLEX-2012670005_C565324.pdf",
+				"manufacturer":	"MOLEX",
+				"mpn":	"2012670005",
+				"vendor":	"Arrow",
+				"sku":	"2012670005",
+				"price":	1.4592,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"50V 2.2nF X7R ±10% 0402  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"name":	"CC1-R"
+						},
+						"ref":	"C27",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"CC0-R"
+						},
+						"ref":	"C26",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_1810241335_YAGEO-CC0402KRX7R9BB222_C106861.pdf",
+				"manufacturer":	"YAGEO",
+				"mpn":	"CC0402KRX7R9BB222",
+				"vendor":	"Arrow",
+				"sku":	"CC0402KRX7R9BB222",
+				"price":	0.0604,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.1,
+					"rated-voltage":	50,
+					"capacitance":	2.2e-09,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"category":	"capacitor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"62.5mW Thick Film Resistors ±100ppm/℃ ±1% 2.4kΩ 0402  Chip Resistor - Surface Mount ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"fb-div"
+								}
+							},
+							"field":	{
+								"name":	"r-hi"
+							}
+						},
+						"ref":	"R2",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\voltage-divider\\src\\circuits.stanza",
+							"line":	39,
+							"column":	4
+						}
+					}],
+				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_YAGEO-RC0402FR-072K4L_C112296.pdf",
+				"manufacturer":	"YAGEO",
+				"mpn":	"RC0402FR-072K4L",
+				"vendor":	"Arrow",
+				"sku":	"RC0402FR-072K4L",
+				"price":	0.002,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.01,
+					"_exist":	["tcr.pos", "tcr.neg"],
+					"resistance":	2400,
+					"category":	"resistor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"100mW Thin Film Resistor ±25ppm/℃ ±0.1% 24kΩ 0603  Chip Resistor - Surface Mount ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"fb-div"
+								}
+							},
+							"field":	{
+								"name":	"r-hi"
+							}
+						},
+						"ref":	"R5",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\voltage-divider\\src\\circuits.stanza",
+							"line":	39,
+							"column":	4
+						}
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2204261415_YAGEO-RT0603BRD0724KL_C326729.pdf",
+				"manufacturer":	"YAGEO",
+				"mpn":	"RT0603BRD0724KL",
+				"vendor":	"Arrow",
+				"sku":	"RT0603BRD0724KL",
+				"price":	0.0806,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.001,
+					"_exist":	["tcr.pos", "tcr.neg"],
+					"resistance":	24000,
+					"category":	"resistor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"CAP CER 0.1UF 6.3V X5R 0402",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"bst-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C13",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"bst-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C20",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"bst-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C6",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://datasheets.avx.com/cx5r.pdf",
+				"manufacturer":	"KYOCERA AVX",
+				"mpn":	"04026D104KAT2A",
+				"vendor":	"Arrow",
+				"sku":	"04026D104KAT2A",
+				"price":	0.041,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.1,
+					"min-rated-voltage":	1.53,
+					"capacitance":	1e-07,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"category":	"capacitor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"62.5mW ±300ppm/℃ ±1% 0Ω 0402  Chip Resistor - Surface Mount ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"name":	"shield-term"
+							},
+							"field":	{
+								"name":	"R"
+							}
+						},
+						"ref":	"R24",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"bst-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"R4",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"bst-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"R7",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"bst-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"R1",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://datasheet.lcsc.com/lcsc/2207281800_Sunway-SC0402F0000I2ANRH_C3152056.pdf",
+				"manufacturer":	"Sunway",
+				"mpn":	"SC0402F0000I2ANRH",
+				"vendor":	"JLCPCB",
+				"sku":	"SC0402F0000I2ANRH",
+				"price":	0.000357143,
+				"preferred":	false,
+				"query_properties":	{
+					"resistance":	0,
+					"tolerance":	0.01,
+					"category":	"resistor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"32Mbit SPI SOIC-8-208mil NOR FLASH ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"name":	"W25Q32JVSSIQ"
+							},
+							"field":	{
+								"name":	"sw"
+							}
+						},
+						"ref":	"U5",
+						"fileinfo":	{
+							"filename":	"components\\Winbond\\W25Q32JVSSIQ.stanza",
+							"line":	137,
+							"column":	2
+						}
+					}],
+				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_1811101814_Winbond-Elec-W25Q32JVSSIQ_C82344.pdf",
+				"manufacturer":	"Winbond",
+				"mpn":	"W25Q32JVSSIQ",
+				"vendor":	"DigiKey",
+				"sku":	"W25Q32JVSSIQ",
+				"price":	0.8,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"RES SMD 7.68KOHM 0.1% 1/10W 0603",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"fb-div"
+								}
+							},
+							"field":	{
+								"name":	"r-lo"
+							}
+						},
+						"ref":	"R6",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\voltage-divider\\src\\circuits.stanza",
+							"line":	40,
+							"column":	4
+						}
+					}],
+				"datasheet":	"https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf",
+				"manufacturer":	"PANASONIC",
+				"mpn":	"ERA-3AEB7681V",
+				"vendor":	"Arrow",
+				"sku":	"ERA-3AEB7681V",
+				"price":	0.0987,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.001,
+					"_exist":	["tcr.pos", "tcr.neg"],
+					"resistance":	7680,
+					"category":	"resistor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"CAP CER 10PF 50V NP0 0402",
+				"insts":	[{
+						"inst":	{
+							"name":	"crystal_c"
+						},
+						"ref":	"C24",
+						"fileinfo":	{
+							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
+							"line":	175,
+							"column":	2
+						}
+					}],
+				"datasheet":	"https://datasheets.avx.com/C0GNP0-Dielectric.pdf",
+				"manufacturer":	"KYOCERA AVX",
+				"mpn":	"04025A100FAT2A",
+				"vendor":	"Avnet",
+				"sku":	"04025A100FAT2A",
+				"price":	0.10965,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"6.3V 10uF X5R ±10% 0603  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C12",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C11",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C19",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C18",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Walsin-Tech-Corp-0603X106K6R3CT_C123607.pdf",
+				"manufacturer":	"WALSIN",
+				"mpn":	"0603X106K6R3CT",
+				"vendor":	"Arrow",
+				"sku":	"0603X106K6R3CT",
+				"price":	0.0429,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.1,
+					"min-rated-voltage":	1.0197,
+					"capacitance":	1.0000000000000006e-05,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"category":	"capacitor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"6.3V 470nF X5R ±10% 0201  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"rx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C35",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"rx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C34",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"rx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C31",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"rx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C30",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2212052030_Murata-Electronics-GRM033R60J474KE90D_C85926.pdf",
+				"manufacturer":	"MURATA",
+				"mpn":	"GRM033R60J474KE90D",
+				"vendor":	"Arrow",
+				"sku":	"GRM033R60J474KE90D",
+				"price":	0.0036,
+				"preferred":	false,
+				"query_properties":	{
+					"case":	["0201", "0603m", "0202", "0606m", "0204", "0510m", "Wide 0402", "0306", "0816m", "Wide 0603", "0402", "1005m", "0505", "1414m", "0508", "1220m", "Wide 0805", "0603", "1608m", "0612", "1632m", "Wide 1206", "0805", "2012m", "1111", "2828m", "1206", "3216m", "1210", "3225m", "1218", "3246m", "Wide 1812", "1225", "3263m", "Wide 2512", "1530", "3876m", "Wide 3015", "1808", "4520m", "1812", "4532m", "1825", "4564m", "1835", "4589", "Wide 3518", "5020m", "2010", "5025m", "2043", "Wide 4320", "2220", "5750m", "2225", "5763m", "2312", "6032m", "2512", "6331m", "2725", "7142m", "2728", "7142m", "Wide 2827", "2816", "2817", "7142m", "2953", "Wide 5929", "3920", "1052m"],
+					"min-capacitance":	3e-07,
+					"max-capacitance":	363000,
+					"tolerance":	0.1,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"min-rated-voltage":	6,
+					"category":	"capacitor",
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"m2_connector"
+								},
+								"index":	0
+							},
+							"field":	{
+								"name":	"sw"
+							}
+						},
+						"ref":	"J2",
+						"fileinfo":	{
+							"filename":	"components\\TE\\M.2\\1-2199230-6.stanza",
+							"line":	578,
+							"column":	2
+						}
+					}],
+				"datasheet":	"",
+				"manufacturer":	"",
+				"mpn":	"1-2199230-6",
+				"vendor":	"Arrow",
+				"sku":	"1-2199230-6",
+				"price":	1.0891,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"10V 820nF X5R ±10% 0402  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"cin-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C2",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"cin-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C1",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2407081117_YAGEO-CC0402KRX5R6BB824_C576724.pdf",
+				"manufacturer":	"YAGEO",
+				"mpn":	"CC0402KRX5R6BB824",
+				"vendor":	"JLCPCB",
+				"sku":	"CC0402KRX5R6BB824",
+				"price":	0.006685714,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.1,
+					"min-rated-voltage":	1.53,
+					"min-capacitance":	6.8000000000000048e-07,
+					"max-capacitance":	8.2000000000000051e-07,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"category":	"capacitor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"62.5mW Thick Film Resistors ±100ppm/℃ ±1% 7.68kΩ 0402  Chip Resistor - Surface Mount ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"fb-div"
+								}
+							},
+							"field":	{
+								"name":	"r-lo"
+							}
+						},
+						"ref":	"R3",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\voltage-divider\\src\\circuits.stanza",
+							"line":	40,
+							"column":	4
+						}
+					}],
+				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_1810241327_YAGEO-RC0402FR-077K68L_C155695.pdf",
+				"manufacturer":	"YAGEO",
+				"mpn":	"RC0402FR-077K68L",
+				"vendor":	"Arrow",
+				"sku":	"RC0402FR-077K68L",
+				"price":	0.053,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.01,
+					"_exist":	["tcr.pos", "tcr.neg"],
+					"resistance":	7680,
+					"category":	"resistor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"50mW Thick Film Resistors 25V ±1% ±200ppm/℃ 200kΩ 0201  Chip Resistor - Surface Mount ROHS",
+				"insts":	[{
+						"inst":	{
+							"name":	"TX_N1-R"
+						},
+						"ref":	"R23",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"TX_P1-R"
+						},
+						"ref":	"R22",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"RX_N1-R"
+						},
+						"ref":	"R21",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"RX_P1-R"
+						},
+						"ref":	"R20",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"TX_N0-R"
+						},
+						"ref":	"R19",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"TX_P0-R"
+						},
+						"ref":	"R18",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"RX_N0-R"
+						},
+						"ref":	"R17",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"RX_P0-R"
+						},
+						"ref":	"R16",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_YAGEO-RC0201FR-07200KL_C138163.pdf",
+				"manufacturer":	"YAGEO",
+				"mpn":	"RC0201FR-07200KL",
+				"vendor":	"Arrow",
+				"sku":	"RC0201FR-07200KL",
+				"price":	0.0168,
+				"preferred":	false,
+				"query_properties":	{
+					"case":	["0201", "0603m", "0202", "0606m", "0204", "0510m", "Wide 0402", "0306", "0816m", "Wide 0603", "0402", "1005m", "0505", "1414m", "0508", "1220m", "Wide 0805", "0603", "1608m", "0612", "1632m", "Wide 1206", "0805", "2012m", "1111", "2828m", "1206", "3216m", "1210", "3225m", "1218", "3246m", "Wide 1812", "1225", "3263m", "Wide 2512", "1530", "3876m", "Wide 3015", "1808", "4520m", "1812", "4532m", "1825", "4564m", "1835", "4589", "Wide 3518", "5020m", "2010", "5025m", "2043", "Wide 4320", "2220", "5750m", "2225", "5763m", "2312", "6032m", "2512", "6331m", "2725", "7142m", "2728", "7142m", "Wide 2827", "2816", "2817", "7142m", "2953", "Wide 5929", "3920", "1052m"],
+					"min-resistance":	200000,
+					"max-resistance":	242000,
+					"tolerance":	0.01,
+					"category":	"resistor",
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"50V 4.7nF X7R ±10% 0402  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"name":	"shield-term"
+							},
+							"field":	{
+								"name":	"C"
+							}
+						},
+						"ref":	"C36",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2308111716_Murata-Electronics-GRM155R71H472KA01J_C2168177.pdf",
+				"manufacturer":	"MURATA",
+				"mpn":	"GRM155R71H472KA01J",
+				"vendor":	"Arrow",
+				"sku":	"GRM155R71H472KA01J",
+				"price":	0.0029,
+				"preferred":	false,
+				"query_properties":	{
+					"capacitance":	4.7e-09,
+					"tolerance":	0.1,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"min-rated-voltage":	6,
+					"category":	"capacitor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"50mW Thick Film Resistors ±1% ±200ppm/℃ 12.1kΩ 0201  Chip Resistor - Surface Mount ROHS",
+				"insts":	[{
+						"inst":	{
+							"name":	"UREXT-R"
+						},
+						"ref":	"R14",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2311211101_YAGEO-RC0201FR-0712K1L_C474513.pdf",
+				"manufacturer":	"YAGEO",
+				"mpn":	"RC0201FR-0712K1L",
+				"vendor":	"Arrow",
+				"sku":	"RC0201FR-0712K1L",
+				"price":	0.0014,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.01,
+					"case":	["0201", "0402"],
+					"resistance":	12100,
+					"category":	"resistor",
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"null 4.7nF X7R ±5% 0402  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C10",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C17",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C3",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2201131300_Murata-Electronics-GRM155R71H472JA01D_C913548.pdf",
+				"manufacturer":	"MURATA",
+				"mpn":	"GRM155R71H472JA01D",
+				"vendor":	"Arrow",
+				"sku":	"GRM155R71H472JA01D",
+				"price":	0.0044,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.05,
+					"min-rated-voltage":	1.0197,
+					"capacitance":	4.7e-09,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"category":	"capacitor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"25MHz 18pF ±20ppm SMD-4P  Crystals ROHS",
+				"insts":	[{
+						"inst":	{
+							"name":	"crystal_25mhz"
+						},
+						"ref":	"X1",
+						"fileinfo":	{
+							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
+							"line":	174,
+							"column":	2
+						}
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2304140030_Abracon-LLC-ABMM2-25-000MHZ-D1-T_C1985419.pdf",
+				"manufacturer":	"ABRACON",
+				"mpn":	"ABMM2-25.000MHZ-D1-T",
+				"vendor":	"DigiKey",
+				"sku":	"ABMM2-25.000MHZ-D1-T",
+				"price":	1.11,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"RES SMD 7.32KOHM 0.1% 1/16W 0402",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"fb-div"
+								}
+							},
+							"field":	{
+								"name":	"r-lo"
+							}
+						},
+						"ref":	"R9",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\voltage-divider\\src\\circuits.stanza",
+							"line":	40,
+							"column":	4
+						}
+					}],
+				"datasheet":	"https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf",
+				"manufacturer":	"PANASONIC",
+				"mpn":	"ERA-2AEB7321X",
+				"vendor":	"Arrow",
+				"sku":	"ERA-2AEB7321X",
+				"price":	0.0583,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.001,
+					"_exist":	["tcr.pos", "tcr.neg"],
+					"resistance":	7320,
+					"category":	"resistor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"7.9V 14V 3.6V DFN-10(1x2.5)  ESD Protection Devices ROHS",
+				"insts":	[{
+						"inst":	{
+							"name":	"esd-prot"
+						},
+						"ref":	"U6",
+						"fileinfo":	{
+							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
+							"line":	230,
+							"column":	2
+						}
+					}],
+				"datasheet":	"https://datasheet.lcsc.com/lcsc/2302221330_Texas-Instruments-ESD224DQAR_C1981316.pdf",
+				"manufacturer":	"Texas Instruments",
+				"mpn":	"ESD224DQAR",
+				"vendor":	"Arrow",
+				"sku":	"ESD224DQAR",
+				"price":	0.4376,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"RES SMD 9.1K OHM 0.1% 1/10W 0603",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"fb-div"
+								}
+							},
+							"field":	{
+								"name":	"r-hi"
+							}
+						},
+						"ref":	"R8",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\voltage-divider\\src\\circuits.stanza",
+							"line":	39,
+							"column":	4
+						}
+					}],
+				"datasheet":	"https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf",
+				"manufacturer":	"PANASONIC",
+				"mpn":	"ERA-3AEB912V",
+				"vendor":	"Arrow",
+				"sku":	"ERA-3AEB912V",
+				"price":	0.0295,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.001,
+					"_exist":	["tcr.pos", "tcr.neg"],
+					"resistance":	9100,
+					"category":	"resistor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"50mW Thick Film Resistors ±1% ±250ppm/℃ 100kΩ 0201  Chip Resistor - Surface Mount ROHS",
+				"insts":	[{
+						"inst":	{
+							"name":	"r_100K"
+						},
+						"ref":	"R13",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2310271816_Samsung-Electro-Mechanics-RC0603F104CS_C7604168.pdf",
+				"manufacturer":	"Samsung Electro-Mechanics",
+				"mpn":	"RC0603F104CS",
+				"vendor":	"Arrow",
+				"sku":	"RC0603F104CS",
+				"price":	0.001,
+				"preferred":	false,
+				"query_properties":	{
+					"case":	["0201", "0402"],
+					"resistance":	100000,
+					"tolerance":	0.01,
+					"category":	"resistor",
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"10V 220nF X5R ±10% 0201  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C33",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C32",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C29",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-bcap"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C28",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/1811081514_Murata-Electronics-GRM033R61A224KE90D_C76936.pdf",
+				"manufacturer":	"MURATA",
+				"mpn":	"GRM033R61A224KE90D",
+				"vendor":	"Arrow",
+				"sku":	"GRM033R61A224KE90D",
+				"price":	0.0032,
+				"preferred":	false,
+				"query_properties":	{
+					"case":	["0201", "0603m", "0202", "0606m", "0204", "0510m", "Wide 0402", "0306", "0816m", "Wide 0603", "0402", "1005m", "0505", "1414m", "0508", "1220m", "Wide 0805", "0603", "1608m", "0612", "1632m", "Wide 1206", "0805", "2012m", "1111", "2828m", "1206", "3216m", "1210", "3225m", "1218", "3246m", "Wide 1812", "1225", "3263m", "Wide 2512", "1530", "3876m", "Wide 3015", "1808", "4520m", "1812", "4532m", "1825", "4564m", "1835", "4589", "Wide 3518", "5020m", "2010", "5025m", "2043", "Wide 4320", "2220", "5750m", "2225", "5763m", "2312", "6032m", "2512", "6331m", "2725", "7142m", "2728", "7142m", "Wide 2827", "2816", "2817", "7142m", "2953", "Wide 5929", "3920", "1052m"],
+					"min-capacitance":	1.35e-07,
+					"max-capacitance":	265000,
+					"tolerance":	0.1,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"min-rated-voltage":	6,
+					"category":	"capacitor",
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"25V 6.8uF X7R ±10% 1210  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"cin-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C16",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"cin-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C15",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2304140030_TDK-CGA6P3X7R1E685K250AB_C2179267.pdf",
+				"manufacturer":	"TDK Corp",
+				"mpn":	"CGA6P3X7R1E685K250AB",
+				"vendor":	"Arrow",
+				"sku":	"CGA6P3X7R1E685K250AB",
+				"price":	0.1563,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.1,
+					"min-rated-voltage":	1.53,
+					"min-capacitance":	5.6000000000000031e-06,
+					"max-capacitance":	6.8000000000000035e-06,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"category":	"capacitor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"6.3V 470nF X5R ±10% 0402  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"cin-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C9",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"cin-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C8",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2304140030_Samsung-Electro-Mechanics-CL05A474KQ5NNNC_C364319.pdf",
+				"manufacturer":	"Samsung Electro-Mechanics",
+				"mpn":	"CL05A474KQ5NNNC",
+				"vendor":	"Arrow",
+				"sku":	"CL05A474KQ5NNNC",
+				"price":	0.0092,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.1,
+					"min-rated-voltage":	1.53,
+					"min-capacitance":	3.9000000000000029e-07,
+					"max-capacitance":	4.7000000000000037e-07,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"category":	"capacitor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"50V 1uF X5R ±10% 0402  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"name":	"c_1uF50V"
+						},
+						"ref":	"C25",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2201180430_Murata-Electronics-GRM155R61H105KE05D_C1518208.pdf",
+				"manufacturer":	"MURATA",
+				"mpn":	"GRM155R61H105KE05D",
+				"vendor":	"DigiKey",
+				"sku":	"GRM155R61H105KE05D",
+				"price":	0.1,
+				"preferred":	false,
+				"query_properties":	{
+					"case":	["0201", "0402"],
+					"rated-voltage":	50,
+					"capacitance":	1e-06,
+					"tolerance":	0.1,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"category":	"capacitor",
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"CAP CER 1.5PF 25V NP0 0201",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-coupler"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"C38",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"tx-coupler"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"C37",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}],
+				"datasheet":	"https://datasheets.avx.com/C0GNP0-Dielectric.pdf",
+				"manufacturer":	"KYOCERA AVX",
+				"mpn":	"02013A1R5BAT2A",
+				"vendor":	"Mouser",
+				"sku":	"02013A1R5BAT2A",
+				"price":	0.1,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"10V 100nF X5R ±20% 0201  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"name":	"c_22uF6V3-5-C"
+						},
+						"ref":	"C42",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"c_22uF6V3-4-C"
+						},
+						"ref":	"C41",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"c_22uF6V3-3-C"
+						},
+						"ref":	"C40",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"c_22uF6V3-2-C"
+						},
+						"ref":	"C39",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"c_22uF6V3-1-C"
+						},
+						"ref":	"C23",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"c_22uF6V3-0-C"
+						},
+						"ref":	"C22",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2304140030_Murata-Electronics-GRM033R61A104ME15D_C408130.pdf",
+				"manufacturer":	"MURATA",
+				"mpn":	"GRM033R61A104ME15D",
+				"vendor":	"Arrow",
+				"sku":	"GRM033R61A104ME15D",
+				"price":	0.0018,
+				"preferred":	false,
+				"query_properties":	{
+					"capacitance":	1e-07,
+					"case":	["0201", "0402", "0805"],
+					"rated-voltage":	6.3,
+					"category":	"capacitor",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	1,
+					"name":	"Auto Selected"
+				},
+				"description":	"10V 10uF X5R ±10% 0603  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C5",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"cout-circ"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"C4",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL10A106KP8NNNC_C19702.pdf",
+				"manufacturer":	"Samsung Electro-Mechanics",
+				"mpn":	"CL10A106KP8NNNC",
+				"vendor":	"Arrow",
+				"sku":	"CL10A106KP8NNNC",
+				"price":	0.024,
+				"preferred":	false,
+				"query_properties":	{
+					"tolerance":	0.1,
+					"min-rated-voltage":	0.32445,
+					"capacitance":	1.0000000000000006e-05,
+					"type":	"ceramic",
+					"temperature-coefficient.code":	["X7R", "X5R"],
+					"category":	"capacitor",
+					"case":	["0402", "0603", "0805", "1210"],
+					"mounting":	"smd",
+					"min-stock":	1,
+					"_sellers":	["Arrow", "Avnet", "DigiKey", "JLCPCB", "LCSC", "Mouser", "Newark"]
+				}
+			}, {
+				"status":	{
+					"code":	5,
+					"name":	"Potential Alternate Vendors"
+				},
+				"description":	"USB4/Thunderbolt to PCIe Gen4 x4 Controller for Multi-PCIe Devices",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"name":	"asm2464pdx"
+							},
+							"field":	{
+								"name":	"sw"
+							}
+						},
+						"ref":	"U4",
+						"fileinfo":	{
+							"filename":	"components\\Asmedia\\ASM2464PDX.stanza",
+							"line":	511,
+							"column":	2
+						}
+					}],
+				"datasheet":	null,
+				"manufacturer":	null,
+				"mpn":	"ASM2464PDX",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	5,
+					"name":	"Potential Alternate Vendors"
+				},
+				"description":	"Step-down type Adjustable 3.8V~30V 3A 0.8V~22V SOT-583  DC-DC Converters ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"IC"
+								}
+							},
+							"field":	{
+								"name":	"SW"
+							}
+						},
+						"ref":	"U2",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\TI-vreg\\src\\components\\TPS6293x.stanza",
+							"line":	300,
+							"column":	4
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"IC"
+								}
+							},
+							"field":	{
+								"name":	"SW"
+							}
+						},
+						"ref":	"U3",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\TI-vreg\\src\\components\\TPS6293x.stanza",
+							"line":	300,
+							"column":	4
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"IC"
+								}
+							},
+							"field":	{
+								"name":	"SW"
+							}
+						},
+						"ref":	"U1",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\TI-vreg\\src\\components\\TPS6293x.stanza",
+							"line":	300,
+							"column":	4
+						}
+					}],
+				"datasheet":	"https://www.ti.com/lit/ds/symlink/tps62932.pdf",
+				"manufacturer":	"Texas Instruments",
+				"mpn":	"TPS62932DRL",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	5,
+					"name":	"Potential Alternate Vendors"
+				},
+				"description":	"Inductor, 1.5uH, 0.017 Ω DC",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-3v3"
+									}
+								},
+								"field":	{
+									"name":	"L"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"L2",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v8"
+									}
+								},
+								"field":	{
+									"name":	"L"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"L3",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"ref":	{
+										"name":	"power-circuit"
+									},
+									"field":	{
+										"name":	"DCDC-1v05"
+									}
+								},
+								"field":	{
+									"name":	"L"
+								}
+							},
+							"field":	{
+								"name":	"elem"
+							}
+						},
+						"ref":	"L1",
+						"fileinfo":	null
+					}],
+				"datasheet":	"https://www.yuden.co.jp/productdata/catalog/wound04_e.pdf",
+				"manufacturer":	"Taiyo Yuden",
+				"mpn":	"NRS5040T1R5NMGJV",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	null
+			}, {
+				"status":	{
+					"code":	4,
+					"name":	"Not Enough Stock"
+				},
+				"description":	" WLL-2-3  ESD Protection Devices ROHS",
+				"insts":	[{
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"lane-esd-rx"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"U14",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"lane-esd-rx"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"U13",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"lane-esd-tx"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"U12",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"lane-esd-tx"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"U11",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"lane-esd-rx"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"U10",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"lane-esd-rx"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"U9",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"lane-esd-tx"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	1
+						},
+						"ref":	"U8",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}, {
+						"inst":	{
+							"ref":	{
+								"ref":	{
+									"name":	"lane-esd-tx"
+								},
+								"field":	{
+									"name":	"c"
+								}
+							},
+							"index":	0
+						},
+						"ref":	"U7",
+						"fileinfo":	{
+							"filename":	"C:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\.slm\\deps\\jsl\\src\\si\\couplers.stanza",
+							"line":	35,
+							"column":	2
+						}
+					}],
+				"datasheet":	"https://www.lcsc.com/datasheet/lcsc_datasheet_2005291706_Infineon-Technologies-ESD132-B1-W0201-E6327_C535164.pdf",
+				"manufacturer":	"Infineon",
+				"mpn":	"ESD132-B1-W0201 E6327",
+				"vendor":	null,
+				"sku":	null,
+				"price":	null,
+				"preferred":	false,
+				"query_properties":	null
+			}],
+		"entries":	[{
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}, {
+			}]
+	}
+}
