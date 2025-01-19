@@ -46,11 +46,11 @@ public val filled-via = jlc-pcb/stackups/vias/tented-filled-std-via
 
 ; Make all vias available to the design
 public val available-vias = [
+  via-cost3        ; 0.30mm pad / 0.15mm hole
   std-via          ; 0.45mm pad / 0.30mm hole
+  filled-via       ; 0.45mm pad / 0.30mm hole (tented & filled)
   via-cost1        ; 0.40mm pad / 0.25mm hole
   via-cost2        ; 0.35mm pad / 0.20mm hole
-  via-cost3        ; 0.30mm pad / 0.15mm hole
-  filled-via       ; 0.45mm pad / 0.30mm hole (tented & filled)
 ]
 
 

@@ -23,7 +23,7 @@ defpackage main :
 
 ; Define the shape/size of the board
 val board-shape = RoundedRectangle(100.0, 100.0, 0.25)
-val VBUS-shape = RoundedRectangle(100.0, 100.0, 0.25)
+val VBUS-shape = Rectangle(50.0, 50.0, loc(0.0, 0.0))
 val P3V3-shape = RoundedRectangle(100.0, 100.0, 0.25)
 val P1V8-shape = RoundedRectangle(100.0, 100.0, 0.25)
 val P1V05-shape = RoundedRectangle(100.0, 100.0, 0.25)
@@ -49,22 +49,22 @@ pcb-module ASM001-design :
 
 
   geom(VBUS) :
-    copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  board-shape
-  geom(GND) :
-    copper-pour(LayerIndex(1, Top), isolate = 0.127, rank = 1) =  board-shape
-    copper-pour(LayerIndex(3, Top), isolate = 0.127, rank = 1) =  board-shape
-    copper-pour(LayerIndex(4, Top), isolate = 0.127, rank = 1) =  board-shape
-  ; geom(P3V3) :
-  ;   copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  board-shape
-  ; geom(P1V8) :
-  ;   copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  board-shape
-  ; geom(P1V05) :
-  ;   copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  board-shape
+    copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  VBUS-shape
+  ; geom(GND) :
+  ;   copper-pour(LayerIndex(1, Top), isolate = 0.127, rank = 1) =  board-shape
+  ;   copper-pour(LayerIndex(3, Top), isolate = 0.127, rank = 1) =  board-shape
+  ;   copper-pour(LayerIndex(4, Top), isolate = 0.127, rank = 1) =  board-shape
+  ; ; geom(P3V3) :
+  ; ;   copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  board-shape
+  ; ; geom(P1V8) :
+  ; ;   copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  board-shape
+  ; ; geom(P1V05) :
+  ; ;   copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  board-shape
 
   geom(GND) :
     copper-pour(LayerIndex(1, Top), isolate = 0.127) =  board-shape
-    copper-pour(LayerIndex(3, Top), isolate = 0.127) =  board-shape
-    copper-pour(LayerIndex(4, Top), isolate = 0.127) =  board-shape
+  ;   copper-pour(LayerIndex(3, Top), isolate = 0.127) =  board-shape
+  ;   copper-pour(LayerIndex(4, Top), isolate = 0.127) =  board-shape
 
 
   inst asm2464pdx : ASM001/components/Asmedia/ASM2464PDX/module
@@ -133,7 +133,7 @@ pcb-module ASM001-design :
   ; 3 x 10UF/6.3V
   ; 4 x 0.22UF/10v
 
-  for i in 0 to 2 do :
+  for i in 0 to 6 do :
     val n = to-string("c_22uF6V3-%_-C" % [i])
     ; val c = insert-capacitor(
     ;   asm2464pdx.VDD asm2464pdx.GND
@@ -141,9 +141,12 @@ pcb-module ASM001-design :
     ;   capacitance = 2.2e-6
     ;   short-trace? = true
     ; )
+    
+    ;;;;;;;;; decoupling caps
     val c = insert-bypass(asm2464pdx.sw.VDD[i], GND, inst-name = n, qb = CapacitorQuery(case = ["0201", "0402", "0805"],
                               capacitance = 22.0e-6,
                               rated-voltage = 6.3))
+    
     place(c) at loc(2.0, 0.0, 90.0) on Bottom
 
   
@@ -333,9 +336,8 @@ pcb-module ASM001-design :
 
   
  
-  val m2_connectors = 1
+  val m2_connectors = 4
   inst m2_connector : ASM001/components/TE_1-2199230-6/module[m2_connectors]
-  place(m2_connector[0].sw) at loc(25.0, -10.0, 90.0) on Bottom
 
   val version = PCIE-V4
   val trace-imped = pcie-get-trace-impedance(version)
@@ -350,6 +352,9 @@ pcb-module ASM001-design :
   require src-ep : pcie(1) from asm2464pdx
 
   for i in 0 to m2_connectors :
+    val y-loc = -36.0 - (to-double(i) * -24.0)
+    place(m2_connector[i].sw) at loc(35.0, y-loc, 90.0) on Bottom
+
     net (m2_connector[i].gnd GND)
 
     require dst-ep : pcie(1) from m2_connector[i]
@@ -390,9 +395,9 @@ set-main-module(ASM001-design)
 
 ; View the results
 ; take a look at the BOM that was generated
-view-bom(BOM-STD)
+; view-bom(BOM-STD)
 ; examine the schematic that was auto-generated
-view-schematic()
+; view-schematic()
 ; view the board that was created
 view-board()
 

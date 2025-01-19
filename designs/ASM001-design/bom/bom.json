@@ -532,8 +532,8 @@
 						},
 						"ref":	"C24",
 						"fileinfo":	{
-							"filename":	"c:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\main.stanza",
-							"line":	174,
+							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
+							"line":	175,
 							"column":	2
 						}
 					}],
@@ -1144,8 +1144,8 @@
 						},
 						"ref":	"X1",
 						"fileinfo":	{
-							"filename":	"c:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\main.stanza",
-							"line":	173,
+							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
+							"line":	174,
 							"column":	2
 						}
 					}],
@@ -1218,8 +1218,8 @@
 						},
 						"ref":	"U6",
 						"fileinfo":	{
-							"filename":	"c:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\main.stanza",
-							"line":	229,
+							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
+							"line":	230,
 							"column":	2
 						}
 					}],
@@ -1636,6 +1636,30 @@
 				},
 				"description":	"10V 100nF X5R ±20% 0201  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
 				"insts":	[{
+						"inst":	{
+							"name":	"c_22uF6V3-5-C"
+						},
+						"ref":	"C42",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"c_22uF6V3-4-C"
+						},
+						"ref":	"C41",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"c_22uF6V3-3-C"
+						},
+						"ref":	"C40",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"c_22uF6V3-2-C"
+						},
+						"ref":	"C39",
+						"fileinfo":	null
+					}, {
 						"inst":	{
 							"name":	"c_22uF6V3-1-C"
 						},
@@ -2131,10 +2155,10 @@
 			"value":	35
 		}, {
 			"name":	"Components",
-			"value":	79
+			"value":	83
 		}, {
 			"name":	"Cost",
-			"value":	"$6.64"
+			"value":	"$6.65"
 		}],
 	"is_update":	false,
 	"old_bom":	{
@@ -2628,8 +2652,8 @@
 						},
 						"ref":	"C24",
 						"fileinfo":	{
-							"filename":	"c:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\main.stanza",
-							"line":	170,
+							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
+							"line":	175,
 							"column":	2
 						}
 					}],
@@ -3240,8 +3264,8 @@
 						},
 						"ref":	"X1",
 						"fileinfo":	{
-							"filename":	"c:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\main.stanza",
-							"line":	169,
+							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
+							"line":	174,
 							"column":	2
 						}
 					}],
@@ -3314,8 +3338,8 @@
 						},
 						"ref":	"U6",
 						"fileinfo":	{
-							"filename":	"c:\\Users\\john.JOHN-WIN11\\Documents\\GitHub\\JITx-ASM2464PDX_design\\main.stanza",
-							"line":	225,
+							"filename":	"c:\\\\\\\\Users\\\\\\\\john.JOHN-WIN11\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\JITx-ASM2464PDX_design\\\\\\\\main.stanza",
+							"line":	230,
 							"column":	2
 						}
 					}],
@@ -3732,6 +3756,30 @@
 				},
 				"description":	"10V 100nF X5R ±20% 0201  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
 				"insts":	[{
+						"inst":	{
+							"name":	"c_22uF6V3-5-C"
+						},
+						"ref":	"C42",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"c_22uF6V3-4-C"
+						},
+						"ref":	"C41",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"c_22uF6V3-3-C"
+						},
+						"ref":	"C40",
+						"fileinfo":	null
+					}, {
+						"inst":	{
+							"name":	"c_22uF6V3-2-C"
+						},
+						"ref":	"C39",
+						"fileinfo":	null
+					}, {
 						"inst":	{
 							"name":	"c_22uF6V3-1-C"
 						},

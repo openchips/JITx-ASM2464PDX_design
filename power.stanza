@@ -49,7 +49,7 @@ public pcb-module circuit :
   val cxt-1v8 = power-systems/DC-DC/buck/BuckConstraints(
   v-in = min-max(4.9, 5.1)
   v-out = 1.8 +/- (3 %)
-  v-in-ripple-max = 0.050
+  v-in-ripple-max = 0.075
   v-out-ripple-max = 0.030
   i-out = 2.0 +/- (20 %)
   freq = 1.2e6
