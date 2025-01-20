@@ -19,8 +19,8 @@ pcb-landpattern lp :
   pad p[1] : rectangle-smd-pad at loc(-0.200, 1.13686837721616e-013, 270.000) on Top
   pad p[2] : rectangle-smd-pad at loc(0.200, 1.13686837721616e-013, 270.000) on Top
 
-  layer(Silkscreen("F-SilkS", Top)) = Text(">REF", 0.5, W, loc(-0.750, 2.087))
-  layer(CustomLayer("Fab", Top)) = Text(">VALUE", 0.5, W, loc(-0.750, 1.087))
+  ; layer(Silkscreen("F-SilkS", Top)) = Text(">REF", 0.5, W, loc(-0.750, 2.087))
+  ; layer(CustomLayer("Fab", Top)) = Text(">VALUE", 0.5, W, loc(-0.750, 1.087))
   layer(Silkscreen("F-SilkS", Top)) = Line(0.102, [Point(-0.500, 0.330), Point(-0.500, -0.330)])
   layer(Silkscreen("F-SilkS", Top)) = Line(0.102, [Point(-0.500, 0.330), Point(0.500, 0.330)])
   layer(Silkscreen("F-SilkS", Top)) = Line(0.102, [Point(-0.500, -0.330), Point(0.500, -0.330)])

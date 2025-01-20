@@ -14,6 +14,10 @@ defpackage ASM001/helpers :
 ; setup-part-search
 ; ==================
 jsl/design/settings/OPERATING-TEMPERATURE = min-max(0.0 50.0)
+jsl/design/settings/APPROVED-DISTRIBUTOR-LIST = [
+  JLCPCB
+]
+;  LCSC
 
 
 public var R-query
@@ -87,7 +91,7 @@ public defn setup-design (name:String, board-shape:Shape
                           signal-shrink:Double = ?
                           vendors:Tuple<String|AuthorizedVendor> = jsl/design/settings/APPROVED-DISTRIBUTOR-LIST
                           quantity:Int = jsl/design/settings/DESIGN-QUANTITY
-                          paper-size:Paper = ANSI-B
+                          paper-size:Paper = ANSI-A
                           ) :
   set-current-design(name)
   setup-part-query(vendors = vendors)
