@@ -80,12 +80,12 @@ pcb-module ASM001-design :
   net (usb4_type_c.VBUS VBUS)
   net (usb4_type_c.GND GND)
 
-  place(usb4_type_c) at loc(-45.0, 15.0, 270.0) on Top
+  place(usb4_type_c.sw) at loc(-45.0, 15.0, 270.0) on Top
 
   inst W25Q32JVSSIQ : ASM001/components/Winbond/W25Q32JVSSIQ/module
 
   net (P3V3 W25Q32JVSSIQ.VDD)
-
+  net (GND W25Q32JVSSIQ.GND)
 
   ;;;;; generic component types
   val r_4k7 = create-resistor(R-query, 
@@ -277,10 +277,10 @@ pcb-module ASM001-design :
     inst lane-esd-rx : dp-coupler(lane-esd-cap)
     
     ; require tx-esd:dual-pair from esd-lanes
-    topo-pair(usb4_type_c.USB-C.lane[i].TX => lane-esd-tx => tx-bcap => usb4_type_c.USB-C.lane[i].TX) ;tx-bcap => 
+    topo-pair(usb4_type_c.USB-C.lane[i].TX => lane-esd-tx => tx-bcap => asm2464pdx_usb-c.lane[i].TX) ;tx-bcap => 
 
     ; require rx-esd:dual-pair from esd-lanes
-    topo-pair(usb4_type_c.USB-C.lane[i].RX => lane-esd-rx => rx-bcap => usb4_type_c.USB-C.lane[i].RX) ;=> rx-bcap
+    topo-pair(usb4_type_c.USB-C.lane[i].RX => lane-esd-rx => rx-bcap => asm2464pdx_usb-c.lane[i].RX) ;=> rx-bcap
 
     ; RX bleed resistors
     insert-pulldown(asm2464pdx_usb-c.lane[i].RX.P, GND, 
@@ -345,13 +345,13 @@ pcb-module ASM001-design :
 
   val pcie-b-cap = block-cap(220.0e-9)
 
-  ; Construct a typical passive connector setup
+    ; Construct a typical connector setup
   ;  for a 4x 1 lane configuration. This means a
-  ;  straight through `tx => tx` and `rx => rx`
+  ;  straight through `tx => bcap => tx` and `rx => rx`
   ;  configuration.
-  require src-ep : pcie(1) from asm2464pdx
 
   for i in 0 to m2_connectors :
+    require src-ep : pcie(1) from asm2464pdx ; let's require the pcie(1) from the ASM2464PDX module for each M.2 connector
     val y-loc = -36.0 - (to-double(i) * -24.0)
     place(m2_connector[i].sw) at loc(35.0, y-loc, 90.0) on Bottom
 
