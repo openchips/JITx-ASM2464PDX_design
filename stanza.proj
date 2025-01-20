@@ -13,7 +13,6 @@ package ASM001/common/components defined-in "common/components.stanza"
 package ASM001/components/USB/USBTypeC defined-in "components/Generic/USBTypeC.stanza"
 package ASM001/components/Asmedia/ASM2464PDX defined-in "components/Asmedia/ASM2464PDX.stanza"
 
-
 package ASM001/components/Infineon/ESD132-B1-W0201-E6327 defined-in "components/Infineon/ESD132-B1-W0201-E6327.stanza"
 package ASM001/components/Winbond/W25Q32JVSSIQ defined-in "components/Winbond/W25Q32JVSSIQ.stanza"
 
