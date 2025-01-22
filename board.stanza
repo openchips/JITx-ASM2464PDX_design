@@ -40,12 +40,14 @@ public val std-via = jlc-pcb/stackups/vias/std-via-preferred
 public val via-cost1 = jlc-pcb/stackups/vias/multi-via-cost+1-preferred
 public val via-cost2 = jlc-pcb/stackups/vias/multi-via-cost+2-preferred
 public val via-cost3 = jlc-pcb/stackups/vias/multi-via-cost+3-preferred
+public val filled-in-pad-via-cost3 = jlc-pcb/stackups/vias/filled-in-pad-via-cost+3-preferred
 
 ; Via for components that require via-in-pad
 public val filled-via = jlc-pcb/stackups/vias/tented-filled-std-via
 
 ; Make all vias available to the design
 public val available-vias = [
+  filled-in-pad-via-cost3,
   via-cost3        ; 0.30mm pad / 0.15mm hole
   std-via          ; 0.45mm pad / 0.30mm hole
   filled-via       ; 0.45mm pad / 0.30mm hole (tented & filled)

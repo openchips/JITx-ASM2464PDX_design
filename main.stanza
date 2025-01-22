@@ -22,15 +22,18 @@ defpackage main :
 
 
 ; Define the shape/size of the board
+val board-size = Dims(100.0, 100.0) 
 val board-shape = RoundedRectangle(100.0, 100.0, 0.25)
-val VBUS-shape = Rectangle(50.0, 50.0, loc(0.0, 0.0))
+val VBUS-shape = Rectangle(100.0 / 2.0, 100.0 / 2.0, loc(0.0, 0.0))
 val P3V3-shape = RoundedRectangle(100.0, 100.0, 0.25)
 val P1V8-shape = RoundedRectangle(100.0, 100.0, 0.25)
 val P1V05-shape = RoundedRectangle(100.0, 100.0, 0.25)
 
 ; Module to run as a design
 pcb-module ASM001-design :
-
+  port gnd
+  port vbus
+  
   val R-query = get-default-resistor-query()
   val C-query = get-default-capacitor-query()
   
@@ -38,20 +41,24 @@ pcb-module ASM001-design :
   inst power-circuit : ASM001/module/power/circuit
   place(power-circuit) at loc(-30.0, 35.0) on Top
 
-  net VBUS (power-circuit.vbus.V+)
-  net GND (power-circuit.vbus.V- power-circuit.rail-3v3.V- power-circuit.rail-1v8.V- power-circuit.rail-1v05.V-)
+  inst asm2464pdx : ASM001/components/Asmedia/ASM2464PDX/module
+  place(asm2464pdx) at loc(0.0, 0.0, 0.0) on Top
+  place(asm2464pdx.sw) at loc(0.0, 0.0, 0.0) on Top
 
-  net P3V3 (power-circuit.rail-3v3.V+)
-  net P1V8 (power-circuit.rail-1v8.V+)
-  net P1V05 (power-circuit.rail-1v05.V+)
+  ; net VBUS (power-circuit.vbus.V+ asm2464pdx.VBUS)
+  ; net GND (power-circuit.vbus.V- power-circuit.rail-3v3.V- power-circuit.rail-1v9.V- power-circuit.rail-1v13.V- asm2464pdx.GND)
 
+  net VBUS (vbus asm2464pdx.vbus)
+  net GND (gnd asm2464pdx.gnd)
 
-
+  net P3V3 (power-circuit.rail-3v3.V+ asm2464pdx.vcch); asm2464pdx.VCCA33)
+  net P1V9 (power-circuit.rail-1v9.V+ asm2464pdx.vccl)
+  net P1V13 (power-circuit.rail-1v13.V+ asm2464pdx.vdd)
 
   geom(VBUS) :
     copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  VBUS-shape
-  ; geom(GND) :
-  ;   copper-pour(LayerIndex(1, Top), isolate = 0.127, rank = 1) =  board-shape
+  geom(GND) :
+    copper-pour(LayerIndex(1, Top), isolate = 0.127, rank = 1) =  board-shape
   ;   copper-pour(LayerIndex(3, Top), isolate = 0.127, rank = 1) =  board-shape
   ;   copper-pour(LayerIndex(4, Top), isolate = 0.127, rank = 1) =  board-shape
   ; ; geom(P3V3) :
@@ -61,19 +68,22 @@ pcb-module ASM001-design :
   ; ; geom(P1V05) :
   ; ;   copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  board-shape
 
-  geom(GND) :
-    copper-pour(LayerIndex(1, Top), isolate = 0.127) =  board-shape
+  ; geom(GND) :
+    ; copper-pour(LayerIndex(1, Top), isolate = 0.127) =  board-shape
   ;   copper-pour(LayerIndex(3, Top), isolate = 0.127) =  board-shape
   ;   copper-pour(LayerIndex(4, Top), isolate = 0.127) =  board-shape
 
 
-  inst asm2464pdx : ASM001/components/Asmedia/ASM2464PDX/module
-  net (VBUS asm2464pdx.VBUS)
-  net (P3V3 asm2464pdx.VCCH asm2464pdx.VCCA33)
-  net (P1V8 asm2464pdx.VCCL)
-  net (P1V05 asm2464pdx.VDD)
+  ;;;;;;;;;;;;;;; DEL
+  ; inst asm2464pdx : ASM001/components/Asmedia/ASM2464PDX/module
+  ; net (VBUS asm2464pdx.VBUS)
+  ; net (P3V3 asm2464pdx.VCCH asm2464pdx.VCCA33)
+  ; net (P1V8 asm2464pdx.VCCL)
+  ; net (P1V05 asm2464pdx.VDD)
 
-  place(asm2464pdx.sw) at loc(0.0, 0.0, 0.0) on Top
+  ; place(asm2464pdx.sw) at loc(0.0, 0.0, 0.0) on Top
+  ;;;;;;;;;;;;;;; DEL
+
 
   inst usb4_type_c : ASM001/components/USB/USBTypeC/circuit
 
@@ -109,32 +119,32 @@ pcb-module ASM001-design :
 
   ;; ASM2464PDX bypass caps
   
-  val c_22uF6V3 = create-capacitor(C-query, 
-                              case = ["0201", "0402", "0805"],
-                              capacitance = 22.0e-6,
-                              rated-voltage = 6.3) ; 22uF, 6.3V
+  ; val c_22uF6V3 = create-capacitor(C-query, 
+  ;                             case = ["0201", "0402", "0805"],
+  ;                             capacitance = 22.0e-6,
+  ;                             rated-voltage = 6.3) ; 22uF, 6.3V
   
-  val c_10uF6V3 = create-capacitor(C-query, 
-                              case = ["0201", "0402", "0805"], 
-                              capacitance = 10.0e-6,
-                              rated-voltage = 6.3) ; 10uF, 6.3V
+  ; val c_10uF6V3 = create-capacitor(C-query, 
+  ;                             case = ["0201", "0402", "0805"], 
+  ;                             capacitance = 10.0e-6,
+  ;                             rated-voltage = 6.3) ; 10uF, 6.3V
 
-  val c_2u2F6V3 = create-capacitor(C-query, 
-                              case = ["0201"], 
-                              capacitance = 2.2e-6,
-                              rated-voltage = 6.3) ; 2.2uF, 6.3V
+  ; val c_2u2F6V3 = create-capacitor(C-query, 
+  ;                             case = ["0201"], 
+  ;                             capacitance = 2.2e-6,
+  ;                             rated-voltage = 6.3) ; 2.2uF, 6.3V
 
-  val c_0u22F6V3 = create-capacitor(C-query, 
-                              case = ["0201"], 
-                              capacitance = 0.22e-6,
-                              rated-voltage = 10.0) ; 0.22uF, 10V 
+  ; val c_0u22F6V3 = create-capacitor(C-query, 
+  ;                             case = ["0201"], 
+  ;                             capacitance = 0.22e-6,
+  ;                             rated-voltage = 10.0) ; 0.22uF, 10V 
   ; 1.05v
   ; 11 x 22UF/6.3V
   ; 3 x 10UF/6.3V
   ; 4 x 0.22UF/10v
 
-  for i in 0 to 6 do :
-    val n = to-string("c_22uF6V3-%_-C" % [i])
+  ; for i in 0 to 6 do :
+  ;   val n = to-string("c_22uF6V3-%_-C" % [i])
     ; val c = insert-capacitor(
     ;   asm2464pdx.VDD asm2464pdx.GND
     ;   c_22uF6V3
@@ -143,11 +153,11 @@ pcb-module ASM001-design :
     ; )
     
     ;;;;;;;;; decoupling caps
-    val c = insert-bypass(asm2464pdx.sw.VDD[i], GND, inst-name = n, qb = CapacitorQuery(case = ["0201", "0402", "0805"],
-                              capacitance = 22.0e-6,
-                              rated-voltage = 6.3))
+    ; val c = insert-bypass(asm2464pdx.sw.VDD[i], GND, inst-name = n, qb = CapacitorQuery(case = ["0201", "0402", "0805"],
+    ;                           capacitance = 22.0e-6,
+    ;                           rated-voltage = 6.3))
     
-    place(c) at loc(2.0, 0.0, 90.0) on Bottom
+    ; place(c) at loc(2.0, 0.0, 90.0) on Bottom
 
   
 
@@ -162,12 +172,12 @@ pcb-module ASM001-design :
 
   ;; ASM2464PDX SPI memory
   net (asm2464pdx.spi W25Q32JVSSIQ.spi)
-  insert-pullup(W25Q32JVSSIQ.sw.SPI_IO2, asm2464pdx.VCCH,
+  insert-pullup(W25Q32JVSSIQ.sw.SPI_IO2, asm2464pdx.vcch,
                   elem-type = r_4k7,
                   inst-name? = to-string("spi_wp#-R"),
                   make-public = true)
 
-  insert-pullup(W25Q32JVSSIQ.sw.SPI_IO3, asm2464pdx.VCCH,
+  insert-pullup(W25Q32JVSSIQ.sw.SPI_IO3, asm2464pdx.vcch,
                   elem-type = r_4k7,
                   inst-name? = to-string("spi_hold#-R"),
                   make-public = true)   
@@ -178,45 +188,42 @@ pcb-module ASM001-design :
   net (crystal_25mhz.GND0 GND)
   net (crystal_25mhz.GND1 GND)
 
-  net (asm2464pdx.XI crystal_25mhz.p[1])
-  net (asm2464pdx.XO crystal_25mhz.p[3])
-
-  net (asm2464pdx.XI crystal_c.p[1])
-  net (asm2464pdx.XO crystal_c.p[2])
+  net (asm2464pdx.xi crystal_25mhz.p[1] crystal_c.p[1])
+  net (asm2464pdx.xo crystal_25mhz.p[3] crystal_c.p[2])
 
   ; ASM2464PDX config straps
 
-  insert-pullup(asm2464pdx.sw.UART_TX, asm2464pdx.VCCH,
+  insert-pullup(asm2464pdx.sw.UART_TX, asm2464pdx.vcch,
                     elem-type = r_4k7,
                     inst-name? = to-string("uart_tx-R"),
                     make-public = true)
 
   ;; RST# RC pull-up
-  insert-pullup(asm2464pdx.RST#, asm2464pdx.VCCH,
+  insert-pullup(asm2464pdx.rst#, asm2464pdx.vcch,
                     elem-type = r_100K,
                     inst-name? = to-string("r_100K"),
                     make-public = true)
 
-  insert-pulldown(asm2464pdx.RST#, GND,
+  insert-pulldown(asm2464pdx.rst#, GND,
                     elem-type = c_1uF50V,
                     inst-name? = to-string("c_1uF50V"),
                     make-public = true)
 
-  insert-pulldown(asm2464pdx.UREXT, GND,
+  insert-pulldown(asm2464pdx.urext, GND,
                     elem-type = r_12k1,
                     inst-name? = to-string("UREXT-R"),
                     make-public = true)
 
   
-  insert-pulldown(asm2464pdx.TEST_EN, GND,
+  insert-pulldown(asm2464pdx.test_en, GND,
                     elem-type = r_4k7,
                     inst-name? = to-string("TEST_EN-R"),
                     make-public = true)
 
   require asm2464pdx_usb-c : usb-c(2) from asm2464pdx
 
-  net (usb4_type_c.VBUS asm2464pdx.VBUS)
-  net (usb4_type_c.GND asm2464pdx.GND)
+  net (usb4_type_c.VBUS asm2464pdx.vbus)
+  net (usb4_type_c.GND asm2464pdx.gnd)
 
   net (usb4_type_c.USB-C.cc[0], asm2464pdx_usb-c.cc[0])
   net (usb4_type_c.USB-C.cc[1], asm2464pdx_usb-c.cc[1])
@@ -381,8 +388,8 @@ pcb-module ASM001-design :
   symbol(GND) = GND-SYMB
   symbol(VBUS) = PWR-SYMB
   symbol(P3V3) = PWR-SYMB
-  symbol(P1V8) = PWR-SYMB
-  symbol(P1V05) = PWR-SYMB
+  symbol(P1V9) = PWR-SYMB
+  symbol(P1V13) = PWR-SYMB
 
 ; Set the :
 ;     design-name     - a directory with this name will be created in the "designs" directory
@@ -401,4 +408,5 @@ set-main-module(ASM001-design)
 ; view the board that was created
 view-board()
 
+export-to-cad()
 

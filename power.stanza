@@ -9,10 +9,6 @@ defpackage ASM001/module/power :
   import jsl
   import jsl/symbols/net-symbols
 
-  import ASM001/board
-  
-  ; import ASM001/components/headers
-
   import TI-vreg/components/TPS6293x
 
 ; Module to provide the required power supplies for the ASM2464PDX
@@ -20,56 +16,56 @@ public pcb-module circuit :
   ; define some pins/ports
   port vbus : power
   port rail-3v3 : power
-  port rail-1v8 : power
-  port rail-1v05 : power
+  port rail-1v9 : power
+  port rail-1v13 : power
 
   val R-query = get-default-resistor-query()
   val C-query = get-default-capacitor-query()
 
-  ; ; 1.05v reg 2a/3a/4a
-  val cxt-1v05 = power-systems/DC-DC/buck/BuckConstraints(
+  ; ; 1.13v reg 2a/3a/4a
+  val cxt-1v13 = power-systems/DC-DC/buck/BuckConstraints(
   v-in = min-max(4.9, 5.1)
-  v-out = 1.05 +/- (3 %)
+  v-out = 1.13 +/- (2 %)
   v-in-ripple-max = 0.3
-  v-out-ripple-max = 0.030
+  v-out-ripple-max = 0.03
   i-out = 2.0 +/- (20 %)
   freq = 1.2e6
   K = (40 %)
   )
 
-  inst DCDC-1v05 : TI-vreg/components/TPS6293x/circuit(
+  inst DCDC-1v13 : TI-vreg/components/TPS6293x/circuit(
   TI-vreg/components/TPS6293x/TPS62932DRL
-  cxt-1v05
+  cxt-1v13
   C-query = C-query
   )
 
-  place(DCDC-1v05.IC.SW) at loc(0.0, 0.0) on Top
+  place(DCDC-1v13.IC.SW) at loc(0.0, 0.0) on Top
 
   ; 1.8v reg 2a/3a/4a
-  val cxt-1v8 = power-systems/DC-DC/buck/BuckConstraints(
+  val cxt-1v9 = power-systems/DC-DC/buck/BuckConstraints(
   v-in = min-max(4.9, 5.1)
-  v-out = 1.8 +/- (3 %)
-  v-in-ripple-max = 0.075
-  v-out-ripple-max = 0.030
-  i-out = 2.0 +/- (20 %)
-  freq = 1.2e6
+  v-out = 1.9 +/- (2.5 %)
+  v-in-ripple-max = 0.3
+  v-out-ripple-max = 0.05
+  i-out = 1.0 +/- (50 %)
+  freq = 2.2e6
   K = (40 %)
   )
 
-  inst DCDC-1v8 : TI-vreg/components/TPS6293x/circuit(
+  inst DCDC-1v9 : TI-vreg/components/TPS6293x/circuit(
   TI-vreg/components/TPS6293x/TPS62932DRL
-  cxt-1v8
+  cxt-1v9
   C-query = C-query
   )
-  ; place(DCDC-1v05)  at loc(20.0,0.0,0.0) on Top
-  place(DCDC-1v8.IC.SW) at loc(20.0, 0.0) on Top
+  ; place(DCDC-1v13)  at loc(20.0,0.0,0.0) on Top
+  place(DCDC-1v9.IC.SW) at loc(20.0, 0.0) on Top
 
   ; 3.3v buck regulator 4a
   val cxt-3v3 = power-systems/DC-DC/buck/BuckConstraints(
   v-in = min-max(4.9, 5.1)
-  v-out = 3.3 +/- (3 %)
-  v-in-ripple-max = 0.6
-  v-out-ripple-max = 0.33
+  v-out = 3.3 +/- (5 %)
+  v-in-ripple-max = 0.1
+  v-out-ripple-max = 0.3
   i-out = 3.0 +/- (30 %)
   freq = 2.2e6
   K = (40 %)
@@ -80,16 +76,16 @@ public pcb-module circuit :
   cxt-3v3
   C-query = C-query
   )
-  ; place(DCDC-1v05)  at loc(0.0,0.0,0.0) on Top
+  ; place(DCDC-1v13)  at loc(0.0,0.0,0.0) on Top
   place(DCDC-3v3.IC.SW) at loc(40.0, 0.0) on Top
 
   ; 3.3v LDO 500mA
 
-  net VBUS (vbus.V+ DCDC-3v3.conv.VIN.V+ DCDC-1v8.conv.VIN.V+ DCDC-1v05.conv.VIN.V+)
-  net GND (vbus.V- DCDC-1v05.conv.VIN.V- DCDC-1v8.conv.VIN.V- DCDC-3v3.conv.VIN.V-)
+  net VBUS (vbus.V+ DCDC-3v3.conv.VIN.V+ DCDC-1v9.conv.VIN.V+ DCDC-1v13.conv.VIN.V+)
+  net GND (vbus.V- DCDC-1v13.conv.VIN.V- DCDC-1v9.conv.VIN.V- DCDC-3v3.conv.VIN.V-)
 
-  net (DCDC-1v05.conv.VOUT.V+ rail-1v05.V+)
-  net (DCDC-1v8.conv.VOUT.V+ rail-1v8.V+)
+  net (DCDC-1v13.conv.VOUT.V+ rail-1v13.V+)
+  net (DCDC-1v9.conv.VOUT.V+ rail-1v9.V+)
   net (DCDC-3v3.conv.VOUT.V+ rail-3v3.V+)
 
   ; 3.3v LDO 500mA

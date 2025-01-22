@@ -467,100 +467,195 @@ public pcb-component component :
   diff-pin-model(self.UDP self.UDM delay = typ(10.0e-15) loss = typ(0.1))
 
 public pcb-module module :
-  port GND
-  port VBUS   ; 5.0v
-  port VDD    ; 3.3v
-  port VCCL   ; 1.05v
-  port VCCH   ; 1.8v
-  port VCCA33 ; 3.3v analog
-  port RST#
+  port gnd
+  port vbus   ; 5.0v
+  port vdd    ; 3.3v
+  port vcca33 ; 3.3v analog
+  port vcch   ; 1.8v
+  port vccl   ; 1.13v
+  port rst#
 
   port i2c_data : i2c
 
-  port XI
-  port XO
+  port xi
+  port xo
 
-  port UREXT
-  port TEST_EN
+  port urext
+  port test_en
 
   port spi : spi-with-cs()
   port uart : minimal-uart()
 
+  net GND (gnd)
+  net VBUS (vbus)
+  net VCCH (vcch)
+  net VCCL (vccl)
+
   val C-query = get-default-capacitor-query()
 
-  val c_22uF6V3 = CapacitorQuery( 
-                              case = ["0201", "0402", "0805"],
-                              capacitance = 22.0e-6,
-                              rated-voltage = 6.3) ; 22uF, 6.3V
+  ; val c_2u2F6V3 = CapacitorQuery( 
+  ;                             case = ["0201", "0402", "0805"],
+  ;                             capacitance = 22.0e-6,
+  ;                             rated-voltage = 6.3) ; 2200nF, 6.3V
   
-  val c_10uF6V3 = CapacitorQuery( 
-                              case = ["0201", "0402", "0805"], 
-                              capacitance = 10.0e-6,
-                              rated-voltage = 6.3) ; 10uF, 6.3V
+  ; val c_10uF6V3 = CapacitorQuery( 
+  ;                             case = ["0201", "0402", "0805"], 
+  ;                             capacitance = 10.0e-6,
+  ;                             rated-voltage = 6.3) ; 10uF, 6.3V
 
-  val c_2u2F6V3 = CapacitorQuery( 
-                              case = ["0201"], 
-                              capacitance = 2.2e-6,
-                              rated-voltage = 6.3) ; 2.2uF, 6.3V
+  ; val c_2u2F6V3 = CapacitorQuery( 
+  ;                             case = ["0201"], 
+  ;                             capacitance = 2.2e-6,
+  ;                             rated-voltage = 6.3) ; 2.2uF, 6.3V
 
-  val c_0u22F6V3 = CapacitorQuery( 
-                              case = ["0201"], 
-                              capacitance = 0.22e-6,
-                              rated-voltage = 10.0) ; 0.22uF, 10V                              
+  ; val c_0u22F6V3 = CapacitorQuery( 
+  ;                             case = ["0201"], 
+  ;                             capacitance = 0.22e-6,
+  ;                             rated-voltage = 10.0) ; 0.2200nF, 10V                              
 
   public inst sw : ASM001/components/Asmedia/ASM2464PDX/component
 
   for g in pins(sw.GND) do :
-    net (GND g)
+    net GND (gnd g)
 
   for g in pins(sw.GNDA) do :
-    net (GND g)
+    net GND (gnd g)
   
-  ; 1.05v
-  ; 11 x 22UF/6.3V
-  ; 3 x 10UF/6.3V
-  ; 4 x 0.22UF/10v
+  ;;;;;;;;;;;;;;;;;;  VDD 1.13v
+  val vdd_2u2F6V3_count = 11 ; 11 x 2.2uF/6.3V
+  inst vdd_2u2F6V3 : create-capacitor(mpn = "GRM033R60J225ME47D")[vdd_2u2F6V3_count]
+  schematic-group(vdd_2u2F6V3) = bypass-cap-VDD
+  
+  var vdd_2u2F6V3_loc = Array<Pose>(vdd_2u2F6V3_count)
+  
+  vdd_2u2F6V3_loc[0] = loc(-1.0, 1.4, 270.0)
+  vdd_2u2F6V3_loc[1] = loc(-1.0, 2.4, 270.0)
+  vdd_2u2F6V3_loc[2] = loc(-1.0, -0.2, 90.0)
+  vdd_2u2F6V3_loc[3] = loc(-2.0, -2.3, 270.0)
+  vdd_2u2F6V3_loc[4] = loc(0.6, 1.0, 270.0)
+  vdd_2u2F6V3_loc[5] = loc(0.6, 0.0, 90.0)
+  vdd_2u2F6V3_loc[6] = loc(0.6, -1.1, 270.0)
+  vdd_2u2F6V3_loc[7] = loc(-1.0, -1.2, 90.0)
+  vdd_2u2F6V3_loc[8] = loc(0.6, 2.0, 90.0)
+  vdd_2u2F6V3_loc[9] = loc(6.5, 1.3, 180.0)
+  vdd_2u2F6V3_loc[10] = loc(7.5, 1.3, 180.0)
 
-  ; for i in 0 to 1 do :
-  ;   val n = to-string("c_22uF6V3-%_-C" % [i])
-  ;   ; val c = insert-capacitor(
-  ;   ;   asm2464pdx.VDD asm2464pdx.GND
-  ;   ;   c_22uF6V3
-  ;   ;   capacitance = 2.2e-6
-  ;   ;   short-trace? = true
-  ;   ; )
-  ;   val c = insert-bypass(sw.VDD[i], GND, inst-name = n, qb = CapacitorQuery(case = ["0201", "0402", "0805"],
-  ;                             capacitance = 22.0e-6,
-  ;                             rated-voltage = 6.3))
-  ;   place(c)  at loc(0.0, 0.0) on Bottom
+  val vdd_10uF6V3_count = 3 ; 3 x 10UF/6.3V
+  inst vdd_10uF6V3 : create-part(mpn = "GRM155R60J106ME44D")[vdd_10uF6V3_count]
+  schematic-group(vdd_10uF6V3) = bypass-cap-VDD
+
+  var vdd_10uF6V3_loc = Array<Pose>(vdd_10uF6V3_count)
+
+  vdd_10uF6V3_loc[0] = loc(2.7, 3.2, 90.0)
+  vdd_10uF6V3_loc[1] = loc(2.7, 2.2, 90.0)
+  vdd_10uF6V3_loc[2] = loc(2.7, 1.2, 90.0)
+
+  val vdd_220nF10V_count = 4 ; 4 x 0.22uF/10v
+  inst vdd_220nF10V : create-part(mpn = "GRM033R61A224ME90D")[vdd_220nF10V_count]
+  schematic-group(vdd_220nF10V) = bypass-cap-VDD
+
+  var vdd_220nF10V_loc = Array<Pose>(vdd_220nF10V_count)
+
+  vdd_220nF10V_loc[0] = loc(-1.6, 0.6, 270.0)
+  vdd_220nF10V_loc[1] = loc(1.6, 1.2, 180.0)
+  vdd_220nF10V_loc[2] = loc(1.6, 2.0, 180.0)
+  vdd_220nF10V_loc[3] = loc(1.0, 3.0, 0.0)
+
+  for i in 0 to (vdd_2u2F6V3_count) do:
+    net VDD-vdd_2u2F6V3 (vdd vdd_2u2F6V3[i].p[1])
+    net GND (gnd vdd_2u2F6V3[i].p[2])
+    place(vdd_2u2F6V3[i]) at vdd_2u2F6V3_loc[i] on Bottom
+
+  for i in 0 to (vdd_10uF6V3_count) do:
+    net VDD-vdd_10uF6V3 (vdd vdd_10uF6V3[i].p[1])
+    net GND (gnd vdd_10uF6V3[i].p[2])
+    place(vdd_10uF6V3[i]) at vdd_10uF6V3_loc[i] on Bottom
+
+    
+  for i in 0 to (vdd_220nF10V_count) do:
+    net VDD-vdd_220nF10V (vdd vdd_220nF10V[i].p[1])
+    net (gnd vdd_220nF10V[i].p[2])
+    place(vdd_220nF10V[i]) at vdd_220nF10V_loc[i] on Bottom
+  
 
   for v in pins(sw.VDD) do :
-    net (VDD v)
+    net VDD (vdd v)
 
-  ; 1.8v
-  ; 3 x 10UF/6.3V
-  ; 11 x 2.2UF/6.3V
+  ;;;;;;;;;;;;;;;;;;  VDD 1.13v
 
-  for v in pins(sw.VCCL) do :
-    net (VCCL v)
+
+  ;;;;;;;;;;;;;;;;;;  VCCH 3v3
 
   ; 3.3v
-  ; 1 x 22UF/6.3V
-  ; 2 x 10UF/6.3V
-  ; 10 x 2.2UF/6.3V
-  ; 5 x 0.22UF/10V
+  ; 3 x 2.2uF/6.3V
+
   for v in pins(sw.VCCH) do :
-    net (VCCH v)
+    net VCCH (vcch v)
 
-  net (VCCA33 sw.VCCA33) ; internally hook up both 3.3v busses
-  net (VBUS sw.VBUS)
-  net (RST# sw.RST#)
+  inst vcca33-jumper : create-part(mpn = "RC0201JR-070RL", manufacturer = "YAGEO")
+  net (vcch vcca33-jumper.p[1]) ; internally hook up both 3.3v busses
+  net (vcca33-jumper.p[2] sw.VCCA33) ; internally hook up both 3.3v busses
+
+  ;;;;;;;;;;;;;;;;;;  VCCH 3v3
+
+  ;;;;;;;;;;;;;;;;;;  VCCL 1v9
+  val vccl_10uF6V3_count = 3 ; 3 x 10UF/6.3V
+  inst vccl_10uF6V3 : create-part(mpn = "GRM155R61A106ME11D")[vccl_10uF6V3_count]
+  schematic-group(vccl_10uF6V3) = bypass-cap-VCCL
   
-  net (XI sw.XI)
-  net (XO sw.XO)
+  var vccl_10uF6V3_loc = Array<Pose>(vccl_10uF6V3_count)
+  
+  vccl_10uF6V3_loc[0] = loc(6.6, 0.0, 0.0)
+  vccl_10uF6V3_loc[1] = loc(7.6, 0.0, 0.0)
+  vccl_10uF6V3_loc[2] = loc(8.6, 0.0, 0.0)
+  
+  for i in 0 to (vccl_10uF6V3_count) do:
+    net VCCL_10uF6V3 (vccl vccl_10uF6V3[i].p[1])
+    net GND (gnd vccl_10uF6V3[i].p[2])
+    ; place(vccl_10uF6V3[i]) at vccl_10uF6V3_loc[i] on Bottom
+  
+  ; 11 x 2.2UF/6.3V
+  ; public inst vccl_2u2F6V3_pos : create-part(mpn = "GRM033R60J225ME47D")
+  ; net VCCL-c_2u2F6V3_pos (vccl vccl_2u2F6V3_pos.p[1])
+  ; net (gnd vccl_2u2F6V3_pos.p[2])
 
-  net (UREXT sw.UREXT)
-  net (TEST_EN sw.TEST_EN)
+  val vccl_2u2F6V3_count = 11 ; 11 x 2.2uF/6.3V
+  inst vccl_2u2F6V3 : create-capacitor(mpn = "GRM033R60J225ME47D")[vccl_2u2F6V3_count]
+  schematic-group(vccl_2u2F6V3) = bypass-cap-VCCL
+  
+  var vccl_2u2F6V3_loc = Array<Pose>(vccl_2u2F6V3_count)
+  
+  vccl_2u2F6V3_loc[0] = loc(3.15, 0.0, 0.0)
+  vccl_2u2F6V3_loc[1] = loc(2.25, -0.6, 90.0)
+  vccl_2u2F6V3_loc[2] = loc(-2.2, -0.2, 270.0)
+  vccl_2u2F6V3_loc[3] = loc(2.25, -1.35, 90.0)
+  vccl_2u2F6V3_loc[4] = loc(2.25, -2.1, 90.0)
+  vccl_2u2F6V3_loc[5] = loc(2.25, -2.6, 90.0)
+  vccl_2u2F6V3_loc[6] = loc(1.25, -2.9, 0.0)
+  vccl_2u2F6V3_loc[7] = loc(0.5, -2.9, 0.0)
+  vccl_2u2F6V3_loc[8] = loc(-1.25, -2.9, 0.0)
+  vccl_2u2F6V3_loc[9] = loc(-2.2, -1.9, 270.0)
+  vccl_2u2F6V3_loc[10] = loc(-2.2, -0.9, 270.0)
+
+  
+  for i in 0 to (vccl_2u2F6V3_count) do:
+    net VDD-vccl_2u2F6V3 (vccl vccl_2u2F6V3[i].p[1])
+    net GND (gnd vccl_2u2F6V3[i].p[2])
+    place(vccl_2u2F6V3[i]) at vccl_2u2F6V3_loc[i] on Bottom
+
+  for v in pins(sw.VCCL) do :
+    net VCCL (vccl v)
+
+  ;;;;;;;;;;;;;;;;;;  VCCL 1v9
+
+  net (vbus sw.VBUS)
+  net (rst# sw.RST#)
+  
+  net (xi sw.XI)
+  net (xo sw.XO)
+
+  net (urext sw.UREXT)
+  net (test_en sw.TEST_EN)
 
   for n in pins(sw.NC) do :
     no-connect(n)
@@ -624,7 +719,7 @@ public pcb-module module :
     bd-4x-prsnt.control.CLKREQ# => sw.GPIO[8]
 
   val ctls-2x = [
-    [sw.GPIO[22], sw.GPIO[2], sw.GPIO[8]],
+    [sw.GPIO[22], sw.UART_RX, sw.GPIO[8]],
     [sw.GPIO[22], sw.GPIO[19], sw.GPIO[14]]
   ]
   val bd-2x = pcie(2)
@@ -666,10 +761,13 @@ public pcb-module module :
 
   val bd-1x = pcie(1)
   val ctls-1x = [
-    [sw.GPIO[22], sw.GPIO[2], sw.GPIO[8]],
-    [sw.GPIO[22], sw.GPIO[19], sw.GPIO[14]],
-    [sw.GPIO[22], sw.GPIO[21], sw.GPIO[23]],
-    [sw.GPIO[22], sw.GPIO[27], sw.GPIO[24]],
+    [sw.GPIO[22], sw.UART_RX, sw.GPIO[8]],
+    ; [sw.GPIO[22], sw.GPIO[19], sw.GPIO[14]],
+    ; [sw.GPIO[22], sw.GPIO[21], sw.GPIO[23]],
+    ; [sw.GPIO[22], sw.GPIO[27], sw.GPIO[24]],
+    [sw.GPIO[21], sw.GPIO[19], sw.GPIO[14]],
+    [sw.GPIO[20], sw.GPIO[21], sw.GPIO[23]],
+    [sw.GPIO[18], sw.GPIO[27], sw.GPIO[24]],
   ]
   for j in 0 to 4 do:
     supports bd-1x:
