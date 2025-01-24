@@ -282,9 +282,9 @@ public pcb-module module :
     pcie-std(4),
     pcie-std(2),
     pcie-std(1),
-    pcie-with-hotplug(4),
-    pcie-with-hotplug(2),
-    pcie-with-hotplug(1),
+    ; pcie-with-hotplug(4),
+    ; pcie-with-hotplug(2),
+    ; pcie-with-hotplug(1),
   ]
 
   for btype in bundle-types do:

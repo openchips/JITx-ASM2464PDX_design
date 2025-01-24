@@ -98,10 +98,12 @@ public pcb-component component :
 
 
 public pcb-module device :
+  inst tx-coupler : dp-coupler(
+    ASM001/components/Infineon/ESD132-B1-W0201-E6327/component,
+    pre-pose = loc(0.0, 0.0, 90.0)
+  )
+  tx-coupler
 
-  val diode = ASM001/components/Infineon/ESD132-B1-W0201-E6327/component
-  val diode-pair = dp-coupler(diode, margin = 2.0, y-skew = 1.0)
-  diode-pair
 
 public defn create-esd-pool (num-diodes:Int) -> Instance :
   inside pcb-module:

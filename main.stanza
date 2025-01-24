@@ -284,7 +284,7 @@ pcb-module ASM001-design :
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;ESD
     val lane-esd-cap = ASM001/components/Infineon/ESD132-B1-W0201-E6327/component
     ; val usb4-esd-cap = create-part(mpn = "ESD132-B1-W0201 E6327", manufacturer = "Infineon")
-    inst lane-esd-tx : dp-coupler(lane-esd-cap)
+    inst lane-esd-tx : dp-coupler(lane-esd-cap, pre-pose = loc(0.0, 0.0, 90.0))
     inst lane-esd-rx : dp-coupler(lane-esd-cap)
     
     ; require tx-esd:dual-pair from esd-lanes
@@ -361,8 +361,8 @@ pcb-module ASM001-design :
   ;  configuration.
 
 
-  val m2_connectors = 4
-  inst m2_connector : ASM001/components/TE_1-2199230-6/module
+  val m2_connector_count = 4
+  inst m2_connectors : ASM001/components/TE_1-2199230-6/module[m2_connector_count]
 
 
   ;  within [src, dst-straight] = constrain-topology(src-IC, dst-IC, cst):
@@ -379,18 +379,15 @@ pcb-module ASM001-design :
   ;   topo-net(src.data.refclk => dst.data.refclk)
   ;   net (src.control, dst.control)
 
+  for i in 0 to length(m2_connectors) :
+    require src-ic : pcie-std(1) from asm2464pdx
+    require dst-ep : pcie-std(1) from m2_connectors[i]
 
-  for i in 0 to 1 :
-    ; require src-ic : pcie(1) from asm2464pdx ; let's require the pcie(1) from the ASM2464PDX module for each M.2 connector
-
-    require src-ic : pcie-with-hotplug(1) from asm2464pdx
     val y-loc = -36.0 - (to-double(i) * -24.0)
-    ; place(m2_connector[i].sw) at loc(35.0, y-loc, 90.0) on Bottom
+    place(m2_connectors[i].sw) at loc(35.0, y-loc, 90.0) on Bottom
+    
+    net (m2_connectors[i].gnd GND)
 
-    ; net (m2_connector[i].gnd GND)
-
-    ; require dst-ep : pcie(1, PCIe-PRSNT#) from m2_connector[i]
-    require dst-ep : pcie-with-hotplug(1) from m2_connector
 
    
     within [src, dst] = constrain-topology(src-ic, dst-ep, cst):
@@ -435,5 +432,5 @@ set-main-module(ASM001-design)
 ; view the board that was created
 view-board()
 
-export-design()
+; export-design()
 
