@@ -5,7 +5,9 @@ defpackage ASM001/components/Infineon/ESD132-B1-W0201-E6327 :
   import core
   import jitx
   import jitx/commands
-  import ocdb/utils/box-symbol
+
+  import jsl
+;  import ocdb/utils/box-symbol
 
 
 pcb-pad rectangle-smd-pad :
@@ -92,3 +94,25 @@ public pcb-component component :
   property(self.area) = 0.840
   property(self.case) = "WLL-2-3"
 
+  pin-model(self.p[1], self.p[2]) = PinModel(typ(0.0), typ(0.0))
+
+
+public pcb-module device :
+
+  val diode = ASM001/components/Infineon/ESD132-B1-W0201-E6327/component
+  val diode-pair = dp-coupler(diode, margin = 2.0, y-skew = 1.0)
+  diode-pair
+
+public defn create-esd-pool (num-diodes:Int) -> Instance :
+  inside pcb-module:
+
+    val esd-tmp = CircuitTemplate(
+      ASM001/components/Infineon/ESD132-B1-W0201-E6327/device, [
+        BundleStack(dual-pair, 1),
+        BundleStack(pass-through, 2)
+      ], name = "esd")
+
+    val pool-type = create-circuit-pool(esd-tmp, num-diodes)
+    inst esd : pool-type
+
+    esd

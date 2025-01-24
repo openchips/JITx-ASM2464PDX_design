@@ -191,8 +191,6 @@ public pcb-component component :
     [CC[2]      | Y[6]   | Left  | A]
     [SBU[1]     | K[1]   | Left  | A]
     [SBU[2]     | J[1]   | Left  | A]
-    [REFCLKN[0] | Y[8]   | Left  | A]
-    [REFCLKP[0] | AA[8]  | Left  | A]
     [PRXN[1]    | W[20]  | Left  | A]
     [PRXP[1]    | W[21]  | Left  | A]
     [PRXN[0]    | N[20]  | Left  | A]
@@ -280,6 +278,8 @@ public pcb-component component :
     [REFCLKP[2] | AA[10] | Left  | B]  ; ASM2464PDX
     [REFCLKN[1] | Y[11]  | Left  | B]  ; ASM2464PDX
     [REFCLKP[1] | AA[11] | Left  | B]  ; ASM2464PDX
+    [REFCLKN[0] | Y[8]   | Left  | A]
+    [REFCLKP[0] | AA[8]  | Left  | A]
     [PERST#[3]  | D[21]  | Left  | B]  ; ASM2464PDX
     [PERST#[2]  | E[21]  | Left  | B]  ; ASM2464PDX
     [PERST#[1]  | F[21]  | Left  | B]  ; ASM2464PDX
@@ -592,9 +592,6 @@ public pcb-module module :
   for v in pins(sw.VCCH) do :
     net VCCH (vcch v)
 
-  inst vcca33-jumper : create-part(mpn = "RC0201JR-070RL", manufacturer = "YAGEO")
-  net (vcch vcca33-jumper.p[1]) ; internally hook up both 3.3v busses
-  net (vcca33-jumper.p[2] sw.VCCA33) ; internally hook up both 3.3v busses
 
   ;;;;;;;;;;;;;;;;;;  VCCH 3v3
 
@@ -689,7 +686,8 @@ public pcb-module module :
       usb_c.lane[i].TX.P => sw.UTXP[i]
       usb_c.lane[i].TX.N => sw.UTXN[i]
 
-  val bd-4x = pcie(4)
+
+  val bd-4x = pcie-std(4)
   supports bd-4x :
     for i in 0 to 4 do :
       bd-4x.data.lane[i].RX.P => sw.PRXP[i]
@@ -701,9 +699,9 @@ public pcb-module module :
 
     bd-4x.control.PEWAKE# => sw.GPIO[22]
     bd-4x.control.PERST#  => sw.PERST#[0]
-    bd-4x.control.CLKREQ# => sw.GPIO[8]
+    bd-4x.control.CLKREQ# => sw.GPIO[1]
 
-  val bd-4x-prsnt = pcie(4, PCIe-PRSNT#)
+  val bd-4x-prsnt = pcie-with-hotplug(4)
   supports bd-4x-prsnt :
     for i in 0 to 4 do :
       bd-4x-prsnt.data.lane[i].RX.P => sw.PRXP[i]
@@ -715,32 +713,53 @@ public pcb-module module :
 
     bd-4x-prsnt.control.PEWAKE# => sw.GPIO[22]
     bd-4x-prsnt.control.PERST#  => sw.PERST#[0]
-    bd-4x-prsnt.control.PRSNT#  => sw.GPIO[2]
+    bd-4x-prsnt.control.PRSNT#  => sw.UART_RX
     bd-4x-prsnt.control.CLKREQ# => sw.GPIO[8]
 
+  val pcie-2x-shared-wake = sw.GPIO[22]
   val ctls-2x = [
-    [sw.GPIO[22], sw.UART_RX, sw.GPIO[8]],
-    [sw.GPIO[22], sw.GPIO[19], sw.GPIO[14]]
+    [pcie-2x-shared-wake, sw.UART_RX, sw.GPIO[8]]
+    [pcie-2x-shared-wake, sw.GPIO[19], sw.GPIO[14]]
   ]
-  val bd-2x = pcie(2)
+  ; The internal bundle contains reset, and clock request
+  ;  but does not include the WAKE 
+  val bd-2x-int = pcie(2, PCIe-PERST#, PCIe-CLKREQ#)
   for j in 0 to 2 do:
-    supports bd-2x:
+    supports bd-2x-int:
       val ch-offset = (2 * j)
       for i in 0 to 2 do :
-        bd-2x.data.lane[i].RX.P => sw.PRXP[i + ch-offset]
-        bd-2x.data.lane[i].RX.N => sw.PRXN[i + ch-offset]
-        bd-2x.data.lane[i].TX.P => sw.PTXP[i + ch-offset]
-        bd-2x.data.lane[i].TX.N => sw.PTXN[i + ch-offset]
-      bd-2x.data.refclk.P => sw.REFCLKP[ch-offset]
-      bd-2x.data.refclk.N => sw.REFCLKN[ch-offset]
+        bd-2x-int.data.lane[i].RX.P => sw.PRXP[i + ch-offset]
+        bd-2x-int.data.lane[i].RX.N => sw.PRXN[i + ch-offset]
+        bd-2x-int.data.lane[i].TX.P => sw.PTXP[i + ch-offset]
+        bd-2x-int.data.lane[i].TX.N => sw.PTXN[i + ch-offset]
+      bd-2x-int.data.refclk.P => sw.REFCLKP[ch-offset]
+      bd-2x-int.data.refclk.N => sw.REFCLKN[ch-offset]
 
-      val [wake, present, clkreq] = ctls-2x[j]
+      val [_, present, clkreq] = ctls-2x[j]
 
-      bd-2x.control.PEWAKE# => wake
-      bd-2x.control.PERST#  => sw.PERST#[ch-offset]
-      bd-2x.control.CLKREQ# => clkreq
+      bd-2x-int.control.PERST#  => sw.PERST#[j]
+      bd-2x-int.control.CLKREQ# => clkreq
 
-  val bd-2x-prsnt = pcie(2, PCIe-PRSNT#)
+  val bd-2x-ext = pcie-std(2)
+
+  ; The external interface for the PCIe with Shared Wake is different
+  ;   from the other interfaces because it has to be implemented as an
+  ;   externally facing port instead of a `supports` statement.
+  ;   Fortunately, it still takes advantage of pin assignment and hides
+  ;   the details of the connection but requires a different connection
+  ;   method at the top-level.
+  port pcie-2x : bd-2x-ext[2]
+
+  for pt in indices(pcie-2x) do:
+    net (pcie-2x[pt].control.PEWAKE#, pcie-2x-shared-wake)
+
+    require pt-int : bd-2x-int from self
+    topo-net(pcie-2x[pt].data => pt-int.data)
+    net (pcie-2x[pt].control.PERST#, pt-int.control.PERST#)
+    net (pcie-2x[pt].control.CLKREQ#, pt-int.control.CLKREQ#)
+
+
+  val bd-2x-prsnt = pcie-with-hotplug(2)
   for j in 0 to 2 do:
     supports bd-2x-prsnt:
       val ch-offset = (2 * j)
@@ -759,43 +778,48 @@ public pcb-module module :
       bd-2x-prsnt.control.PRSNT# => present
       bd-2x-prsnt.control.CLKREQ# => clkreq
 
+
   val bd-1x = pcie(1)
+  val pcie-1x-shared-wake = sw.GPIO[22]
+
   val ctls-1x = [
-    [sw.GPIO[22], sw.UART_RX, sw.GPIO[8]],
-    ; [sw.GPIO[22], sw.GPIO[19], sw.GPIO[14]],
-    ; [sw.GPIO[22], sw.GPIO[21], sw.GPIO[23]],
-    ; [sw.GPIO[22], sw.GPIO[27], sw.GPIO[24]],
-    [sw.GPIO[21], sw.GPIO[19], sw.GPIO[14]],
-    [sw.GPIO[20], sw.GPIO[21], sw.GPIO[23]],
-    [sw.GPIO[18], sw.GPIO[27], sw.GPIO[24]],
+    [pcie-1x-shared-wake, sw.UART_RX, sw.GPIO[8]]
+    [pcie-1x-shared-wake, sw.GPIO[19], sw.GPIO[14]]
+    [pcie-1x-shared-wake, sw.GPIO[21], sw.GPIO[23]],
+    [pcie-1x-shared-wake, sw.GPIO[27], sw.GPIO[24]],
   ]
+  ; The internal bundle contains reset, and clock request
+  ;  but does not include the WAKE 
+  val bd-1x-int = pcie(4, PCIe-PERST#, PCIe-CLKREQ#)
   for j in 0 to 4 do:
-    supports bd-1x:
-      bd-1x.data.lane[0].RX.P => sw.PRXP[j]
-      bd-1x.data.lane[0].RX.N => sw.PRXN[j]
-      bd-1x.data.lane[0].TX.P => sw.PTXP[j]
-      bd-1x.data.lane[0].TX.N => sw.PTXN[j]
-      bd-1x.data.refclk.P => sw.REFCLKP[j]
-      bd-1x.data.refclk.N => sw.REFCLKN[j]
+    supports bd-1x-int:
+      for i in 0 to 4 do :
+        bd-1x-int.data.lane[i].RX.P => sw.PRXP[i]
+        bd-1x-int.data.lane[i].RX.N => sw.PRXN[i]
+        bd-1x-int.data.lane[i].TX.P => sw.PTXP[i]
+        bd-1x-int.data.lane[i].TX.N => sw.PTXN[i]
+      bd-1x-int.data.refclk.P => sw.REFCLKP[j]
+      bd-1x-int.data.refclk.N => sw.REFCLKN[j]
 
-      val [wake, present, clkreq] = ctls-1x[j]
-      bd-1x.control.PEWAKE# => wake
-      bd-1x.control.PERST#  => sw.PERST#[j]
-      bd-1x.control.CLKREQ# => clkreq
+      val [_, present, clkreq] = ctls-1x[j]
 
-  val bd-1x-prsnt = pcie(1, PCIe-PRSNT#)
-  for j in 0 to 4 do:
-    supports bd-1x-prsnt:
-      bd-1x-prsnt.data.lane[0].RX.P => sw.PRXP[j]
-      bd-1x-prsnt.data.lane[0].RX.N => sw.PRXN[j]
-      bd-1x-prsnt.data.lane[0].TX.P => sw.PTXP[j]
-      bd-1x-prsnt.data.lane[0].TX.N => sw.PTXN[j]
-      bd-1x-prsnt.data.refclk.P => sw.REFCLKP[j]
-      bd-1x-prsnt.data.refclk.N => sw.REFCLKN[j]
+      bd-1x-int.control.PERST#  => sw.PERST#[j]
+      bd-1x-int.control.CLKREQ# => clkreq
 
-      val [wake, present, clkreq] = ctls-1x[j]
-      bd-1x-prsnt.control.PERST#  => sw.PERST#[j]
-      bd-1x-prsnt.control.PEWAKE# => wake
-      bd-1x-prsnt.control.PRSNT# => present
-      bd-1x-prsnt.control.CLKREQ# => clkreq
+  val bd-1x-ext = pcie-std(4)
 
+  ; The external interface for the PCIe with Shared Wake is different
+  ;   from the other interfaces because it has to be implemented as an
+  ;   externally facing port instead of a `supports` statement.
+  ;   Fortunately, it still takes advantage of pin assignment and hides
+  ;   the details of the connection but requires a different connection
+  ;   method at the top-level.
+  port pcie-1x : bd-1x-ext[4]
+
+  for pt in indices(pcie-1x) do:
+    net (pcie-1x[pt].control.PEWAKE#, pcie-1x-shared-wake)
+
+    require pt-int : bd-1x-int from self
+    topo-net(pcie-1x[pt].data => pt-int.data)
+    net (pcie-1x[pt].control.PERST#, pt-int.control.PERST#)
+    net (pcie-1x[pt].control.CLKREQ#, pt-int.control.CLKREQ#)

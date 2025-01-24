@@ -45,15 +45,19 @@ pcb-module ASM001-design :
   place(asm2464pdx) at loc(0.0, 0.0, 0.0) on Top
   place(asm2464pdx.sw) at loc(0.0, 0.0, 0.0) on Top
 
-  ; net VBUS (power-circuit.vbus.V+ asm2464pdx.VBUS)
-  ; net GND (power-circuit.vbus.V- power-circuit.rail-3v3.V- power-circuit.rail-1v9.V- power-circuit.rail-1v13.V- asm2464pdx.GND)
+  net VBUS (vbus power-circuit.vbus.V+ asm2464pdx.vbus)
+  net GND (gnd power-circuit.vbus.V- power-circuit.rail-3v3.V- power-circuit.rail-1v9.V- power-circuit.rail-1v13.V- asm2464pdx.gnd)
 
-  net VBUS (vbus asm2464pdx.vbus)
-  net GND (gnd asm2464pdx.gnd)
+  ; net VBUS (vbus asm2464pdx.vbus)
+  ; net GND (gnd asm2464pdx.gnd)
 
   net P3V3 (power-circuit.rail-3v3.V+ asm2464pdx.vcch); asm2464pdx.VCCA33)
   net P1V9 (power-circuit.rail-1v9.V+ asm2464pdx.vccl)
   net P1V13 (power-circuit.rail-1v13.V+ asm2464pdx.vdd)
+
+  inst vcca33-jumper : create-part(mpn = "RC0201JR-070RL", manufacturer = "YAGEO")
+  net P3V3_jumper (P3V3 vcca33-jumper.p[1]) ; internally hook up both 3.3v busses
+  net VCCA33 (vcca33-jumper.p[2] asm2464pdx.vcca33) ; internally hook up both 3.3v busses
 
   geom(VBUS) :
     copper-pour(LayerIndex(2, Top), isolate = 0.127, rank = 1) =  VBUS-shape
@@ -262,7 +266,7 @@ pcb-module ASM001-design :
                                 case = valid-smd-pkgs("0201"), 
                                 capacitance = Interval(135.0e-9, 265.0e3)) ; 0.22uf
 
-  ; val esd-lanes = diodes/ESD224DQAR/create-esd-pool(2, GND)
+  val esd-lanes = ASM001/components/Infineon/ESD132-B1-W0201-E6327/create-esd-pool(2)
 
   ; USB-C CC pull-down resistors
   val cc-R = create-capacitor(C-query, capacitance = 2.2E-9, precision = (10 %), rated-voltage = 50.0) ; 220 pf / 50V
@@ -343,8 +347,7 @@ pcb-module ASM001-design :
 
   
  
-  val m2_connectors = 4
-  inst m2_connector : ASM001/components/TE_1-2199230-6/module[m2_connectors]
+
 
   val version = PCIE-V4
   val trace-imped = pcie-get-trace-impedance(version)
@@ -357,16 +360,40 @@ pcb-module ASM001-design :
   ;  straight through `tx => bcap => tx` and `rx => rx`
   ;  configuration.
 
-  for i in 0 to m2_connectors :
-    require src-ep : pcie(1) from asm2464pdx ; let's require the pcie(1) from the ASM2464PDX module for each M.2 connector
+
+  val m2_connectors = 4
+  inst m2_connector : ASM001/components/TE_1-2199230-6/module
+
+
+  ;  within [src, dst-straight] = constrain-topology(src-IC, dst-IC, cst):
+  ;   ;  Notice that the `reverse-pcie-lane` function handles the null-modem
+  ;   ;  swap. We continue to use `tx => tx` and `rx => rx` inside for
+  ;   ;  consistency.
+  ;   val dst = reverse-pcie-lanes(dst-straight)
+  ;   for i in indices(src.data.lane) do:
+  ;     inst tx-coupler : dp-coupler(b-cap)
+  ;     topo-pair(src.data.lane[i].TX => tx-coupler => dst.data.lane[i].TX)
+  ;     inst rx-coupler : dp-coupler(b-cap)
+  ;     topo-pair(src.data.lane[i].RX => rx-coupler => dst.data.lane[i].RX)
+
+  ;   topo-net(src.data.refclk => dst.data.refclk)
+  ;   net (src.control, dst.control)
+
+
+  for i in 0 to 1 :
+    ; require src-ic : pcie(1) from asm2464pdx ; let's require the pcie(1) from the ASM2464PDX module for each M.2 connector
+
+    require src-ic : pcie-with-hotplug(1) from asm2464pdx
     val y-loc = -36.0 - (to-double(i) * -24.0)
-    place(m2_connector[i].sw) at loc(35.0, y-loc, 90.0) on Bottom
+    ; place(m2_connector[i].sw) at loc(35.0, y-loc, 90.0) on Bottom
 
-    net (m2_connector[i].gnd GND)
+    ; net (m2_connector[i].gnd GND)
 
-    require dst-ep : pcie(1) from m2_connector[i]
+    ; require dst-ep : pcie(1, PCIe-PRSNT#) from m2_connector[i]
+    require dst-ep : pcie-with-hotplug(1) from m2_connector
+
    
-    within [src, dst] = constrain-topology(src-ep, dst-ep, cst):
+    within [src, dst] = constrain-topology(src-ic, dst-ep, cst):
       ; Here we construct the circuit topology for the link
       ;   Note that we don't need to worry about any of the constraint
       ;   application, as that is handled by the `PCIe-Constraint` type.
@@ -408,5 +435,5 @@ set-main-module(ASM001-design)
 ; view the board that was created
 view-board()
 
-export-to-cad()
+export-design()
 

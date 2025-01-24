@@ -9,6 +9,22 @@ defpackage ASM001/board :
   import jitx/parts
   import jsl/layerstack
 
+doc: \<DOC>
+Multi-layer (6+) via with extra cost + 3.
+This via definition uses the preferred +0.15mm
+for the pad diameter which JLC-PCB recommends
+<DOC>
+public pcb-via tented-in-pad-via-cost-preferred:
+  name = "Multi-Layer Via - Cost + 3"
+  start = Top
+  stop = Bottom
+  diameter = 0.3
+  hole-diameter = 0.15
+  type = MechanicalDrill
+  via-in-pad = true
+  tented = true
+
+
 public defn setup-my-board (outline:Shape) :
   set-board(ASM001-board(outline))
   set-rules(jlc-pcb/rules/multi_1oz/jlcpcb-rules-multi-1oz)
@@ -40,7 +56,7 @@ public val std-via = jlc-pcb/stackups/vias/std-via-preferred
 public val via-cost1 = jlc-pcb/stackups/vias/multi-via-cost+1-preferred
 public val via-cost2 = jlc-pcb/stackups/vias/multi-via-cost+2-preferred
 public val via-cost3 = jlc-pcb/stackups/vias/multi-via-cost+3-preferred
-public val filled-in-pad-via-cost3 = jlc-pcb/stackups/vias/filled-in-pad-via-cost+3-preferred
+public val filled-in-pad-via-cost3 = ASM001/board/tented-in-pad-via-cost-preferred
 
 ; Via for components that require via-in-pad
 public val filled-via = jlc-pcb/stackups/vias/tented-filled-std-via

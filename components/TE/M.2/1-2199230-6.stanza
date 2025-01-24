@@ -44,7 +44,7 @@ pcb-pad rect-smd-pad-2 :
   ocdb/utils/landpatterns/apply-soldermask(0.1016)
   layer(Paste(Top)) = Rectangle(2.750, 1.200)
 
-public pcb-landpattern _121992306 :
+public pcb-landpattern lp_1-2199230-6 :
   pad MH1 : oval-th-pad-1 at loc(-10.000, -1.500) on Top
   pad MH2 : oval-th-pad-2 at loc(10.000, -1.500) on Top
   pad MP1 : rect-smd-pad-2 at loc(-10.350, 3.000, 90.000) on Top
@@ -138,400 +138,57 @@ public pcb-landpattern _121992306 :
     ["ModelSource" => "0" "ModelType" => "1" "BodyLayerId" => "58" "BodyColor3D" => "8421504" "BodyProjection" => "0" "BodyOverallHeight" => "4.425" "BodyStandoffHeight" => "-0.275" "BodyOpacity3D" => "1.0" "IsEmbed" => "true" "OverrideColor" => "false" "BodyIdentifier" => "c-1-2199230-6-b3-3d"],
     )
 
-public pcb-symbol _1-2199230-6 :
-  ; Left side pins
-  pin CONFIG_3 at Point(-7.620, 48.260) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin GND[0] at Point(-7.620, 45.720) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin PE[3].RX.N at Point(-7.620, 43.180) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin PE[3].RX.P at Point(-7.620, 40.640) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin GND[1] at Point(-7.620, 38.100) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin PE[3].TX.N at Point(-7.620, 35.560) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin PE[3].TX.P at Point(-7.620, 33.020) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin GND[2] at Point(-7.620, 30.480) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin PE[2].RX.N at Point(-7.620, 27.940) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin PE[2].RX.P at Point(-7.620, 25.400) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin CONFIG_0 at Point(-7.620, 22.860) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin PE[2].TX.N at Point(-7.620, 20.320) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin PE[2].TX.P at Point(-7.620, 17.780) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin PE[1].RX.N at Point(-7.620, 15.240) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin PE[1].RX.P at Point(-7.620, 12.700) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin GND[3] at Point(-7.620, 10.160) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin PE[1].TX.N at Point(-7.620, 7.620) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin PE[1].TX.P at Point(-7.620, 5.080) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin GND[4] at Point(-7.620, 2.540) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin PE[0].RX.N at Point(-7.620, 0.0) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin PE[0].RX.P at Point(-7.620, -2.540) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin GND[5] at Point(-7.620, -5.080) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin PE[0].TX.N at Point(-7.620, -7.620) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin PE[0].TX.P at Point(-7.620, -10.160) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin GND[6] at Point(-7.620, -12.700) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin REFCLKN at Point(-7.620, -15.240) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin REFCLKP at Point(-7.620, -17.780) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin GND[7] at Point(-7.620, -20.320) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin NC[0] at Point(-7.620, -22.860) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin CONFIG_1 at Point(-7.620, -35.560) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin GND[8] at Point(-7.620, -38.100) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin GND[9] at Point(-7.620, -40.640) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin CONFIG_2 at Point(-7.620, -43.180) with :
-    direction = Left
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-
-  ; Right side pins
-  pin V_3V3[0] at Point(7.620, 48.260) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin V_3V3[1] at Point(7.620, 45.720) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin NC[1] at Point(7.620, 43.180) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin NC[2] at Point(7.620, 40.640) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin DAS_DSS at Point(7.620, 38.100) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin V_3V3[2] at Point(7.620, 35.560) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin V_3V3[3] at Point(7.620, 33.020) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin V_3V3[4] at Point(7.620, 30.480) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin V_3V3[5] at Point(7.620, 27.940) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin NC[3] at Point(7.620, 25.400) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin NC[4] at Point(7.620, 22.860) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin NC[5] at Point(7.620, 20.320) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin NC[6] at Point(7.620, 17.780) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin NC[7] at Point(7.620, 15.240) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin NC[8] at Point(7.620, 12.700) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin NC[9] at Point(7.620, 10.160) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin NC[10] at Point(7.620, 7.620) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin NC[11] at Point(7.620, 5.080) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin DEVSLP at Point(7.620, 2.540) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin NC[12] at Point(7.620, 0.0) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin NC[13] at Point(7.620, -2.540) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin NC[14] at Point(7.620, -5.080) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin NC[15] at Point(7.620, -7.620) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin NC[16] at Point(7.620, -10.160) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin PERST# at Point(7.620, -12.700) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin CLKREQ# at Point(7.620, -15.240) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin PEWAKE# at Point(7.620, -17.780) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin MFG1 at Point(7.620, -20.320) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin MFG2 at Point(7.620, -22.860) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin SUSCLK at Point(7.620, -35.560) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin V_3V3[6] at Point(7.620, -38.100) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin V_3V3[7] at Point(7.620, -40.640) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin V_3V3[8] at Point(7.620, -43.180) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin SHIELD[0] at Point(7.620, -48.260) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-  pin SHIELD[1] at Point(7.620, -50.800) with :
-    direction = Right
-    length = 5.080
-    number-size = 1.270
-    name-size = 1.270
-
 
 public pcb-component component :
-  port PE : lane-pair[4]
+  port REFCLK : diff-pair
+  port LANE : lane-pair[4]
+
   mpn = "1-2199230-6"
   reference-prefix = "J"
   pin-properties :
     [pin:Ref | pads:Ref ... | side:Dir]
     [CONFIG_3 | p[1] | Left]
-    [GND[0] | p[3] | Left]
-    [PE[3].RX.N | p[5] | Left]
-    [PE[3].RX.P | p[7] | Left]
-    [GND[1] | p[9] | Left]
-    [PE[3].TX.N | p[11] | Left]
-    [PE[3].TX.P | p[13] | Left]
-    [GND[2] | p[15] | Left]
-    [PE[2].RX.N | p[17] | Left]
-    [PE[2].RX.P | p[19] | Left]
-    [CONFIG_0 | p[21] | Left]
-    [PE[2].TX.N | p[23] | Left]
-    [PE[2].TX.P | p[25] | Left]
-    [PE[1].RX.N | p[29] | Left]
-    [PE[1].RX.P | p[31] | Left]
-    [GND[3] | p[33] | Left]
-    [PE[1].TX.N | p[35] | Left]
-    [PE[1].TX.P | p[37] | Left]
-    [GND[4] | p[39] | Left]
-    [PE[0].RX.N | p[41] | Left]
-    [PE[0].RX.P | p[43] | Left]
-    [GND[5] | p[45] | Left]
-    [PE[0].TX.N | p[47] | Left]
-    [PE[0].TX.P | p[49] | Left]
-    [GND[6] | p[51] | Left]
-    [REFCLKN | p[53] | Left]
-    [REFCLKP | p[55] | Left]
-    [GND[7] | p[57] | Left]
-    [NC[0] | p[67] | Left]
+    [GND[0] | p[3] | Right]
+    [LANE[3].RX.N | p[5] | Left]
+    [LANE[3].RX.P | p[7] | Left]
+    [GND[1] | p[9] | Right]
+    [LANE[3].TX.N | p[11] | Left]
+    [LANE[3].TX.P | p[13] | Left]
+    [GND[2] | p[15] | Right]
+    [LANE[2].RX.N | p[17] | Left]
+    [LANE[2].RX.P | p[19] | Left]
+    [CONFIG_0 | p[21] | Right]
+    [LANE[2].TX.N | p[23] | Left]
+    [LANE[2].TX.P | p[25] | Left]
+    [LANE[1].RX.N | p[29] | Left]
+    [LANE[1].RX.P | p[31] | Left]
+    [GND[3] | p[33] | Right]
+    [LANE[1].TX.N | p[35] | Left]
+    [LANE[1].TX.P | p[37] | Left]
+    [GND[4] | p[39] | Right]
+    [LANE[0].RX.N | p[41] | Left]
+    [LANE[0].RX.P | p[43] | Left]
+    [GND[5] | p[45] | Right]
+    [LANE[0].TX.N | p[47] | Left]
+    [LANE[0].TX.P | p[49] | Left]
+    [GND[6] | p[51] | Right]
+    [REFCLK.N | p[53] | Left]
+    [REFCLK.P | p[55] | Left]
+    [GND[7] | p[57] | Right]
+    [NC[0] | p[67] | Right]
     [CONFIG_1 | p[69] | Left]
-    [GND[8] | p[71] | Left]
-    [GND[9] | p[73] | Left]
+    [GND[8] | p[71] | Right]
+    [GND[9] | p[73] | Right]
     [CONFIG_2 | p[75] | Left]
-    [V_3V3[0] | p[2] | Right]
-    [V_3V3[1] | p[4] | Right]
+    [V_3V3[0] | p[2] | Left]
+    [V_3V3[1] | p[4] | Left]
     [NC[1] | p[6] | Right]
     [NC[2] | p[8] | Right]
-    [DAS_DSS | p[10] | Right]
-    [V_3V3[2] | p[12] | Right]
-    [V_3V3[3] | p[14] | Right]
-    [V_3V3[4] | p[16] | Right]
-    [V_3V3[5] | p[18] | Right]
+    [DAS_DSS | p[10] | Left]
+    [V_3V3[2] | p[12] | Left]
+    [V_3V3[3] | p[14] | Left]
+    [V_3V3[4] | p[16] | Left]
+    [V_3V3[5] | p[18] | Left]
     [NC[3] | p[20] | Right]
     [NC[4] | p[22] | Right]
     [NC[5] | p[24] | Right]
@@ -547,26 +204,93 @@ public pcb-component component :
     [NC[14] | p[44] | Right]
     [NC[15] | p[46] | Right]
     [NC[16] | p[48] | Right]
-    [PERST# | p[50] | Right]
-    [CLKREQ# | p[52] | Right]
-    [PEWAKE# | p[54] | Right]
-    [MFG1 | p[56] | Right]
-    [MFG2 | p[58] | Right]
-    [SUSCLK | p[68] | Right]
-    [V_3V3[6] | p[70] | Right]
-    [V_3V3[7] | p[72] | Right]
-    [V_3V3[8] | p[74] | Right]
+    [PERST# | p[50] | Left]
+    [CLKREQ# | p[52] | Left]
+    [PEWAKE# | p[54] | Left]
+    [MFG1 | p[56] | Left]
+    [MFG2 | p[58] | Left]
+    [SUSCLK | p[68] | Left]
+    [V_3V3[6] | p[70] | Left]
+    [V_3V3[7] | p[72] | Left]
+    [V_3V3[8] | p[74] | Left]
     [SHIELD[0] | MP1 | Right]
     [SHIELD[1] | MP2 | Right]
 
-  assign-landpattern(_121992306)
-  assign-symbol(_1-2199230-6)
+  
 
-  ;property(self.Digi-Key_Part_Number) = "A118046TR-ND"
+  val box = BoxSymbol(self)
+
+  assign-symbol $ create-symbol(box)
+
+  assign-landpattern(lp_1-2199230-6)
+  ; assign-symbol(_1-2199230-6)
+
+  property(self.Digi-Key_Part_Number) = "A118046TR-ND"
   property(self.manufacturer) = "TE Connectivity"
 
+  
+  for i in 0 to 4 do :
+    diff-pin-model(self.LANE[i].TX.P, LANE[i].TX.N,       delay = typ(10.0e-15) loss = typ(0.1))
+    diff-pin-model(self.LANE[i].RX.P, LANE[i].RX.N,       delay = typ(10.0e-15) loss = typ(0.1))
 
+  diff-pin-model(self.REFCLK.P, self.REFCLK.N, delay = typ(10.0e-15) loss = typ(0.1))
+
+doc: \<DOC>
+Helper function for creating the necessary PCIe Supports Statements
+
+The user must pass a bundle type, such as `pcie-std(<N>)` and
+this will construct a supports statement that will connect
+the bundle ports to the predefined `self.sw` instance of the 
+`compponent` connector.
+<DOC>
+defn connect_lanes (b:Bundle):
+  inside pcb-module:
+    supports b:
+      for i in indices(b.data.lane) do :
+        b.data.lane[i].RX.P => self.sw.LANE[i].RX.P
+        b.data.lane[i].RX.N => self.sw.LANE[i].RX.N
+        b.data.lane[i].TX.P => self.sw.LANE[i].TX.P
+        b.data.lane[i].TX.N => self.sw.LANE[i].TX.N
+      b.data.refclk.P => self.sw.REFCLK.P
+      b.data.refclk.N => self.sw.REFCLK.N
+
+      b.control.PEWAKE# => self.sw.PEWAKE#
+      b.control.PERST#  => self.sw.PERST#
+      b.control.CLKREQ# => self.sw.CLKREQ#
+
+      if has-PRSNT#(b):
+        b.control.PRSNT#  => self.sw.PRSNT#
+
+
+doc: \<DOC>
+PCIe Connector Module with Exposed Pin-Assigned PCIe ports
+
+User must use:
+
+```
+inst dut : jsl/examples/protocols/pcie/pcie-conn/module
+require pcie-1x:pcie-std(1) from dut
+```
+
+To access one of the PCIe interface.
+<DOC>
 public pcb-module module :
+
+  public inst sw : component
+
+  val bundle-types = [
+    pcie-std(4),
+    pcie-std(2),
+    pcie-std(1),
+    pcie-with-hotplug(4),
+    pcie-with-hotplug(2),
+    pcie-with-hotplug(1),
+  ]
+
+  for btype in bundle-types do:
+    connect_lanes(btype)
+
+; public pcb-module module :
   port vdd_3v3
   port gnd
   port shield
@@ -575,7 +299,7 @@ public pcb-module module :
   net GND (gnd)
   net SHIELD (shield)
 
-  public inst sw : component
+  ; public inst sw : component
 
   for g in pins(sw.V_3V3) do :
     net (V_3V3 g)
@@ -585,47 +309,3 @@ public pcb-module module :
 
   for g in pins(sw.SHIELD) do :
     net (SHIELD g)
-
-  
-  val bd-4x = pcie(4)
-  supports bd-4x :
-    for i in 0 to 4 do :
-      bd-4x.data.lane[i].RX.P => sw.PE[i].RX.P
-      bd-4x.data.lane[i].RX.N => sw.PE[i].RX.N
-      bd-4x.data.lane[i].TX.P => sw.PE[i].TX.P
-      bd-4x.data.lane[i].TX.N => sw.PE[i].TX.N
-    bd-4x.data.refclk.P => sw.REFCLKP
-    bd-4x.data.refclk.N => sw.REFCLKN
-
-    bd-4x.control.PEWAKE# => sw.PEWAKE#
-    bd-4x.control.PERST#  => sw.PERST#
-    bd-4x.control.CLKREQ# => sw.CLKREQ#
-
-  val bd-2x = pcie(2)
-  supports bd-2x :
-    for i in 0 to 2 do :
-      bd-2x.data.lane[i].RX.P => sw.PE[i].RX.P
-      bd-2x.data.lane[i].RX.N => sw.PE[i].RX.N
-      bd-2x.data.lane[i].TX.P => sw.PE[i].TX.P
-      bd-2x.data.lane[i].TX.N => sw.PE[i].TX.N
-    bd-2x.data.refclk.P => sw.REFCLKP
-    bd-2x.data.refclk.N => sw.REFCLKN
-
-    bd-2x.control.PEWAKE# => sw.PEWAKE#
-    bd-2x.control.PERST#  => sw.PERST#
-    bd-2x.control.CLKREQ# => sw.CLKREQ#
-
-  val bd-1x = pcie(1)
-  supports bd-1x :
-    bd-1x.data.lane[0].RX.P => sw.PE[0].RX.P
-    bd-1x.data.lane[0].RX.N => sw.PE[0].RX.N
-    bd-1x.data.lane[0].TX.P => sw.PE[0].TX.P
-    bd-1x.data.lane[0].TX.N => sw.PE[0].TX.N
-      
-    bd-1x.data.refclk.P => sw.REFCLKP
-    bd-1x.data.refclk.N => sw.REFCLKN
-
-    bd-1x.control.PEWAKE# => sw.PEWAKE#
-    bd-1x.control.PERST#  => sw.PERST#
-    bd-1x.control.CLKREQ# => sw.CLKREQ#
-
