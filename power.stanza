@@ -58,7 +58,7 @@ public pcb-module circuit :
   C-query = C-query
   )
   ; place(DCDC-1v13)  at loc(20.0,0.0,0.0) on Top
-  place(DCDC-1v9.IC.SW) at loc(20.0, 0.0) on Top
+  place(DCDC-1v9) at loc(20.0, 0.0) on Top
 
   ; 3.3v buck regulator 4a
   val cxt-3v3 = power-systems/DC-DC/buck/BuckConstraints(
@@ -77,7 +77,7 @@ public pcb-module circuit :
   C-query = C-query
   )
   ; place(DCDC-1v13)  at loc(0.0,0.0,0.0) on Top
-  place(DCDC-3v3.IC.SW) at loc(40.0, 0.0) on Top
+  place(DCDC-3v3) at loc(40.0, 0.0) on Top
 
   ; 3.3v LDO 500mA
 

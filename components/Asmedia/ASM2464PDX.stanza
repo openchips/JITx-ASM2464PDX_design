@@ -486,12 +486,11 @@ public pcb-module module :
   port spi : spi-with-cs()
   port uart : minimal-uart()
 
-  net GND (gnd)
-  net VBUS (vbus)
-  net VCCH (vcch)
-  net VCCL (vccl)
+  public inst sw : ASM001/components/Asmedia/ASM2464PDX/component
 
-  val C-query = get-default-capacitor-query()
+  ; net VCCA33 (sw.VCCA33)
+
+  ; val C-query = get-default-capacitor-query()
 
   ; val c_2u2F6V3 = CapacitorQuery( 
   ;                             case = ["0201", "0402", "0805"],
@@ -513,7 +512,6 @@ public pcb-module module :
   ;                             capacitance = 0.22e-6,
   ;                             rated-voltage = 10.0) ; 0.2200nF, 10V                              
 
-  public inst sw : ASM001/components/Asmedia/ASM2464PDX/component
 
   for g in pins(sw.GND) do :
     net GND (gnd g)
@@ -521,24 +519,8 @@ public pcb-module module :
   for g in pins(sw.GNDA) do :
     net GND (gnd g)
   
+  
   ;;;;;;;;;;;;;;;;;;  VDD 1.13v
-  val vdd_2u2F6V3_count = 11 ; 11 x 2.2uF/6.3V
-  inst vdd_2u2F6V3 : create-capacitor(mpn = "GRM033R60J225ME47D")[vdd_2u2F6V3_count]
-  schematic-group(vdd_2u2F6V3) = bypass-cap-VDD
-  
-  var vdd_2u2F6V3_loc = Array<Pose>(vdd_2u2F6V3_count)
-  
-  vdd_2u2F6V3_loc[0] = loc(-1.0, 1.4, 270.0)
-  vdd_2u2F6V3_loc[1] = loc(-1.0, 2.4, 270.0)
-  vdd_2u2F6V3_loc[2] = loc(-1.0, -0.2, 90.0)
-  vdd_2u2F6V3_loc[3] = loc(-2.0, -2.3, 270.0)
-  vdd_2u2F6V3_loc[4] = loc(0.6, 1.0, 270.0)
-  vdd_2u2F6V3_loc[5] = loc(0.6, 0.0, 90.0)
-  vdd_2u2F6V3_loc[6] = loc(0.6, -1.1, 270.0)
-  vdd_2u2F6V3_loc[7] = loc(-1.0, -1.2, 90.0)
-  vdd_2u2F6V3_loc[8] = loc(0.6, 2.0, 90.0)
-  vdd_2u2F6V3_loc[9] = loc(6.5, 1.3, 180.0)
-  vdd_2u2F6V3_loc[10] = loc(7.5, 1.3, 180.0)
 
   val vdd_10uF6V3_count = 3 ; 3 x 10UF/6.3V
   inst vdd_10uF6V3 : create-part(mpn = "GRM155R60J106ME44D")[vdd_10uF6V3_count]
@@ -546,9 +528,38 @@ public pcb-module module :
 
   var vdd_10uF6V3_loc = Array<Pose>(vdd_10uF6V3_count)
 
-  vdd_10uF6V3_loc[0] = loc(2.7, 3.2, 90.0)
-  vdd_10uF6V3_loc[1] = loc(2.7, 2.2, 90.0)
-  vdd_10uF6V3_loc[2] = loc(2.7, 1.2, 90.0)
+  vdd_10uF6V3_loc[0] = loc(-2.6, 3.10, 270.0)
+  vdd_10uF6V3_loc[1] = loc(2.3, 2.10, 90.0)
+  vdd_10uF6V3_loc[2] = loc(2.0, -2.2, 90.0)
+
+  ; for i in 0 to (vdd_10uF6V3_count) do:
+  ;   net vdd-10uF6V3 (vdd vdd_10uF6V3[i].p[1])
+  ;   net vdd-gnd (gnd vdd_10uF6V3[i].p[2])
+  ;   place(vdd_10uF6V3[i]) at vdd_10uF6V3_loc[i] on Bottom
+
+  
+  val vdd_2u2F6V3_count = 11 ; 11 x 2.2uF/6.3V
+  inst vdd_2u2F6V3 : create-part(mpn = "GRM033R60J225ME47D")[vdd_2u2F6V3_count]
+  schematic-group(vdd_2u2F6V3) = bypass-cap-VDD
+  
+  var vdd_2u2F6V3_loc = Array<Pose>(vdd_2u2F6V3_count)
+  
+  vdd_2u2F6V3_loc[0] = loc(-1.65, 0.09, 270.0)
+  vdd_2u2F6V3_loc[1] = loc(-0.83, 1.35, 270.0)
+  vdd_2u2F6V3_loc[2] = loc(-1.0, 2.0, 270.0)
+  vdd_2u2F6V3_loc[3] = loc(1.0, 3.3, 270.0)
+  vdd_2u2F6V3_loc[4] = loc(1.0, 2.0, 270.0)
+  vdd_2u2F6V3_loc[5] = loc(1.0, 1.0, 270.0)
+  vdd_2u2F6V3_loc[6] = loc(3.5, -3.24, 270.0)
+  vdd_2u2F6V3_loc[7] = loc(-1.65, -0.43, 0.0)
+  vdd_2u2F6V3_loc[8] = loc(1.65, 1.40, 270.0)
+  vdd_2u2F6V3_loc[9] = loc(3.5, 2.6, 270.0)
+  vdd_2u2F6V3_loc[10] = loc(0.6, 1.55, 180.0)
+
+  for i in 0 to (vdd_2u2F6V3_count) do:
+    net vdd-2u2F6V3 (vdd vdd_2u2F6V3[i].p[1])
+    net vdd-gnd (gnd vdd_2u2F6V3[i].p[2])
+    place(vdd_2u2F6V3[i]) at vdd_2u2F6V3_loc[i] on Bottom
 
   val vdd_220nF10V_count = 4 ; 4 x 0.22uF/10v
   inst vdd_220nF10V : create-part(mpn = "GRM033R61A224ME90D")[vdd_220nF10V_count]
@@ -556,88 +567,114 @@ public pcb-module module :
 
   var vdd_220nF10V_loc = Array<Pose>(vdd_220nF10V_count)
 
-  vdd_220nF10V_loc[0] = loc(-1.6, 0.6, 270.0)
-  vdd_220nF10V_loc[1] = loc(1.6, 1.2, 180.0)
-  vdd_220nF10V_loc[2] = loc(1.6, 2.0, 180.0)
-  vdd_220nF10V_loc[3] = loc(1.0, 3.0, 0.0)
+  vdd_220nF10V_loc[0] = loc(0.5, -0.50, 270.0)
+  vdd_220nF10V_loc[1] = loc(1.0, 1.0, 270.0)
+  vdd_220nF10V_loc[2] = loc(1.0, 2.4, 270.0)
+  vdd_220nF10V_loc[3] = loc(1.0, 3.0, 270.0)
 
-  for i in 0 to (vdd_2u2F6V3_count) do:
-    net VDD-vdd_2u2F6V3 (vdd vdd_2u2F6V3[i].p[1])
-    net GND (gnd vdd_2u2F6V3[i].p[2])
-    place(vdd_2u2F6V3[i]) at vdd_2u2F6V3_loc[i] on Bottom
-
-  for i in 0 to (vdd_10uF6V3_count) do:
-    net VDD-vdd_10uF6V3 (vdd vdd_10uF6V3[i].p[1])
-    net GND (gnd vdd_10uF6V3[i].p[2])
-    place(vdd_10uF6V3[i]) at vdd_10uF6V3_loc[i] on Bottom
-
-    
   for i in 0 to (vdd_220nF10V_count) do:
-    net VDD-vdd_220nF10V (vdd vdd_220nF10V[i].p[1])
-    net (gnd vdd_220nF10V[i].p[2])
+    net vdd-220nF10V (vdd vdd_220nF10V[i].p[1])
+    net vdd-gnd (gnd vdd_220nF10V[i].p[2])
     place(vdd_220nF10V[i]) at vdd_220nF10V_loc[i] on Bottom
   
-
   for v in pins(sw.VDD) do :
     net VDD (vdd v)
 
-  ;;;;;;;;;;;;;;;;;;  VDD 1.13v
+  ; ;;;;;;;;;;;;;;;;;;  VDD 1.13v
 
 
-  ;;;;;;;;;;;;;;;;;;  VCCH 3v3
+  ; ;;;;;;;;;;;;;;;;;;  VCCH 3v3
 
-  ; 3.3v
-  ; 3 x 2.2uF/6.3V
+  ; 3 x 10uF/6.3V
+  ; 11 x 2.2uF/6.3V
+
+  val vcch_10uF6V3_count = 3
+  inst vcch_10uF6V3 : create-part(mpn = "GRM155R61A106ME11D")[vcch_10uF6V3_count]
+  schematic-group(vcch_10uF6V3) = bypass-cap-VCCL
+  
+  ; var vcch_10uF6V3_loc = Array<Pose>(vcch_10uF6V3_count)
+  
+  ; vcch_10uF6V3_loc[0] = loc(-3.504, 0.0, 0.0)
+  ; vcch_10uF6V3_loc[1] = loc(2.254, 3.231, 0.0)
+  ; vcch_10uF6V3_loc[2] = loc(-0.531, 3.422, 90.0)
+  
+  ; for i in 0 to (vcch_10uF6V3_count) do:
+  ;   net vcch-10uF6V3 (vcch vcch_10uF6V3[i].p[1])
+  ;   net vcch-GND (gnd vcch_10uF6V3[i].p[2])
+  ;   place(vcch_10uF6V3[i]) at vcch_10uF6V3_loc[i] on Bottom
+
+  val vcch_2u2F6V3_count = 11
+  inst vcch_2u2F6V3 : create-part(mpn = "GRM033R60J225ME47D")[vcch_2u2F6V3_count]
+  schematic-group(vcch_2u2F6V3) = bypass-cap-VCCH
+  
+  var vcch_2u2F6V3_loc = Array<Pose>(vcch_2u2F6V3_count)
+  
+  vcch_2u2F6V3_loc[0] = loc(2.31, 2.53, 270.0)
+  vcch_2u2F6V3_loc[1] = loc(-1.54, 2.47, 180.0)
+  vcch_2u2F6V3_loc[2] = loc(2.585, 0.564, 90.0)
+  vcch_2u2F6V3_loc[3] = loc(-0.912, -1.35, 0.0)
+  vcch_2u2F6V3_loc[4] = loc(0.132, 2.548, 0.0)
+  vcch_2u2F6V3_loc[5] = loc(-1.622, 3.409, 180.0)
+  vcch_2u2F6V3_loc[6] = loc(3.468, 1.226, 180.0)
+  vcch_2u2F6V3_loc[7] = loc(-0.071, 1.574, 0.0)
+  vcch_2u2F6V3_loc[8] = loc(3.732, -1.672, 270.0)
+  vcch_2u2F6V3_loc[9] = loc(2.587, 0.694, 90.0)
+  vcch_2u2F6V3_loc[10] = loc(-1.057, -1.057, 270.0)
+  
+  for i in 0 to (vcch_2u2F6V3_count) do:
+    net vcch-2u2F6V3 (vcch vcch_2u2F6V3[i].p[1])
+    net vcch-gnd (gnd vcch_2u2F6V3[i].p[2])
+    place(vcch_2u2F6V3[i]) at vcch_2u2F6V3_loc[i] on Bottom
 
   for v in pins(sw.VCCH) do :
     net VCCH (vcch v)
 
+  inst vcca33-jumper : create-part(mpn = "RC0201JR-070RL", manufacturer = "YAGEO")
+
+  net (vcch vcca33-jumper.p[1]) ; internally hook up both 3.3v busses
+  net VCCA33 (vcca33-jumper.p[2] vcca33) ; internally hook up both 3.3v busses
 
   ;;;;;;;;;;;;;;;;;;  VCCH 3v3
 
   ;;;;;;;;;;;;;;;;;;  VCCL 1v9
-  val vccl_10uF6V3_count = 3 ; 3 x 10UF/6.3V
-  inst vccl_10uF6V3 : create-part(mpn = "GRM155R61A106ME11D")[vccl_10uF6V3_count]
-  schematic-group(vccl_10uF6V3) = bypass-cap-VCCL
-  
-  var vccl_10uF6V3_loc = Array<Pose>(vccl_10uF6V3_count)
-  
-  vccl_10uF6V3_loc[0] = loc(6.6, 0.0, 0.0)
-  vccl_10uF6V3_loc[1] = loc(7.6, 0.0, 0.0)
-  vccl_10uF6V3_loc[2] = loc(8.6, 0.0, 0.0)
-  
-  for i in 0 to (vccl_10uF6V3_count) do:
-    net VCCL_10uF6V3 (vccl vccl_10uF6V3[i].p[1])
-    net GND (gnd vccl_10uF6V3[i].p[2])
-    ; place(vccl_10uF6V3[i]) at vccl_10uF6V3_loc[i] on Bottom
-  
-  ; 11 x 2.2UF/6.3V
-  ; public inst vccl_2u2F6V3_pos : create-part(mpn = "GRM033R60J225ME47D")
-  ; net VCCL-c_2u2F6V3_pos (vccl vccl_2u2F6V3_pos.p[1])
-  ; net (gnd vccl_2u2F6V3_pos.p[2])
 
-  val vccl_2u2F6V3_count = 11 ; 11 x 2.2uF/6.3V
-  inst vccl_2u2F6V3 : create-capacitor(mpn = "GRM033R60J225ME47D")[vccl_2u2F6V3_count]
+  ; 3 x 10uF/6.3V
+  ; 11 x 2.2uF/6.3V
+  ; val vccl_10uF6V3_count = 3
+  ; inst vccl_10uF6V3 : create-part(mpn = "GRM155R61A106ME11D")[vccl_10uF6V3_count]
+  ; schematic-group(vccl_10uF6V3) = bypass-cap-VCCL
+  
+  ; var vccl_10uF6V3_loc = Array<Pose>(vccl_10uF6V3_count)
+  
+  ; vccl_10uF6V3_loc[0] = loc(2.6, -0.5, 0.0)
+  ; vccl_10uF6V3_loc[1] = loc(-2.60, -0.5, 270.0)
+  ; vccl_10uF6V3_loc[2] = loc(1.60, -2.52, 0.0)
+  
+  ; for i in 0 to vccl_10uF6V3_count do:
+  ;   net vccl-10uF6V3 (vccl vccl_10uF6V3[i].p[1])
+  ;   net vccl-gnd (gnd vccl_10uF6V3[i].p[2])
+  ;   place(vccl_10uF6V3[i]) at vccl_10uF6V3_loc[i] on Bottom
+
+  val vccl_2u2F6V3_count = 11
+  inst vccl_2u2F6V3 : create-part(mpn = "GRM033R60J225ME47D")[vccl_2u2F6V3_count]
   schematic-group(vccl_2u2F6V3) = bypass-cap-VCCL
   
   var vccl_2u2F6V3_loc = Array<Pose>(vccl_2u2F6V3_count)
-  
-  vccl_2u2F6V3_loc[0] = loc(3.15, 0.0, 0.0)
-  vccl_2u2F6V3_loc[1] = loc(2.25, -0.6, 90.0)
-  vccl_2u2F6V3_loc[2] = loc(-2.2, -0.2, 270.0)
-  vccl_2u2F6V3_loc[3] = loc(2.25, -1.35, 90.0)
-  vccl_2u2F6V3_loc[4] = loc(2.25, -2.1, 90.0)
-  vccl_2u2F6V3_loc[5] = loc(2.25, -2.6, 90.0)
-  vccl_2u2F6V3_loc[6] = loc(1.25, -2.9, 0.0)
-  vccl_2u2F6V3_loc[7] = loc(0.5, -2.9, 0.0)
-  vccl_2u2F6V3_loc[8] = loc(-1.25, -2.9, 0.0)
-  vccl_2u2F6V3_loc[9] = loc(-2.2, -1.9, 270.0)
-  vccl_2u2F6V3_loc[10] = loc(-2.2, -0.9, 270.0)
+  vccl_2u2F6V3_loc[0] = loc(-2.30, 0.0, 270.0)
+  vccl_2u2F6V3_loc[1] = loc(0.58, 0.4, 270.0)
+  vccl_2u2F6V3_loc[2] = loc(-2.30, -1.8 270.0)
+  vccl_2u2F6V3_loc[3] = loc(0.82, -2.84, 0.0)
+  vccl_2u2F6V3_loc[4] = loc(-0.76, -2.83, 0.0)
+  vccl_2u2F6V3_loc[5] = loc(0.02, -2.84, 0.0)
+  vccl_2u2F6V3_loc[6] = loc(-2.30, -0.0, 270.0)
+  vccl_2u2F6V3_loc[7] = loc(1.60, -2.52, 0.0)
+  vccl_2u2F6V3_loc[8] = loc(1.60, -1.71, 270.0)
+  vccl_2u2F6V3_loc[9] = loc(1.60, -0.50, 270.0)
+  vccl_2u2F6V3_loc[10] = loc(1.60, 0.5, 270.0)
 
-  
   for i in 0 to (vccl_2u2F6V3_count) do:
-    net VDD-vccl_2u2F6V3 (vccl vccl_2u2F6V3[i].p[1])
-    net GND (gnd vccl_2u2F6V3[i].p[2])
+    net vccl-2u2F6V3 (vccl vccl_2u2F6V3[i].p[1])
+    net vccl-gnd (gnd vccl_2u2F6V3[i].p[2])
     place(vccl_2u2F6V3[i]) at vccl_2u2F6V3_loc[i] on Bottom
 
   for v in pins(sw.VCCL) do :

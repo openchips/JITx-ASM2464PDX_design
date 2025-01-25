@@ -1,5 +1,5 @@
 #use-added-syntax(jitx)
-defpackage ASM001/components/USB/USBTypeC :
+defpackage connectors/components/USB/USBTypeC :
   import core
   import jitx
   import jitx/commands
@@ -97,39 +97,30 @@ public pcb-component conn-component :
 
   reversible-dual-pair(self.D0, self.D1)
 
-public pcb-module circuit :
-  port GND
-  port VBUS
-  port SHIELD
-  port USB-C : usb-c(2)
 
-  public inst sw : ASM001/components/USB/USBTypeC/conn-component
+public pcb-module device :
+  port conn : usb-c-connector
 
-  for g in pins(sw.GND) do :
-    net (GND g)
-  
-  for g in pins(sw.VBUS) do :
-    net (VBUS g)
+  public inst J : conn-component
 
-  net (sw.CC1 USB-C.cc[0])
-  net (sw.CC2 USB-C.cc[1])
+  net (conn.vbus.V+ J.VBUS[0] J.VBUS[1] J.VBUS[2] J.VBUS[3])
+  net (J.CC1, conn.bus.cc[0])
+  net (J.CC2, conn.bus.cc[1])
 
-  net (sw.SBU1 USB-C.sbu[0] )
-  net (sw.SBU2 USB-C.sbu[1] )
+  net (J.SBU1 conn.bus.sbu[0])
+  net (J.SBU2 conn.bus.sbu[1])
 
-  net (sw.D0.P sw.D1.P USB-C.data.P)
-  net (sw.D0.N sw.D1.N USB-C.data.N)
-  net (sw.TX1.P USB-C.lane[0].TX.P)
-  net (sw.TX1.N USB-C.lane[0].TX.N)
-  net (sw.RX1.P USB-C.lane[0].RX.P)
-  net (sw.RX1.N USB-C.lane[0].RX.N)
-  net (sw.TX2.P USB-C.lane[1].TX.P)
-  net (sw.TX2.N USB-C.lane[1].TX.N)
-  net (sw.RX2.P USB-C.lane[1].RX.P)
-  net (sw.RX2.N USB-C.lane[1].RX.N)
+  require usb-data : dual-pair from J
+  topo-net(conn.bus.data, usb-data.A)
+  topo-net(usb-data.A, usb-data.B)
 
-  net (sw.SHIELD SHIELD)
+  topo-net(J.TX1, conn.bus.lane[0].TX)
+  topo-net(J.RX1, conn.bus.lane[0].RX)
+  topo-net(J.TX2, conn.bus.lane[1].TX)
+  topo-net(J.RX2, conn.bus.lane[1].RX)
 
+  net (J.GND[0] J.GND[1] J.GND[2] J.GND[3] conn.vbus.V-)
+  net (conn.shield J.SHIELD)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; LandPattern Generator
@@ -330,7 +321,3 @@ defn build-mounting-holes (
   val M4 = VirtualPad(#R(M[4]), M34-def, loc(M34-L2, M34-y-off))
 
   append-all(origin, [M1, M2, M3, M4])
-
-
-
-
