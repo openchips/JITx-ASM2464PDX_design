@@ -1,5 +1,5 @@
 #use-added-syntax(jitx)
-defpackage connectors/components/USB/USBTypeC :
+defpackage ASM001/components/USB/USBTypeC :
   import core
   import jitx
   import jitx/commands

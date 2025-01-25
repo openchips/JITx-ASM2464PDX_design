@@ -725,6 +725,7 @@
     {"operation":"place","place":{"placements":[{"id":"9BCMYBCQ99CRouQ9hKWwj5","pose":{"center":{"x":-44.326161518248725,"y":3.8539584233572057},"angle":270},"side":"top"}]}},
     {"operation":"place","place":{"placements":[{"id":"9BCMYBCQ99CRouQ9hKWwj5","pose":{"center":{"x":-44.176161518248719,"y":3.8539584233572057},"angle":270},"side":"top"}]}},
     {"operation":"place","place":{"placements":[{"id":"9BCMYBCQ99CRouQ9hKWwj5","pose":{"center":{"x":-44.251161518248722,"y":3.8539584233572057},"angle":270},"side":"top"}]}},
-    {"operation":"place","place":{"placements":[{"id":"9BCMYBCQ99CRouQ9hKWwj5","pose":{"center":{"x":-44.53400423072334,"y":3.8539584233572057},"angle":270},"side":"top"}]}}
+    {"operation":"place","place":{"placements":[{"id":"9BCMYBCQ99CRouQ9hKWwj5","pose":{"center":{"x":-44.53400423072334,"y":3.8539584233572057},"angle":270},"side":"top"}]}},
+    {"operation":"unplace","unplace":["8XXJeNNTAugx4XEEoa5QnP","4n79No3wMLtFgTH9f7PhEm","8poKXbSgAi3EWhXgADU299","9LcTEMAVmRziACgisWw2WQ"]}
   ]
 }
